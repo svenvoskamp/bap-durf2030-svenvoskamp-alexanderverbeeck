@@ -1,6 +1,22 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
 
 const Tyle = ({ color, direction, button }) => {
+  const handleHover = (e) => {
+    gsap.to(e.currentTarget, {
+      duration: 0.15,
+      left: '-6.6',
+      top: '-6.3',
+    });
+  };
+
+  const handleOut = (e) => {
+    gsap.to(e.currentTarget, {
+      duration: 0.1,
+      left: '0',
+      top: '0',
+    });
+  };
   return (
     <article
       class="card"
@@ -34,13 +50,18 @@ const Tyle = ({ color, direction, button }) => {
         data-scroll-speed={button}
         class="card-button"
       >
-        {/* <div class="buttons"> */}
-        {/* <img
+        <div class="buttons">
+          <img
             class="button-background"
             src="./assets/images/button_background.svg"
-          /> */}
-        <img class="button-top" src="./assets/images/button_top.svg" />
-        {/* </div> */}
+          />
+          <img
+            onMouseOver={handleHover}
+            onMouseLeave={handleOut}
+            class="button-top"
+            src="./assets/images/button_top.svg"
+          />
+        </div>
       </div>
     </article>
   );

@@ -1,11 +1,33 @@
 import { preloadImages, map, clamp } from '../lib/utils';
 import React, { useRef, useEffect } from 'react';
 import Tyle from '../components/Tyle';
-
+import gsap from 'gsap';
 // Initialize Locomotive Scroll (horizontal direction)
 
 const Home = () => {
   const scrollRef = useRef(null);
+
+  const handleHover = (e) => {
+    gsap.to('.navigation', {
+      duration: 0.5,
+      width: '20rem',
+      ease: 'easeOut',
+    });
+    gsap.to('.nav-logo', {
+      padding: '0 3.5rem',
+    });
+  };
+
+  const handleLeave = (e) => {
+    gsap.to('.navigation', {
+      duration: 0.5,
+      width: '7rem',
+      ease: 'easeOut',
+    });
+    gsap.to('.nav-logo', {
+      padding: '0 1rem',
+    });
+  };
 
   useEffect(() => {
     import('locomotive-scroll').then((locomotiveModule) => {
@@ -22,7 +44,6 @@ const Home = () => {
 
       lscroll.on('scroll', (obj) => {
         for (const key of Object.keys(obj.currentElements)) {
-          console.log(obj.currentElements[key].el.classList);
           if (obj.currentElements[key].el.classList.contains('card-layers')) {
             let progress = obj.currentElements[key].progress;
             const saturateVal =
@@ -53,7 +74,11 @@ const Home = () => {
   return (
     <>
       <body class="loading">
-        <nav class="navigation">
+        <nav
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+          class="navigation"
+        >
           <div class="nav-logo">
             <img class="nav-logo" src="./assets/images/logo.svg" alt="" />
           </div>
@@ -68,7 +93,7 @@ const Home = () => {
             <img class="nav-item" src="./assets/images/profiel.svg" alt="" />
           </div>
           <div class="nav-profile">
-            <div class="nav-logo">
+            <div class="nav-profile--image">
               <img class="" src="./assets/images/profile_icon.png" alt="" />
             </div>
           </div>

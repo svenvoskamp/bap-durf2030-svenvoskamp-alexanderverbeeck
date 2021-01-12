@@ -359,6 +359,21 @@ html.has-scroll-dragging {
   border: 0.3rem solid #091422;
 }
 
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .button-top {
+  animation: rotation 4s infinite linear;
+  cursor: pointer;
+  webkit-animation-play-state: running;
+}
+
+.card:hover .card-info:after {
+  top: 0%;
+  left: 0%;
+}
+
 .card-info:after {
   content: '';
   position: absolute;
@@ -367,10 +382,11 @@ html.has-scroll-dragging {
   border-radius: inherit;
   border: inherit;
   top: 3%;
-  left: 5s;
+  left: 5%;
   width: 100%;
   height: 100%;
   z-index: -1;
+  transition: all 0.2s ease-in-out;
 }
 
 .card-info--red {
@@ -435,13 +451,15 @@ html.has-scroll-dragging {
 
 .buttons {
   position: relative;
-  width: 100%;
 }
 
 .button-top {
   position: relative;
   animation: rotation 4s infinite linear;
   width: 100%;
+  height: 100%;
+  bottom: 0%;
+  right: 0%;
   animation-play-state: paused;
   webkit-animation-play-state: paused;
 }
@@ -453,6 +471,11 @@ html.has-scroll-dragging {
   webkit-animation-play-state: running;
 }
 
+/* .buttons:hover .button-top {
+  right: 5%;
+  top: -5;
+} */
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -461,38 +484,13 @@ html.has-scroll-dragging {
     transform: rotate(359deg);
   }
 }
-.button-top:hover > .button-background {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.5s ease-in-out;
-}
-
-.button-top:after {
-  content: url('../public/assets/images/button_background.svg');
-  position: absolute;
-  display: block;
-  background: inherit;
-  border-radius: inherit;
-  border: inherit;
-  top: 3%;
-  left: 5s;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.button-top:hover .button-top:after {
-  top: 0;
-  left: 0;
-}
 
 .button-background {
   position: absolute;
-  top: 35%;
-  left: 35%;
-  transform: translate(-35%, -35%);
+  top: 10%;
+  left: 10%;
+  /* transform: translate(-35%, -35%); */
+  transition: all 0.2s ease-in-out;
 }
 
 .text-large {
@@ -538,6 +536,8 @@ html.has-scroll-dragging {
 .nav-logo {
   display: flex;
   justify-content: center;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .nav-items {
@@ -553,6 +553,9 @@ html.has-scroll-dragging {
 .nav-profile {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
 }
 
 .nav-profile img {
