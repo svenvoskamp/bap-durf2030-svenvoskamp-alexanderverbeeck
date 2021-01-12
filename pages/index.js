@@ -16,6 +16,7 @@ const Home = () => {
         smartphone: {
           smooth: true,
           horizontalGesture: true,
+          direction: 'horizontal',
         },
       });
 
