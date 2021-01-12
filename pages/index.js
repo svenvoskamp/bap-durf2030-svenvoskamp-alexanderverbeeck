@@ -13,6 +13,10 @@ const Home = () => {
         el: scrollRef.current,
         smooth: true,
         direction: 'horizontal',
+        smartphone: {
+          smooth: true,
+          horizontalGesture: true,
+        },
       });
 
       lscroll.on('scroll', (obj) => {
