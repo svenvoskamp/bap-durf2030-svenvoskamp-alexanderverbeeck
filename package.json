@@ -1,0 +1,19 @@
+{
+  "name": "learn-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "gsap": "^3.5.1",
+    "imagesloaded": "^4.1.4",
+    "locomotive-scroll": "^4.0.6",
+    "next": "^10.0.0",
+    "next-images": "^1.6.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
