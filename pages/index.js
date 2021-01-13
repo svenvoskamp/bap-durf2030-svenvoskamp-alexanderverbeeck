@@ -23,7 +23,9 @@ const Home = () => {
     // });
 
     gsap.to('.nav-logo--image', {
-      padding: '0 7rem',
+      padding: '0 7.5rem',
+      ease: 'easeOut',
+
     });
   };
 
@@ -45,6 +47,8 @@ const Home = () => {
     // });
     gsap.to('.nav-logo--image', {
       padding: '0 1.5rem',
+      ease: 'easeOut',
+
     });
   };
 
