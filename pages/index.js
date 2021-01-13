@@ -12,20 +12,34 @@ const Home = () => {
       duration: 0.5,
       width: '20rem',
       ease: 'easeOut',
+            onComplete: function () {
+        gsap.to('.nav-item--title', {
+          duration: 0.2,
+          ease: 'easeOut',
+          display: "flex",
+          opacity: "1",
+        });
+      }
     });
-    gsap.to('.nav-logo', {
-      padding: '0 3.5rem',
+    gsap.to('.nav-logo--image', {
+      padding: '0 7rem',
     });
   };
 
   const handleLeave = (e) => {
     gsap.to('.navigation', {
       duration: 0.5,
-      width: '7rem',
+      width: '6rem',
       ease: 'easeOut',
     });
-    gsap.to('.nav-logo', {
-      padding: '0 1rem',
+    gsap.to('.nav-item--title', {
+      duration: 0.1,
+      ease: 'easeOut',
+      display: "none",
+      opacity: "0",
+    });
+    gsap.to('.nav-logo--image', {
+      padding: '0 1.5rem',
     });
   };
 
@@ -80,23 +94,41 @@ const Home = () => {
           class="navigation"
         >
           <div class="nav-logo">
-            <img class="nav-logo" src="./assets/images/logo.svg" alt="" />
+            <img class="nav-logo--image" src="./assets/images/logo.svg" alt="" />
           </div>
           <div class="nav-items">
-            <img class="nav-item" src="./assets/images/verkennen.svg" alt="" />
-            <img class="nav-item" src="./assets/images/idee.svg" alt="" />
-            <img
-              class="nav-item"
-              src="./assets/images/crowdfunding.svg"
-              alt=""
-            />
-            <img class="nav-item" src="./assets/images/profiel.svg" alt="" />
+            <div class="item">
+              <div class="nav-item">
+                <img class="nav-item--image" src="./assets/images/verkennen.svg" alt="" />
+              </div>
+              <p class="nav-item--title">Ontdekken</p>
+            </div>
+            <div class="item">
+              <div class="nav-item">
+                <img class="nav-item--image" src="./assets/images/idee.svg" alt="" />
+              </div>
+              <p class="nav-item--title">Co-creatie</p>
+            </div>
+            <div class="item">
+              <div class="nav-item">
+                <img class="nav-item--image" src="./assets/images/crowdfunding.svg" alt="" />
+              </div>
+              <p class="nav-item--title">crowdfunding</p>
+            </div>
+            <div class="item">
+              <div class="nav-item">
+                <img class="nav-item--image" src="./assets/images/profiel.svg" alt="" />
+              </div>
+              <p class="nav-item--title">Realisaties</p>
+            </div>
+
           </div>
           <div class="nav-profile">
-            <div class="nav-profile--image">
-              <img class="" src="./assets/images/profile_icon.png" alt="" />
+              <div class="nav-profile--image">
+                <img class="" src="./assets/images/profile_icon.png" alt="" />
+              </div>
+              <p class="nav-item--title">Sven Voskamp</p>
             </div>
-          </div>
         </nav>
         <main ref={scrollRef} data-scroll-container>
           <div class="content">
