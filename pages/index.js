@@ -10,7 +10,7 @@ const Home = () => {
   const handleHover = (e) => {
     gsap.to('.navigation', {
       duration: 0.5,
-      width: '20rem',
+      width: '19rem',
       ease: 'easeOut',
             onComplete: function () {
         gsap.to('.nav-item--title', {

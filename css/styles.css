@@ -544,12 +544,16 @@ html.has-scroll-dragging {
   width: 100%;
   position: absolute;
   padding: 0 1.5rem;
+  cursor: pointer;
 }
 
 .item {
   width: 100%;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  margin: 2rem 0;
+  padding: 1rem 0;
 }
 
 .nav-item {
@@ -557,7 +561,6 @@ html.has-scroll-dragging {
   flex-direction: column;
   min-width: 6rem;
   align-items: center;
-  padding: 2rem 0;
 }
 
 .nav-item--title {
