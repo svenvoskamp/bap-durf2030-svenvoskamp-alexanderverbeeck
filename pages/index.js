@@ -6,25 +6,30 @@ import gsap from 'gsap';
 
 const Home = () => {
   const scrollRef = useRef(null);
+  const navRef = useRef(null);
 
   const handleHover = (e) => {
     gsap.to('.navigation', {
       duration: 0.5,
       width: '19rem',
       ease: 'easeOut',
-            onComplete: function () {
-        gsap.to('.nav-item--title', {
-          duration: 0.2,
-          ease: 'easeOut',
-          display: "flex",
-          opacity: "1",
-        });
-      }
     });
+    // gsap.to('.nav-item--title', {
+    //   delay: 0.4,
+    //   duration: 0.2,
+    //   ease: 'easeOut',
+    //   display: 'flex',
+    //   opacity: '1',
+    // });
+
     gsap.to('.nav-logo--image', {
       padding: '0 7rem',
     });
   };
+
+  useEffect(() => {
+    console.log('hoi');
+  });
 
   const handleLeave = (e) => {
     gsap.to('.navigation', {
@@ -32,12 +37,12 @@ const Home = () => {
       width: '6rem',
       ease: 'easeOut',
     });
-    gsap.to('.nav-item--title', {
-      duration: 0.1,
-      ease: 'easeOut',
-      display: "none",
-      opacity: "0",
-    });
+    // gsap.to('.nav-item--title', {
+    //   duration: 0.2,
+    //   ease: 'easeOut',
+    //   display: 'none',
+    //   opacity: '0',
+    // });
     gsap.to('.nav-logo--image', {
       padding: '0 1.5rem',
     });
@@ -94,41 +99,62 @@ const Home = () => {
           class="navigation"
         >
           <div class="nav-logo">
-            <img class="nav-logo--image" src="./assets/images/logo.svg" alt="" />
+            <img
+              class="nav-logo--image"
+              src="./assets/images/logo.svg"
+              alt=""
+            />
           </div>
           <div class="nav-items">
             <div class="item">
               <div class="nav-item">
-                <img class="nav-item--image" src="./assets/images/verkennen.svg" alt="" />
+                <img
+                  class="nav-item--image"
+                  src="./assets/images/verkennen.svg"
+                  alt=""
+                />
               </div>
-              <p class="nav-item--title">Ontdekken</p>
+              <p ref={navRef} class="nav-item--title">
+                Ontdekken
+              </p>
             </div>
             <div class="item">
               <div class="nav-item">
-                <img class="nav-item--image" src="./assets/images/idee.svg" alt="" />
+                <img
+                  class="nav-item--image"
+                  src="./assets/images/idee.svg"
+                  alt=""
+                />
               </div>
               <p class="nav-item--title">Co-creatie</p>
             </div>
             <div class="item">
               <div class="nav-item">
-                <img class="nav-item--image" src="./assets/images/crowdfunding.svg" alt="" />
+                <img
+                  class="nav-item--image"
+                  src="./assets/images/crowdfunding.svg"
+                  alt=""
+                />
               </div>
               <p class="nav-item--title">crowdfunding</p>
             </div>
             <div class="item">
               <div class="nav-item">
-                <img class="nav-item--image" src="./assets/images/profiel.svg" alt="" />
+                <img
+                  class="nav-item--image"
+                  src="./assets/images/profiel.svg"
+                  alt=""
+                />
               </div>
               <p class="nav-item--title">Realisaties</p>
             </div>
-
           </div>
           <div class="nav-profile">
-              <div class="nav-profile--image">
-                <img class="" src="./assets/images/profile_icon.png" alt="" />
-              </div>
-              <p class="nav-item--title">Sven Voskamp</p>
+            <div class="nav-profile--image">
+              <img class="" src="./assets/images/profile_icon.png" alt="" />
             </div>
+            <p class="nav-item--title">Sven Voskamp</p>
+          </div>
         </nav>
         <main ref={scrollRef} data-scroll-container>
           <div class="content">
@@ -161,7 +187,7 @@ const Home = () => {
               </div>
               <div class="text-large">
                 <span
-                  class="text-large--inner text-large--fill"
+                  class="text-large--inner text-large--fill text-large--inner-2 "
                   data-scroll
                   data-scroll-speed="3"
                   data-scroll-direction="vertical"
@@ -172,7 +198,7 @@ const Home = () => {
                   data-scroll
                   data-scroll-speed="-4"
                   data-scroll-direction="vertical"
-                  class="text-large--inner"
+                  class="text-large--inner text-large--inner-2"
                 >
                   START NU.
                 </span>
