@@ -1,7 +1,9 @@
 import { preloadImages, map, clamp } from '../lib/utils';
 import React, { useRef, useEffect } from 'react';
 import Tyle from '../components/Tyle';
+import Mouse from '../components/Mouse';
 import gsap from 'gsap';
+import TweenMax from 'gsap';
 // Initialize Locomotive Scroll (horizontal direction)
 
 const Home = () => {
@@ -25,7 +27,6 @@ const Home = () => {
     gsap.to('.nav-logo--image', {
       padding: '0 7.5rem',
       ease: 'easeOut',
-
     });
   };
 
@@ -48,7 +49,6 @@ const Home = () => {
     gsap.to('.nav-logo--image', {
       padding: '0 1.5rem',
       ease: 'easeOut',
-
     });
   };
 
@@ -96,6 +96,7 @@ const Home = () => {
 
   return (
     <>
+      <Mouse></Mouse>
       <body class="loading">
         <nav
           onMouseEnter={handleHover}
@@ -110,29 +111,29 @@ const Home = () => {
             />
           </div>
           <div class="nav-items">
-            <div class="item">
-              <div class="nav-item">
+            <div class="scale item">
+              <div class=" nav-item">
                 <img
                   class="nav-item--image"
                   src="./assets/images/verkennen.svg"
                   alt=""
                 />
               </div>
-              <p ref={navRef} class="nav-item--title">
+              <p ref={navRef} class=" nav-item--title">
                 Ontdekken
               </p>
             </div>
-            <div class="item">
-              <div class="nav-item">
+            <div class="scale item">
+              <div class=" nav-item">
                 <img
                   class="nav-item--image"
                   src="./assets/images/idee.svg"
                   alt=""
                 />
               </div>
-              <p class="nav-item--title">Co-creatie</p>
+              <p class=" nav-item--title">Co-creatie</p>
             </div>
-            <div class="item">
+            <div class="scale item">
               <div class="nav-item">
                 <img
                   class="nav-item--image"
@@ -140,9 +141,9 @@ const Home = () => {
                   alt=""
                 />
               </div>
-              <p class="nav-item--title">crowdfunding</p>
+              <p class="  nav-item--title">crowdfunding</p>
             </div>
-            <div class="item">
+            <div class="scale item">
               <div class="nav-item">
                 <img
                   class="nav-item--image"
@@ -150,7 +151,7 @@ const Home = () => {
                   alt=""
                 />
               </div>
-              <p class="nav-item--title">Realisaties</p>
+              <p class=" nav-item--title">Realisaties</p>
             </div>
           </div>
           <div class="nav-profile">

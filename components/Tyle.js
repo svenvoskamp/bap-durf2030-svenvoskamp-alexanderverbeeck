@@ -19,7 +19,7 @@ const Tyle = ({ color, direction, button }) => {
   };
   return (
     <article
-      class="card"
+      class="scale card"
       data-scroll
       data-scroll-speed={direction}
       data-scroll-direction="vertical"
