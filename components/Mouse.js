@@ -8,7 +8,6 @@ const Mouse = () => {
   let targets;
 
   useEffect(() => {
-    console.log('hallo');
     bigBall = document.querySelector('.cursor__ball--big');
     targets = document.querySelectorAll(`.scale`);
     for (let i = 0; i < targets.length; i++) {
@@ -16,11 +15,9 @@ const Mouse = () => {
       targets[i].addEventListener('mouseleave', onMouseHoverOut);
     }
     document.body.addEventListener('mousemove', onMouseMove);
-    document.body.addEventListener('wheel', onMouseMove);
   });
 
   function onMouseMove(e) {
-    console.log(e);
     TweenMax.to(bigBall, {
       duration: 0,
       x: e.clientX - 15,

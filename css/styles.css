@@ -20,7 +20,7 @@ html {
 body {
   font-size: 1.6rem;
   height: 100%;
-  --color-text: #fff;
+  --color-text: #000;
   --color-bg: #fdecd2;
   --color-link: #d75828;
   --color-link-hover: #fff;

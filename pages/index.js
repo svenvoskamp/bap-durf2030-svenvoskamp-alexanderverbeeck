@@ -1,12 +1,24 @@
 import { preloadImages, map, clamp } from '../lib/utils';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Tyle from '../components/Tyle';
 import Mouse from '../components/Mouse';
 import gsap from 'gsap';
-import TweenMax from 'gsap';
+import { withApollo } from '../lib/withApollo';
+import Login from '../components/Auth/Login';
+import Logout from '../components/Auth/Logout';
+
+import { useStores } from '../hooks/index';
+import { useRouter } from 'next/router';
+import { useFetchUser } from '../lib/user';
+
 // Initialize Locomotive Scroll (horizontal direction)
 
 const Home = () => {
+  const { user, loading } = useFetchUser();
+  console.log(user);
+  const router = useRouter();
+  const { uiStore } = useStores();
+  console.log(uiStore);
   const scrollRef = useRef(null);
   const navRef = useRef(null);
 
@@ -16,13 +28,6 @@ const Home = () => {
       width: '19rem',
       ease: 'easeOut',
     });
-    // gsap.to('.nav-item--title', {
-    //   delay: 0.4,
-    //   duration: 0.2,
-    //   ease: 'easeOut',
-    //   display: 'flex',
-    //   opacity: '1',
-    // });
 
     gsap.to('.nav-logo--image', {
       padding: '0 7.5rem',
@@ -30,69 +35,54 @@ const Home = () => {
     });
   };
 
-  useEffect(() => {
-    console.log('hoi');
-  });
-
   const handleLeave = (e) => {
     gsap.to('.navigation', {
       duration: 0.5,
       width: '6rem',
       ease: 'easeOut',
     });
-    // gsap.to('.nav-item--title', {
-    //   duration: 0.2,
-    //   ease: 'easeOut',
-    //   display: 'none',
-    //   opacity: '0',
-    // });
+
     gsap.to('.nav-logo--image', {
       padding: '0 1.5rem',
       ease: 'easeOut',
     });
   };
 
-  useEffect(() => {
-    import('locomotive-scroll').then((locomotiveModule) => {
-      const lscroll = new locomotiveModule.default({
-        el: scrollRef.current,
+  import('locomotive-scroll').then((locomotiveModule) => {
+    const lscroll = new locomotiveModule.default({
+      el: scrollRef.current,
+      smooth: true,
+      direction: 'horizontal',
+      smartphone: {
         smooth: true,
+        horizontalGesture: true,
         direction: 'horizontal',
-        smartphone: {
-          smooth: true,
-          horizontalGesture: true,
-          direction: 'horizontal',
-        },
-      });
-
-      lscroll.on('scroll', (obj) => {
-        for (const key of Object.keys(obj.currentElements)) {
-          if (obj.currentElements[key].el.classList.contains('card-layers')) {
-            let progress = obj.currentElements[key].progress;
-            const saturateVal =
-              progress < 0.5
-                ? clamp(map(progress, 0, 0.5, 0, 1), 0.4, 1)
-                : clamp(map(progress, 0.5, 1, 1, 0), 0.4, 1);
-            const brightnessVal =
-              progress < 0.5
-                ? clamp(map(progress, 0, 0.5, 0, 1), 0.4, 1)
-                : clamp(map(progress, 0.5, 1, 1, 0), 0.4, 1);
-            obj.currentElements[
-              key
-            ].el.style.filter = `opacity(${brightnessVal})`;
-          }
-        }
-      });
-      lscroll.update();
-
-      // Preload images and fonts
-      Promise.all([preloadImages('.card-image')]).then(() => {
-        // Remove loader (loading class)
-        console.log('images zijn ingeladen');
-        document.body.classList.remove('loading');
-      });
+      },
     });
-  }, []);
+
+    lscroll.on('scroll', (obj) => {
+      for (const key of Object.keys(obj.currentElements)) {
+        if (obj.currentElements[key].el.classList.contains('card-layers')) {
+          let progress = obj.currentElements[key].progress;
+          const brightnessVal =
+            progress < 0.5
+              ? clamp(map(progress, 0, 0.5, 0, 1), 0.4, 1)
+              : clamp(map(progress, 0.5, 1, 1, 0), 0.4, 1);
+          obj.currentElements[
+            key
+          ].el.style.filter = `opacity(${brightnessVal})`;
+        }
+      }
+    });
+    lscroll.update();
+
+    // Preload images and fonts
+    Promise.all([preloadImages('.card-image')]).then(() => {
+      // Remove loader (loading class)
+      console.log('images zijn ingeladen');
+      document.body.classList.remove('loading');
+    });
+  });
 
   return (
     <>
@@ -154,15 +144,27 @@ const Home = () => {
               <p class=" nav-item--title">Realisaties</p>
             </div>
           </div>
-          <div class="nav-profile">
-            <div class="nav-profile--image">
-              <img class="" src="./assets/images/profile_icon.png" alt="" />
+          {user && (
+            <div class="nav-profile">
+              <div class="nav-profile--image">
+                <img class="" src={user.picture} alt={user.name} />
+              </div>
             </div>
-            <p class="nav-item--title">Sven Voskamp</p>
-          </div>
+          )}
+          {!user && (
+            <>
+              <Login></Login>
+            </>
+          )}
+
+          {user && (
+            <>
+              <Logout></Logout>
+            </>
+          )}
         </nav>
         <main ref={scrollRef} data-scroll-container>
-          <div class="content">
+          {/* <div class="content">
             <div class="gallery">
               <div class="text-large">
                 <span
@@ -209,11 +211,11 @@ const Home = () => {
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
         </main>
       </body>
     </>
   );
 };
 
-export default Home;
+export default withApollo({ ssr: true })(Home);
