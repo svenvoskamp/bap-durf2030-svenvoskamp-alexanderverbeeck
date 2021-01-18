@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
-const Tyle = ({ color, direction, button }) => {
+const Tyle = ({ color, direction, button, project }) => {
   const handleHover = (e) => {
     gsap.to(e.currentTarget, {
       duration: 0.15,
@@ -30,17 +30,19 @@ const Tyle = ({ color, direction, button }) => {
         data-scroll-speed="0.7"
         data-scroll-direction="horizontal"
       >
-        <h2 class="card-tag--text">Eenzaamheid</h2>
-        <h2 class="card-tag--text">Stickers</h2>
+        <h2 class="card-tag--text">{project.tag_one}</h2>
+        <h2 class="card-tag--text">{project.tag_two}</h2>
       </div>
       <div data-scroll class="card-layers">
         <div class={`card-info card-info--${color}`}>
-          <p class="card-fase">Conceptfase</p>
+          <p class="card-fase">{project.phase.phase}</p>
           <div class="card-title " data-scroll>
-            <h1 class="title-project">De expositie</h1>
-            <p class="title-name">Sven Voskamp</p>
+            <h1 class="title-project">{project.title}</h1>
+            <p class="title-name">
+              {project.user.first_name} {project.user.last_name}
+            </p>
           </div>
-          <img class="card-image" src="./assets/images/tile_1.png" alt="" />
+          <img class="card-image" src={project.image} alt={project.title} />
         </div>
       </div>
 

@@ -2,51 +2,42 @@ import { preloadImages, map, clamp } from '../lib/utils';
 import React, { useRef } from 'react';
 import Tyle from '../components/Tyle';
 import Mouse from '../components/Mouse';
-import gsap from 'gsap';
+import gql from 'graphql-tag';
 import { withApollo } from '../lib/withApollo';
-import Login from '../components/Auth/Login';
-import Logout from '../components/Auth/Logout';
-
-import { useStores } from '../hooks/index';
-import { useRouter } from 'next/router';
+import { useQuery } from '@apollo/react-hooks';
+import Nav from '../components/Nav/Nav';
 import { useFetchUser } from '../lib/user';
 
 // Initialize Locomotive Scroll (horizontal direction)
 
-const Home = () => {
+const GET_PROJECTS = gql`
+  query getProjects {
+    projects(
+      limit: 10
+      order_by: { updated_at: asc }
+      where: { phase: { id: { _neq: 1 } } }
+    ) {
+      image
+      title
+      id
+      tag_one
+      tag_two
+      user {
+        first_name
+        last_name
+      }
+      phase {
+        phase
+      }
+    }
+  }
+`;
+
+const Home = ({ projects }) => {
+  console.log(projects);
   const { user, loading } = useFetchUser();
-  console.log(user);
-  const router = useRouter();
-  const { uiStore } = useStores();
-  console.log(uiStore);
+
   const scrollRef = useRef(null);
-  const navRef = useRef(null);
-
-  const handleHover = (e) => {
-    gsap.to('.navigation', {
-      duration: 0.5,
-      width: '19rem',
-      ease: 'easeOut',
-    });
-
-    gsap.to('.nav-logo--image', {
-      padding: '0 7.5rem',
-      ease: 'easeOut',
-    });
-  };
-
-  const handleLeave = (e) => {
-    gsap.to('.navigation', {
-      duration: 0.5,
-      width: '6rem',
-      ease: 'easeOut',
-    });
-
-    gsap.to('.nav-logo--image', {
-      padding: '0 1.5rem',
-      ease: 'easeOut',
-    });
-  };
 
   import('locomotive-scroll').then((locomotiveModule) => {
     const lscroll = new locomotiveModule.default({
@@ -79,7 +70,6 @@ const Home = () => {
     // Preload images and fonts
     Promise.all([preloadImages('.card-image')]).then(() => {
       // Remove loader (loading class)
-      console.log('images zijn ingeladen');
       document.body.classList.remove('loading');
     });
   });
@@ -87,82 +77,9 @@ const Home = () => {
   return (
     <>
       <Mouse></Mouse>
-      <body class="loading">
-        <nav
-          onMouseEnter={handleHover}
-          onMouseLeave={handleLeave}
-          class="navigation"
-        >
-          <div class="nav-logo">
-            <img
-              class="nav-logo--image"
-              src="./assets/images/logo.svg"
-              alt=""
-            />
-          </div>
-          <div class="nav-items">
-            <div class="scale item">
-              <div class=" nav-item">
-                <img
-                  class="nav-item--image"
-                  src="./assets/images/verkennen.svg"
-                  alt=""
-                />
-              </div>
-              <p ref={navRef} class=" nav-item--title">
-                Ontdekken
-              </p>
-            </div>
-            <div class="scale item">
-              <div class=" nav-item">
-                <img
-                  class="nav-item--image"
-                  src="./assets/images/idee.svg"
-                  alt=""
-                />
-              </div>
-              <p class=" nav-item--title">Co-creatie</p>
-            </div>
-            <div class="scale item">
-              <div class="nav-item">
-                <img
-                  class="nav-item--image"
-                  src="./assets/images/crowdfunding.svg"
-                  alt=""
-                />
-              </div>
-              <p class="  nav-item--title">crowdfunding</p>
-            </div>
-            <div class="scale item">
-              <div class="nav-item">
-                <img
-                  class="nav-item--image"
-                  src="./assets/images/profiel.svg"
-                  alt=""
-                />
-              </div>
-              <p class=" nav-item--title">Realisaties</p>
-            </div>
-          </div>
-          {user && (
-            <div class="nav-profile">
-              <div class="nav-profile--image">
-                <img class="" src={user.picture} alt={user.name} />
-              </div>
-            </div>
-          )}
-          {!user && (
-            <>
-              <Login></Login>
-            </>
-          )}
 
-          {user && (
-            <>
-              <Logout></Logout>
-            </>
-          )}
-        </nav>
+      <body class="loading">
+        <Nav user={user}></Nav>
         <main ref={scrollRef} data-scroll-container>
           <div class="content">
             <div class="gallery">
@@ -186,11 +103,33 @@ const Home = () => {
               </div>
 
               <div class="cards">
-                <Tyle color="red" direction="2" button="0.5"></Tyle>
+                {projects.map((project, key) => {
+                  if (key == 0 && key % 2 == 0)
+                    return (
+                      <Tyle
+                        color="red"
+                        direction="2"
+                        button="0.5"
+                        project={project}
+                        key={key}
+                      />
+                    );
+                  else
+                    return (
+                      <Tyle
+                        color="yellow"
+                        direction="-2"
+                        button="-0.5"
+                        project={project}
+                        key={key}
+                      />
+                    );
+                })}
+                {/* <Tyle color="red" direction="2" button="0.5"></Tyle>
                 <Tyle color="yellow" direction="-2" button="-0.5"></Tyle>
                 <Tyle color="green" direction="2" button="0.5"></Tyle>
                 <Tyle color="red" direction="-2" button="-0.5"></Tyle>
-                <Tyle color="yellow" direction="2" button="0.5"></Tyle>
+                <Tyle color="yellow" direction="2" button="0.5"></Tyle> */}
               </div>
               <div class="text-large">
                 <span
@@ -218,4 +157,17 @@ const Home = () => {
   );
 };
 
-export default withApollo({ ssr: true })(Home);
+const ProjectList = () => {
+  const { loading, error, data } = useQuery(GET_PROJECTS);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    console.error(error);
+    return <div>Error!</div>;
+  }
+  return <Home projects={data.projects} />;
+};
+
+export default withApollo({ ssr: true })(ProjectList);

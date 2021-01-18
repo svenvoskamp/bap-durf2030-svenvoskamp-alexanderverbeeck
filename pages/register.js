@@ -18,14 +18,6 @@ const GET_CURRENT_USER = gql`
       password
       picture
       first_name
-      last_name
-      company
-      company_name
-      street
-      house_number
-      city
-      zip
-      phone_number
     }
   }
 `;
@@ -41,7 +33,7 @@ const UPDATE_USER = gql`
     $house_number: String!
     $city: String!
     $zip: String!
-    $phone_number: numeric
+    $phone_number: String
     $addition: String
     $sector: String!
   ) {
@@ -67,7 +59,6 @@ const UPDATE_USER = gql`
 `;
 
 const Register = ({ props }) => {
-  const pRef = useRef(null);
   const router = useRouter();
   if (props.first_name) {
     router.push('/');
@@ -91,7 +82,6 @@ const Register = ({ props }) => {
   const [updateUser] = useMutation(UPDATE_USER);
 
   const handleSubmit = (e) => {
-    console.log('formulier verzend');
     e.preventDefault();
     if (company == false) {
       if (
@@ -121,7 +111,8 @@ const Register = ({ props }) => {
           },
           optimisticResponse: true,
         });
-        pRef.current.innerHTML = `Registratie is voltooid`;
+
+        router.push('/');
       }
     } else {
       if (
@@ -136,7 +127,6 @@ const Register = ({ props }) => {
         companyName !== '' &&
         department !== ''
       ) {
-        console.log('formulier voor bedrijf moet verzonden worden');
         updateUser({
           variables: {
             id: props.id,
@@ -154,56 +144,59 @@ const Register = ({ props }) => {
           },
           optimisticResponse: true,
         });
-        pRef.current.innerHTML = `Registratie is voltooid`;
+        router.push('/');
       }
     }
   };
 
   return (
     <>
-      <Mouse></Mouse>
-      <form onSubmit={handleSubmit}>
-        {currentIndex === 0 && (
-          <Step1
-            firstName={firstName}
-            setFirstName={setFirstName}
-            lastName={lastName}
-            setLastName={setLastName}
-            company={company}
-            setCompany={setCompany}
-            companyName={companyName}
-            setCompanyName={setCompanyName}
-            department={department}
-            setDepartment={setDepartment}
-            sector={sector}
-            setSector={setSector}
-            setCurrentIndex={setCurrentIndex}
-          />
-        )}
-        {currentIndex === 1 && (
-          <Step2
-            company={company}
-            firstName={firstName}
-            setFirstName={setFirstName}
-            lastName={lastName}
-            setLastName={setLastName}
-            streetName={streetName}
-            setStreetName={setStreetName}
-            houseNumber={houseNumber}
-            setHouseNumber={setHouseNumber}
-            addition={addition}
-            setAddition={setAddition}
-            city={city}
-            setCity={setCity}
-            zip={zip}
-            setZip={setZip}
-            telephone={telephone}
-            setTelephone={setTelephone}
-            setCurrentIndex={setCurrentIndex}
-          />
-        )}
-      </form>
-      <p ref={pRef}></p>
+      {!props.first_name && (
+        <>
+          <Mouse></Mouse>
+          <form onSubmit={handleSubmit}>
+            {currentIndex === 0 && (
+              <Step1
+                firstName={firstName}
+                setFirstName={setFirstName}
+                lastName={lastName}
+                setLastName={setLastName}
+                company={company}
+                setCompany={setCompany}
+                companyName={companyName}
+                setCompanyName={setCompanyName}
+                department={department}
+                setDepartment={setDepartment}
+                sector={sector}
+                setSector={setSector}
+                setCurrentIndex={setCurrentIndex}
+              />
+            )}
+            {currentIndex === 1 && (
+              <Step2
+                company={company}
+                firstName={firstName}
+                setFirstName={setFirstName}
+                lastName={lastName}
+                setLastName={setLastName}
+                streetName={streetName}
+                setStreetName={setStreetName}
+                houseNumber={houseNumber}
+                setHouseNumber={setHouseNumber}
+                addition={addition}
+                setAddition={setAddition}
+                city={city}
+                setCity={setCity}
+                zip={zip}
+                setZip={setZip}
+                telephone={telephone}
+                setTelephone={setTelephone}
+                setCurrentIndex={setCurrentIndex}
+              />
+            )}
+          </form>
+        </>
+      )}
     </>
   );
 };
@@ -231,8 +224,9 @@ const getUser = () => {
   if (!loading && user) {
     return <GetCurrentUser props={user} />;
   }
-  if (!user) {
+  if (!user && !loading) {
     router.push('/');
+    return <></>;
   }
 };
 
