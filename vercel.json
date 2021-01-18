@@ -5,10 +5,11 @@
         "AUTH0_DOMAIN": "dev-x93xw74j.eu.auth0.com",
         "AUTH0_AUDIENCE": "https://dev-x93xw74j.eu.auth0.com/api/v2/",
         "AUTH0_CLIENT_ID": "MlqPoCvFU7jZ1mMVupA8WrN5vHMzH1rG",
-        "AUTH0_CLIENT_SECRET": "of4Q55VlwFYfVXTRhDsj-r4QTT6YWanjgzxWXXC9o0xn2zEDBE115Ap6gnf2egKq",
+        "AUTH0_CLIENT_SECRET": 
+        "@auth0_client_secret",
         "REDIRECT_URI": "https://durf2030.vercel.app/api/callback",
         "POST_LOGOUT_REDIRECT_URI": "https://durf2030.vercel.app/",
-        "SESSION_COOKIE_SECRET": "s%3Al4ozSdvQ83TtC5RvJ.CiaaQoHtaY0H3QOB1kqR8H2B"
+        "SESSION_COOKIE_SECRET": "@auth0_client_secret2"
       }
     }
   }
