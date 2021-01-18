@@ -44,7 +44,7 @@ const Nav = ({ user }) => {
           <div class=" nav-item">
             <img
               class="nav-item--image"
-              src="./assets/images/verkennen.svg"
+              src="./assets/images/nav_ontdekken.svg"
               alt=""
             />
           </div>
@@ -56,39 +56,41 @@ const Nav = ({ user }) => {
           <div class=" nav-item">
             <img
               class="nav-item--image"
-              src="./assets/images/idee.svg"
+              src="./assets/images/nav_projecten.svg"
               alt=""
             />
           </div>
-          <p class=" nav-item--title">Co-creatie</p>
+          <p class=" nav-item--title">Projecten</p>
         </div>
         <div class="scale item">
           <div class="nav-item">
             <img
               class="nav-item--image"
-              src="./assets/images/crowdfunding.svg"
+              src="./assets/images/nav_community.svg"
               alt=""
             />
           </div>
-          <p class="  nav-item--title">crowdfunding</p>
+          <p class="  nav-item--title">Community</p>
         </div>
         <div class="scale item">
           <div class="nav-item">
             <img
               class="nav-item--image"
-              src="./assets/images/profiel.svg"
+              src="./assets/images/nav_durf.svg"
               alt=""
             />
           </div>
-          <p class=" nav-item--title">Realisaties</p>
+          <p class=" nav-item--title">Durf 2030</p>
         </div>
       </div>
+      <div class="nav-profile">
       {user && (
-        <div class="nav-profile">
-          <div class="nav-profile--image">
-            <img class="" src={user.picture} alt={user.name} />
+          <div class="scale profile">
+            <div class="nav-item nav-profile--image">
+              <img class="" src={user.picture} alt={user.name} />
+            </div>
+            <p class="nav-item--title">Mijn profiel</p>
           </div>
-        </div>
       )}
       {!user && (
         <>
@@ -101,6 +103,7 @@ const Nav = ({ user }) => {
           <Logout></Logout>
         </>
       )}
+      </div>
     </nav>
   );
 };
