@@ -205,7 +205,6 @@ const GetCurrentUser = ({ props }) => {
   const { loading, error, data } = useQuery(GET_CURRENT_USER, {
     variables: { id: props.sub },
   });
-
   if (loading) {
     return <div>Loading...</div>;
   }
