@@ -7,8 +7,8 @@
         "AUTH0_CLIENT_ID": "MlqPoCvFU7jZ1mMVupA8WrN5vHMzH1rG",
         "AUTH0_CLIENT_SECRET": "@auth0_client_secret",
         "REDIRECT_URI": "http://durf2030.vercel.app/api/callback",
-        "POST_LOGOUT_REDIRECT_URI": "http://dirf2030.vercel.app/",
-        "SESSION_COOKIE_SECRET": "@session_cookie_secret"
+        "POST_LOGOUT_REDIRECT_URI": "http://durf2030.vercel.app/",
+        "SESSION_COOKIE_SECRET": "@session_cookie_secret2"
       }
     }
   }
