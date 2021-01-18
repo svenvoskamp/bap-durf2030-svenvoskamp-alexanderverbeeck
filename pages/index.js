@@ -164,7 +164,7 @@ const Home = () => {
           )}
         </nav>
         <main ref={scrollRef} data-scroll-container>
-          {/* <div class="content">
+          <div class="content">
             <div class="gallery">
               <div class="text-large">
                 <span
@@ -211,7 +211,7 @@ const Home = () => {
                 </span>
               </div>
             </div>
-          </div> */}
+          </div>
         </main>
       </body>
     </>
