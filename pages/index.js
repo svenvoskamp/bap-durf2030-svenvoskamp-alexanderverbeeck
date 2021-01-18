@@ -36,6 +36,7 @@ const GET_PROJECTS = gql`
 const Home = ({ projects }) => {
   console.log(projects);
   const { user, loading } = useFetchUser();
+  console.log(user);
 
   const scrollRef = useRef(null);
 
