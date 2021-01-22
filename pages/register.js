@@ -59,11 +59,6 @@ const UPDATE_USER = gql`
 `;
 
 const Register = ({ props }) => {
-  const router = useRouter();
-  if (props.first_name) {
-    router.push('/');
-  }
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [firstName, setFirstName] = useState('');
@@ -202,6 +197,7 @@ const Register = ({ props }) => {
 };
 
 const GetCurrentUser = ({ props }) => {
+  const router = useRouter();
   const { loading, error, data } = useQuery(GET_CURRENT_USER, {
     variables: { id: props.sub },
   });
@@ -210,6 +206,10 @@ const GetCurrentUser = ({ props }) => {
   }
   if (error) {
     console.log(error);
+  }
+  if (data.users[0].first_name) {
+    router.push('/');
+    return <></>;
   }
   return <Register props={data.users[0]} />;
 };
