@@ -20,14 +20,18 @@ const GET_PROJECTS = gql`
       image
       title
       id
-      tag_one
-      tag_two
       user {
         first_name
         last_name
       }
       phase {
         phase
+      }
+      theme {
+        theme
+      }
+      category {
+        category
       }
     }
   }

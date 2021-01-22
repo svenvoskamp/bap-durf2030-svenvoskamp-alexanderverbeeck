@@ -1,7 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import firebase from 'firebase/app';
+import 'firebase/storage';
 
 const Tyle = ({ color, direction, button, project }) => {
+  const imgRef = useRef(null);
+  const storageRef = firebase.storage().ref();
+  storageRef
+    .child('images/' + project.image)
+    .getDownloadURL()
+    .then(function (url) {
+      imgRef.current.src = url;
+    });
   const handleHover = (e) => {
     gsap.to(e.currentTarget, {
       duration: 0.15,
@@ -30,8 +40,8 @@ const Tyle = ({ color, direction, button, project }) => {
         data-scroll-speed="0.7"
         data-scroll-direction="horizontal"
       >
-        <h2 class="card-tag--text">{project.tag_one}</h2>
-        <h2 class="card-tag--text">{project.tag_two}</h2>
+        <h2 class="card-tag--text">{project.theme.theme}</h2>
+        <h2 class="card-tag--text">{project.category.category}</h2>
       </div>
       <div data-scroll class="card-layers">
         <div class={`card-info card-info--${color}`}>
@@ -42,7 +52,7 @@ const Tyle = ({ color, direction, button, project }) => {
               {project.user.first_name} {project.user.last_name}
             </p>
           </div>
-          <img class="card-image" src={project.image} alt={project.title} />
+          <img ref={imgRef} class="card-image" src="" alt={project.title} />
         </div>
       </div>
 
