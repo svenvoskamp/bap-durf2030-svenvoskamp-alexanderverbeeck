@@ -1,0 +1,98 @@
+@value tokens: "./tokens.module.css";
+@value blueColor, lightColor from tokens;
+
+.largeTitle {
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  font-size: 12rem;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.3rem blueColor;
+  text-stroke: 0.3rem blueColor;
+  -webkit-text-fill-color: blueColor;
+  text-fill-color: blueColor;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.largeTitleOutline {
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  font-size: 12rem;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.3rem blueColor;
+  text-stroke: 0.3rem blueColor;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.mediumTitle {
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: blueColor;
+  letter-spacing: 0.1rem;
+}
+
+.mediumTitleOutline {
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.smallCaps {
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: blueColor;
+}
+
+.smallCapsBold {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 5rem;
+  text-transform: uppercase;
+  color: lightColor;
+}
+
+.text {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: blueColor;
+}
+
+.smallText {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: blueColor;
+}
+
+.bold {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: blueColor;
+}
+
+.semiBold {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: blueColor;
+}
+
+.empty {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: blueColor;
+}

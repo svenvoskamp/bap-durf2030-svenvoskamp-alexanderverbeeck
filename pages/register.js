@@ -4,11 +4,12 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { withApollo } from '../lib/withApollo';
 import Mouse from '../components/Mouse';
-import Step1 from '../components/Form/Step1';
-import Step2 from '../components/Form/Step2';
+import Step1 from '../components/Form/Step1/Step1';
+import Step2 from '../components/Form/Step2/Step2';
 import { useStores } from '../hooks/index';
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
+import Nav from '../components/Nav';
 
 const GET_CURRENT_USER = gql`
   query getCurrentUser($id: String!) {
@@ -75,7 +76,7 @@ const Register = ({ props }) => {
   const [telephone, setTelephone] = useState('');
 
   const [updateUser] = useMutation(UPDATE_USER);
-
+  const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (company == false) {
@@ -146,10 +147,11 @@ const Register = ({ props }) => {
 
   return (
     <>
+    <Mouse></Mouse>
+      <Nav user={props}></Nav>
       {!props.first_name && (
         <>
-          <Mouse></Mouse>
-          <form onSubmit={handleSubmit}>
+          <form class="form" onSubmit={handleSubmit}>
             {currentIndex === 0 && (
               <Step1
                 firstName={firstName}

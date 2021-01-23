@@ -5,7 +5,7 @@ import Mouse from '../components/Mouse';
 import gql from 'graphql-tag';
 import { withApollo } from '../lib/withApollo';
 import { useQuery } from '@apollo/react-hooks';
-import Nav from '../components/Nav/Nav';
+import Nav from '../components/Nav';
 import { useFetchUser } from '../lib/user';
 
 // Initialize Locomotive Scroll (horizontal direction)

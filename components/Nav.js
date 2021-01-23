@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import Login from '../Auth/Login';
-import Logout from '../Auth/Logout';
+import Login from './Auth/Login/Login';
+import Logout from './Auth/Logout/Logout';
 
 const Nav = ({ user }) => {
   const handleHover = (e) => {
@@ -61,6 +61,16 @@ const Nav = ({ user }) => {
             />
           </div>
           <p class=" nav-item--title">Projecten</p>
+        </div>
+        <div class="scale item">
+          <div class=" nav-item">
+            <img
+              class="nav-item--image"
+              src="./assets/images/nav_nieuwproject.svg"
+              alt=""
+            />
+          </div>
+          <p class=" nav-item--title">Nieuw project</p>
         </div>
         <div class="scale item">
           <div class="nav-item">

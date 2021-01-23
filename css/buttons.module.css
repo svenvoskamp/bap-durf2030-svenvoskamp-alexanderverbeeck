@@ -1,0 +1,49 @@
+.circleButton {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+}
+
+.circleButtons {
+  position: relative;
+}
+
+.buttonTop {
+  position: relative;
+  animation: rotation 4s infinite linear;
+  width: 100%;
+  height: 100%;
+  bottom: 0%;
+  right: 0%;
+  animation-play-state: paused;
+  webkit-animation-play-state: paused;
+}
+
+.buttonTop:hover {
+  animation: rotation 4s infinite linear;
+  cursor: pointer;
+  animation-play-state: running;
+  webkit-animation-play-state: running;
+}
+
+.circleButtons:hover .buttonTop {
+  right: 5%;
+  top: -5;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.buttonBackground {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  /* transform: translate(-35%, -35%); */
+  transition: all 0.2s ease-in-out;
+}
