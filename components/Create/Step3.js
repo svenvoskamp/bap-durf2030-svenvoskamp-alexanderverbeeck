@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import { withApollo } from '../../lib/withApollo';
 
 const GET_PROJECT_BY_USER = gql`
   query getProjectByUser($id: String!) {
@@ -40,63 +41,50 @@ const ADD_NEED = gql`
       }
     ) {
       affected_rows
+      returning {
+        id
+        project_id
+        type
+        need
+        provided
+      }
+    }
+  }
+`;
+
+const TOGGLE_NEED = gql`
+  mutation toggleNeed($id: Int!, $provided: Boolean!) {
+    update_needs(where: { id: { _eq: $id } }, _set: { provided: $provided }) {
+      affected_rows
+    }
+  }
+`;
+
+const REMOVE_NEED = gql`
+  mutation removeNeed($id: Int!) {
+    delete_needs(where: { id: { _eq: $id } }) {
+      affected_rows
     }
   }
 `;
 
 const Needs = ({ project_id }) => {
-  const updateCache = (cache, { data }) => {
-    const existingNeeds = cache.readQuery({
-      query: gql`
-        query getNeedsByProject($id: Int!) {
-          needs(where: { project_id: { _eq: $id } }) {
-            id
-            type
-            need
-            provided
-          }
-        }
-      `,
-      variables: {
-        id: project_id,
-      },
-    });
-
-    const newNeed = data.insert_needs.returning[0];
-    console.log(newNeed);
-    cache.writeQuery({
-      query: gql`
-        query getNeedsByProject($id: Int!) {
-          needs(where: { project_id: { _eq: $id } }) {
-            id
-            type
-            need
-            provided
-          }
-        }
-      `,
-      variables: {
-        id: project_id,
-      },
-      data: { needs: [newNeed, ...existingNeeds.needs] },
-    });
-  };
+  let id = project_id;
+  const [addNeed] = useMutation(ADD_NEED);
+  const [toggleNeed] = useMutation(TOGGLE_NEED);
+  const [removeNeed] = useMutation(REMOVE_NEED);
 
   const { data } = useQuery(GET_NEEDS_BY_PROJECT, {
     variables: { id: project_id },
   });
 
-  console.log(data);
-
   const [typeNeed, setTypeNeed] = useState('');
   const [need, setNeed] = useState('');
   const [gotNeed, setGotNeed] = useState(false);
-  const [addNeed] = useMutation(ADD_NEED, { update: updateCache });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('voer uit');
     if (typeNeed !== '' && need !== '') {
-      console.log('voer uit nu!');
       addNeed({
         variables: {
           project_id: project_id,
@@ -104,11 +92,72 @@ const Needs = ({ project_id }) => {
           need: need,
           provided: gotNeed,
         },
+        update: (cache, { data }) => {
+          const cachedData = cache.readQuery({
+            query: GET_NEEDS_BY_PROJECT,
+            variables: { id },
+          });
+          const newNeed = data['insert_needs'].returning[0];
+          cache.writeQuery({
+            query: GET_NEEDS_BY_PROJECT,
+            variables: { id },
+            data: {
+              ...cachedData,
+              needs: [newNeed, ...cachedData.needs],
+            },
+          });
+        },
       });
       setGotNeed(false);
       setNeed('');
       setTypeNeed('');
     }
+  };
+
+  const handleToggle = (need) => {
+    toggleNeed({
+      variables: { id: need.id, provided: !need.provided },
+      optimisticResponse: true,
+      update: (cache) => {
+        const existingNeeds = cache.readQuery({
+          query: GET_NEEDS_BY_PROJECT,
+          variables: { id },
+        });
+        console.log(existingNeeds);
+        const newNeeds = existingNeeds.needs.map((n) => {
+          if (n.id === need.id) {
+            return { ...n, provided: !n.provided };
+          } else {
+            return n;
+          }
+        });
+        console.log(newNeeds);
+        cache.writeQuery({
+          query: GET_NEEDS_BY_PROJECT,
+          variables: { id },
+          data: { needs: newNeeds },
+        });
+      },
+    });
+  };
+
+  const handleDelete = (need) => {
+    removeNeed({
+      variables: { id: need.id },
+      optimisticResponse: true,
+      update: (cache) => {
+        const existingNeeds = cache.readQuery({
+          query: GET_NEEDS_BY_PROJECT,
+          variables: { id },
+        });
+        const newNeeds = existingNeeds.needs.filter((n) => n.id !== need.id);
+        cache.writeQuery({
+          query: GET_NEEDS_BY_PROJECT,
+          variables: { id },
+          data: { needs: newNeeds },
+        });
+      },
+    });
   };
   return (
     <>
@@ -190,12 +239,28 @@ const Needs = ({ project_id }) => {
         {data && (
           <>
             {data.needs.map((need) => (
-              <li>
-                {need.type} {need.need}
-              </li>
+              <div>
+                <li>
+                  {need.type} {need.need}
+                </li>
+                {need.provided && (
+                  <>
+                    <button style={{ background: 'green' }}>V</button>
+                    <button onClick={() => handleToggle(need)}>X</button>
+                  </>
+                )}
+                {!need.provided && (
+                  <>
+                    <button onClick={() => handleToggle(need)}>V</button>
+                    <button style={{ background: 'red' }}>X</button>
+                  </>
+                )}
+                <button onClick={() => handleDelete(need)}>Remove need</button>
+              </div>
             ))}
           </>
         )}
+        {!data && <p>U heeft nog geen benodigheden opgegeven</p>}
       </div>
     </>
   );
@@ -213,5 +278,4 @@ const Step3 = ({ user }) => {
     return <Needs project_id={data.users[0].projects[0].id} />;
   }
 };
-
-export default Step3;
+export default withApollo({ ssr: true })(Step3);

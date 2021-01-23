@@ -4,6 +4,7 @@ import Tyle from '../components/Tyle';
 import Mouse from '../components/Mouse';
 import gql from 'graphql-tag';
 import { withApollo } from '../lib/withApollo';
+import { ApolloClient } from 'apollo-client';
 import { useQuery } from '@apollo/react-hooks';
 import Nav from '../components/Nav/Nav';
 import { useFetchUser } from '../lib/user';
@@ -38,7 +39,6 @@ const GET_PROJECTS = gql`
 `;
 
 const Home = ({ projects }) => {
-  console.log(projects);
   const { user, loading } = useFetchUser();
   console.log(user);
 
@@ -161,6 +161,14 @@ const Home = ({ projects }) => {
     </>
   );
 };
+// Home.getInitialProps = async (ctx) => {
+//   console.log(ctx);
+//   await ctx.apolloClient.query({
+//     query: GET_PROJECTS,
+//   });
+
+//   return { props };
+// };
 
 const ProjectList = () => {
   const { loading, error, data } = useQuery(GET_PROJECTS);

@@ -28,54 +28,56 @@ const Tyle = ({ color, direction, button, project }) => {
     });
   };
   return (
-    <article
-      class="scale card"
-      data-scroll
-      data-scroll-speed={direction}
-      data-scroll-direction="vertical"
-    >
-      <div
-        class="card-tags"
+    <a href={'/detail/' + project.id}>
+      <article
+        class="scale card"
         data-scroll
-        data-scroll-speed="0.7"
-        data-scroll-direction="horizontal"
-      >
-        <h2 class="card-tag--text">{project.theme.theme}</h2>
-        <h2 class="card-tag--text">{project.category.category}</h2>
-      </div>
-      <div data-scroll class="card-layers">
-        <div class={`card-info card-info--${color}`}>
-          <p class="card-fase">{project.phase.phase}</p>
-          <div class="card-title " data-scroll>
-            <h1 class="title-project">{project.title}</h1>
-            <p class="title-name">
-              {project.user.first_name} {project.user.last_name}
-            </p>
-          </div>
-          <img ref={imgRef} class="card-image" src="" alt={project.title} />
-        </div>
-      </div>
-
-      <div
-        data-scroll
+        data-scroll-speed={direction}
         data-scroll-direction="vertical"
-        data-scroll-speed={button}
-        class="card-button"
       >
-        <div class="buttons">
-          <img
-            class="button-background"
-            src="./assets/images/button_background.svg"
-          />
-          <img
-            onMouseOver={handleHover}
-            onMouseLeave={handleOut}
-            class="button-top"
-            src="./assets/images/button_top.svg"
-          />
+        <div
+          class="card-tags"
+          data-scroll
+          data-scroll-speed="0.7"
+          data-scroll-direction="horizontal"
+        >
+          <h2 class="card-tag--text">{project.theme.theme}</h2>
+          <h2 class="card-tag--text">{project.category.category}</h2>
         </div>
-      </div>
-    </article>
+        <div data-scroll class="card-layers">
+          <div class={`card-info card-info--${color}`}>
+            <p class="card-fase">{project.phase.phase}</p>
+            <div class="card-title " data-scroll>
+              <h1 class="title-project">{project.title}</h1>
+              <p class="title-name">
+                {project.user.first_name} {project.user.last_name}
+              </p>
+            </div>
+            <img ref={imgRef} class="card-image" src="" alt={project.title} />
+          </div>
+        </div>
+
+        <div
+          data-scroll
+          data-scroll-direction="vertical"
+          data-scroll-speed={button}
+          class="card-button"
+        >
+          <div class="buttons">
+            <img
+              class="button-background"
+              src="./assets/images/button_background.svg"
+            />
+            <img
+              onMouseOver={handleHover}
+              onMouseLeave={handleOut}
+              class="button-top"
+              src="./assets/images/button_top.svg"
+            />
+          </div>
+        </div>
+      </article>
+    </a>
   );
 };
 
