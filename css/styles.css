@@ -2,12 +2,13 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   scroll-behavior: smooth;
-  height: 100%;
+  min-height: 100vh;
   cursor: none;
 }
 
 #__next {
-  height: 100%;
+  min-height: 100vh;
+  background-color: #fdecd2;
 }
 
 /* stylelint-disable */
@@ -23,7 +24,7 @@ html {
 }
 body {
   font-size: 1.6rem;
-  height: 100%;
+  min-height: 100vh;
   --color-text: #000;
   --color-bg: #fdecd2;
   --color-link: #d75828;
@@ -649,7 +650,7 @@ html.has-scroll-dragging {
 }
 
 .form {
-  height: 100%;
+  min-height: 100vh;
 }
 
 .profile_button {

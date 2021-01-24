@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { withApollo } from '../../../lib/withApollo';
+import Mouse from '../../../components/Mouse';
 
 const GET_PROJECT_BY_USER = gql`
   query getProjectByUser($id: String!) {
@@ -161,6 +162,7 @@ const Needs = ({ project_id }) => {
   };
   return (
     <>
+          <Mouse></Mouse>
       <form onSubmit={handleSubmit}>
         <input
           id="food"

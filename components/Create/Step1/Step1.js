@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import style from "./step1.module.css";
+import Mouse from '../../../components/Mouse';
 
 
 const GET_THEMES_AND_CATEGORIES = gql`
@@ -39,6 +40,7 @@ const Step1 = ({ theme, category, setCategory, setTheme, setCurrentIndex }) => {
 
   return (
     <>
+      <Mouse></Mouse>
       <article className={style.part}>
         <div className={style.part_header}>
           <h1 className={style.title}>Project.
@@ -52,7 +54,7 @@ const Step1 = ({ theme, category, setCategory, setTheme, setCurrentIndex }) => {
             <div className={style.content_options}>
               {themes.map((theme) => (
               <>
-                <label className={style.content_option} htmlFor = {theme.theme}>
+                <label className={`${style.content_option} scale`} htmlFor = {theme.theme}>
                   <input className={style.checkbox}  id = {theme.theme} type = "radio" name = "theme" onClick={(e) => setTheme(theme.id)}/>
                   <p className={style.checkbox_text}>{theme.theme}</p>
                 </label>
@@ -65,7 +67,7 @@ const Step1 = ({ theme, category, setCategory, setTheme, setCurrentIndex }) => {
             <div className={style.content_options}>
               {categories.map((category) => (
               <>
-                <label className={style.content_option} htmlFor = {category.category}>
+                <label className={`${style.content_option} scale`} htmlFor = {category.category}>
                   <input className={style.checkbox}  id = {category.category} type = "radio" name = "category" onClick={(e) => setCategory(category.id)}/>
                   <p className={style.checkbox_text}>{category.category}</p>
                 </label>
@@ -75,16 +77,16 @@ const Step1 = ({ theme, category, setCategory, setTheme, setCurrentIndex }) => {
           </div>
         </div>
         <div className={style.part_end}>
-            <div>
-              <button onClick={handleClick} className={style.button}>
-                <div className={style.circle_button}>
-                <img className={style.button_image}
+          <div className={style.button_next}>
+            <button onClick={handleClick} className={style.button}>
+              <div className={style.circle_button}>
+                <img className={`${style.button_image} scale`}
                   src="./assets/images/account_aanmaken.svg"
                 />
-                </div>
-              </button>
-            </div>
+              </div>
+            </button>
           </div>
+        </div>
       </article>
     </>
   );

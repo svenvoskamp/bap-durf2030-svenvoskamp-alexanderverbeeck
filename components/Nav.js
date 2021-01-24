@@ -52,7 +52,7 @@ const Nav = ({ user }) => {
             Ontdekken
           </p>
         </a>
-        <a href={'/project'}class="scale item">
+        <a href={'/projects'}class="scale item">
           <div class=" nav-item">
             <img
               class="nav-item--image"

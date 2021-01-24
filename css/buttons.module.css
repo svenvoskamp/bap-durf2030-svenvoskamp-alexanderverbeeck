@@ -1,34 +1,56 @@
+@value tokens: "../css/tokens.module.css";
+@value blueColor, yellowColor from tokens;
+
+.button {
+  border: none;
+  background-color: transparent;
+  display: inline-block;
+}
+
 .circleButton {
+  background-color: yellowColor;
+  border: 0.2rem solid blueColor;
+  position: relative;
+  border-radius: 50%;
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.circleButton:after {
+  content: "";
   position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  bottom: 3%;
+  right: 3%;
+  width: 105%;
+  height: 105%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+  padding: 0.2rem solid colorBlue;
+}
+
+.button:hover .circleButton:after {
   bottom: 0%;
   right: 0%;
-}
-
-.circleButtons {
-  position: relative;
-}
-
-.buttonTop {
-  position: relative;
-  animation: rotation 4s infinite linear;
   width: 100%;
   height: 100%;
-  bottom: 0%;
-  right: 0%;
+}
+
+.buttonImage {
+  animation: rotation 4s infinite linear;
   animation-play-state: paused;
   webkit-animation-play-state: paused;
 }
 
-.buttonTop:hover {
+.button:hover .buttonImage {
   animation: rotation 4s infinite linear;
   cursor: pointer;
   animation-play-state: running;
   webkit-animation-play-state: running;
-}
-
-.circleButtons:hover .buttonTop {
-  right: 5%;
-  top: -5;
 }
 
 @keyframes rotation {
@@ -40,10 +62,10 @@
   }
 }
 
-.buttonBackground {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  /* transform: translate(-35%, -35%); */
-  transition: all 0.2s ease-in-out;
+.buttonBack {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
 }

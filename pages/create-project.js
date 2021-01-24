@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Mouse from '../components/Mouse';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { useFetchUser } from '../lib/user';
@@ -107,7 +106,6 @@ const Create = ({ props }) => {
 
   return (
     <>
-    <Mouse></Mouse>
       <Nav user={props}></Nav>
       <form onSubmit={handleSubmit}>
         {currentIndex === 0 && (

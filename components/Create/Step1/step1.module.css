@@ -1,8 +1,12 @@
 @value tokens: "../../../css/tokens.module.css";
-@value blueColor, greenColor, yellowColor from tokens;
+@value blueColor, greenColor, yellowColor, beigeColor from tokens;
 
 .part {
   composes: view from "../../../css/layout.module.css";
+}
+
+.part_header {
+  margin-bottom: 5rem;
 }
 
 .title {
@@ -23,23 +27,11 @@
   margin-bottom: 2rem;
 }
 
-.part_header {
-  margin-bottom: 5rem;
-}
-
-.checkbox {
-  /* display: none; */
-}
-
-.checkbox:checked .checkbox_text {
-  color: red;
-}
-
-.checkbox_text {
-  composes: bold from "../../../css/typo.module.css";
-  text-align: center;
-  border: 0.2rem solid blueColor;
-  padding: 0.8rem 2rem;
+.part_content {
+  margin-top: auto;
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
 }
 
 .content_theme,
@@ -49,7 +41,7 @@
 }
 
 .content_theme {
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .content_options {
@@ -59,51 +51,83 @@
 }
 
 .content_option {
-  margin-right: 2rem;
+  margin: 1rem 2rem;
+  z-index: 1;
+  cursor: pointer;
 }
 
-.part_end {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  justify-self: flex-end;
-  grid-column: span 3;
+.checkbox {
+  display: none;
 }
 
-.button {
-  border: none;
-  background-color: transparent;
+.checkbox[type="radio"]:hover + .checkbox_text:after {
+  top: 0;
+  left: 0;
 }
 
-.circle_button {
-  background-color: yellowColor;
+.checkbox[type="radio"]:checked + .checkbox_text {
+  background-color: greenColor;
+}
+
+.checkbox[type="radio"]:checked + .checkbox_text:after {
+  left: 0;
+  top: 0;
+}
+
+.checkbox_text {
+  composes: bold from "../../../css/typo.module.css";
+  text-align: center;
   border: 0.2rem solid blueColor;
+  padding: 0.8rem 2rem;
   position: relative;
-  display: block;
-  width: 100%;
-  animation: rotation 4s infinite linear;
-  animation-play-state: paused;
-  z-index: -1;
-  webkit-animation-play-state: paused;
+  background-color: beigeColor;
 }
 
-.circle_button:after {
+.checkbox_text:after {
   content: "";
   position: absolute;
   display: block;
   background: inherit;
   border-radius: inherit;
   border: inherit;
-  bottom: 7%;
-  left: 7%;
+  top: 0.6rem;
+  left: 0.6rem;
   width: 100%;
   height: 100%;
   z-index: -1;
   transition: all 0.2s ease-in-out;
-  padding: 0.2rem solid colorBlue;
+}
+
+.part_end {
+  display: grid;
+  margin-top: auto;
+  grid-column: span 3;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.button_next {
+  grid-column: 3;
+  text-align: center;
+  z-index: 1;
+}
+
+.button {
+  composes: button from "../../../css/buttons.module.css";
+}
+
+.circle_button {
+  composes: circleButton from "../../../css/buttons.module.css";
 }
 
 .button_image {
-  width: 100%;
-  height: 100%;
+  composes: buttonImage from "../../../css/buttons.module.css";
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }

@@ -3,7 +3,6 @@ import { useFetchUser } from '../lib/user';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { withApollo } from '../lib/withApollo';
-import Mouse from '../components/Mouse';
 import Step1 from '../components/Form/Step1/Step1';
 import Step2 from '../components/Form/Step2/Step2';
 import { useStores } from '../hooks/index';
@@ -147,11 +146,10 @@ const Register = ({ props }) => {
 
   return (
     <>
-    <Mouse></Mouse>
       <Nav user={props}></Nav>
       {!props.first_name && (
         <>
-          <form class="form" onSubmit={handleSubmit}>
+          <form className={`form`} onSubmit={handleSubmit}>
             {currentIndex === 0 && (
               <Step1
                 firstName={firstName}

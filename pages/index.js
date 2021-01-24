@@ -83,7 +83,6 @@ const Home = ({ projects }) => {
     <>
       <Mouse></Mouse>
 
-      <body class="loading">
         <Nav user={user}></Nav>
         <main ref={scrollRef} data-scroll-container>
           <div class="content">
@@ -157,7 +156,6 @@ const Home = ({ projects }) => {
             </div>
           </div>
         </main>
-      </body>
     </>
   );
 };

@@ -18,3 +18,20 @@
 .subtitle {
   composes: mediumTitle from "../../../css/typo.module.css";
 }
+
+.button_next {
+  grid-column: 3;
+  text-align: center;
+}
+
+.button {
+  composes: button from "../../../css/buttons.module.css";
+}
+
+.circle_button {
+  composes: circleButton from "../../../css/buttons.module.css";
+}
+
+.button_image {
+  composes: buttonImage from "../../../css/buttons.module.css";
+}

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import style from "./step2.module.css";
+import Mouse from '../../../components/Mouse';
 
 const Step2 = ({
   firstName,
@@ -29,6 +30,7 @@ const Step2 = ({
 
   return (
     <>
+      <Mouse></Mouse>
       <article className={style.part}>
         <div className={style.part_header}>
           <h1 className={style.title}>Registreer
@@ -151,6 +153,7 @@ const Step2 = ({
                     onChange={(e) => setTelephone(e.currentTarget.value)}
                   />
                 </div>
+                <p className={style.telephone_extra}>Als je wilt dat andere leden snel contact met jou kunnen opnemen kan je je telefoon-gegevens achterlaten.</p>
               </div>
             </div>
           </div>
@@ -160,15 +163,15 @@ const Step2 = ({
             <img className={style.back_image} src="./assets/images/button_back.svg" />
             <span className={style.back_text}>Terug</span>  
           </button>
-          <label htmlFor = "button">
+          <label className={style.button_next} htmlFor = "button">
             <input className={style.input_submit} type = "submit" value = "Verzend" id="button" />
-            <div>
+              <div className={style.button}>
               <div className={style.circle_button}>
                 <img className={style.button_image}
                   src="./assets/images/account_aanmaken.svg"
                 />
+                </div>
               </div>
-            </div>
           </label>
         </div>
       </article>    

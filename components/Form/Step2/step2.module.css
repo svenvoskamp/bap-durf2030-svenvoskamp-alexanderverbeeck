@@ -27,7 +27,11 @@
 }
 
 .part_header {
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
+}
+
+.part-content {
+  margin-bottom: 2rem;
 }
 
 .label {
@@ -74,10 +78,16 @@
 .input_addition {
   grid-column: span 1;
 }
+
 .input_container {
   display: flex;
   flex-direction: column;
   padding: 1.2rem 0;
+}
+
+.telephone_extra {
+  composes: smallText from "../../../css/typo.module.css";
+  grid-column: 1/5;
 }
 
 .input {
@@ -92,61 +102,31 @@
 
 .part_end {
   margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  justify-self: flex-end;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.button_next {
+  grid-column: 3;
+  text-align: center;
+  z-index: 1;
 }
 
 .input_submit {
   display: none;
 }
 
-.circle_button {
-  background-color: yellowColor;
-  border: 0.2rem solid blueColor;
-  position: relative;
-  display: block;
-  width: 100%;
-  animation: rotation 4s infinite linear;
-  animation-play-state: paused;
-  z-index: -1;
-  webkit-animation-play-state: paused;
+.button {
+  composes: button from "../../../css/buttons.module.css";
 }
 
-.circle_button:after {
-  content: "";
-  position: absolute;
-  display: block;
-  background: inherit;
-  border-radius: inherit;
-  border: inherit;
-  bottom: 7%;
-  left: 7%;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transition: all 0.2s ease-in-out;
-  padding: 0.2rem solid colorBlue;
+.circle_button {
+  composes: circleButton from "../../../css/buttons.module.css";
 }
 
 .button_image {
-  width: 100%;
-  height: 100%;
+  composes: buttonImage from "../../../css/buttons.module.css";
 }
-
-/* .button:hover .circle_button:after {
-  bottom: 0%;
-  right: 0%;
-} */
-
-/* .circle_button:hover {
-  cursor: pointer;
-  animation: rotation 4s infinite linear;
-  cursor: pointer;
-  animation-play-state: running;
-  webkit-animation-play-state: running;
-} */
 
 @keyframes rotation {
   from {
@@ -158,11 +138,7 @@
 }
 
 .button_back {
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  border: none;
-  padding: 0.5rem;
+  composes: buttonBack from "../../../css/buttons.module.css";
 }
 
 .back_image {
