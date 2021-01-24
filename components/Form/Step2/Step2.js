@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import style from "./step2.module.css";
 
-
 const Step2 = ({
   firstName,
   setFirstName,
@@ -161,7 +160,6 @@ const Step2 = ({
             <img className={style.back_image} src="./assets/images/button_back.svg" />
             <span className={style.back_text}>Terug</span>  
           </button>
-
           <label htmlFor = "button">
             <input className={style.input_submit} type = "submit" value = "Verzend" id="button" />
             <div>
@@ -172,7 +170,6 @@ const Step2 = ({
               </div>
             </div>
           </label>
-
         </div>
       </article>    
     </>

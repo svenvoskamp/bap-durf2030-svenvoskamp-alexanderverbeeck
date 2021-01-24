@@ -8,10 +8,10 @@ import gql from 'graphql-tag';
 import { withApollo } from '../lib/withApollo';
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
-import Step1 from '../components/Create/Step1';
-import Step2 from '../components/Create/Step2';
-import Step3 from '../components/Create/Step3.js';
-import Nav from '../components/Nav/Nav';
+import Step1 from '../components/Create/Step1/Step1';
+import Step2 from '../components/Create/Step2/Step2';
+import Step3 from '../components/Create/Step3/Step3';
+import Nav from '../components/Nav';
 
 const GET_CURRENT_USER = gql`
   query getCurrentUser($id: String!) {
@@ -107,8 +107,8 @@ const Create = ({ props }) => {
 
   return (
     <>
-      <Mouse></Mouse>
-      {/* <Nav user={props}></Nav> */}
+    <Mouse></Mouse>
+      <Nav user={props}></Nav>
       <form onSubmit={handleSubmit}>
         {currentIndex === 0 && (
           <Step1

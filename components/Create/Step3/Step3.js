@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { withApollo } from '../../lib/withApollo';
+import { withApollo } from '../../../lib/withApollo';
 
 const GET_PROJECT_BY_USER = gql`
   query getProjectByUser($id: String!) {

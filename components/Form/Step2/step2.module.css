@@ -26,6 +26,10 @@
   grid-column: 1/5;
 }
 
+.part_header {
+  margin-bottom: 5rem;
+}
+
 .label {
   composes: semiBold from "../../../css/typo.module.css";
   margin-bottom: 0.5rem;
@@ -43,7 +47,6 @@
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 3rem;
 }
 
 .form_content {

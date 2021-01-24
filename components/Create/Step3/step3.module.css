@@ -1,0 +1,20 @@
+.part {
+  composes: view from "../../../css/layout.module.css";
+}
+
+.title {
+  composes: largeTitleOutline from "../../../css/typo.module.css";
+  margin-bottom: 1rem;
+}
+
+.title_outline {
+  composes: largeTitle from "../../../css/typo.module.css";
+}
+
+.title-description {
+  composes: semiBold from "../../../css/typo.module.css";
+}
+
+.subtitle {
+  composes: mediumTitle from "../../../css/typo.module.css";
+}
