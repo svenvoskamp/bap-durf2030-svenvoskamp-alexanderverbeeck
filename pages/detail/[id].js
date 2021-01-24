@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { gql, useQuery } from '@apollo/react-hooks';
 import { withApollo } from '../../lib/withApollo';
 import Mouse from '../../components/Mouse';
 import Header from '../../components/Detail/Header';
+import firebase from 'firebase/app';
+import 'firebase/storage';
 const GET_PROJECT_BY_ID = gql`
   query getProjectById($id: Int!) {
     projects(where: { id: { _eq: $id } }) {
@@ -40,6 +42,14 @@ const GET_PROJECT_BY_ID = gql`
 `;
 
 const Detail = ({ props }) => {
+  const imgRef = useRef(null);
+  const storageRef = firebase.storage().ref();
+  storageRef
+    .child('images/' + props.image)
+    .getDownloadURL()
+    .then(function (url) {
+      imgRef.current.src = url;
+    });
   console.log(props);
   return (
     <>
@@ -55,6 +65,14 @@ const Detail = ({ props }) => {
         phase={props.phase.phase}
         district={props.district.district}
       ></Header>
+      <div>
+        <p>{props.impact}</p>
+        <p>{props.description}</p>
+      </div>
+      <div>
+        <p>{props.tagline}</p>
+        <img ref={imgRef} alt={props.title}></img>
+      </div>
     </>
   );
 };
