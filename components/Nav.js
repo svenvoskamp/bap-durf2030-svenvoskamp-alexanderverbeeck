@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import Login from './Auth/Login/Login';
-import Logout from './Auth/Logout/Logout';
+import Login from './Auth/Login';
+import Logout from './Auth/Logout';
 
 const Nav = ({ user }) => {
   const handleHover = (e) => {
@@ -36,11 +36,11 @@ const Nav = ({ user }) => {
       onMouseLeave={handleLeave}
       class="navigation"
     >
-      <div class="nav-logo">
+      <a href={'/'} class="nav-logo">
         <img class="nav-logo--image" src="./assets/images/logo.svg" alt="" />
-      </div>
+      </a>
       <div class="nav-items">
-        <div class="scale item">
+        <a href={'/'} class="scale item">
           <div class=" nav-item">
             <img
               class="nav-item--image"
@@ -51,8 +51,8 @@ const Nav = ({ user }) => {
           <p ref={navRef} class=" nav-item--title">
             Ontdekken
           </p>
-        </div>
-        <div class="scale item">
+        </a>
+        <a href={'/project'}class="scale item">
           <div class=" nav-item">
             <img
               class="nav-item--image"
@@ -61,8 +61,8 @@ const Nav = ({ user }) => {
             />
           </div>
           <p class=" nav-item--title">Projecten</p>
-        </div>
-        <div class="scale item">
+        </a>
+        <a href={'/create-project'}class="scale item">
           <div class=" nav-item">
             <img
               class="nav-item--image"
@@ -71,8 +71,8 @@ const Nav = ({ user }) => {
             />
           </div>
           <p class=" nav-item--title">Nieuw project</p>
-        </div>
-        <div class="scale item">
+        </a>
+        <a href={'/'} class="scale item">
           <div class="nav-item">
             <img
               class="nav-item--image"
@@ -81,8 +81,8 @@ const Nav = ({ user }) => {
             />
           </div>
           <p class="  nav-item--title">Community</p>
-        </div>
-        <div class="scale item">
+        </a>
+        <a href={'/'} class="scale item">
           <div class="nav-item">
             <img
               class="nav-item--image"
@@ -91,16 +91,16 @@ const Nav = ({ user }) => {
             />
           </div>
           <p class=" nav-item--title">Durf 2030</p>
-        </div>
+        </a>
       </div>
       <div class="nav-profile">
       {user && (
-          <div class="scale profile">
+          <a href={'/'} class="scale profile">
             <div class="nav-item nav-profile--image">
               <img class="" src={user.picture} alt={user.name} />
             </div>
             <p class="nav-item--title">Mijn profiel</p>
-          </div>
+          </a>
       )}
       {!user && (
         <>

@@ -6,6 +6,10 @@ html {
   cursor: none;
 }
 
+#__next {
+  height: 100%;
+}
+
 /* stylelint-disable */
 *,
 *::before,
@@ -531,6 +535,7 @@ html.has-scroll-dragging {
   display: flex;
   justify-content: center;
   position: relative;
+  margin-bottom: 5rem;
 }
 
 .nav-logo--image {
@@ -546,7 +551,7 @@ html.has-scroll-dragging {
   align-items: center;
   cursor: pointer;
   margin: 2rem 0;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 .nav-item {
@@ -604,7 +609,7 @@ html.has-scroll-dragging {
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 1rem 0;
+  padding: 0 0 1rem 0;
 }
 
 .nav-profile--image {
@@ -645,4 +650,14 @@ html.has-scroll-dragging {
 
 .form {
   height: 100%;
+}
+
+.profile_button {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
 }
