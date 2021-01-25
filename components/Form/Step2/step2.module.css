@@ -2,27 +2,27 @@
 @value blueColor, yellowColor from tokens;
 
 .part {
-  composes: view from "../../../css/layout.module.css";
+  composes: view from '../../../css/layout.module.css';
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 .title {
-  composes: largeTitleOutline from "../../../css/typo.module.css";
+  composes: largeTitleOutline from '../../../css/typo.module.css';
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from "../../../css/typo.module.css";
+  composes: largeTitle from '../../../css/typo.module.css';
 }
 
 .title-description {
-  composes: semiBold from "../../../css/typo.module.css";
+  composes: semiBold from '../../../css/typo.module.css';
 }
 
 .subtitle {
-  composes: mediumTitle from "../../../css/typo.module.css";
+  composes: mediumTitle from '../../../css/typo.module.css';
   grid-column: 1/5;
 }
 
@@ -35,16 +35,16 @@
 }
 
 .label {
-  composes: semiBold from "../../../css/typo.module.css";
+  composes: semiBold from '../../../css/typo.module.css';
   margin-bottom: 0.5rem;
 }
 
 .label_extra {
-  composes: smallText from "../../../css/typo.module.css";
+  composes: smallText from '../../../css/typo.module.css';
 }
 
 .option {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
 }
 
 .form {
@@ -61,7 +61,7 @@
   grid-column: 1/5;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-column-gap: 2rem;
+  grid-column-gap: 5rem;
   margin-top: 2rem;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .telephone_extra {
-  composes: smallText from "../../../css/typo.module.css";
+  composes: smallText from '../../../css/typo.module.css';
   grid-column: 1/5;
 }
 
@@ -96,7 +96,7 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   padding: 0.2rem 0.5rem;
 }
 
@@ -117,15 +117,15 @@
 }
 
 .button {
-  composes: button from "../../../css/buttons.module.css";
+  composes: button from '../../../css/buttons.module.css';
 }
 
 .circle_button {
-  composes: circleButton from "../../../css/buttons.module.css";
+  composes: circleButton from '../../../css/buttons.module.css';
 }
 
 .button_image {
-  composes: buttonImage from "../../../css/buttons.module.css";
+  composes: buttonImage from '../../../css/buttons.module.css';
 }
 
 @keyframes rotation {
@@ -138,7 +138,7 @@
 }
 
 .button_back {
-  composes: buttonBack from "../../../css/buttons.module.css";
+  composes: buttonBack from '../../../css/buttons.module.css';
 }
 
 .back_image {
@@ -146,5 +146,5 @@
 }
 
 .back_text {
-  composes: bold from "../../../css/typo.module.css";
+  composes: bold from '../../../css/typo.module.css';
 }

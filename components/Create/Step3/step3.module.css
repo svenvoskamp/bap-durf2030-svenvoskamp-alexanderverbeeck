@@ -1,8 +1,8 @@
 @value tokens: "../../../css/tokens.module.css";
-@value blueColor, yellowColor, beigeColor from tokens;
+@value blueColor, yellowColor, beigeColor, greenColor, redColor from tokens;
 
 .part {
-  composes: view from "../../../css/layout.module.css";
+  composes: view from '../../../css/layout.module.css';
 }
 
 .part_header {
@@ -10,20 +10,25 @@
 }
 
 .title {
-  composes: largeTitleOutline from "../../../css/typo.module.css";
+  composes: largeTitleOutline from '../../../css/typo.module.css';
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from "../../../css/typo.module.css";
+  composes: largeTitle from '../../../css/typo.module.css';
 }
 
 .title-description {
-  composes: semiBold from "../../../css/typo.module.css";
+  composes: semiBold from '../../../css/typo.module.css';
 }
 
 .subtitle {
-  composes: mediumTitle from "../../../css/typo.module.css";
+  composes: mediumTitle from '../../../css/typo.module.css';
+}
+
+.subtitle_needs {
+  padding-bottom: 0.5rem;
+  border-bottom: 0.2rem solid blueColor;
 }
 
 .part_content {
@@ -34,19 +39,50 @@
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-column-gap: 2rem;
+  grid-column-gap: 5rem;
 }
 
 .form_needs {
   z-index: 1;
   grid-column: span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  display: grid;
+}
+
+.my_needs {
+  z-index: 2;
+}
+
+.form_my__needs {
+  grid-column: 3;
+  background-color: beigeColor;
+  border: 0.2rem solid blueColor;
+  position: relative;
+  padding: 2rem;
+  min-height: 40rem;
+}
+
+.form_my__needs:after {
+  content: '';
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 0.8rem;
+  right: 0.8rem;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.needs_list {
+  margin-top: 1rem;
 }
 
 .checkboxes {
   grid-column: span 2;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .checkbox {
@@ -54,7 +90,7 @@
 }
 
 .checkbox_text {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
   margin-bottom: 1rem;
 }
 
@@ -74,7 +110,7 @@
 }
 
 .checkbox_image:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -88,12 +124,12 @@
   transition: all 0.2s ease-in-out;
 }
 
-.checkbox[type="radio"]:hover ~ .checkbox_image:after {
+.checkbox[type='radio']:hover ~ .checkbox_image:after {
   top: 0;
   left: 0;
 }
 
-.checkbox[type="radio"]:checked ~ .checkbox_image:after {
+.checkbox[type='radio']:checked ~ .checkbox_image:after {
   left: 0;
   top: 0;
 }
@@ -102,8 +138,8 @@
   display: flex;
   padding: 1.2rem 0;
   z-index: 2;
-  margin-right: 5rem;
   text-align: center;
+  margin-right: 4rem;
 }
 
 .input_container {
@@ -118,23 +154,57 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   padding: 0.2rem 0.5rem;
 }
 
+.input_title {
+  grid-column: 1;
+}
+
+.input_item {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  grid-column-gap: 2rem;
+}
+
 .label {
-  composes: semiBold from "../../../css/typo.module.css";
+  composes: semiBold from '../../../css/typo.module.css';
   margin-bottom: 0.5rem;
 }
 
+.label_extra {
+  composes: smallText from '../../../css/typo.module.css';
+}
+
+.voorzien {
+  display: flex;
+}
+
+.checkbox_false,
+.checkbox_true {
+  border: 0.2rem solid blueColor;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+
+.checkbox_voorzien[type='radio']:hover ~ .checkbox_true {
+  background-color: greenColor;
+}
+
+.checkbox_voorzien[type='radio']:hover ~ .checkbox_false {
+  background-color: redColor;
+}
+
 .button {
-  composes: button from "../../../css/buttons.module.css";
+  composes: button from '../../../css/buttons.module.css';
 }
 
 .circle_button {
-  composes: circleButton from "../../../css/buttons.module.css";
+  composes: circleButton from '../../../css/buttons.module.css';
 }
 
 .button_image {
-  composes: buttonImage from "../../../css/buttons.module.css";
+  composes: buttonImage from '../../../css/buttons.module.css';
 }

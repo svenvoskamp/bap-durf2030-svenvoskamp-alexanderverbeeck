@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { withApollo } from '../../../lib/withApollo';
-import style from "./step3.module.css";
+import style from './step3.module.css';
 import Mouse from '../../../components/Mouse';
 
 const GET_PROJECT_BY_USER = gql`
@@ -79,6 +79,7 @@ const Needs = ({ project_id }) => {
   const { data } = useQuery(GET_NEEDS_BY_PROJECT, {
     variables: { id: project_id },
   });
+  console.log(data);
 
   const [typeNeed, setTypeNeed] = useState('');
   const [need, setNeed] = useState('');
@@ -167,14 +168,18 @@ const Needs = ({ project_id }) => {
       <Mouse></Mouse>
       <article className={style.part}>
         <div className={style.part_header}>
-          <h1 className={style.title}>Project.
+          <h1 className={style.title}>
+            Project.
             <span className={style.title_outline}>benodigheden.</span>
           </h1>
-          <p className={style.title_description}>Super dat je een project wilt starten voor DURF 2030, we beginnen met de basis.</p>
+          <p className={style.title_description}>
+            Super dat je een project wilt starten voor DURF 2030, we beginnen
+            met de basis.
+          </p>
         </div>
         <div className={style.part_content}>
           <div className={style.form}>
-            <form className={`${style.form_grid} ${style.form_needs}`} onSubmit={handleSubmit}>
+            <form className={style.form_needs} onSubmit={handleSubmit}>
               <div className={style.checkboxes}>
                 <div className={style.checkbox_container}>
                   <label htmlFor="food">
@@ -227,7 +232,7 @@ const Needs = ({ project_id }) => {
                       id="drink"
                       type="radio"
                       name="needs"
-                      className={style.checkbox}
+                      className={`${style.checkbox} ${style.checkbox_voorzien}`}
                       onClick={(e) => setTypeNeed('Drank')}
                     />
                     <p className={style.checkbox_text}>Drank</p>
@@ -237,93 +242,151 @@ const Needs = ({ project_id }) => {
                   </label>
                 </div>
                 <div className={style.checkbox_container}>
-                <label htmlFor="building">
-                  <input
-                    id="building"
-                    type="radio"
-                    name="needs"
-                    className={style.checkbox}
-                    onClick={(e) => setTypeNeed('Gebouw')}
-                  />
-                  <p className={style.checkbox_text}>Gebouw</p>
-                  <div className={`${style.checkbox_image} scale`}>
-                    <img src="./assets/images/gebouw_icon.svg" />
-                  </div>
-                </label>
-              </div>
-              </div>
-              {!typeNeed == '' && (
-                <>
-                  <div className={`${style.input_container} ${style.input_title}`}>
-                    <label htmlFor="need" className={style.label}>Titel <span className={style.label_extra}>(max 20 karakters)</span></label>
+                  <label htmlFor="building">
                     <input
-                      required
-                      id="need"
-                      min="0"
-                      max="100"
-                      value={need}
-                      type="text"
-                      placeholder="De vraagstraat"
-                      className={style.input}
-                      onChange={(e) => setNeed(e.currentTarget.value)}
-                    />
-                  </div>
-                  <div className={style.input_voorzien}>
-                    <p className={style.label_extra}>Is dit al voorzien?</p>
-
-                    <input
-                      id="true"
+                      id="building"
                       type="radio"
-                      name="gotneed"
-                      onClick={(e) => setGotNeed(true)}
+                      name="needs"
+                      className={`${style.checkbox} ${style.checkbox_voorzien}`}
+                      onClick={(e) => setTypeNeed('Gebouw')}
                     />
-                    <label htmlFor="true">Ja</label>
+                    <p className={style.checkbox_text}>Gebouw</p>
+                    <div className={`${style.checkbox_image} scale`}>
+                      <img src="./assets/images/gebouw_icon.svg" />
+                    </div>
+                  </label>
+                </div>
+                {!typeNeed == '' && (
+                  <div className={style.input_item}>
+                    <div
+                      className={`${style.input_container} ${style.input_title}`}
+                    >
+                      <label htmlFor="need" className={style.label}>
+                        Titel{' '}
+                        <span className={style.label_extra}>
+                          (max 20 karakters)
+                        </span>
+                      </label>
+                      <input
+                        required
+                        id="need"
+                        min="0"
+                        max="100"
+                        value={need}
+                        type="text"
+                        placeholder="De vraagstraat"
+                        className={style.input}
+                        onChange={(e) => setNeed(e.currentTarget.value)}
+                      />
+                    </div>
+                    <div className={style.input_voorzien}>
+                      <p className={style.label_extra}>Is dit al voorzien?</p>
+                      <div className={style.voorzien}>
+                        <label htmlFor="true">
+                          <input
+                            id="true"
+                            type="radio"
+                            name="gotneed"
+                            className={style.checkbox}
+                            onClick={(e) => setGotNeed(true)}
+                          />
+                          <div className={`${style.checkbox_true} scale`}>
+                            <img src="./assets/images/true_icon.svg" />
+                          </div>
+                        </label>
 
-                    <input
-                      id="false"
-                      type="radio"
-                      name="gotneed"
-                      defaultChecked
-                      onClick={(e) => setGotNeed(false)}
-                    />
-                    <label htmlFor="false">Nee</label>
+                        <label htmlFor="false">
+                          <input
+                            id="false"
+                            type="radio"
+                            name="gotneed"
+                            className={style.checkbox}
+                            defaultChecked
+                            onClick={(e) => setGotNeed(false)}
+                          />
+                          <div className={`${style.checkbox_false} scale`}>
+                            <img src="./assets/images/false_icon.svg" />
+                          </div>
+                        </label>
+                      </div>
 
-                    <input type="submit" value="Voeg toe" />
+                      <input type="submit" value="Voeg toe" />
+                    </div>
                   </div>
-                </>
-              )}
+                )}
+              </div>
             </form>
-            <div>
-            <div className={`${style.form_grid} ${style.form_benodigdheden}`}> 
-                <h2 className={`${style.subtitle} ${style.subtitle_project}`}>Mijn benodigdheden</h2>
-        {data && (
-          <>
-            {data.needs.map((need) => (
-              <div> 
+            <div className={style.my_needs}>
+              <div className={style.form_my__needs}>
+                <h2 className={`${style.subtitle} ${style.subtitle_needs}`}>
+                  Mijn benodigdheden
+                </h2>
+                {data && (
+                  <div className={style.needs_list}>
+                    {data.needs.map((need) => (
+                      <div>
+                        <li>
+                          {need.type == 'Gebouw' && (
+                            <>
+                              <img src="./assets/images/gebouw_icon__small.svg" />
+                            </>
+                          )}
+                          {need.type == 'Eten' && (
+                            <>
+                              <img src="./assets/images/eten_icon__small.svg" />
+                            </>
+                          )}
+                          {need.type == 'Persoon' && (
+                            <>
+                              <img src="./assets/images/persoon_icon__small.svg" />
+                            </>
+                          )}
+                          {need.type == 'Item' && (
+                            <>
+                              <img src="./assets/images/item_icon__small.svg" />
+                            </>
+                          )}
+                          {need.type == 'Drank' && (
+                            <>
+                              <img src="./assets/images/drank_icon__small.svg" />
+                            </>
+                          )}
+                          {need.need}
+                        </li>
+                        {need.provided && (
+                          <>
+                            <button style={{ background: 'green' }}>V</button>
+                            <button onClick={() => handleToggle(need)}>
+                              X
+                            </button>
+                          </>
+                        )}
+                        {!need.provided && (
+                          <>
+                            <button onClick={() => handleToggle(need)}>
+                              V
+                            </button>
+                            <button style={{ background: 'red' }}>X</button>
+                          </>
+                        )}
+                        <button onClick={() => handleDelete(need)}>
+                          Remove need
+                        </button>
+                      </div>
+                    ))}
+                    {data && (
+                      <>
+                        {data.needs.length < 1 && (
+                          // Empty state!!!
 
-                <li>
-                  {need.type} {need.need}
-                </li>
-                {need.provided && (
-                  <>
-                    <button style={{ background: 'green' }}>V</button>
-                    <button onClick={() => handleToggle(need)}>X</button>
-                  </>
+                          <p>U heeft nog geen benodigheden opgegeven</p>
+                        )}
+                      </>
+                    )}
+                  </div>
                 )}
-                {!need.provided && (
-                  <>
-                    <button onClick={() => handleToggle(need)}>V</button>
-                    <button style={{ background: 'red' }}>X</button>
-                  </>
-                )}
-                <button onClick={() => handleDelete(need)}>Remove need</button>
               </div>
-            ))}
-          </>
-        )}
-        </div>
-        {!data && <p>U heeft nog geen benodigheden opgegeven</p>}
-      </div>
+            </div>
           </div>
         </div>
       </article>
