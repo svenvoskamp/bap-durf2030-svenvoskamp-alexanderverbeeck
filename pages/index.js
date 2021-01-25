@@ -1,6 +1,6 @@
 import { preloadImages, map, clamp } from '../lib/utils';
-
-import React, { useRef } from 'react';
+import imagesLoaded from 'imagesloaded';
+import React, { useRef, useEffect, useState } from 'react';
 import Tyle from '../components/Tyle';
 import Mouse from '../components/Mouse';
 import gql from 'graphql-tag';
@@ -13,7 +13,7 @@ import { useFetchUser } from '../lib/user';
 // Initialize Locomotive Scroll (horizontal direction)
 
 const GET_PROJECTS = gql`
-  query getProjects {
+  query getProjects @cached(ttl: 120) {
     projects(
       limit: 10
       order_by: { updated_at: asc }
@@ -41,7 +41,6 @@ const GET_PROJECTS = gql`
 
 const Home = ({ projects }) => {
   const { user, loading } = useFetchUser();
-  console.log(user);
 
   const scrollRef = useRef(null);
 
@@ -74,16 +73,11 @@ const Home = ({ projects }) => {
     lscroll.update();
 
     // Preload images and fonts
-    Promise.all([preloadImages('.card-image')]).then(() => {
-      // Remove loader (loading class)
-      document.body.classList.remove('loading');
-    });
   });
 
   return (
     <>
       <Mouse></Mouse>
-
       <Nav user={user}></Nav>
       <main ref={scrollRef} data-scroll-container>
         <div class="content">
@@ -130,6 +124,7 @@ const Home = ({ projects }) => {
                     />
                   );
               })}
+
               {/* <Tyle color="red" direction="2" button="0.5"></Tyle>
                 <Tyle color="yellow" direction="-2" button="-0.5"></Tyle>
                 <Tyle color="green" direction="2" button="0.5"></Tyle>
@@ -187,4 +182,4 @@ const ProjectList = () => {
   return <Home projects={data.projects} />;
 };
 
-export default withApollo({ ssr: false })(ProjectList);
+export default withApollo({ ssr: true })(ProjectList);

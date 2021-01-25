@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import firebase from 'firebase/app';
 import 'firebase/storage';
+import Image from 'next/image';
 
 const Tyle = ({ color, direction, button, project }) => {
   const imgRef = useRef(null);
@@ -53,7 +54,13 @@ const Tyle = ({ color, direction, button, project }) => {
                 {project.user.first_name} {project.user.last_name}
               </p>
             </div>
-            <img ref={imgRef} class="card-image" src="" alt={project.title} />
+            <img
+              loading="lazy"
+              ref={imgRef}
+              class="card-image"
+              src=""
+              alt={project.title}
+            />
           </div>
         </div>
 
