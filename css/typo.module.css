@@ -41,8 +41,15 @@
 .mediumTitleOutline {
   font-family: Montserrat, sans-serif;
   font-weight: 800;
-  font-size: 3rem;
+  font-size: 2rem;
   text-transform: uppercase;
+  -webkit-text-stroke: 0.4rem blueColor;
+  text-stroke: 0.4rem blueColor;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
 }
 
 .smallCaps {

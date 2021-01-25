@@ -232,7 +232,7 @@ const Needs = ({ project_id }) => {
                       id="drink"
                       type="radio"
                       name="needs"
-                      className={`${style.checkbox} ${style.checkbox_voorzien}`}
+                      className={style.checkbox}
                       onClick={(e) => setTypeNeed('Drank')}
                     />
                     <p className={style.checkbox_text}>Drank</p>
@@ -247,7 +247,7 @@ const Needs = ({ project_id }) => {
                       id="building"
                       type="radio"
                       name="needs"
-                      className={`${style.checkbox} ${style.checkbox_voorzien}`}
+                      className={style.checkbox}
                       onClick={(e) => setTypeNeed('Gebouw')}
                     />
                     <p className={style.checkbox_text}>Gebouw</p>
@@ -258,9 +258,7 @@ const Needs = ({ project_id }) => {
                 </div>
                 {!typeNeed == '' && (
                   <div className={style.input_item}>
-                    <div
-                      className={`${style.input_container} ${style.input_title}`}
-                    >
+                    <div className={`${style.input_container} ${style.input_title}`}>
                       <label htmlFor="need" className={style.label}>
                         Titel{' '}
                         <span className={style.label_extra}>
@@ -280,37 +278,37 @@ const Needs = ({ project_id }) => {
                       />
                     </div>
                     <div className={style.input_voorzien}>
-                      <p className={style.label_extra}>Is dit al voorzien?</p>
-                      <div className={style.voorzien}>
-                        <label htmlFor="true">
-                          <input
-                            id="true"
-                            type="radio"
-                            name="gotneed"
-                            className={style.checkbox}
-                            onClick={(e) => setGotNeed(true)}
-                          />
-                          <div className={`${style.checkbox_true} scale`}>
-                            <img src="./assets/images/true_icon.svg" />
-                          </div>
-                        </label>
-
-                        <label htmlFor="false">
-                          <input
-                            id="false"
-                            type="radio"
-                            name="gotneed"
-                            className={style.checkbox}
-                            defaultChecked
-                            onClick={(e) => setGotNeed(false)}
-                          />
-                          <div className={`${style.checkbox_false} scale`}>
-                            <img src="./assets/images/false_icon.svg" />
-                          </div>
-                        </label>
+                      <p className={`${style.label_extra} ${style.label_extra__voorzien}`}>Is dit al voorzien?</p>
+                      <div className={style.buttons_voorzien}>
+                        <div className={style.voorzien}>
+                          <label htmlFor="true">
+                            <input
+                              id="true"
+                              type="radio"
+                              name="gotneed"
+                              className={`${style.checkbox} ${style.checkbox_voorzien}`}
+                              onClick={(e) => setGotNeed(true)}
+                            />
+                            <div className={`${style.true_false} ${style.checkbox_true} scale`}>
+                              <img src="./assets/images/true_icon.svg" />
+                            </div>
+                          </label>
+                          <label htmlFor="false">
+                            <input
+                              id="false"
+                              type="radio"
+                              name="gotneed"
+                              className={`${style.checkbox} ${style.checkbox_voorzien}`}
+                              defaultChecked
+                              onClick={(e) => setGotNeed(false)}
+                            />
+                            <div className={`${style.true_false} ${style.checkbox_false} scale`}>
+                              <img src="./assets/images/false_icon.svg" />
+                            </div>
+                          </label>
+                        </div>
+                        <input className={style.button_voorzien} type="submit" value="Voeg toe" />
                       </div>
-
-                      <input type="submit" value="Voeg toe" />
                     </div>
                   </div>
                 )}
@@ -324,62 +322,76 @@ const Needs = ({ project_id }) => {
                 {data && (
                   <div className={style.needs_list}>
                     {data.needs.map((need) => (
-                      <div>
-                        <li>
+                      <div className={style.need_item}>
+                        <li className={style.need_types}>
                           {need.type == 'Gebouw' && (
                             <>
-                              <img src="./assets/images/gebouw_icon__small.svg" />
+                              <img className={style.need_image} src="./assets/images/gebouw_icon__small.svg" />
                             </>
                           )}
                           {need.type == 'Eten' && (
                             <>
-                              <img src="./assets/images/eten_icon__small.svg" />
+                              <img className={style.need_image} src="./assets/images/eten_icon__small.svg" />
                             </>
                           )}
                           {need.type == 'Persoon' && (
                             <>
-                              <img src="./assets/images/persoon_icon__small.svg" />
+                              <img className={style.need_image} src="./assets/images/persoon_icon__small.svg" />
                             </>
                           )}
                           {need.type == 'Item' && (
                             <>
-                              <img src="./assets/images/item_icon__small.svg" />
+                              <img className={style.need_image} src="./assets/images/item_icon__small.svg" />
                             </>
                           )}
                           {need.type == 'Drank' && (
                             <>
-                              <img src="./assets/images/drank_icon__small.svg" />
+                              <img className={style.need_image} src="./assets/images/drank_icon__small.svg" />
                             </>
                           )}
-                          {need.need}
+                          <span className={style.need_type__text}>{need.need}</span>
                         </li>
-                        {need.provided && (
-                          <>
-                            <button style={{ background: 'green' }}>V</button>
-                            <button onClick={() => handleToggle(need)}>
-                              X
-                            </button>
-                          </>
-                        )}
-                        {!need.provided && (
-                          <>
-                            <button onClick={() => handleToggle(need)}>
-                              V
-                            </button>
-                            <button style={{ background: 'red' }}>X</button>
-                          </>
-                        )}
-                        <button onClick={() => handleDelete(need)}>
-                          Remove need
-                        </button>
+                        <div className={style.need_buttons}>
+                          {need.provided && (
+                            <div className={style.need_toggles}>
+                              <button className={style.button}>                    
+                                <div className={`${style.true_false} ${style.toggle_true} scale`}>
+                                  <img src="./assets/images/true_icon.svg" />
+                                </div>
+                              </button>
+                              <button className={style.button} onClick={() => handleToggle(need)}>
+                                <div className={`${style.true_false} scale`}>
+                                  <img src="./assets/images/false_icon.svg" />
+                                </div>
+                              </button>
+                            </div>
+                          )}
+                          {!need.provided && (
+                            <div className={style.need_toggles}>
+                              <button className={style.button} onClick={() => handleToggle(need)}>
+                                <div className={`${style.true_false} scale`}>
+                                  <img src="./assets/images/true_icon.svg" />
+                                </div>
+                              </button>
+                              <button className={style.button}>
+                                <div className={`${style.true_false} ${style.toggle_false} scale`}>
+                                  <img src="./assets/images/false_icon.svg" />
+                                </div>
+                              </button>
+                            </div>
+                          )}
+                          <button className={style.button} onClick={() => handleDelete(need)}>
+                            <img src="./assets/images/drank_icon__small.svg" />
+                          </button>
+                        </div>
                       </div>
                     ))}
                     {data && (
                       <>
                         {data.needs.length < 1 && (
-                          // Empty state!!!
-
-                          <p>U heeft nog geen benodigheden opgegeven</p>
+                          <div className={style.empty}>
+                            <p className={style.need_empty}>U heeft nog <span className={style.need_empty__outline}>geen</span> benodigdheden</p>
+                          </div>
                         )}
                       </>
                     )}

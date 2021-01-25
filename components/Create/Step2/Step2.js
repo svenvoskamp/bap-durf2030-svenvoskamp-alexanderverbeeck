@@ -211,13 +211,15 @@ const Step2 = ({
           </div>
         </div>
         <div className={style.part_end}>
-          <button className={style.button_back} onClick={handleBack}>
-            <img
-              className={style.back_image}
-              src="./assets/images/button_back.svg"
-            />
-            <span className={style.back_text}>Terug</span>
-          </button>
+          <div className={style.button_back}>
+            <button className={style.button_arrow} onClick={handleBack}>
+              <img
+                className={style.back_image}
+                src="./assets/images/button_back.svg"
+              />
+              <span className={style.back_text}>Terug</span>
+            </button>
+          </div>
           <label className={style.button_next} htmlFor="button">
             <input
               className={style.input_submit}
