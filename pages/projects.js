@@ -170,76 +170,88 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
   return (
     <>
       <Mouse></Mouse>
-      <label htmlFor="search">Search</label>
-      <input
-        required
-        id="search"
-        min="0"
-        max="100"
-        value={search}
-        type="text"
-        placeholder="Zoek project"
-        onChange={(e) => setSearch(e.currentTarget.value)}
-      />
-      <p>FASES</p>
-      {phases.map((phase) => (
-        <label htmlFor={phase.phase}>
-          <input
-            id={phase.phase}
-            type="radio"
-            name="phase"
-            className="phase"
-            onClick={(e) => handlePhase(phase.id)}
-          />
-          <p>{phase.phase}</p>
-        </label>
-      ))}
-      <p>CATEGORIEN</p>
-      {categories.map((category) => (
-        <label htmlFor={category.category}>
-          <input
-            id={category.category}
-            type="radio"
-            name="category"
-            className="category"
-            onClick={(e) => handleCategory(category.id)}
-          />
-          <p>{category.category}</p>
-        </label>
-      ))}
-      <p>THEMAS</p>
-      {themes.map((theme) => (
-        <label htmlFor={theme.theme}>
-          <input
-            id={theme.theme}
-            type="radio"
-            name="theme"
-            className="theme"
-            onClick={(e) => handleTheme(theme.id)}
-          />
-          <p>{theme.theme}</p>
-        </label>
-      ))}
-      <p>DISTRICTS</p>
-      {districts.map((district) => (
-        <label htmlFor={district.district}>
-          <input
-            id={district.district}
-            type="radio"
-            name="district"
-            className="district"
-            onClick={(e) => handleDistrict(district.id)}
-          />
-          <p>{district.district}</p>
-        </label>
-      ))}
-
-      <div>
-        {newProjects.map((project) => (
-          <Project project={project} key={project.id}></Project>
+      <article className={style.part}>
+        <div className={style.part_header}>
+          <h1 className={style.title}>
+            Project.
+            <span className={style.title_outline}>benodigheden.</span>
+          </h1>
+          <p className={style.title_description}>
+            Super dat je een project wilt starten voor DURF 2030, we beginnen
+            met de basis.
+          </p>
+        </div>
+        <label htmlFor="search">Search</label>
+        <input
+          required
+          id="search"
+          min="0"
+          max="100"
+          value={search}
+          type="text"
+          placeholder="Zoek project"
+          onChange={(e) => setSearch(e.currentTarget.value)}
+        />
+        <p>FASES</p>
+        {phases.map((phase) => (
+          <label htmlFor={phase.phase}>
+            <input
+              id={phase.phase}
+              type="radio"
+              name="phase"
+              className="phase"
+              onClick={(e) => handlePhase(phase.id)}
+            />
+            <p>{phase.phase}</p>
+          </label>
         ))}
-      </div>
-      <button onClick={reset}>Reset filter</button>
+        <p>CATEGORIEN</p>
+        {categories.map((category) => (
+          <label htmlFor={category.category}>
+            <input
+              id={category.category}
+              type="radio"
+              name="category"
+              className="category"
+              onClick={(e) => handleCategory(category.id)}
+            />
+            <p>{category.category}</p>
+          </label>
+        ))}
+        <p>THEMAS</p>
+        {themes.map((theme) => (
+          <label htmlFor={theme.theme}>
+            <input
+              id={theme.theme}
+              type="radio"
+              name="theme"
+              className="theme"
+              onClick={(e) => handleTheme(theme.id)}
+            />
+            <p>{theme.theme}</p>
+          </label>
+        ))}
+        <p>DISTRICTS</p>
+        {districts.map((district) => (
+          <label htmlFor={district.district}>
+            <input
+              id={district.district}
+              type="radio"
+              name="district"
+              className="district"
+              onClick={(e) => handleDistrict(district.id)}
+            />
+            <p>{district.district}</p>
+          </label>
+        ))}
+
+        <div>
+          {newProjects.map((project) => (
+            <Project project={project} key={project.id}></Project>
+          ))}
+        </div>
+        <button onClick={reset}>Reset filter</button>
+      </article>
     </>
   );
 };

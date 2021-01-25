@@ -529,6 +529,7 @@ html.has-scroll-dragging {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  z-index: 10;
 }
 
 .nav-logo {
