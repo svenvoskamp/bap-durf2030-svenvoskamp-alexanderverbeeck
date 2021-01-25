@@ -30,6 +30,11 @@
   grid-column: span 2;
 }
 
+.subtitle_image {
+  display: flex;
+  justify-content: space-between;
+}
+
 .part_content {
   margin-bottom: 2rem;
 }
@@ -37,7 +42,7 @@
 .form {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-column-gap: 2rem;
 }
 
@@ -52,13 +57,16 @@
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 2rem;
   margin-top: 2rem;
+  max-height: 100%;
 }
 
 .form_image {
   margin-top: 2rem;
   grid-column: 3;
-  width: 100%;
-  height: auto;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
 }
 
 .form_description {
@@ -102,23 +110,18 @@
   margin-top: 0.5rem;
 }
 
-.input_text {
-  border: 0.2rem solid blueColor;
-  background-color: transparent;
-  composes: empty from "../../../css/typo.module.css";
-  padding: 0.5rem 0.5rem;
-  margin-top: 0.5rem;
+.input_none {
+  display: none;
 }
 
 .input_image {
   border: 0.2rem solid blueColor;
   background-color: beigeColor;
-  padding: 1rem;
   position: relative;
   margin-top: 0.5rem;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: 22rem;
+  object-fit: cover;
 }
 
 .input_image:after {
@@ -128,19 +131,12 @@
   background: inherit;
   border-radius: inherit;
   border: inherit;
-  top: 0.6rem;
-  left: 0.6rem;
+  top: 1rem;
+  left: 1rem;
   width: 100%;
   height: 100%;
   z-index: -1;
   transition: all 0.2s ease-in-out;
-  padding: 0.2rem solid colorBlue;
-}
-
-.input_image__picture {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
 .label {
@@ -157,18 +153,6 @@
   margin-top: auto;
   grid-column: span 3;
   grid-template-columns: repeat(3, 1fr);
-}
-
-.button {
-  composes: button from "../../../css/buttons.module.css";
-}
-
-.circle_button {
-  composes: circleButton from "../../../css/buttons.module.css";
-}
-
-.button_image {
-  composes: buttonImage from "../../../css/buttons.module.css";
 }
 
 .checkbox {
@@ -195,15 +179,6 @@
 
 .button_image {
   composes: buttonImage from "../../../css/buttons.module.css";
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
 }
 
 .button_back {

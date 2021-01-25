@@ -50,7 +50,7 @@
 .form {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .form_content {
@@ -60,7 +60,7 @@
 .form_grid {
   grid-column: 1/5;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-column-gap: 2rem;
   margin-top: 2rem;
 }

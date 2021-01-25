@@ -116,20 +116,25 @@ const Step2 = ({
             </div>
           </div>
           <div className={`${style.form_grid} ${style.form_image}`}>
-            <h2 className={`${style.subtitle} ${style.subtitle_image}`}>Projectfoto</h2>
-            <div className={`${style.input_container} ${style.input_image}`}>
-              <img id="id_img" className={style.input_image__profile} class src="" alt="" />
-              <label htmlFor="img" className={style.label}> Kies uw foto: </label>
-              <input
-                type="file"
-                id="img"
-                name="filename"
-                accept="image/*"
-                onChange={(e) => {
-                  setImage(e.target.files[0]);
-                  handleChange(e);
-                }}
-              />
+            <div className={style.subtitle_image}>
+              <h2 className={`${style.subtitle} ${style.subtitle_image}`}>Projectfoto</h2>
+              <label htmlFor="img" className={style.label}>
+                <img className={style.label_image} src="./assets/images/upload_icon.svg" alt="upload hier" />
+              </label>
+                <input
+                  type="file"
+                  id="img"
+                  name="filename"
+                  accept="image/*"
+                  className={style.input_none}
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                    handleChange(e);
+                  }}
+                />
+            </div>
+            <div className={style.input_image}>
+              <img id="id_img" className={style.input_image__picture} class src="" alt="" />
             </div>
           </div>
           <div className={`${style.form_grid} ${style.form_description}`}>

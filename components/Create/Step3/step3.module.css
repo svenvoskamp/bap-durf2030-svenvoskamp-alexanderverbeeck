@@ -1,5 +1,12 @@
+@value tokens: "../../../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor from tokens;
+
 .part {
   composes: view from "../../../css/layout.module.css";
+}
+
+.part_header {
+  margin-bottom: 5rem;
 }
 
 .title {
@@ -19,9 +26,105 @@
   composes: mediumTitle from "../../../css/typo.module.css";
 }
 
+.part_content {
+  margin-bottom: 2rem;
+}
+
+.form {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-column-gap: 2rem;
+}
+
+.form_needs {
+  z-index: 1;
+  grid-column: span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: grid;
+}
+
+.checkboxes {
+  grid-column: span 2;
+  display: flex;
+}
+
+.checkbox {
+  display: none;
+}
+
+.checkbox_text {
+  composes: smallCaps from "../../../css/typo.module.css";
+  margin-bottom: 1rem;
+}
+
 .button_next {
   grid-column: 3;
   text-align: center;
+}
+
+.checkbox_image {
+  border: 0.2rem solid blueColor;
+  padding: 2rem;
+  position: relative;
+  background-color: beigeColor;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+}
+
+.checkbox_image:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 0.6rem;
+  left: 0.6rem;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkbox[type="radio"]:hover ~ .checkbox_image:after {
+  top: 0;
+  left: 0;
+}
+
+.checkbox[type="radio"]:checked ~ .checkbox_image:after {
+  left: 0;
+  top: 0;
+}
+
+.checkbox_container {
+  display: flex;
+  padding: 1.2rem 0;
+  z-index: 2;
+  margin-right: 5rem;
+  text-align: center;
+}
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 0;
+}
+
+.input {
+  border-bottom: 0.2rem solid blueColor;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  composes: empty from "../../../css/typo.module.css";
+  padding: 0.2rem 0.5rem;
+}
+
+.label {
+  composes: semiBold from "../../../css/typo.module.css";
+  margin-bottom: 0.5rem;
 }
 
 .button {
