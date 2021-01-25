@@ -1,0 +1,50 @@
+.part {
+  composes: view from "../css/layout.module.css";
+}
+
+.part_header {
+  margin-bottom: 5rem;
+}
+
+.title {
+  composes: largeTitleOutline from "../css/typo.module.css";
+  margin-bottom: 1rem;
+}
+
+.title_outline {
+  composes: largeTitle from "../css/typo.module.css";
+}
+
+.part_filter {
+  margin-top: 2rem;
+}
+
+.filter_search {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  border-bottom: 0.2rem solid blueColor;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  composes: empty from "../css/typo.module.css";
+  padding: 0.2rem 0.5rem;
+}
+
+.search_image {
+  margin-right: 1rem;
+}
+
+.part_content {
+  margin-bottom: 2rem;
+}
+
+.projecten {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 5rem;
+}

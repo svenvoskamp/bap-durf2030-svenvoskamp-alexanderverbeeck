@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-
 import Mouse from '../components/Mouse';
 import Project from '../components/Project';
 import gql from 'graphql-tag';
@@ -8,6 +7,7 @@ import { ApolloClient } from 'apollo-client';
 import { useQuery } from '@apollo/react-hooks';
 import Nav from '../components/Nav';
 import { set } from 'mobx';
+import style from '../css/projects.module.css';
 
 const GET_PROJECTS = gql`
   query getProjects {
@@ -60,7 +60,7 @@ const GET_PROJECTS = gql`
   }
 `;
 
-const Projects = ({ projects, categories, themes, phases, districts }) => {
+const Projects = ({projects, categories, themes, phases, districts }) => {
   const [search, setSearch] = useState('');
   const [newProjects, setNewProjects] = useState(projects);
   const [phaseId, setPhaseId] = useState(0);
@@ -91,12 +91,15 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
   const handlePhase = (id) => {
     setPhaseId(id);
   };
+
   const handleCategory = (id) => {
     setCategoryId(id);
   };
+
   const handleTheme = (id) => {
     setThemeId(id);
   };
+
   const handleDistrict = (id) => {
     setDistrictId(id);
   };
@@ -170,29 +173,31 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
   return (
     <>
       <Mouse></Mouse>
+      <Nav></Nav>
       <article className={style.part}>
         <div className={style.part_header}>
           <h1 className={style.title}>
-            Project.
-            <span className={style.title_outline}>benodigheden.</span>
+            durf 2030.
+            <span className={style.title_outline}>projecten.</span>
           </h1>
-          <p className={style.title_description}>
-            Super dat je een project wilt starten voor DURF 2030, we beginnen
-            met de basis.
-          </p>
-        </div>
-        <label htmlFor="search">Search</label>
-        <input
-          required
-          id="search"
-          min="0"
-          max="100"
-          value={search}
-          type="text"
-          placeholder="Zoek project"
-          onChange={(e) => setSearch(e.currentTarget.value)}
-        />
-        <p>FASES</p>
+          <div className={style.part_filter}>
+            <div class={style.filter_search}>
+              <label htmlFor="search">
+                <img className={style.search_image} src="./assets/images/search_icon.svg" />
+              </label>
+              <input
+                required
+                id="search"
+                min="0"
+                max="100"
+                value={search}
+                type="text"
+                placeholder="Zoek project"
+                className={style.input}
+                onChange={(e) => setSearch(e.currentTarget.value)}
+              />
+            </div>
+        {/* <p>FASES</p>
         {phases.map((phase) => (
           <label htmlFor={phase.phase}>
             <input
@@ -204,8 +209,8 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
             />
             <p>{phase.phase}</p>
           </label>
-        ))}
-        <p>CATEGORIEN</p>
+        ))} */}
+        {/* <p>CATEGORIEN</p>
         {categories.map((category) => (
           <label htmlFor={category.category}>
             <input
@@ -218,7 +223,17 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
             <p>{category.category}</p>
           </label>
         ))}
-        <p>THEMAS</p>
+
+        <select
+          name="category"
+          id="category"
+          onChange={(e) => handleCategory(category.id)}>
+          {categories.map((category) => (
+            <option value={category.id}>{category.category}</option>
+          ))}
+        </select> */}
+
+        {/* <p>THEMAS</p>
         {themes.map((theme) => (
           <label htmlFor={theme.theme}>
             <input
@@ -243,14 +258,18 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
             />
             <p>{district.district}</p>
           </label>
-        ))}
+        ))} */}
+        </div>
+        </div>
+        <div className={style.part_content}>
 
-        <div>
+        <div className={style.projecten}>
           {newProjects.map((project) => (
             <Project project={project} key={project.id}></Project>
           ))}
         </div>
         <button onClick={reset}>Reset filter</button>
+        </div>
       </article>
     </>
   );
