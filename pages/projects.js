@@ -60,7 +60,7 @@ const GET_PROJECTS = gql`
   }
 `;
 
-const Projects = ({projects, categories, themes, phases, districts }) => {
+const Projects = ({ projects, categories, themes, phases, districts }) => {
   const [search, setSearch] = useState('');
   const [newProjects, setNewProjects] = useState(projects);
   const [phaseId, setPhaseId] = useState(0);
@@ -113,20 +113,20 @@ const Projects = ({projects, categories, themes, phases, districts }) => {
     });
     const themes = document.querySelectorAll('.theme');
     themes.forEach((theme) => {
-      if (theme.checked) {
-        theme.checked = false;
+      if (theme.selected) {
+        theme.selected = false;
       }
     });
     const categories = document.querySelectorAll('.category');
     categories.forEach((category) => {
-      if (category.checked) {
-        category.checked = false;
+      if (category.selected) {
+        category.selected = false;
       }
     });
     const districts = document.querySelectorAll('.district');
     districts.forEach((district) => {
-      if (district.checked) {
-        district.checked = false;
+      if (district.selected) {
+        district.selected = false;
       }
     });
     setPhaseId(0);
@@ -183,7 +183,10 @@ const Projects = ({projects, categories, themes, phases, districts }) => {
           <div className={style.part_filter}>
             <div class={style.filter_search}>
               <label htmlFor="search">
-                <img className={style.search_image} src="./assets/images/search_icon.svg" />
+                <img
+                  className={style.search_image}
+                  src="./assets/images/search_icon.svg"
+                />
               </label>
               <input
                 required
@@ -197,7 +200,7 @@ const Projects = ({projects, categories, themes, phases, districts }) => {
                 onChange={(e) => setSearch(e.currentTarget.value)}
               />
             </div>
-        {/* <p>FASES</p>
+            {/* <p>FASES</p>
         {phases.map((phase) => (
           <label htmlFor={phase.phase}>
             <input
@@ -210,30 +213,60 @@ const Projects = ({projects, categories, themes, phases, districts }) => {
             <p>{phase.phase}</p>
           </label>
         ))} */}
-        {/* <p>CATEGORIEN</p>
-        {categories.map((category) => (
-          <label htmlFor={category.category}>
-            <input
-              id={category.category}
-              type="radio"
+            {/* <p>CATEGORIEN</p>
+            {categories.map((category) => (
+              <label htmlFor={category.category}>
+                <input
+                  id={category.category}
+                  type="radio"
+                  name="category"
+                  className="category"
+                  onClick={(e) => handleCategory(category.id)}
+                />
+                <p>{category.category}</p>
+              </label>
+            ))} */}
+
+            <select
               name="category"
-              className="category"
-              onClick={(e) => handleCategory(category.id)}
-            />
-            <p>{category.category}</p>
-          </label>
-        ))}
+              id="category"
+              onChange={(e) => handleCategory(e.currentTarget.value)}
+            >
+              <option value="">Filter op categorie</option>
+              {categories.map((category) => (
+                <option className="category" value={category.id}>
+                  {category.category}
+                </option>
+              ))}
+            </select>
 
-        <select
-          name="category"
-          id="category"
-          onChange={(e) => handleCategory(category.id)}>
-          {categories.map((category) => (
-            <option value={category.id}>{category.category}</option>
-          ))}
-        </select> */}
+            <select
+              name="theme"
+              id="theme"
+              onChange={(e) => handleTheme(e.currentTarget.value)}
+            >
+              <option value="">Filter op thema</option>
+              {themes.map((theme) => (
+                <option className="theme" value={theme.id}>
+                  {theme.theme}
+                </option>
+              ))}
+            </select>
 
-        {/* <p>THEMAS</p>
+            <select
+              name="district"
+              id="district"
+              onChange={(e) => handleDistrict(e.currentTarget.value)}
+            >
+              <option value="">Filter op regio</option>
+              {districts.map((district) => (
+                <option className="district" value={district.id}>
+                  {district.district}
+                </option>
+              ))}
+            </select>
+
+            {/* <p>THEMAS</p>
         {themes.map((theme) => (
           <label htmlFor={theme.theme}>
             <input
@@ -259,16 +292,15 @@ const Projects = ({projects, categories, themes, phases, districts }) => {
             <p>{district.district}</p>
           </label>
         ))} */}
-        </div>
+          </div>
         </div>
         <div className={style.part_content}>
-
-        <div className={style.projecten}>
-          {newProjects.map((project) => (
-            <Project project={project} key={project.id}></Project>
-          ))}
-        </div>
-        <button onClick={reset}>Reset filter</button>
+          <div className={style.projecten}>
+            {newProjects.map((project) => (
+              <Project project={project} key={project.id}></Project>
+            ))}
+          </div>
+          <button onClick={reset}>Reset filter</button>
         </div>
       </article>
     </>
