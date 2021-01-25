@@ -1,4 +1,5 @@
 import { preloadImages, map, clamp } from '../lib/utils';
+
 import React, { useRef } from 'react';
 import Tyle from '../components/Tyle';
 import Mouse from '../components/Mouse';
@@ -83,90 +84,95 @@ const Home = ({ projects }) => {
     <>
       <Mouse></Mouse>
 
-        <Nav user={user}></Nav>
-        <main ref={scrollRef} data-scroll-container>
-          <div class="content">
-            <div class="gallery">
-              <div class="text-large">
-                <span
-                  class="text-large--inner text-large--fill"
-                  data-scroll
-                  data-scroll-speed="3"
-                  data-scroll-direction="vertical"
-                >
-                  ONTDEK.
-                </span>
-                <span
-                  data-scroll
-                  data-scroll-speed="-4"
-                  data-scroll-direction="vertical"
-                  class="text-large--inner"
-                >
-                  DURF 2030.
-                </span>
-              </div>
+      <Nav user={user}></Nav>
+      <main ref={scrollRef} data-scroll-container>
+        <div class="content">
+          <div class="gallery">
+            <div class="text-large">
+              <span
+                class="text-large--inner text-large--fill"
+                data-scroll
+                data-scroll-speed="3"
+                data-scroll-direction="vertical"
+              >
+                ONTDEK.
+              </span>
+              <span
+                data-scroll
+                data-scroll-speed="-4"
+                data-scroll-direction="vertical"
+                class="text-large--inner"
+              >
+                DURF 2030.
+              </span>
+            </div>
 
-              <div class="cards">
-                {projects.map((project, key) => {
-                  if (key == 0 && key % 2 == 0)
-                    return (
-                      <Tyle
-                        color="red"
-                        direction="2"
-                        button="0.5"
-                        project={project}
-                        key={key}
-                      />
-                    );
-                  else
-                    return (
-                      <Tyle
-                        color="yellow"
-                        direction="-2"
-                        button="-0.5"
-                        project={project}
-                        key={key}
-                      />
-                    );
-                })}
-                {/* <Tyle color="red" direction="2" button="0.5"></Tyle>
+            <div class="cards">
+              {projects.map((project, key) => {
+                if (key == 0 && key % 2 == 0)
+                  return (
+                    <Tyle
+                      color="red"
+                      direction="2"
+                      button="0.5"
+                      project={project}
+                      key={key}
+                    />
+                  );
+                else
+                  return (
+                    <Tyle
+                      color="yellow"
+                      direction="-2"
+                      button="-0.5"
+                      project={project}
+                      key={key}
+                    />
+                  );
+              })}
+              {/* <Tyle color="red" direction="2" button="0.5"></Tyle>
                 <Tyle color="yellow" direction="-2" button="-0.5"></Tyle>
                 <Tyle color="green" direction="2" button="0.5"></Tyle>
                 <Tyle color="red" direction="-2" button="-0.5"></Tyle>
                 <Tyle color="yellow" direction="2" button="0.5"></Tyle> */}
-              </div>
-              <div class="text-large">
-                <span
-                  class="text-large--inner text-large--fill text-large--inner-2 "
-                  data-scroll
-                  data-scroll-speed="3"
-                  data-scroll-direction="vertical"
-                >
-                  JOUW PROJECT.
-                </span>
-                <span
-                  data-scroll
-                  data-scroll-speed="-4"
-                  data-scroll-direction="vertical"
-                  class="text-large--inner text-large--inner-2"
-                >
-                  START NU.
-                </span>
-              </div>
+            </div>
+            <div class="text-large">
+              <span
+                class="text-large--inner text-large--fill text-large--inner-2 "
+                data-scroll
+                data-scroll-speed="3"
+                data-scroll-direction="vertical"
+              >
+                JOUW PROJECT.
+              </span>
+              <span
+                data-scroll
+                data-scroll-speed="-4"
+                data-scroll-direction="vertical"
+                class="text-large--inner text-large--inner-2"
+              >
+                START NU.
+              </span>
             </div>
           </div>
-        </main>
+        </div>
+      </main>
     </>
   );
 };
-// Home.getInitialProps = async (ctx) => {
-//   console.log(ctx);
-//   await ctx.apolloClient.query({
-//     query: GET_PROJECTS,
-//   });
+// export async function getStaticProps(context) {
+//   const data = await context.apolloClient;
 
-//   return { props };
-// };
+//   if (!data) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   };
+// }
 
 const ProjectList = () => {
   const { loading, error, data } = useQuery(GET_PROJECTS);
@@ -181,4 +187,4 @@ const ProjectList = () => {
   return <Home projects={data.projects} />;
 };
 
-export default withApollo({ ssr: true })(ProjectList);
+export default withApollo({ ssr: false })(ProjectList);
