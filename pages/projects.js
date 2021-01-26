@@ -11,7 +11,7 @@ import style from '../css/projects.module.css';
 
 const GET_PROJECTS = gql`
   query getProjects {
-    projects {
+    projects(where: { phase: { id: { _neq: 1 } } }) {
       image
       title
       id
@@ -217,24 +217,26 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
               </div>
             </div>
             <div className={style.filter_end}>
-            <select
-            className={style.filter_select}
-              name="category"
-              id="category"
-              onChange={(e) => handleCategory(e.currentTarget.value)}
-            >
-              <option value="">Filter op categorie</option>
-              {categories.map((category) => (
-                <option className="category" value={category.id}>
-                  {category.category}
-                </option>
-              ))}
-            </select>
+              <select
+                className={style.filter_select}
+                name="category"
+                id="category"
+                onChange={(e) => handleCategory(e.currentTarget.value)}
+              >
+                <option value="">Filter op categorie</option>
+                {categories.map((category) => (
+                  <option className="category" value={category.id}>
+                    {category.category}
+                  </option>
+                ))}
+              </select>
 
-              <select className={style.filter_select}
+              <select
+                className={style.filter_select}
                 name="theme"
                 id="theme"
-                onChange={(e) => handleTheme(e.currentTarget.value)} >
+                onChange={(e) => handleTheme(e.currentTarget.value)}
+              >
                 <option value="">Filter op thema</option>
                 {themes.map((theme) => (
                   <option className="theme" value={theme.id}>
@@ -243,10 +245,12 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                 ))}
               </select>
 
-              <select className={style.filter_select}
+              <select
+                className={style.filter_select}
                 name="district"
                 id="district"
-                onChange={(e) => handleDistrict(e.currentTarget.value)} >
+                onChange={(e) => handleDistrict(e.currentTarget.value)}
+              >
                 <option value="">Filter op regio</option>
                 {districts.map((district) => (
                   <option className="district" value={district.id}>
@@ -259,9 +263,18 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
         </div>
         <div className={style.part_content}>
           <div className={style.projecten}>
-            {newProjects.map((project) => (
-              <Project project={project} key={project.id}></Project>
-            ))}
+            {newProjects && (
+              <>
+                {newProjects.map((project) => (
+                  <Project project={project} key={project.id}></Project>
+                ))}
+              </>
+            )}
+            {newProjects.length < 1 && (
+              <>
+                <p>Er zijn geen projecten gevonden</p>
+              </>
+            )}
           </div>
           <button onClick={reset}>Reset filter</button>
         </div>
