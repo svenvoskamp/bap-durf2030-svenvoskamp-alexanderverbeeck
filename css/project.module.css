@@ -116,3 +116,12 @@
 .info_bold {
   composes: smallCaps from "../css/typo.module.css";
 }
+
+.need {
+  display: flex;
+  margin-right: 0.5rem;
+}
+
+.need:last-of-type {
+  margin-right: 0;
+}

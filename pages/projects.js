@@ -62,6 +62,7 @@ const GET_PROJECTS = gql`
 `;
 
 const Projects = ({ projects, categories, themes, phases, districts }) => {
+  console.log(phases);
   const [search, setSearch] = useState('');
   const [newProjects, setNewProjects] = useState(projects);
   const [phaseId, setPhaseId] = useState(0);
@@ -202,20 +203,44 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   onChange={(e) => setSearch(e.currentTarget.value)}
                 />
               </div>
+
+
+
               <div className={style.filter_fase}>
-                {/* {phases.map((phase) => (
-                  <label htmlFor={phase.phase}>
-                    <input
-                      id={phase.phase}
-                      type="radio"
-                      name="phase"
-                      className={`${style.input_none} ${style.input_radio}`}
-                      onClick={(e) => handlePhase(phase.id)}
-                    />
-                    <p className={style.filter_radio}>{phase.phase}</p>
-                  </label>
-                ))} */}
+              <label htmlFor="alles">
+                      <input
+                        id="alles"
+                        type="radio"
+                        name="phase"
+                        defaultChecked
+                        className={`${style.input_none} ${style.input_radio}`}
+                        onClick={(e) => handlePhase(0)}
+                      />
+                      <p className={style.filter_radio}>Alles</p>
+                    </label>
+                {phases.map((phase) => (
+                  <>   
+                  {phase.id != 1 && (
+                    <>
+                      <label htmlFor={phase.phase}>
+                      <input
+                        id={phase.phase}
+                        type="radio"
+                        name="phase"
+                        className={`${style.input_none} ${style.input_radio}`}
+                        onClick={(e) => handlePhase(phase.id)}
+                      />
+                      <p className={style.filter_radio}>{phase.phase}</p>
+                    </label>
+                  </>
+                  )}
+                  </>
+
+                ))}
               </div>
+
+
+
             </div>
             <div className={style.filter_end}>
               <select
@@ -224,7 +249,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                 id="category"
                 onChange={(e) => handleCategory(e.currentTarget.value)}
               >
-                <option value="">Filter op categorie</option>
+                <option value="">Categorie</option>
                 {categories.map((category) => (
                   <option className="category" value={category.id}>
                     {category.category}
@@ -238,7 +263,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                 id="theme"
                 onChange={(e) => handleTheme(e.currentTarget.value)}
               >
-                <option value="">Filter op thema</option>
+                <option value="">Thema</option>
                 {themes.map((theme) => (
                   <option className="theme" value={theme.id}>
                     {theme.theme}

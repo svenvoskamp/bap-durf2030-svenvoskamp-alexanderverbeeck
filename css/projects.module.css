@@ -35,11 +35,16 @@
 
 .filter_fase {
   display: flex;
+  margin-left: 4rem;
 }
 
 .filter_radio {
   composes: smallCaps from "../css/typo.module.css";
   color: #e5d6c0;
+  margin-right: 1rem;
+  padding: 0.5rem 0.5rem;
+  margin-top: 0.5rem;
+  border-bottom: 0.2rem solid beigeColor;
 }
 
 .filter_select {
@@ -53,6 +58,10 @@
 
 .filter_select:last-of-type {
   margin-right: 0;
+}
+
+.filter_fase {
+  align-items: center;
 }
 
 .input {
@@ -72,6 +81,7 @@
 
 .input_radio[type="radio"]:checked + .filter_radio {
   color: blueColor;
+  border-bottom: 0.2rem solid blueColor;
 }
 
 .input_radio[type="radio"]:checked ~ .input_text:after {
