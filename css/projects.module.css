@@ -93,10 +93,10 @@
 
 .projecten {
   width: 100%;
-  /* display: grid;
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-gap: 5rem; */
-  display: flex;
+  grid-gap: 5rem;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between; */
 }

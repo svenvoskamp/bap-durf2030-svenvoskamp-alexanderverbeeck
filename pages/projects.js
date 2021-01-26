@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/react-hooks';
 import Nav from '../components/Nav';
 import { set } from 'mobx';
 import style from '../css/projects.module.css';
+import Loading from '../components/Loading/Loading';
 
 const GET_PROJECTS = gql`
   query getProjects {
@@ -287,7 +288,7 @@ const AllProjects = () => {
   const { loading, error, data } = useQuery(GET_PROJECTS);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading props={"projecten"}/>;
   }
   if (error) {
     console.error(error);

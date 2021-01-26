@@ -9,6 +9,7 @@ import { ApolloClient } from 'apollo-client';
 import { useQuery } from '@apollo/react-hooks';
 import Nav from '../components/Nav';
 import { useFetchUser } from '../lib/user';
+import Loading from '../components/Loading/Loading';
 
 // Initialize Locomotive Scroll (horizontal direction)
 
@@ -173,7 +174,7 @@ const ProjectList = () => {
   const { loading, error, data } = useQuery(GET_PROJECTS);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading props={"loading"}/>;
   }
   if (error) {
     console.error(error);

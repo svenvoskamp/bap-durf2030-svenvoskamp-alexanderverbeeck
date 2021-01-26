@@ -9,6 +9,7 @@ import { useStores } from '../hooks/index';
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
 import Nav from '../components/Nav';
+import Loading from '../components/Loading/Loading';
 
 const GET_CURRENT_USER = gql`
   query getCurrentUser($id: String!) {
@@ -202,7 +203,7 @@ const GetCurrentUser = ({ props }) => {
     variables: { id: props.sub },
   });
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading props={"gebruiker"}/>;
   }
   if (error) {
     console.log(error);
@@ -218,7 +219,7 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
   const router = useRouter();
   if (loading) {
-    return <p>Loading</p>;
+    return <Loading props={"gebruiker"}/>;
   }
   if (!loading && user) {
     return <GetCurrentUser props={user} />;

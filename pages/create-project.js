@@ -11,6 +11,7 @@ import Step1 from '../components/Create/Step1/Step1';
 import Step2 from '../components/Create/Step2/Step2';
 import Step3 from '../components/Create/Step3/Step3';
 import Nav from '../components/Nav';
+import Loading from '../components/Loading/Loading';
 
 const GET_CURRENT_USER = gql`
   query getCurrentUser($id: String!) {
@@ -147,7 +148,7 @@ const GetCurrentUser = ({ props }) => {
     variables: { id: props.sub },
   });
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading props={"gebruiker"}/>;
   }
   if (error) {
     console.log(error);
@@ -164,7 +165,7 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
   const router = useRouter();
   if (loading) {
-    return <p>Loading</p>;
+    return <Loading props={"gebruiker"}/>;
   }
   if (!loading && user) {
     return <GetCurrentUser props={user} />;

@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { withApollo } from '../../../lib/withApollo';
 import style from './step3.module.css';
 import Mouse from '../../../components/Mouse';
+import Loading from '../../Loading/Loading';
 
 const GET_PROJECT_BY_USER = gql`
   query getProjectByUser($id: String!) {
@@ -489,7 +490,7 @@ const Step3 = ({ user }) => {
   });
 
   if (loading) {
-    return <p>Loading</p>;
+    return <Loading props={"loading"}/>;
   }
   if (data) {
     return <Needs project_id={data.users[0].projects[0].id} />;

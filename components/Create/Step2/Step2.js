@@ -5,6 +5,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import style from './step2.module.css';
 import Mouse from '../../../components/Mouse';
+import Loading from '../../Loading/Loading';
 
 const GET_DISTRICTS = gql`
   query getDistricts {
@@ -33,7 +34,7 @@ const Step2 = ({
   let districts;
   const { loading, error, data } = useQuery(GET_DISTRICTS);
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading props={"loading"}/>;
   }
   if (error) {
     console.log(error);
