@@ -1,12 +1,13 @@
 @value tokens: "../css/tokens.module.css";
-@value blueColor, yellowColor, beigeColor from tokens;
+@value blueColor, yellowColor, beigeColor, redColor, greenColor from tokens;
 
 .project {
   z-index: 2;
+  margin: 2rem;
 }
 
 .card {
-  width: 100%;
+  width: 38rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -32,6 +33,7 @@
 
 .card_image {
   height: 20rem;
+  border: 0.4rem solid blueColor;
 }
 
 .card_user {
@@ -70,13 +72,41 @@
   grid-template-rows: repeat(4, 1fr);
 }
 
-.info_text {
-  border-bottom: 0.3rem solid blueColor;
-  padding: 1.2rem 0.5rem;
+.fase_color {
+  height: 1.5rem;
+  border-radius: 50%;
+  width: 1.5rem;
 }
 
-.info_text:last-of-type {
+.fase_concept {
+  background-color: blueColor;
+}
+
+.fase_creatie {
+  background-color: yellowColor;
+}
+
+.fase_crowdfunding {
+  background-color: redColor;
+}
+
+.fase_realisatie {
+  background-color: greenColor;
+}
+
+.info_item {
+  display: flex;
+  border-bottom: 0.2rem solid blueColor;
+  align-items: center;
+}
+
+.info_item:last-of-type {
   border-bottom: none;
+}
+
+.info_text {
+  padding: 1.2rem 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .info_light {

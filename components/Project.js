@@ -38,18 +38,49 @@ const Project = ({ project, key }) => {
               <p className={style.card_tag}>{project.category.category}</p>
             </div>
             <div className={style.card_info}>
-              <p className={`${style.info_text} ${style.info_bold}`}>
-                {project.phase.phase}
-              </p>
-              <p className={`${style.info_text} ${style.info_light}`}>
-                {project.district.district}
-              </p>
-              <p className={`${style.info_text} ${style.info_light}`}>
-                {project.phase.phase}
-              </p>
-              <p className={`${style.info_text} ${style.info_light}`}>
-                {project.district.district}
-              </p>
+              <div className={`${style.info_fase} ${style.info_item}`}>
+                {project.phase.phase == 'Conceptvoorstel' && (
+                  <>
+                    <div className={`${style.fase_color} ${style.fase_concept}`}></div>
+                  </>
+                )}
+                {project.phase.phase == 'Co-creatie' && (
+                  <>
+                    <div className={`${style.fase_color} ${style.fase_creatie}`}></div>
+                  </>
+                )}
+                {project.phase.phase == 'Crowdfunding' && (
+                  <>
+                    <div className={`${style.fase_color} ${style.fase_crowdfunding}`}></div>
+                  </>
+                )}
+                {project.phase.phase == 'Realisatie' && (
+                  <>
+                    <div className={`${style.fase_color} ${style.fase_realisatie}`}></div>
+                  </>
+                )}
+                <p className={`${style.info_text} ${style.info_bold}`}>
+                  {project.phase.phase}
+                </p>
+              </div>
+              <div className={`${style.info_location} ${style.info_item}`}>
+              <img src="./assets/images/project_location_icon.svg" />
+                <p className={`${style.info_text} ${style.info_light}`}>
+                  {project.district.district}
+                </p>
+              </div>
+              <div className={`${style.info_needs} ${style.info_item}`}>
+              <img src="./assets/images/project_person_icon.svg" />
+                <p className={`${style.info_text} ${style.info_light}`}>
+                  {project.phase.phase}
+                </p>
+              </div>
+              <div className={`${style.info_crowdfunding} ${style.info_item}`}>
+              <img src="./assets/images/project_crowdfunding_icon.svg" />
+                <p className={`${style.info_text} ${style.info_light}`}>
+                  {project.district.district}
+                </p>
+              </div>
             </div>
           </a>
         </section>

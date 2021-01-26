@@ -181,53 +181,44 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
             <span className={style.title_outline}>projecten.</span>
           </h1>
           <div className={style.part_filter}>
-            <div class={style.filter_search}>
-              <label htmlFor="search">
-                <img
-                  className={style.search_image}
-                  src="./assets/images/search_icon.svg"
-                />
-              </label>
-              <input
-                required
-                id="search"
-                min="0"
-                max="100"
-                value={search}
-                type="text"
-                placeholder="Zoek project"
-                className={style.input}
-                onChange={(e) => setSearch(e.currentTarget.value)}
-              />
-            </div>
-            {/* <p>FASES</p>
-        {phases.map((phase) => (
-          <label htmlFor={phase.phase}>
-            <input
-              id={phase.phase}
-              type="radio"
-              name="phase"
-              className="phase"
-              onClick={(e) => handlePhase(phase.id)}
-            />
-            <p>{phase.phase}</p>
-          </label>
-        ))} */}
-            {/* <p>CATEGORIEN</p>
-            {categories.map((category) => (
-              <label htmlFor={category.category}>
+            <div className={style.filter_start}>
+              <div class={style.filter_search}>
+                <label htmlFor="search">
+                  <img
+                    className={style.search_image}
+                    src="./assets/images/search_icon.svg"
+                  />
+                </label>
                 <input
-                  id={category.category}
-                  type="radio"
-                  name="category"
-                  className="category"
-                  onClick={(e) => handleCategory(category.id)}
+                  required
+                  id="search"
+                  min="0"
+                  max="100"
+                  value={search}
+                  type="text"
+                  placeholder="Zoek project"
+                  className={style.input}
+                  onChange={(e) => setSearch(e.currentTarget.value)}
                 />
-                <p>{category.category}</p>
-              </label>
-            ))} */}
-
+              </div>
+              <div className={style.filter_fase}>
+                {/* {phases.map((phase) => (
+                  <label htmlFor={phase.phase}>
+                    <input
+                      id={phase.phase}
+                      type="radio"
+                      name="phase"
+                      className={`${style.input_none} ${style.input_radio}`}
+                      onClick={(e) => handlePhase(phase.id)}
+                    />
+                    <p className={style.filter_radio}>{phase.phase}</p>
+                  </label>
+                ))} */}
+              </div>
+            </div>
+            <div className={style.filter_end}>
             <select
+            className={style.filter_select}
               name="category"
               id="category"
               onChange={(e) => handleCategory(e.currentTarget.value)}
@@ -240,58 +231,30 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
               ))}
             </select>
 
-            <select
-              name="theme"
-              id="theme"
-              onChange={(e) => handleTheme(e.currentTarget.value)}
-            >
-              <option value="">Filter op thema</option>
-              {themes.map((theme) => (
-                <option className="theme" value={theme.id}>
-                  {theme.theme}
-                </option>
-              ))}
-            </select>
+              <select className={style.filter_select}
+                name="theme"
+                id="theme"
+                onChange={(e) => handleTheme(e.currentTarget.value)} >
+                <option value="">Filter op thema</option>
+                {themes.map((theme) => (
+                  <option className="theme" value={theme.id}>
+                    {theme.theme}
+                  </option>
+                ))}
+              </select>
 
-            <select
-              name="district"
-              id="district"
-              onChange={(e) => handleDistrict(e.currentTarget.value)}
-            >
-              <option value="">Filter op regio</option>
-              {districts.map((district) => (
-                <option className="district" value={district.id}>
-                  {district.district}
-                </option>
-              ))}
-            </select>
-
-            {/* <p>THEMAS</p>
-        {themes.map((theme) => (
-          <label htmlFor={theme.theme}>
-            <input
-              id={theme.theme}
-              type="radio"
-              name="theme"
-              className="theme"
-              onClick={(e) => handleTheme(theme.id)}
-            />
-            <p>{theme.theme}</p>
-          </label>
-        ))}
-        <p>DISTRICTS</p>
-        {districts.map((district) => (
-          <label htmlFor={district.district}>
-            <input
-              id={district.district}
-              type="radio"
-              name="district"
-              className="district"
-              onClick={(e) => handleDistrict(district.id)}
-            />
-            <p>{district.district}</p>
-          </label>
-        ))} */}
+              <select className={style.filter_select}
+                name="district"
+                id="district"
+                onChange={(e) => handleDistrict(e.currentTarget.value)} >
+                <option value="">Filter op regio</option>
+                {districts.map((district) => (
+                  <option className="district" value={district.id}>
+                    {district.district}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
         <div className={style.part_content}>
