@@ -207,6 +207,7 @@
   padding: 0.8rem 1rem;
   position: relative;
   background-color: beigeColor;
+  composes: text from "../../../css/typo.module.css";
 }
 
 .button_voorzien:after {
@@ -276,6 +277,10 @@
   display: flex;
   align-items: center;
   margin-right: 3rem;
+}
+
+.need_type__text {
+  composes: semiBold from "../../../css/typo.module.css";
 }
 
 .need_type__text::first-letter {

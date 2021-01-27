@@ -19,6 +19,11 @@ const Loading = ({ props }) => {
           <p className={style.loading_text}>Uw account wordt geverifieerd<span>.</span><span>.</span><span>.</span></p>
           </div>
         )}
+        {props == 'detail' && (
+          <div className={style.loading}>
+          <p className={style.loading_text}>Project ophalen<span>.</span><span>.</span><span>.</span></p>
+          </div>
+        )}
     </>
   );
 };

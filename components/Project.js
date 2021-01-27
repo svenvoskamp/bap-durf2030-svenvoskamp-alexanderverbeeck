@@ -21,7 +21,7 @@ const Project = ({ project, key }) => {
     <>
       {loaded && (
         <section className={style.project} key={key}>
-          <a href={'/detail/' + project.id} className={style.card}>
+          <a href={'/detail/' + project.id} className={`${style.card} scale`}>
             <img
               className={style.card_image}
               ref={imgRef}
