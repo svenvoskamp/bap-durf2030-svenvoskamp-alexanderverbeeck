@@ -115,28 +115,37 @@ const Home = ({ projects }) => {
             </div>
 
             <div className="cards">
-              {projects.map((project, key) => {
-                if (key == 0 && key % 2 == 0)
-                  return (
+              {projects.map((project, key) => (
+                <>
+                  {key == 0 && (
                     <Tyle
                       color="red"
-                      direction="2"
+                      direction="3"
                       button="0.5"
                       project={project}
                       key={key}
                     />
-                  );
-                else
-                  return (
+                  )}
+                  {key % 2 == 0 && (
                     <Tyle
                       color="yellow"
-                      direction="-2"
+                      direction="-3"
                       button="-0.5"
                       project={project}
                       key={key}
                     />
-                  );
-              })}
+                  )}
+                  {key % 2 != 0 && (
+                    <Tyle
+                      color="red"
+                      direction="3"
+                      button="0.5"
+                      project={project}
+                      key={key}
+                    />
+                  )}
+                </>
+              ))}
             </div>
 
             <div className="home_end">
