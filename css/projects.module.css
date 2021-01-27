@@ -77,7 +77,7 @@
   border-right: none;
   border-left: none;
   composes: empty from "../css/typo.module.css";
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem;
 }
 
 .input_radio {
@@ -154,17 +154,20 @@
   font-size: 4rem;
 }
 
-.empty_state_buttons {
+.empty_state__buttons {
+  margin-top: 3rem;
+  z-index: 2;
 }
 
 .empty_state__button {
-  border: 0.2rem solid blueColor;
   composes: smallCaps from "./typo.module.css";
+  margin-left: 5rem;
+  border: 0.2rem solid blueColor;
   padding: 0.8rem 1rem;
   position: relative;
   background-color: beigeColor;
-  margin-top: 2rem;
-  margin-right: 4rem;
+  margin-right: 3rem;
+  cursor: pointer;
 }
 
 .empty_state__button:after {
@@ -182,6 +185,11 @@
   transition: all 0.2s ease-in-out;
 }
 
+.empty_state__button:hover .empty_state__button:after {
+  top: 0;
+  left: 0;
+}
+
 .empty_state__button__extra {
   composes: smallCapsLight from "./typo.module.css";
   border-bottom: 0.1rem solid #091422;
@@ -193,4 +201,5 @@
   border-left: none;
   background-color: transparent;
   margin-top: 1rem;
+  cursor: pointer;
 }

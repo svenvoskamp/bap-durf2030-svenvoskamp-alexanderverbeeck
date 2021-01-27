@@ -290,9 +290,9 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
             {newProjects.length < 1 && (
               <div className={style.empty_state}>
                 <p className={style.empty_state__text}>Er zijn <span className={style.empty_state__text__outline}>geen</span> projecten gevonden</p>
-                <div className={style.empty_state_buttons}>
-                  <button className={style.empty_state__button} onClick={reset}>Verwijder filter</button>
-                  <button className={style.empty_state__button__extra} onClick={reset}>Maak zelf een project</button>
+                <div className={style.empty_state__buttons}>
+                  <button className={`${style.empty_state__button} scale`} onClick={reset}>Verwijder filter</button>
+                  <button className={`${style.empty_state__button__extra} scale`} onClick={reset}>Maak zelf een project</button>
                 </div>
               </div>
             )}

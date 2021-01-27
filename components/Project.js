@@ -2,6 +2,7 @@ import React, { lazy, useRef, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/storage';
 import style from '../css/project.module.css';
+import Loading from '../components/Loading/Loading';
 
 const Project = ({ project, key }) => {
   const [loaded, setLoaded] = useState(false);
@@ -194,7 +195,7 @@ const Project = ({ project, key }) => {
           </a>
         </section>
       )}
-      {!loaded && <div>Laden</div>}
+      {!loaded && <Loading props={"loading"}/>}
     </>
   );
 };
