@@ -7,7 +7,7 @@ const Nav = ({ user }) => {
   const handleHover = (e) => {
     gsap.to('.navigation', {
       duration: 0.5,
-      width: '19rem',
+      width: '22rem',
       ease: 'easeOut',
     });
 

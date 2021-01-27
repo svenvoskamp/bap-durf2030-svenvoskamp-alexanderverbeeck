@@ -199,13 +199,10 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   value={search}
                   type="text"
                   placeholder="Zoek project"
-                  className={style.input}
+                  className={`${style.input} scale`}
                   onChange={(e) => setSearch(e.currentTarget.value)}
                 />
               </div>
-
-
-
               <div className={style.filter_fase}>
               <label htmlFor="alles">
                       <input
@@ -216,7 +213,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                         className={`${style.input_none} ${style.input_radio}`}
                         onClick={(e) => handlePhase(0)}
                       />
-                      <p className={style.filter_radio}>Alles</p>
+                      <p className={`${style.filter_radio} scale`}>Alle fase's</p>
                     </label>
                 {phases.map((phase) => (
                   <>   
@@ -230,7 +227,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                         className={`${style.input_none} ${style.input_radio}`}
                         onClick={(e) => handlePhase(phase.id)}
                       />
-                      <p className={style.filter_radio}>{phase.phase}</p>
+                      <p className={`${style.filter_radio} scale`}>{phase.phase}</p>
                     </label>
                   </>
                   )}
@@ -238,13 +235,9 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
 
                 ))}
               </div>
-
-
-
             </div>
             <div className={style.filter_end}>
-              <select
-                className={style.filter_select}
+              <select className={`${style.filter_select} scale`}
                 name="category"
                 id="category"
                 onChange={(e) => handleCategory(e.currentTarget.value)}
@@ -256,9 +249,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   </option>
                 ))}
               </select>
-
-              <select
-                className={style.filter_select}
+              <select className={`${style.filter_select} scale`}
                 name="theme"
                 id="theme"
                 onChange={(e) => handleTheme(e.currentTarget.value)}
@@ -270,9 +261,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   </option>
                 ))}
               </select>
-
-              <select
-                className={style.filter_select}
+              <select className={`${style.filter_select} scale`}
                 name="district"
                 id="district"
                 onChange={(e) => handleDistrict(e.currentTarget.value)}
@@ -284,25 +273,29 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   </option>
                 ))}
               </select>
+              <button className={`${style.empty_button} scale`} onClick={reset}>
+              <img className={style.need_image} src="./assets/images/delete_filter.svg" />
+              </button>
             </div>
           </div>
         </div>
         <div className={style.part_content}>
-          <div className={style.projecten}>
             {newProjects && (
-              <>
+                        <div className={style.projecten}>
                 {newProjects.map((project) => (
                   <Project project={project} key={project.id}></Project>
                 ))}
-              </>
+              </div>
             )}
             {newProjects.length < 1 && (
-              <>
-                <p>Er zijn geen projecten gevonden</p>
-              </>
+              <div className={style.empty_state}>
+                <p className={style.empty_state__text}>Er zijn <span className={style.empty_state__text__outline}>geen</span> projecten gevonden</p>
+                <div className={style.empty_state_buttons}>
+                  <button className={style.empty_state__button} onClick={reset}>Verwijder filter</button>
+                  <button className={style.empty_state__button__extra} onClick={reset}>Maak zelf een project</button>
+                </div>
+              </div>
             )}
-          </div>
-          <button onClick={reset}>Reset filter</button>
         </div>
       </article>
     </>

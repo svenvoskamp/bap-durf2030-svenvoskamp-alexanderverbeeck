@@ -20,7 +20,7 @@ const Project = ({ project, key }) => {
     <>
       {loaded && (
         <section className={style.project} key={key}>
-          <a className={style.card}>
+          <a href={'/detail/' + project.id} className={style.card}>
             <img
               className={style.card_image}
               ref={imgRef}
@@ -77,6 +77,7 @@ const Project = ({ project, key }) => {
                   {project.district.district}
                 </p>
               </div>
+              {project.needs.length > 0 && (
               <div className={`${style.info_needs} ${style.info_item}`}>
                 {project.needs.length > 2 && (
                   <>
@@ -182,6 +183,7 @@ const Project = ({ project, key }) => {
                   </>
                 )}
               </div>
+                                )}
               <div className={`${style.info_crowdfunding} ${style.info_item}`}>
                 <img src="./assets/images/project_crowdfunding_icon.svg" />
                 <p className={`${style.info_text} ${style.info_light}`}>

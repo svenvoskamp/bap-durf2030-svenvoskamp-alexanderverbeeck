@@ -33,32 +33,32 @@
 .mediumTitle {
   font-family: Montserrat, sans-serif;
   font-weight: 800;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
   color: blueColor;
   letter-spacing: 0.01rem;
-  line-height: 1.2rem;
+  line-height: 2.5rem;
 }
 
 .mediumTitleOutline {
   font-family: Montserrat, sans-serif;
   font-weight: 900;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
-  -webkit-text-stroke: 0.1rem blueColor;
-  text-stroke: 0.1rem blueColor;
+  -webkit-text-stroke: 0.12rem blueColor;
+  text-stroke: 0.12rem blueColor;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
   display: flex;
   flex-direction: column;
   letter-spacing: 0.05rem;
-  line-height: 1.2rem;
+  line-height: 2.5rem;
 }
 
 .smallCaps {
   font-family: Montserrat, sans-serif;
   font-weight: 800;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
   color: blueColor;
@@ -67,7 +67,7 @@
 .smallCapsLight {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
   color: blueColor;
@@ -76,34 +76,34 @@
 .text {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: blueColor;
 }
 
 .smallText {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: blueColor;
 }
 
 .bold {
   font-family: Montserrat, sans-serif;
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: blueColor;
 }
 
 .semiBold {
   font-family: Montserrat, sans-serif;
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: blueColor;
 }
 
 .empty {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: blueColor;
 }

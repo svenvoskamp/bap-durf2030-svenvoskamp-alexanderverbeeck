@@ -19,36 +19,15 @@ html {
 }
 /* stylelint-enable */
 
-:root {
-  font-size: 12px;
-}
 body {
-  font-size: 1.6rem;
   min-height: 100vh;
-  --color-text: #000;
-  --color-bg: #fdecd2;
-  --color-link: #d75828;
-  --color-link-hover: #fff;
-  --color-gallery-title: #463832;
-  --color-gallery-number: #ffffff;
-  --color-gallery-link: #fff;
-  --color-gallery-link-bg: #d75828;
-  --color-gallery-link-hover: #fff;
-  --color-gallery-link-bg-hover: #d4b77d;
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  --cursor-stroke: none;
-  --cursor-fill: #ffffff;
-  --cursor-stroke-width: 1px;
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  --cursor-stroke: none;
-  --cursor-fill: #c5681c;
-  --cursor-stroke-width: 1px;
   font-family: Montserrat, sans-serif;
-  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Page Loader */
@@ -84,50 +63,6 @@ body {
     opacity: 1;
     transform: scale3d(0.5, 0.5, 1);
   }
-}
-
-a {
-  text-decoration: none;
-  color: var(--color-link);
-  outline: none;
-}
-
-a:hover,
-a:focus {
-  color: var(--color-link-hover);
-  outline: none;
-}
-
-.frame {
-  padding: 3rem 5vw;
-  text-align: center;
-  position: relative;
-  z-index: 1000;
-  text-transform: uppercase;
-}
-
-.frame__title {
-  font-size: 1rem;
-  margin: 0 0 1rem;
-  font-weight: 300;
-}
-
-.frame__links {
-  display: inline;
-}
-
-.frame__links a:not(:last-child) {
-  margin-right: 1rem;
-}
-
-.frame__demo {
-  margin: 0 1rem;
-}
-
-.frame__demo--current,
-.frame__demo--current:hover {
-  color: var(--color-text);
-  cursor: default;
 }
 
 .content {
@@ -225,10 +160,9 @@ html.has-scroll-dragging {
 }
 
 [data-scroll-direction="horizontal"] [data-scroll-container] {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   height: 100vh;
   display: inline-block;
-  white-space: nowrap;
 }
 
 [data-scroll-direction="horizontal"] [data-scroll-section] {
@@ -288,236 +222,7 @@ html.has-scroll-dragging {
   bottom: 0;
 }
 
-.gallery {
-  display: flex;
-  margin-left: 12vw;
-  padding-right: 12vw;
-  height: 100%;
-  align-items: center;
-}
-
-.card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 0.5rem;
-  margin-left: 3rem;
-}
-
-.card-tag--text {
-  font-size: 1.4rem;
-  font-family: Montserrat;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #fdecd2;
-  background-color: #091422;
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem;
-}
-
-.card-tag--text:last-of-type {
-  margin-right: 0;
-}
-
-.cards {
-  display: flex;
-  height: 90%;
-  justify-content: top;
-  align-items: flex-end;
-}
-
-.card:nth-child(even) {
-  align-self: flex-start;
-}
-
-.card {
-  margin: 0 5rem;
-  width: 100%;
-  position: relative;
-  padding: 3rem;
-}
-
-/* .background-card--info {
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  transform: translate(-5%, -5%);
-  width: 102%;
-  height: 102%;
-  background-color: #fe4f51;
-  border: 0.3rem solid #091422;
-} */
-
-.card-info {
-  position: relative;
-  padding: 1rem 1.5rem;
-  width: 100%;
-  border: 0.3rem solid #091422;
-}
-
-.card:hover {
-  cursor: pointer;
-}
-
-.card:hover .button-top {
-  animation: rotation 4s infinite linear;
-  cursor: pointer;
-  webkit-animation-play-state: running;
-}
-
-.card:hover .card-info:after {
-  top: 0%;
-  left: 0%;
-}
-
-.card-info:after {
-  content: "";
-  position: absolute;
-  display: block;
-  background: inherit;
-  border-radius: inherit;
-  border: inherit;
-  top: 3%;
-  left: 5%;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transition: all 0.2s ease-in-out;
-}
-
-.card-info--red {
-  background-color: #fe4f51;
-}
-
-.card-info--yellow {
-  background-color: #ffeb3d;
-}
-
-.card-info--green {
-  background-color: #4fc8b1;
-}
-
-.card-fase {
-  font-size: 1rem;
-  font-family: Montserrat;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #091422;
-  padding-bottom: 1rem;
-  text-align: center;
-}
-
-.card-title {
-  margin-bottom: 3rem;
-}
-
-.title-project {
-  font-size: 2.8rem;
-  font-family: Montserrat;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #091422;
-}
-
-.title-name {
-  font-size: 2.8rem;
-  font-family: Montserrat;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #091422;
-  -webkit-text-stroke: 1.5px;
-  letter-spacing: 0.15rem;
-  text-stroke: 1px #091422;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-}
-
-.card-image {
-  margin-bottom: 10rem;
-  border: 0.4rem solid #091422;
-  width: 100%;
-  height: 100%;
-}
-
-.card-button {
-  position: absolute;
-  bottom: -3%;
-  right: -3%;
-}
-
-.buttons {
-  position: relative;
-}
-
-.button-top {
-  position: relative;
-  animation: rotation 4s infinite linear;
-  width: 100%;
-  height: 100%;
-  bottom: 0%;
-  right: 0%;
-  animation-play-state: paused;
-  webkit-animation-play-state: paused;
-}
-
-.button-top:hover {
-  animation: rotation 4s infinite linear;
-  cursor: pointer;
-  animation-play-state: running;
-  webkit-animation-play-state: running;
-}
-
-/* .buttons:hover .button-top {
-  right: 5%;
-  top: -5;
-} */
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
-.button-background {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  /* transform: translate(-35%, -35%); */
-  transition: all 0.2s ease-in-out;
-}
-
-.text-large {
-  font-size: 10vw;
-  line-height: 0.5;
-  margin-right: 5rem;
-  text-transform: uppercase;
-  color: var(--color-gallery-title);
-  color: transparent;
-  -webkit-text-stroke: 0.4rem #091422;
-  text-stroke: 0.4rem #091422;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-  font-weight: 900;
-  font-family: Montserrat;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-}
-
-.text-large--fill {
-  -webkit-text-fill-color: #091422;
-  text-fill-color: #091422;
-}
-
-.text-large--inner {
-  display: block;
-}
-.text-large--inner-2 {
-  font-size: 9vw;
-}
+/* Navigation */
 
 .navigation {
   background-color: #091422;
@@ -567,7 +272,7 @@ html.has-scroll-dragging {
   font-family: Montserrat, sans-serif;
   color: #fdecd2;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 800;
   visibility: hidden;
   white-space: nowrap;

@@ -1,7 +1,7 @@
 .view {
   min-height: 100vh;
   padding: 5rem 0;
-  margin: 0 9rem 0 15rem;
+  margin: 0 8rem 0 14rem;
   display: flex;
   flex-direction: column;
 }

@@ -1,7 +1,7 @@
 import { preloadImages, map, clamp } from '../lib/utils';
 import imagesLoaded from 'imagesloaded';
 import React, { useRef, useEffect, useState } from 'react';
-import Tyle from '../components/Tyle';
+import Tyle from '../components/Tyle/Tyle';
 import Mouse from '../components/Mouse';
 import gql from 'graphql-tag';
 import { withApollo } from '../lib/withApollo';
@@ -83,72 +83,58 @@ const Home = ({ projects }) => {
       <main ref={scrollRef} data-scroll-container>
         <div class="content">
           <div class="gallery">
-            <div class="text-large">
-              <span
-                class="text-large--inner text-large--fill"
-                data-scroll
-                data-scroll-speed="3"
-                data-scroll-direction="vertical"
-              >
-                ONTDEK.
-              </span>
-              <span
-                data-scroll
-                data-scroll-speed="-4"
-                data-scroll-direction="vertical"
-                class="text-large--inner"
-              >
-                DURF 2030.
-              </span>
+            <div className="home_start">
+              <div className="home_text">
+              <div class="text_start">
+                <p class="text-large--fill" data-scroll data-scroll-speed="6" data-scroll-direction="vertical" > ONTDEK. </p>
+                <p data-scroll data-scroll-speed="6" data-scroll-direction="vertical" class="text-large--inner" > DURF 2030. </p>
+              </div>
+              <a href={'/'} className="button scale" data-scroll data-scroll-speed="8" data-scroll-direction="vertical">
+                  <div className="circle_button">
+                    <img
+                      className="button_image"
+                      src="./assets/buttons/wat_durf_button.svg"
+                    />
+                  </div>
+                </a>
+              </div>
+              <div className="home_start__info" data-scroll data-scroll-speed="-6" data-scroll-direction="vertical">
+                <p className="home_subtitle">Bouw mee aan de toekomst en zorg ervoor dat Kortrijk de culturele hoofdstad van Europa wordt!</p>
+                <div className="home_start__buttons">
+                  <div className="home_button__arrow">
+                    <p className="home_button__bold">Projecten in de kijker</p>
+                    <img className="button_arrow__image" src="./assets/images/arrow_large.svg" />
+                  </div>
+                  <a href={'/projects'}className="home_button__light scale">Alle projecten</a>
+                </div>
+              </div>
             </div>
 
-            <div class="cards">
+            <div className="cards">
               {projects.map((project, key) => {
                 if (key == 0 && key % 2 == 0)
                   return (
-                    <Tyle
-                      color="red"
-                      direction="2"
-                      button="0.5"
-                      project={project}
-                      key={key}
-                    />
+                    <Tyle color="red" direction="2" button="0.5" project={project} key={key}/>
                   );
                 else
                   return (
-                    <Tyle
-                      color="yellow"
-                      direction="-2"
-                      button="-0.5"
-                      project={project}
-                      key={key}
-                    />
+                    <Tyle color="yellow" direction="-2" button="-0.5" project={project} key={key}/>
                   );
               })}
 
-              {/* <Tyle color="red" direction="2" button="0.5"></Tyle>
-                <Tyle color="yellow" direction="-2" button="-0.5"></Tyle>
-                <Tyle color="green" direction="2" button="0.5"></Tyle>
-                <Tyle color="red" direction="-2" button="-0.5"></Tyle>
-                <Tyle color="yellow" direction="2" button="0.5"></Tyle> */}
             </div>
-            <div class="text-large">
-              <span
-                class="text-large--inner text-large--fill text-large--inner-2 "
-                data-scroll
-                data-scroll-speed="3"
-                data-scroll-direction="vertical"
-              >
-                JOUW PROJECT.
-              </span>
-              <span
-                data-scroll
-                data-scroll-speed="-4"
-                data-scroll-direction="vertical"
-                class="text-large--inner text-large--inner-2"
-              >
-                START NU.
-              </span>
+            
+            <div className="home_end">
+              <div class="text_end">
+                <p class="text-large--inner text-large--fill " data-scroll data-scroll-speed="2" data-scroll-direction="vertical"> JOUW PROJECT. </p>
+                <p data-scroll data-scroll-speed="-2" data-scroll-direction="vertical" class="text-large--inner"> START NU. </p>
+              </div>
+              <div className="home_end__info" data-scroll data-scroll-speed="3" data-scroll-direction="vertical">
+                <div className="home_end__buttons">
+                    <a href={'/create-project'} className="home_button__start scale">Start Nu</a>
+                    <a href={'/projects'} className="home_button__light scale">Alle projecten</a>
+                  </div>
+              </div>
             </div>
           </div>
         </div>

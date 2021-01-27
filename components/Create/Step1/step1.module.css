@@ -18,7 +18,7 @@
   composes: largeTitle from "../../../css/typo.module.css";
 }
 
-.title-description {
+.title_description {
   composes: semiBold from "../../../css/typo.module.css";
 }
 
@@ -29,15 +29,20 @@
 
 .part_content {
   margin-top: auto;
-  width: 75%;
-  margin: 0 auto;
+  width: 100%;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .content_theme,
 .content_category {
   justify-content: center;
   text-align: center;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .content_theme {

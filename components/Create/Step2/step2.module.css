@@ -6,7 +6,7 @@
 }
 
 .part_header {
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 
 .title {
@@ -18,7 +18,7 @@
   composes: largeTitle from "../../../css/typo.module.css";
 }
 
-.title-description {
+.title_description {
   composes: semiBold from "../../../css/typo.module.css";
 }
 
@@ -120,7 +120,7 @@
   position: relative;
   margin-top: 0.5rem;
   width: 100%;
-  height: 22rem;
+  height: 25rem;
   object-fit: cover;
   cursor: pointer;
 }

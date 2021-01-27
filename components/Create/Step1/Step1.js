@@ -63,7 +63,7 @@ const Step1 = ({ theme, category, setCategory, setTheme, setCurrentIndex }) => {
             </div>
           </div>
           <div className={style.content_category}>
-            <p className={style.subtitle}>Selcteer de categorie van je project</p>
+            <p className={style.subtitle}>Selecteer de categorie van je project</p>
             <div className={style.content_options}>
               {categories.map((category) => (
               <>

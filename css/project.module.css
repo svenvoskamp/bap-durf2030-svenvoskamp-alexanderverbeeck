@@ -7,13 +7,13 @@
 }
 
 .card {
-  width: 38rem;
+  width: 42rem;
   display: flex;
   flex-direction: column;
   position: relative;
   border: 0.4rem solid blueColor;
   background-color: beigeColor;
-  padding: 1.5rem;
+  padding: 2rem;
 }
 
 .card:after {
@@ -32,13 +32,12 @@
 }
 
 .card_image {
-  height: 20rem;
+  height: 22rem;
   border: 0.4rem solid blueColor;
 }
 
 .card_user {
   composes: mediumTitle from "../css/typo.module.css";
-  margin-bottom: 1rem;
 }
 
 .card_titles {
@@ -67,7 +66,7 @@
 }
 
 .card_info {
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
 }
@@ -105,7 +104,7 @@
 }
 
 .info_text {
-  padding: 1.2rem 0.5rem;
+  padding: 1.5rem 0.5rem;
   margin-left: 0.5rem;
 }
 

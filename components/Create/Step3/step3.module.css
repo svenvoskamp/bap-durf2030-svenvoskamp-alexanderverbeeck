@@ -1,6 +1,8 @@
 @value tokens: "../../../css/tokens.module.css";
 @value blueColor, yellowColor, beigeColor, greenColor, redColor, lightColor from tokens;
 
+/* Header */
+
 .part {
   composes: view from "../../../css/layout.module.css";
 }
@@ -18,7 +20,7 @@
   composes: largeTitle from "../../../css/typo.module.css";
 }
 
-.title-description {
+.title_description {
   composes: semiBold from "../../../css/typo.module.css";
 }
 
@@ -31,54 +33,24 @@
   border-bottom: 0.2rem solid blueColor;
 }
 
+/*  Content */
+
 .part_content {
   margin-bottom: 2rem;
 }
 
+/* Benodigdheden Toevoegen */
+
 .form {
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 1fr 35rem;
+  grid-template-columns: 1fr 1fr 40rem;
   grid-column-gap: 5rem;
 }
 
 .form_needs {
   z-index: 1;
   grid-column: span 2;
-}
-
-.my_needs {
-  z-index: 2;
-}
-
-.form_my__needs {
-  grid-column: 3;
-  background-color: beigeColor;
-  border: 0.2rem solid blueColor;
-  position: relative;
-  padding: 2rem;
-  min-height: 40rem;
-  height: 100%;
-}
-
-.form_my__needs:after {
-  content: "";
-  position: absolute;
-  display: block;
-  background: inherit;
-  border-radius: inherit;
-  border: inherit;
-  top: 0.8rem;
-  right: 0.8rem;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transition: all 0.2s ease-in-out;
-}
-
-.needs_list {
-  margin-top: 1rem;
-  height: 80%;
 }
 
 .checkboxes {
@@ -96,14 +68,9 @@
   margin-bottom: 1rem;
 }
 
-.button_next {
-  grid-column: 3;
-  text-align: center;
-}
-
 .checkbox_image {
-  border: 0.2rem solid blueColor;
-  padding: 2rem;
+  border: 0.3rem solid blueColor;
+  padding: 3rem 3.5rem;
   position: relative;
   background-color: beigeColor;
   text-align: center;
@@ -118,8 +85,8 @@
   background: inherit;
   border-radius: inherit;
   border: inherit;
-  top: 0.6rem;
-  left: 0.6rem;
+  top: 1rem;
+  left: 1rem;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -136,12 +103,29 @@
   top: 0;
 }
 
+.checkbox[type="radio"]:checked ~ .checkbox_image {
+  background-color: blueColor;
+}
+
+.checkbox[type="radio"]:checked ~ .checkbox_image svg path {
+  fill: beigeColor;
+  stroke: blueColor;
+}
+
 .checkbox_container {
   display: flex;
   padding: 1.2rem 0;
   z-index: 2;
   text-align: center;
   margin-right: 4rem;
+}
+
+/* Input toevoegen */
+
+.empty_add {
+  margin-top: 3rem;
+  composes: semiBold from "../../../css/typo.module.css";
+  grid-column: span 2;
 }
 
 .input_container {
@@ -169,6 +153,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   width: 100%;
   grid-column-gap: 2rem;
+  margin-top: 3rem;
 }
 
 .label {
@@ -190,7 +175,7 @@
 
 .true_false {
   border: 0.2rem solid blueColor;
-  padding: 0.4rem 0.6rem;
+  padding: 0.8rem 1rem;
   display: inline-block;
   cursor: pointer;
 }
@@ -205,6 +190,74 @@
 
 .checkbox_voorzien[type="radio"]:checked ~ .checkbox_false {
   background-color: redColor;
+}
+
+.buttons_voorzien {
+  display: flex;
+  padding: 0.5rem 0;
+}
+
+.voorzien {
+  z-index: 2;
+}
+
+.button_voorzien {
+  margin-left: 5rem;
+  border: 0.2rem solid blueColor;
+  padding: 0.8rem 1rem;
+  position: relative;
+  background-color: beigeColor;
+}
+
+.button_voorzien:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 0.7rem;
+  left: 0.7rem;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Mijn benodigdheden */
+
+.my_needs {
+  z-index: 2;
+}
+
+.form_my__needs {
+  grid-column: 3;
+  background-color: beigeColor;
+  border: 0.3rem solid blueColor;
+  position: relative;
+  padding: 2rem;
+  min-height: 50rem;
+  height: 100%;
+}
+
+.form_my__needs:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.needs_list {
+  margin-top: 1rem;
+  height: 80%;
 }
 
 .need_item {
@@ -267,13 +320,11 @@
   background-color: redColor;
 }
 
-.buttons_voorzien {
-  display: flex;
-  padding: 0.5rem 0;
-}
+/* Part End */
 
-.button_voorzien {
-  margin-left: 5rem;
+.button_next {
+  grid-column: 3;
+  text-align: center;
 }
 
 .button {
