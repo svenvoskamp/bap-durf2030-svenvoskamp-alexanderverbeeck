@@ -12,6 +12,7 @@ import Step2 from '../components/Create/Step2/Step2';
 import Step3 from '../components/Create/Step3/Step3';
 import Nav from '../components/Nav';
 import Loading from '../components/Loading/Loading';
+import axios from 'axios';
 
 const GET_CURRENT_USER = gql`
   query getCurrentUser($id: String!) {
@@ -72,11 +73,6 @@ const Create = ({ props }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const phase_id = 1;
-    const imgRef = await firebase.storage().ref('images/' + image.name);
-    const imgUrl = imgRef.name;
-    await imgRef.put(image);
-
     if (
       theme !== '' &&
       category !== '' &&
@@ -87,6 +83,25 @@ const Create = ({ props }) => {
       description !== '' &&
       image !== ''
     ) {
+      const form_data = new FormData();
+      form_data.append('files', image);
+      const response = await axios.post(
+        `https://durf2030.herokuapp.com/storage/upload`,
+        form_data,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'x-path': '/upload-folder/',
+          },
+          withCredentials: true,
+        }
+      );
+
+      console.log({ response });
+      const inserted_file = response.data[0];
+      const url = `https://durf2030.ams3.digitaloceanspaces.com/durf2030/${inserted_file.key}`;
+      const phase_id = 1;
+
       addProject({
         variables: {
           title: title,
@@ -94,7 +109,7 @@ const Create = ({ props }) => {
           impact: impact,
           description: description,
           district_id: district,
-          image: imgUrl,
+          image: url,
           user_id: props.sub,
           theme_id: theme,
           category_id: category,
@@ -148,7 +163,7 @@ const GetCurrentUser = ({ props }) => {
     variables: { id: props.sub },
   });
   if (loading) {
-    return <Loading props={"gebruiker"}/>;
+    return <Loading props={'gebruiker'} />;
   }
   if (error) {
     console.log(error);
@@ -165,7 +180,7 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
   const router = useRouter();
   if (loading) {
-    return <Loading props={"gebruiker"}/>;
+    return <Loading props={'gebruiker'} />;
   }
   if (!loading && user) {
     return <GetCurrentUser props={user} />;

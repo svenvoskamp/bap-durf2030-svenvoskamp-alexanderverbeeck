@@ -10,57 +10,6 @@ import { set } from 'mobx';
 import style from '../css/projects.module.css';
 import Loading from '../components/Loading/Loading';
 
-const GET_PROJECTS = gql`
-  query getProjects {
-    projects(where: { phase: { id: { _neq: 1 } } }) {
-      image
-      title
-      id
-      phase_id
-      theme_id
-      district_id
-      category_id
-      user {
-        first_name
-        last_name
-      }
-      phase {
-        phase
-      }
-      theme {
-        theme
-      }
-      category {
-        category
-      }
-      district {
-        district
-      }
-      needs {
-        need
-        type
-        provided
-      }
-    }
-    themes {
-      id
-      theme
-    }
-    categories {
-      id
-      category
-    }
-    districts {
-      id
-      district
-    }
-    phase {
-      id
-      phase
-    }
-  }
-`;
-
 const Projects = ({ projects, categories, themes, phases, districts }) => {
   console.log(phases);
   const [search, setSearch] = useState('');
@@ -204,40 +153,42 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                 />
               </div>
               <div className={style.filter_fase}>
-              <label htmlFor="alles">
-                      <input
-                        id="alles"
-                        type="radio"
-                        name="phase"
-                        defaultChecked
-                        className={`${style.input_none} ${style.input_radio}`}
-                        onClick={(e) => handlePhase(0)}
-                      />
-                      <p className={`${style.filter_radio} scale`}>Alle fase's</p>
-                    </label>
+                <label htmlFor="alles">
+                  <input
+                    id="alles"
+                    type="radio"
+                    name="phase"
+                    defaultChecked
+                    className={`${style.input_none} ${style.input_radio}`}
+                    onClick={(e) => handlePhase(0)}
+                  />
+                  <p className={`${style.filter_radio} scale`}>Alle fase's</p>
+                </label>
                 {phases.map((phase) => (
-                  <>   
-                  {phase.id != 1 && (
-                    <>
-                      <label htmlFor={phase.phase}>
-                      <input
-                        id={phase.phase}
-                        type="radio"
-                        name="phase"
-                        className={`${style.input_none} ${style.input_radio}`}
-                        onClick={(e) => handlePhase(phase.id)}
-                      />
-                      <p className={`${style.filter_radio} scale`}>{phase.phase}</p>
-                    </label>
+                  <>
+                    {phase.id != 1 && (
+                      <>
+                        <label htmlFor={phase.phase}>
+                          <input
+                            id={phase.phase}
+                            type="radio"
+                            name="phase"
+                            className={`${style.input_none} ${style.input_radio}`}
+                            onClick={(e) => handlePhase(phase.id)}
+                          />
+                          <p className={`${style.filter_radio} scale`}>
+                            {phase.phase}
+                          </p>
+                        </label>
+                      </>
+                    )}
                   </>
-                  )}
-                  </>
-
                 ))}
               </div>
             </div>
             <div className={style.filter_end}>
-              <select className={`${style.filter_select} scale`}
+              <select
+                className={`${style.filter_select} scale`}
                 name="category"
                 id="category"
                 onChange={(e) => handleCategory(e.currentTarget.value)}
@@ -249,7 +200,8 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   </option>
                 ))}
               </select>
-              <select className={`${style.filter_select} scale`}
+              <select
+                className={`${style.filter_select} scale`}
                 name="theme"
                 id="theme"
                 onChange={(e) => handleTheme(e.currentTarget.value)}
@@ -261,7 +213,8 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   </option>
                 ))}
               </select>
-              <select className={`${style.filter_select} scale`}
+              <select
+                className={`${style.filter_select} scale`}
                 name="district"
                 id="district"
                 onChange={(e) => handleDistrict(e.currentTarget.value)}
@@ -274,53 +227,126 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                 ))}
               </select>
               <button className={`${style.empty_button} scale`} onClick={reset}>
-              <img className={style.need_image} src="./assets/images/delete_filter.svg" />
+                <img
+                  className={style.need_image}
+                  src="./assets/images/delete_filter.svg"
+                />
               </button>
             </div>
           </div>
         </div>
         <div className={style.part_content}>
-            {newProjects && (
-                        <div className={style.projecten}>
-                {newProjects.map((project) => (
-                  <Project project={project} key={project.id}></Project>
-                ))}
+          {newProjects && (
+            <div className={style.projecten}>
+              {newProjects.map((project) => (
+                <Project project={project} key={project.id}></Project>
+              ))}
+            </div>
+          )}
+          {newProjects.length < 1 && (
+            <div className={style.empty_state}>
+              <p className={style.empty_state__text}>
+                Er zijn{' '}
+                <span className={style.empty_state__text__outline}>geen</span>{' '}
+                projecten gevonden
+              </p>
+              <div className={style.empty_state__buttons}>
+                <button
+                  className={`${style.empty_state__button} scale`}
+                  onClick={reset}
+                >
+                  Verwijder filter
+                </button>
+                <button
+                  className={`${style.empty_state__button__extra} scale`}
+                  onClick={reset}
+                >
+                  Maak zelf een project
+                </button>
               </div>
-            )}
-            {newProjects.length < 1 && (
-              <div className={style.empty_state}>
-                <p className={style.empty_state__text}>Er zijn <span className={style.empty_state__text__outline}>geen</span> projecten gevonden</p>
-                <div className={style.empty_state__buttons}>
-                  <button className={`${style.empty_state__button} scale`} onClick={reset}>Verwijder filter</button>
-                  <button className={`${style.empty_state__button__extra} scale`} onClick={reset}>Maak zelf een project</button>
-                </div>
-              </div>
-            )}
+            </div>
+          )}
         </div>
       </article>
     </>
   );
 };
 
-const AllProjects = () => {
-  const { loading, error, data } = useQuery(GET_PROJECTS);
+export async function getStaticProps() {
+  const apollo = require('../lib/apolloClient'); // import client
+  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+  var xhr = new XMLHttpRequest();
+  const GET_PROJECTS = gql`
+    query getProjects {
+      projects(where: { phase: { id: { _neq: 1 } } }) {
+        image
+        title
+        id
+        phase_id
+        theme_id
+        district_id
+        category_id
+        user {
+          first_name
+          last_name
+        }
+        phase {
+          phase
+        }
+        theme {
+          theme
+        }
+        category {
+          category
+        }
+        district {
+          district
+        }
+        needs {
+          need
+          type
+          provided
+        }
+      }
+      themes {
+        id
+        theme
+      }
+      categories {
+        id
+        category
+      }
+      districts {
+        id
+        district
+      }
+      phase {
+        id
+        phase
+      }
+    }
+  `;
+  const client = apollo.default(); //initialize client
 
-  if (loading) {
-    return <Loading props={"projecten"}/>;
-  }
-  if (error) {
-    console.error(error);
-    return <div>Error!</div>;
-  }
-  return (
-    <Projects
-      projects={data.projects}
-      themes={data.themes}
-      categories={data.categories}
-      districts={data.districts}
-      phases={data.phase}
-    />
-  );
-};
+  const { data, error } = await client.query({
+    query: GET_PROJECTS,
+  });
 
-export default withApollo({ ssr: true })(AllProjects);
+  if (!data || error) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      projects: data.projects,
+      themes: data.themes,
+      districts: data.districts,
+      categories: data.categories,
+      phases: data.phase,
+    }, // will be passed to the page component as props
+  };
+}
+
+export default withApollo({ ssr: false })(Projects);

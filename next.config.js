@@ -16,4 +16,7 @@ module.exports = {
     SESSION_COOKIE_LIFETIME: 7200, // 2 hours
     APP_HOST: process.env.DOMAIN,
   },
+  images: {
+    domains: ['durf2030.ams3.digitaloceanspaces.com'],
+  },
 };

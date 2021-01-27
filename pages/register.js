@@ -203,7 +203,7 @@ const GetCurrentUser = ({ props }) => {
     variables: { id: props.sub },
   });
   if (loading) {
-    return <Loading props={"gebruiker"}/>;
+    return <Loading props={'gebruiker'} />;
   }
   if (error) {
     console.log(error);
@@ -219,7 +219,7 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
   const router = useRouter();
   if (loading) {
-    return <Loading props={"gebruiker"}/>;
+    return <Loading props={'gebruiker'} />;
   }
   if (!loading && user) {
     return <GetCurrentUser props={user} />;
@@ -229,5 +229,42 @@ const getUser = () => {
     return <></>;
   }
 };
+
+// export async function getStaticProps() {
+//   const apollo = require('../lib/apolloClient'); // import client
+//   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+//   var xhr = new XMLHttpRequest();
+//   const { user } = useFetchUser();
+//   const GET_CURRENT_USER = gql`
+//     query getCurrentUser($id: String!) {
+//       users(where: { id: { _eq: $id } }) {
+//         id
+//         name
+//         password
+//         picture
+//         first_name
+//       }
+//     }
+//   `;
+
+//   const client = apollo.default(); //initialize client
+
+//   const { data, error } = await client.query({
+//     query: GET_CURRENT_USER,
+//     variables: { id: user.sub },
+//   });
+
+//   if (!data || error) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: {
+//       props: data.users[0],
+//     }, // will be passed to the page component as props
+//   };
+// }
 
 export default withApollo({ ssr: true })(getUser);
