@@ -33,7 +33,7 @@
   border: 0.4rem solid blueColor;
   position: relative;
   width: 100%;
-  object-fit: cover;
+  height: 75%;
 }
 
 .extra_image:after {
@@ -52,9 +52,10 @@
 }
 
 .project_image {
-  display: block;
   width: 100%;
   height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .extra_button {
