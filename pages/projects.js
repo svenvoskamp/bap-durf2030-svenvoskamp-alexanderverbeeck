@@ -9,9 +9,11 @@ import Nav from '../components/Nav';
 import { set } from 'mobx';
 import style from '../css/projects.module.css';
 import Loading from '../components/Loading/Loading';
+import { useFetchUser } from '../lib/user';
 
 const Projects = ({ projects, categories, themes, phases, districts }) => {
   console.log(phases);
+  const { user, loading } = useFetchUser();
   const [search, setSearch] = useState('');
   const [newProjects, setNewProjects] = useState(projects);
   const [phaseId, setPhaseId] = useState(0);
@@ -124,7 +126,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
   return (
     <>
       <Mouse></Mouse>
-      <Nav></Nav>
+      <Nav user={user}></Nav>
 
       <article className={style.part}>
         <div className={style.part_header}>
@@ -153,7 +155,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   onChange={(e) => setSearch(e.currentTarget.value)}
                 />
               </div>
-              <div className={style.filter_fase}>
+              {/* <div className={style.filter_fase}>
                 <label htmlFor="alles">
                   <input
                     id="alles"
@@ -185,7 +187,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                     )}
                   </>
                 ))}
-              </div>
+              </div> */}
             </div>
             <div className={style.filter_end}>
               <select

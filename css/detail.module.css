@@ -20,11 +20,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.div {
-}
-
-.div_text {
-  composes: largeTitle from '../css/typo.module.css';
+  width: 90rem;
+  margin-right: 10rem;
 }

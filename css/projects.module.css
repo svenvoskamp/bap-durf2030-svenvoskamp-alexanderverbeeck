@@ -62,12 +62,20 @@
   cursor: pointer;
 }
 
-.filter_select:last-of-type {
-  margin-right: 0;
+.filter_select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Safari, Chrome, Opera */
+  -webkit-appearance: none;
 }
 
-.filter_fase {
-  align-items: center;
+/* for IE10 */
+.filter_select::-ms-expand {
+  display: none;
+}
+
+.filter_select:last-of-type {
+  margin-right: 0;
 }
 
 .input {
@@ -204,11 +212,14 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (min-width: 2000px) {
   .projecten {
-    width: 100%;
-    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .projecten {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-gap: 5rem;
   }
 }

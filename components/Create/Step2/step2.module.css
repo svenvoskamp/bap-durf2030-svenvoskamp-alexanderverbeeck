@@ -2,7 +2,7 @@
 @value blueColor, yellowColor, beigeColor from tokens;
 
 .part {
-  composes: view from "../../../css/layout.module.css";
+  composes: view from '../../../css/layout.module.css';
 }
 
 .part_header {
@@ -10,20 +10,20 @@
 }
 
 .title {
-  composes: largeTitleOutline from "../../../css/typo.module.css";
+  composes: largeTitleOutline from '../../../css/typo.module.css';
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from "../../../css/typo.module.css";
+  composes: largeTitle from '../../../css/typo.module.css';
 }
 
 .title_description {
-  composes: semiBold from "../../../css/typo.module.css";
+  composes: semiBold from '../../../css/typo.module.css';
 }
 
 .subtitle {
-  composes: mediumTitle from "../../../css/typo.module.css";
+  composes: mediumTitle from '../../../css/typo.module.css';
 }
 
 .subtitle_project {
@@ -86,7 +86,7 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   padding: 0.2rem 0.5rem;
 }
 
@@ -105,7 +105,7 @@
 .input_text {
   border: 0.2rem solid blueColor;
   background-color: transparent;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   padding: 0.5rem 0.5rem;
   margin-top: 0.5rem;
 }
@@ -126,7 +126,7 @@
 }
 
 .input_image:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -141,12 +141,12 @@
 }
 
 .label {
-  composes: semiBold from "../../../css/typo.module.css";
+  composes: semiBold from '../../../css/typo.module.css';
   margin-bottom: 0.5rem;
 }
 
 .label_extra {
-  composes: smallText from "../../../css/typo.module.css";
+  composes: smallText from '../../../css/typo.module.css';
 }
 
 .part_end {
@@ -171,15 +171,19 @@
 }
 
 .button {
-  composes: button from "../../../css/buttons.module.css";
+  composes: button from '../../../css/buttons.module.css';
 }
 
 .circle_button {
-  composes: circleButton from "../../../css/buttons.module.css";
+  composes: circleButton from '../../../css/buttons.module.css';
 }
 
 .button_image {
-  composes: buttonImage from "../../../css/buttons.module.css";
+  composes: buttonImage from '../../../css/buttons.module.css';
+}
+
+.button_image__provided {
+  animation: none;
 }
 
 .button_back {
@@ -188,7 +192,7 @@
 }
 
 .button_arrow {
-  composes: buttonBack from "../../../css/buttons.module.css";
+  composes: buttonBack from '../../../css/buttons.module.css';
 }
 
 .back_image {
@@ -196,5 +200,5 @@
 }
 
 .back_text {
-  composes: bold from "../../../css/typo.module.css";
+  composes: bold from '../../../css/typo.module.css';
 }

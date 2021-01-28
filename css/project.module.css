@@ -7,17 +7,18 @@
 }
 
 .card {
-  width: 42rem;
+  /* width: 42rem; */
   display: flex;
   flex-direction: column;
   position: relative;
   border: 0.4rem solid blueColor;
   background-color: beigeColor;
   padding: 2rem;
+  min-width: 40rem;
 }
 
 .card:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -34,10 +35,11 @@
 .card_image {
   height: 22rem;
   border: 0.4rem solid blueColor;
+  object-fit: cover;
 }
 
 .card_user {
-  composes: mediumTitle from "../css/typo.module.css";
+  composes: mediumTitle from '../css/typo.module.css';
 }
 
 .card_titles {
@@ -46,13 +48,13 @@
 }
 
 .card_title {
-  composes: mediumTitleOutline from "../css/typo.module.css";
+  composes: mediumTitleOutline from '../css/typo.module.css';
   margin-bottom: 1rem;
 }
 
 .card_tags {
   display: flex;
-  composes: smallCaps from "../css/typo.module.css";
+  composes: smallCaps from '../css/typo.module.css';
   color: beigeColor;
 }
 
@@ -93,6 +95,15 @@
   background-color: greenColor;
 }
 
+.info_needs {
+  display: flex;
+  align-items: flex-start;
+}
+
+.needs_text {
+  display: flex;
+}
+
 .info_item {
   display: flex;
   border-bottom: 0.2rem solid blueColor;
@@ -105,15 +116,19 @@
 
 .info_text {
   padding: 1.5rem 0.5rem;
-  margin-left: 0.5rem;
+  margin-left: 0.3rem;
+}
+
+.needs_number {
+  margin-left: auto;
 }
 
 .info_light {
-  composes: smallCapsLight from "../css/typo.module.css";
+  composes: smallCapsLight from '../css/typo.module.css';
 }
 
 .info_bold {
-  composes: smallCaps from "../css/typo.module.css";
+  composes: smallCaps from '../css/typo.module.css';
 }
 
 .need {

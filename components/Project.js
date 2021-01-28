@@ -68,54 +68,62 @@ const Project = ({ project, key }) => {
               <div className={`${style.info_needs} ${style.info_item}`}>
                 {project.needs.length > 2 && (
                   <>
-                    {project.needs.slice(0, 2).map((need) => (
-                      <div className={style.need}>
-                        {need.type == 'Gebouw' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/gebouw_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Eten' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/eten_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Persoon' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/persoon_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Item' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/item_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Drank' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/drank_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        <p className={`${style.info_text} ${style.info_light}`}>
-                          {need.need}
-                        </p>
-                      </div>
-                    ))}
-                    <p>+ {project.needs.length - 2}</p>
+                    <div className={style.needs_text}>
+                      {project.needs.slice(0, 2).map((need) => (
+                        <div className={style.need}>
+                          {need.type == 'Gebouw' && (
+                            <>
+                              <img
+                                className={style.need_image}
+                                src="./assets/images/gebouw_icon__small.svg"
+                              />
+                            </>
+                          )}
+                          {need.type == 'Eten' && (
+                            <>
+                              <img
+                                className={style.need_image}
+                                src="./assets/images/eten_icon__small.svg"
+                              />
+                            </>
+                          )}
+                          {need.type == 'Persoon' && (
+                            <>
+                              <img
+                                className={style.need_image}
+                                src="./assets/images/persoon_icon__small.svg"
+                              />
+                            </>
+                          )}
+                          {need.type == 'Item' && (
+                            <>
+                              <img
+                                className={style.need_image}
+                                src="./assets/images/item_icon__small.svg"
+                              />
+                            </>
+                          )}
+                          {need.type == 'Drank' && (
+                            <>
+                              <img
+                                className={style.need_image}
+                                src="./assets/images/drank_icon__small.svg"
+                              />
+                            </>
+                          )}
+                          <p
+                            className={`${style.info_text} ${style.info_light} `}
+                          >
+                            {need.need}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                    <p
+                      className={`${style.info_text} ${style.info_bold} ${style.needs_number}`}
+                    >
+                      + {project.needs.length - 2}
+                    </p>
                   </>
                 )}
                 {project.needs.length <= 2 && project.needs.length > 0 && (

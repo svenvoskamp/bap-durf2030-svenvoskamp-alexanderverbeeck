@@ -6,12 +6,16 @@ import Mouse from '../../components/Mouse';
 import Header from '../../components/Detail/Header/Header';
 import Extra from '../../components/Detail/Extra/Extra';
 import Needs from '../../components/Detail/Needs/Needs';
+import Creatie from '../../components/Detail/Creatie/Creatie';
+import Crowdfunding from '../../components/Detail/Crowdfunding/Crowdfunding';
+import { useFetchUser } from '../../lib/user';
 
 import Nav from '../../components/Nav';
 import style from '../../css/detail.module.css';
 import Loading from '../../components/Loading/Loading';
 
 const Detail = ({ props }) => {
+  const { user, loading } = useFetchUser();
   const scrollRef = useRef(null);
 
   import('locomotive-scroll').then((locomotiveModule) => {
@@ -27,18 +31,26 @@ const Detail = ({ props }) => {
   return (
     <>
       <Mouse></Mouse>
-      <Nav></Nav>
+      <Nav user={user}></Nav>
       <main ref={scrollRef} data-scroll-container>
         <article className={style.part_project}>
           <div className={style.part_info}>
             <Header props={props}></Header>
+            <Needs user={user} needs={props.needs}></Needs>
+          </div>
+          <Extra className={style.part_extra} props={props}></Extra>
+
+          <div className={style.part_info}>
+            <Header props={props}></Header>
+
             <Needs needs={props.needs}></Needs>
           </div>
           <Extra props={props}></Extra>
         </article>
-        <div className={style.div}>
-          <p className={style.div_text}>Hier staat een heleboel tekst</p>
-        </div>
+        <article>
+          <Creatie></Creatie>
+          <Crowdfunding></Crowdfunding>
+        </article>
       </main>
     </>
   );
@@ -85,11 +97,14 @@ export async function getServerSideProps(context) {
         }
         image
         impact
-        needs(order_by: { provided: asc }) {
+        needs(order_by: { provided: asc, pending: asc }) {
           id
           need
           type
           provided
+          pending
+          user_id
+          motivation
         }
         phase {
           phase

@@ -21,14 +21,13 @@ const Extra = ({ props }) => {
           />
         </div>
         <div className={style.extra_button}>
-          <p className={style.extra_button__text}>Projecten in de kijker</p>
+          <p className={style.extra_button__text}>Denk mee met dit project</p>
           <img
             className={style.extra_button__arrow}
             src="../assets/images/arrow_large.svg"
           />
         </div>
       </div>
-      ;
     </>
   );
 };
