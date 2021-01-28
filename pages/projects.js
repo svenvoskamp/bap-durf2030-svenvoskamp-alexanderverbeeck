@@ -19,6 +19,19 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
   const [themeId, setThemeId] = useState(0);
   const [districtId, setDistrictId] = useState(0);
 
+  const scrollRef = useRef(null);
+
+  import('locomotive-scroll').then((locomotiveModule) => {
+    const lscroll = new locomotiveModule.default({
+      el: scrollRef.current,
+      smooth: true,
+      direction: 'vertical',
+    });
+
+    lscroll.update();
+    // Preload images and fonts
+  });
+
   useEffect(() => {
     filter();
   }, [phaseId]);
@@ -125,7 +138,8 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
     <>
       <Mouse></Mouse>
       <Nav></Nav>
-      <article className={style.part}>
+
+      <article ref={scrollRef} data-scroll-container className={style.part}>
         <div className={style.part_header}>
           <h1 className={style.title}>
             durf 2030.
