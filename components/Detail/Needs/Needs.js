@@ -35,7 +35,7 @@ const Needs = ({ needs }) => {
                       </div>
                     </div>
                   </div>
-                  {/* <div className={style.need_button}>
+                  <div className={style.need_button}>
                     <a
                       onClick={(e) => handleClick(need.id)}
                       className={style.button}
@@ -47,7 +47,7 @@ const Needs = ({ needs }) => {
                         />
                       </div>
                     </a>
-                  </div> */}
+                  </div>
                 </div>
               )}
               {need.provided && (

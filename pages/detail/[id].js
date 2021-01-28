@@ -69,7 +69,7 @@ const Detail = ({ props }) => {
 //   return { paths, fallback: false };
 // }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps(context) {
   const apollo = require('../../lib/apolloClient'); // import client
   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
   var xhr = new XMLHttpRequest();
@@ -112,7 +112,7 @@ export async function getServerSideProps({ params }) {
 
   const { data, error } = await client.query({
     query: GET_PROJECT_BY_ID,
-    variables: { id: params.id },
+    variables: { id: context.params.id },
   });
 
   if (!data || error) {
