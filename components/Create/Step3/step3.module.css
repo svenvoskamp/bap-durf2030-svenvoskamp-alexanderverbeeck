@@ -327,6 +327,10 @@
 
 /* Part End */
 
+.part_end {
+  z-index: 2;
+}
+
 .button_next {
   grid-column: 3;
   text-align: center;

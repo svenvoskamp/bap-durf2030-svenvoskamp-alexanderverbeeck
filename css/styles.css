@@ -250,6 +250,7 @@ html.has-scroll-dragging {
   position: absolute;
   padding: 0 1.5rem;
   cursor: pointer;
+  display: in;
 }
 
 .item {
@@ -257,7 +258,7 @@ html.has-scroll-dragging {
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin: 2rem 0;
+  margin: 3rem 0;
   padding: 0.5rem 0;
 }
 

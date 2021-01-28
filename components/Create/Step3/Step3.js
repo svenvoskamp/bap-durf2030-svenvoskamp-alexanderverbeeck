@@ -505,6 +505,16 @@ const Needs = ({ project_id }) => {
             </div>
           </div>
         </div>
+        <div className={style.part_end}>
+            <a href={'/'} className={style.button}>
+              <div className={style.circle_button}>
+                <img
+                  className={style.button_image}
+                  src="./assets/buttons/project_afronden_button.svg"
+                />
+              </div>
+            </a>
+        </div>
       </article>
     </>
   );

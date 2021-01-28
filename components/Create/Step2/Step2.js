@@ -107,6 +107,7 @@ const Step2 = ({
                   onChange={(e) => setDistrict(e.currentTarget.value)}
                   required
                 >
+                  <option value="">--Kies jouw buurt--</option>
                   {districts.map((district) => (
                     <>
                       <option value={district.id}>{district.district}</option>
