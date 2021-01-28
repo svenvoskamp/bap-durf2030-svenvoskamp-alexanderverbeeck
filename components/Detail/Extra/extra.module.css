@@ -1,0 +1,62 @@
+@value tokens: "../../../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, redColor, greenColor from tokens;
+
+/* Extra */
+
+.project_extra {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Extra Tagline */
+
+.extra_tagline {
+  position: relative;
+}
+
+.tagline_text {
+  composes: mediumTitle from '../../../css/typo.module.css';
+}
+
+.tagline_image {
+  position: absolute;
+}
+
+.extra_image {
+  z-index: 2;
+}
+
+.project_image {
+  border: 0.4rem solid blueColor;
+  position: relative;
+}
+
+.project_image:after {
+  content: '';
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.extra_button {
+  display: flex;
+  align-items: center;
+}
+
+.extra_button__text {
+  composes: smallCaps from '../../../css/typo.module.css';
+}
+
+.extra_button__arrow {
+  margin-left: 5rem;
+}

@@ -4,7 +4,7 @@
 .part_project {
   min-height: 100vh;
   padding: 5rem 0;
-  margin: 0 8rem 0 14rem;
+  margin: 0 0 0 14rem;
   display: flex;
   flex-direction: row;
 }
@@ -16,171 +16,16 @@
   height: 100%;
 }
 
-/* Project Tags */
-
-.project_tags {
-  display: flex;
-  composes: smallCaps from "../css/typo.module.css";
-  color: beigeColor;
-  margin-bottom: 1rem;
-}
-
-.card_tag {
-  background-color: blueColor;
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-}
-
-.card_tag:last-of-type {
-  margin-right: 0;
-}
-
-/* Info Project */
-
-.project {
-  width: 50%;
+.part_info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  margin-right: 20rem;
 }
 
-.title {
-  composes: title from "./typo.module.css";
-  margin-bottom: 1rem;
+.div {
 }
 
-.title_outline {
-  composes: titleOutline from "./typo.module.css";
-}
-
-/* Project Subtitles */
-
-.project_subtitles {
-  display: flex;
-  margin-bottom: 5rem;
-}
-
-.info_item {
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-}
-
-.inf_item:last-of-type {
-  margin-right: 0;
-}
-
-.fase_color {
-  height: 1.5rem;
-  border-radius: 50%;
-  width: 1.5rem;
-}
-
-.fase_concept {
-  background-color: blueColor;
-}
-
-.fase_creatie {
-  background-color: yellowColor;
-}
-
-.fase_crowdfunding {
-  background-color: redColor;
-}
-
-.fase_realisatie {
-  background-color: greenColor;
-}
-
-.info_text {
-  padding: 1.5rem 0.5rem;
-  margin-left: 0.5rem;
-}
-
-.info_light {
-  composes: smallCapsLight from "../css/typo.module.css";
-}
-
-.info_bold {
-  composes: smallCaps from "../css/typo.module.css";
-}
-
-/* Project Description */
-
-.description_bold {
-  composes: bold from "./typo.module.css";
-  color: #3b4045;
-  margin-bottom: 2rem;
-}
-
-.description_light {
-  composes: text from "./typo.module.css";
-  color: #3b4045;
-}
-
-/* Extra */
-
-.project_extra {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-/* Extra Tagline */
-
-.extra_tagline {
-  position: relative;
-}
-
-.tagline_text {
-  composes: mediumTitle from "../css/typo.module.css";
-}
-
-.tagline_image {
-  position: absolute;
-}
-
-.extra_image {
-  z-index: 2;
-}
-
-.project_image {
-  border: 0.4rem solid blueColor;
-  position: relative;
-}
-
-.project_image:after {
-  content: "";
-  position: absolute;
-  display: block;
-  background: inherit;
-  border-radius: inherit;
-  border: inherit;
-  top: 1.5rem;
-  left: 1.5rem;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transition: all 0.2s ease-in-out;
-}
-
-.extra_button {
-  display: flex;
-  align-items: center;
-}
-
-.extra_button__text {
-  composes: smallCaps from "../css/typo.module.css";
-}
-
-.extra_button__arrow {
-  margin-left: 5rem;
-}
-
-/* Benodigdheden */
-
-.benodigdheden_title {
-  composes: smallTitle from "../css/typo.module.css";
+.div_text {
+  composes: largeTitle from '../css/typo.module.css';
 }

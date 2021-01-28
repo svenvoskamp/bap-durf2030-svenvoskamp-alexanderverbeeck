@@ -34,7 +34,7 @@ const Step2 = ({
   let districts;
   const { loading, error, data } = useQuery(GET_DISTRICTS);
   if (loading) {
-    return <Loading props={"loading"}/>;
+    return <Loading props={'loading'} />;
   }
   if (error) {
     console.log(error);
@@ -59,12 +59,12 @@ const Step2 = ({
   };
   return (
     <>
-      <Mouse></Mouse>
+      <Mouse> </Mouse>
       <article className={style.part}>
         <div className={style.part_header}>
           <h1 className={style.title}>
             Project.
-            <span className={style.title_outline}>beschrijving.</span>
+            <span className={style.title_outline}> beschrijving. </span>
           </h1>
           <p className={style.title_description}>
             Super dat je een project wilt starten voor DURF 2030, we beginnen
@@ -79,7 +79,7 @@ const Step2 = ({
               </h2>
               <div className={`${style.input_container} ${style.input_title}`}>
                 <label htmlFor="title" className={style.label}>
-                  Titel{' '}
+                  Titel
                   <span className={style.label_extra}>(max 20 karakters)</span>
                 </label>
                 <input
@@ -98,7 +98,7 @@ const Step2 = ({
                 className={`${style.input_container} ${style.input_district}`}
               >
                 <label for="districts" className={style.label}>
-                  Waar gaat uw project plaatsvinden:{' '}
+                  Waar gaat uw project plaatsvinden:
                 </label>
                 <select
                   name="districts"
@@ -107,10 +107,10 @@ const Step2 = ({
                   onChange={(e) => setDistrict(e.currentTarget.value)}
                   required
                 >
-                  <option value="">--Kies jouw buurt--</option>
+                  <option value=""> --Kies jouw buurt-- </option>
                   {districts.map((district) => (
                     <>
-                      <option value={district.id}>{district.district}</option>
+                      <option value={district.id}> {district.district} </option>
                     </>
                   ))}
                 </select>
@@ -119,7 +119,7 @@ const Step2 = ({
                 className={`${style.input_container} ${style.input_tagline}`}
               >
                 <label htmlFor="tagline" className={style.label}>
-                  Tagline{' '}
+                  Tagline
                   <span className={style.label_extra}>(max 50 karakters)</span>
                 </label>
                 <input
@@ -175,7 +175,7 @@ const Step2 = ({
               </h2>
               <div className={`${style.input_container} ${style.input_impact}`}>
                 <label htmlFor="impact" className={style.label}>
-                  Welke positieve impact gaat jouw project teweeg brengen?{' '}
+                  Welke positieve impact gaat jouw project teweeg brengen ?
                   <span className={style.label_extra}>(max 250 karakters)</span>
                 </label>
                 <textarea
@@ -194,7 +194,7 @@ const Step2 = ({
                 className={`${style.input_container} ${style.input_description}`}
               >
                 <label htmlFor="description" className={style.label}>
-                  Beschrijf kort jouw project.{' '}
+                  Beschrijf kort jouw project.
                   <span className={style.label_extra}>(max 500 karakters)</span>
                 </label>
                 <textarea
@@ -219,7 +219,7 @@ const Step2 = ({
                 className={style.back_image}
                 src="./assets/images/button_back.svg"
               />
-              <span className={style.back_text}>Terug</span>
+              <span className={style.back_text}> Terug </span>
             </button>
           </div>
           <label className={style.button_next} htmlFor="button">

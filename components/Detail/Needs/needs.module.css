@@ -1,0 +1,62 @@
+@value tokens: "../../../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, redColor, greenColor from tokens;
+
+/* Benodigdheden */
+
+.needs_title {
+  composes: mediumTitle from '../../../css/typo.module.css';
+}
+
+.needs_list {
+  display: flex;
+  flex-direction: row;
+}
+
+.need {
+  position: relative;
+}
+
+.need_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-right: 2rem;
+  position: relative;
+}
+
+.need_item:last-of-type {
+  margin-right: 0;
+}
+
+.need_item__text {
+  composes: smallCaps from '../../../css/typo.module.css';
+}
+
+.needs_item__image {
+  border: 0.3rem solid blueColor;
+  width: 10rem;
+  height: 10rem;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.need_button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.button {
+  composes: smallButton from '../../../css/buttons.module.css';
+}
+
+.circle_button {
+  composes: smallCircleButton from '../../../css/buttons.module.css';
+}
+
+.button_image {
+  composes: smallButtonImage from '../../../css/buttons.module.css';
+}

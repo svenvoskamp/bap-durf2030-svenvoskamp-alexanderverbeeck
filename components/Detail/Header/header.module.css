@@ -1,0 +1,97 @@
+@value tokens: "../../../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, redColor, greenColor from tokens;
+
+/* Project Tags */
+
+.project_tags {
+  display: flex;
+  composes: smallCaps from '../../../css/typo.module.css';
+  color: beigeColor;
+  margin-bottom: 1rem;
+}
+
+.card_tag {
+  background-color: blueColor;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+}
+
+.card_tag:last-of-type {
+  margin-right: 0;
+}
+
+/* Info Project */
+
+.title {
+  composes: title from '../../../css/typo.module.css';
+  margin-bottom: 1rem;
+}
+
+.title_outline {
+  composes: titleOutline from '../../../css/typo.module.css';
+}
+
+/* Project Subtitles */
+
+.project_subtitles {
+  display: flex;
+  margin-bottom: 5rem;
+}
+
+.info_item {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.info_item:last-of-type {
+  margin-right: 0;
+}
+
+.fase_color {
+  height: 1.5rem;
+  border-radius: 50%;
+  width: 1.5rem;
+}
+
+.fase_concept {
+  background-color: blueColor;
+}
+
+.fase_creatie {
+  background-color: yellowColor;
+}
+
+.fase_crowdfunding {
+  background-color: redColor;
+}
+
+.fase_realisatie {
+  background-color: greenColor;
+}
+
+.info_text {
+  padding: 1.5rem 0.5rem;
+  margin-left: 0.2rem;
+}
+
+.info_light {
+  composes: smallCapsLight from '../../../css/typo.module.css';
+}
+
+.info_bold {
+  composes: smallCaps from '../../../css/typo.module.css';
+}
+
+/* Project Description */
+
+.description_bold {
+  composes: bold from '../../../css/typo.module.css';
+  color: #3b4045;
+  margin-bottom: 2rem;
+}
+
+.description_light {
+  composes: text from '../../../css/typo.module.css';
+  color: #3b4045;
+}
