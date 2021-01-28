@@ -332,7 +332,9 @@ const Needs = ({ needs, user, projectId }) => {
     if (!loading && data) {
       return <NeedsList user={data.users[0]} needs={needs} />;
     }
-    return <NeedsList user={data.users[0]} needs={needs} />;
+    if (!loading && !data) {
+      return <>error 404 </>;
+    }
   }
   if (!user) {
     const { loading, error, data } = useQuery(GET_CURRENT_USER, {
