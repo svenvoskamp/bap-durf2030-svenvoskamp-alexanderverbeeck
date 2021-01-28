@@ -44,32 +44,32 @@ const Detail = ({ props }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const apollo = require('../../lib/apolloClient'); // import client
-  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-  var xhr = new XMLHttpRequest();
-  const GET_ID = gql`
-    query MyQuery {
-      projects {
-        id
-      }
-    }
-  `;
-  const client = apollo.default(); //initialize client
+// export async function getStaticPaths() {
+//   const apollo = require('../../lib/apolloClient'); // import client
+//   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+//   var xhr = new XMLHttpRequest();
+//   const GET_ID = gql`
+//     query MyQuery {
+//       projects {
+//         id
+//       }
+//     }
+//   `;
+//   const client = apollo.default(); //initialize client
 
-  const { data, error } = await client.query({
-    query: GET_ID,
-  });
-  console.log(data);
+//   const { data, error } = await client.query({
+//     query: GET_ID,
+//   });
+//   console.log(data);
 
-  const paths = data.projects.map((project) => ({
-    params: { id: '' + project.id },
-  }));
+//   const paths = data.projects.map((project) => ({
+//     params: { id: '' + project.id },
+//   }));
 
-  return { paths, fallback: false };
-}
+//   return { paths, fallback: false };
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const apollo = require('../../lib/apolloClient'); // import client
   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
   var xhr = new XMLHttpRequest();
