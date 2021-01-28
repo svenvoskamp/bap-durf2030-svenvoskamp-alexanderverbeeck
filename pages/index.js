@@ -186,7 +186,7 @@ const Home = ({ projects }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apollo = require('../lib/apolloClient'); // import client
   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
   var xhr = new XMLHttpRequest();
