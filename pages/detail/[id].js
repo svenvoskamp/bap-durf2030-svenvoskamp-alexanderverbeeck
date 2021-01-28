@@ -182,37 +182,6 @@ const Detail = ({ props }) => {
   );
 };
 
-// const getProject = () => {
-//   const router = useRouter();
-//   const id = router.query.id;
-
-//   const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
-//     variables: { id: id },
-//   });
-//   if (loading) {
-//     return <Loading props={'detail'} />;
-//   }
-//   if (error) {
-//     console.log(error);
-//     return <div>Error...</div>;
-//   }
-//   if (!data.projects[0]) {
-//     const handleClick = () => {
-//       router.push('/');
-//     };
-//     return (
-//       <>
-//         <Mouse></Mouse>
-//         <div>Project kan niet gevonden worden</div>
-//         <button onClick={handleClick}>Ga terug</button>
-//       </>
-//     );
-//   }
-//   if (data.projects[0]) {
-//     return <Detail props={data.projects[0]} />;
-//   }
-// };
-
 export async function getStaticPaths() {
   const apollo = require('../../lib/apolloClient'); // import client
   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;

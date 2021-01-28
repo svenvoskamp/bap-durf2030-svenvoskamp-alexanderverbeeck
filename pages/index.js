@@ -117,29 +117,20 @@ const Home = ({ projects }) => {
             <div className="cards">
               {projects.map((project, key) => (
                 <>
-                  {key == 0 && (
+                  {key % 2 == 0 && (
                     <Tyle
                       color="red"
                       direction="3"
                       button="0.5"
-                      project={project}
-                      key={key}
-                    />
-                  )}
-                  {key % 2 == 0 && (
-                    <Tyle
-                      color="yellow"
-                      direction="-3"
-                      button="-0.5"
                       project={project}
                       key={key}
                     />
                   )}
                   {key % 2 != 0 && (
                     <Tyle
-                      color="red"
-                      direction="3"
-                      button="0.5"
+                      color="yellow"
+                      direction="-3"
+                      button="-0.5"
                       project={project}
                       key={key}
                     />
