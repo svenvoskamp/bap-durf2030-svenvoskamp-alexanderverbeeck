@@ -191,7 +191,7 @@ export async function getServerSideProps() {
   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
   var xhr = new XMLHttpRequest();
   const GET_PROJECTS = gql`
-    query getProjects @cached(ttl: 120) {
+    query getProjects {
       projects(
         limit: 10
         order_by: { updated_at: asc }
