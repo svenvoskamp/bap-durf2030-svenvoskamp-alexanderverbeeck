@@ -37,6 +37,7 @@ const UPDATE_USER = gql`
     $phone_number: String
     $addition: String
     $sector: String!
+    $department: String
   ) {
     update_users(
       where: { id: { _eq: $id } }
@@ -52,6 +53,7 @@ const UPDATE_USER = gql`
         phone_number: $phone_number
         addition: $addition
         sector: $sector
+        department: $department
       }
     ) {
       affected_rows
@@ -137,6 +139,7 @@ const Register = ({ props }) => {
             phone_number: telephone,
             addition: addition,
             sector: sector,
+            department: department,
           },
           optimisticResponse: true,
         });

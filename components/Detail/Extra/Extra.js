@@ -18,6 +18,7 @@ const Extra = ({ props }) => {
             className={style.project_image}
             src={props.image}
             alt={props.title}
+            loading="lazy"
           />
         </div>
         <div className={style.extra_button}>

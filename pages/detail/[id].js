@@ -17,6 +17,7 @@ import Loading from '../../components/Loading/Loading';
 const GET_PROJECT_BY_ID = gql`
   query getProjectById($id: Int!) {
     projects(where: { id: { _eq: $id } }) {
+      id
       category {
         category
       }
@@ -86,7 +87,7 @@ const Detail = ({ props, user }) => {
         <article className={style.part_project}>
           <div className={style.part_info}>
             <Header props={props}></Header>
-            <Needs user={user} needs={props.needs}></Needs>
+            <Needs user={user} needs={props.needs} projectId={props.id}></Needs>
           </div>
           <Extra className={style.part_extra} props={props}></Extra>
 
