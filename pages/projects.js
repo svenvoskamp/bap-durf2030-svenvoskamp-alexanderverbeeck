@@ -135,7 +135,6 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
             <span className={style.title_outline}>projecten.</span>
           </h1>
           <div className={style.part_filter}>
-            <div className={style.filter_start}>
               <div class={style.filter_search}>
                 <label htmlFor="search">
                   <img
@@ -155,7 +154,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   onChange={(e) => setSearch(e.currentTarget.value)}
                 />
               </div>
-              {/* <div className={style.filter_fase}>
+              <div className={style.filter_fase}>
                 <label htmlFor="alles">
                   <input
                     id="alles"
@@ -187,9 +186,8 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                     )}
                   </>
                 ))}
-              </div> */}
-            </div>
-            <div className={style.filter_end}>
+              </div>
+              <div className={style.filter_selects}>
               <select
                 className={`${style.filter_select} scale`}
                 name="category"
@@ -229,13 +227,13 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   </option>
                 ))}
               </select>
+              </div>
               <button className={`${style.empty_button} scale`} onClick={reset}>
                 <img
                   className={style.need_image}
                   src="./assets/images/delete_filter.svg"
                 />
               </button>
-            </div>
           </div>
         </div>
         <div className={style.part_content}>
