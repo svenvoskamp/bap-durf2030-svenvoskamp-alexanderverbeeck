@@ -6,18 +6,6 @@ import { useRouter } from 'next/router';
 import gql from 'graphql-tag';
 import Loading from '../../Loading/Loading';
 
-const GET_CURRENT_USER = gql`
-  query getCurrentUser($id: String!) {
-    users(where: { id: { _eq: $id } }) {
-      id
-      name
-      password
-      picture
-      first_name
-    }
-  }
-`;
-
 const UPDATE_NEED = gql`
   mutation update_need(
     $id: Int!
@@ -34,74 +22,21 @@ const UPDATE_NEED = gql`
   }
 `;
 
-const GET_PROJECT_BY_ID = gql`
-  query getProjectById($id: Int!) {
-    projects(where: { id: { _eq: $id } }) {
-      category {
-        category
-      }
-      description
-      district {
-        district
-      }
-      image
-      impact
-      needs(order_by: { provided: asc, pending: asc }) {
-        id
-        need
-        type
-        provided
-        pending
-        user_id
-        motivation
-      }
-      phase {
-        phase
-      }
-      tagline
-      theme {
-        theme
-      }
-      title
-      user {
-        first_name
-        last_name
-        company
-        company_name
-      }
-    }
-  }
-`;
-
-const GET_NEEDS_BY_PROJECT = gql`
-  query getNeedsByProject($id: Int!) {
-    needs(where: { project_id: { _eq: $id } }) {
-      id
-      type
-      need
-      provided
-    }
-  }
-`;
-
-const NeedsList = ({ needs, user }) => {
+const Needs = ({ needs, user }) => {
   const [updateNeed] = useMutation(UPDATE_NEED);
   const [needsForm, setNeedsForm] = useState(false);
   const [selectedNeed, setSelectedNeed] = useState('');
   const [motivation, setMotivation] = useState('');
-  const router = useRouter();
 
-  const projectId = router.query;
-  const realId = parseInt(projectId.id);
-  console.log(realId);
+  // const projectId = router.query;
+  // const realId = parseInt(projectId.id);
+  // console.log(realId);
 
   const goBack = () => {
     setNeedsForm(false);
   };
 
   const handleClick = (need) => {
-    console.log(user);
-    console.log(need);
     if (!user) {
       router.push('/api/login');
     }
@@ -316,39 +251,6 @@ const NeedsList = ({ needs, user }) => {
       </div>
     </>
   );
-};
-
-const Needs = ({ needs, user, projectId }) => {
-  if (user) {
-    const { loading, error, data } = useQuery(GET_CURRENT_USER, {
-      variables: { id: user.sub },
-    });
-    if (loading) {
-      return <Loading props={'loading'} />;
-    }
-    if (error) {
-      <NeedsList user="" needs={needs} projectId={projectId} />;
-    }
-    if (!loading && data) {
-      return <NeedsList user={data.users[0]} needs={needs} />;
-    }
-    if (!loading && !data) {
-      return <>error 404 </>;
-    }
-  }
-  if (!user) {
-    const { loading, error, data } = useQuery(GET_CURRENT_USER, {
-      variables: { id: '' },
-    });
-    if (loading) {
-      return <Loading props={'loading'} />;
-    }
-    if (error) {
-      <NeedsList needs={needs} projectId={projectId} />;
-    }
-
-    return <NeedsList user="" needs={needs} projectId={projectId} />;
-  }
 };
 
 export default Needs;

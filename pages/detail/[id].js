@@ -14,8 +14,58 @@ import Nav from '../../components/Nav';
 import style from '../../css/detail.module.css';
 import Loading from '../../components/Loading/Loading';
 
-const Detail = ({ props }) => {
-  const { user, loading } = useFetchUser();
+const GET_PROJECT_BY_ID = gql`
+  query getProjectById($id: Int!) {
+    projects(where: { id: { _eq: $id } }) {
+      category {
+        category
+      }
+      description
+      district {
+        district
+      }
+      image
+      impact
+      needs(order_by: { provided: asc, pending: asc }) {
+        id
+        need
+        type
+        provided
+        pending
+        user_id
+        motivation
+      }
+      phase {
+        phase
+      }
+      tagline
+      theme {
+        theme
+      }
+      title
+      user {
+        first_name
+        last_name
+        company
+        company_name
+      }
+    }
+  }
+`;
+
+const GET_CURRENT_USER = gql`
+  query getCurrentUser($id: String!) {
+    users(where: { id: { _eq: $id } }) {
+      id
+      name
+      password
+      picture
+      first_name
+    }
+  }
+`;
+
+const Detail = ({ props, user }) => {
   const scrollRef = useRef(null);
 
   import('locomotive-scroll').then((locomotiveModule) => {
@@ -81,61 +131,75 @@ const Detail = ({ props }) => {
 //   return { paths, fallback: false };
 // }
 
-export async function getServerSideProps(context) {
-  const apollo = require('../../lib/apolloClient'); // import client
-  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-  var xhr = new XMLHttpRequest();
-  const GET_PROJECT_BY_ID = gql`
-    query getProjectById($id: Int!) {
-      projects(where: { id: { _eq: $id } }) {
-        category {
-          category
-        }
-        description
-        district {
-          district
-        }
-        image
-        impact
-        needs(order_by: { provided: asc, pending: asc }) {
-          id
-          need
-          type
-          provided
-          pending
-          user_id
-          motivation
-        }
-        phase {
-          phase
-        }
-        tagline
-        theme {
-          theme
-        }
-        title
-        user {
-          first_name
-          last_name
-          company
-          company_name
-        }
-      }
-    }
-  `;
-  const client = apollo.default(); //initialize client
+// export async function getServerSideProps(context) {
+//   const apollo = require('../../lib/apolloClient'); // import client
+//   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+//   var xhr = new XMLHttpRequest();
 
-  const { data, error } = await client.query({
-    query: GET_PROJECT_BY_ID,
-    variables: { id: context.params.id },
+//
+//   const client = apollo.default(); //initialize client
+
+//   const { data, error } = await client.query({
+//     query: GET_PROJECT_BY_ID,
+//     variables: { id: context.params.id },
+//   });
+
+//   if (!data || error) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   return { props: { props: data.projects[0] } };
+// }
+
+const LoadDetail = ({ user }) => {
+  const router = useRouter();
+  const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
+    variables: { id: router.query.id },
   });
-
-  if (!data || error) {
-    return {
-      notFound: true,
-    };
+  if (loading) {
+    return <Loading props={'detail'} />;
   }
-  return { props: { props: data.projects[0] } };
-}
+  if (error) {
+    console.log(error);
+  }
+  if (!loading && data) {
+    return <Detail props={data.projects[0]} user={user} />;
+  }
+  if (!loading && !data) {
+    return <>Error</>;
+  }
+};
 
-export default withApollo({ ssr: false })(Detail);
+const LoadUser = ({ user }) => {
+  console.log(user);
+  if (user) {
+    const { loading, error, data } = useQuery(GET_CURRENT_USER, {
+      variables: { id: user.sub },
+    });
+    if (loading) {
+      return <Loading props={'detail'} />;
+    }
+    if (data && !loading) {
+      return <LoadDetail user={data.users[0]} />;
+    }
+  }
+  if (!user) {
+    return <LoadDetail user={user} />;
+  }
+};
+const getUser = () => {
+  const { user, loading } = useFetchUser();
+
+  if (loading) {
+    return <Loading props={'detail'} />;
+  }
+  if (!loading && user) {
+    return <LoadUser user={user} />;
+  }
+  if (!user && !loading) {
+    return <LoadUser user={user} />;
+  }
+};
+
+export default withApollo({ ssr: true })(getUser);
