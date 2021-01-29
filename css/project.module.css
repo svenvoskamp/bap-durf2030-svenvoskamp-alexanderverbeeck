@@ -10,11 +10,13 @@
   /* width: 42rem; */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: relative;
   border: 0.4rem solid blueColor;
   background-color: beigeColor;
   padding: 2rem;
   min-width: 40rem;
+  height: 100%;
 }
 
 .card:after {
@@ -36,6 +38,7 @@
   height: 22rem;
   border: 0.4rem solid blueColor;
   object-fit: cover;
+  width: 100%;
 }
 
 .card_user {

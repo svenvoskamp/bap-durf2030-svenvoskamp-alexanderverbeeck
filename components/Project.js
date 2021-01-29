@@ -7,7 +7,8 @@ const Project = ({ project, key }) => {
   return (
     <>
       <section className={style.project} key={key}>
-        <a href={'/detail/' + project.id} className={`${style.card} scale`}>
+      <a href={'/detail/' + project.id} className={`${style.card} scale`}>
+          <div Classname={style.project_top}>
           <img
             className={style.card_image}
             src={project.image}
@@ -20,6 +21,8 @@ const Project = ({ project, key }) => {
             </p>
             <p className={style.card_title}>{project.title}</p>
           </div>
+          </div>
+          <div className={style.project_end}>
           <div className={style.card_tags}>
             <p className={style.card_tag}>{project.theme.theme}</p>
             <p className={style.card_tag}>{project.category.category}</p>
@@ -185,6 +188,7 @@ const Project = ({ project, key }) => {
                 {project.district.district}
               </p>
             </div>
+          </div>
           </div>
         </a>
       </section>

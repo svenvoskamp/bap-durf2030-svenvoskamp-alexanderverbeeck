@@ -21,7 +21,7 @@
 .part_filter {
   margin-top: 3rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .filter_search {
@@ -53,30 +53,31 @@
   border-bottom: 0.2rem solid beigeColor;
 }
 
+.filter_selects {
+  margin-left: auto;
+}
+
 .filter_select {
   border: 0.2rem solid blueColor;
   background-color: transparent;
   composes: smallCaps from '../css/typo.module.css';
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   margin-right: 1rem;
   cursor: pointer;
+
+  /* -moz-appearance: none; */
+  /* -webkit-appearance: none; */
 }
 
-.filter_select {
-  /* for Firefox */
-  -moz-appearance: none;
-  /* for Safari, Chrome, Opera */
-  -webkit-appearance: none;
-}
+/* Select arrow verwijderen */
 
-/* for IE10 */
-.filter_select::-ms-expand {
+/* .filter_select::-ms-expand {
   display: none;
 }
 
 .filter_select:last-of-type {
   margin-right: 0;
-}
+} */
 
 .input {
   border-bottom: 0.2rem solid blueColor;
@@ -86,6 +87,7 @@
   border-left: none;
   composes: empty from '../css/typo.module.css';
   padding: 0.5rem;
+  display: none;
 }
 
 .input_radio {
@@ -222,4 +224,9 @@
   .projecten {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+
+.input {
+  display: flex;
+}
 }
