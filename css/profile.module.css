@@ -1,0 +1,28 @@
+@value tokens: "./tokens.module.css";
+@value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
+
+.part {
+  composes: viewLarge from './layout.module.css';
+}
+
+.tabs {
+  border-bottom: 0.4rem solid blueColor;
+  margin-bottom: 2rem;
+}
+
+.tabs_title {
+  composes: smallCaps from './typo.module.css';
+  border: none;
+  background-color: transparent;
+  padding: 1rem 0;
+  margin-right: 2rem;
+  opacity: 0.2;
+}
+
+.tabs_title__active {
+  opacity: 1;
+}
+
+.tabs_title:last-of-type {
+  margin-right: 0;
+}

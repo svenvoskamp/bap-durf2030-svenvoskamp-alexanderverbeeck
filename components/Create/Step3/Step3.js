@@ -34,6 +34,7 @@ const ADD_NEED = gql`
     $type: String!
     $need: String!
     $provided: Boolean!
+    $user_id: String!
   ) {
     insert_needs(
       objects: {
@@ -41,6 +42,7 @@ const ADD_NEED = gql`
         type: $type
         need: $need
         provided: $provided
+        user_id: $user_id
       }
     ) {
       affected_rows
@@ -50,6 +52,7 @@ const ADD_NEED = gql`
         type
         need
         provided
+        user_id
       }
     }
   }
@@ -71,7 +74,7 @@ const REMOVE_NEED = gql`
   }
 `;
 
-const Needs = ({ project_id }) => {
+const Needs = ({ project_id, user }) => {
   let id = project_id;
   const [addNeed] = useMutation(ADD_NEED);
   const [toggleNeed] = useMutation(TOGGLE_NEED);
@@ -95,6 +98,7 @@ const Needs = ({ project_id }) => {
           type: typeNeed,
           need: need,
           provided: gotNeed,
+          user_id: user.sub,
         },
         update: (cache, { data }) => {
           const cachedData = cache.readQuery({
@@ -577,7 +581,7 @@ const Step3 = ({ user }) => {
     return <Loading props={'loading'} />;
   }
   if (data) {
-    return <Needs project_id={data.users[0].projects[0].id} />;
+    return <Needs project_id={data.users[0].projects[0].id} user={user} />;
   }
 };
 export default withApollo({ ssr: true })(Step3);

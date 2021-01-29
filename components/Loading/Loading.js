@@ -49,6 +49,15 @@ const Loading = ({ props }) => {
           </p>
         </div>
       )}
+      {props == 'profiel' && (
+        <div className={style.loading}>
+          <p className={style.loading_text}>
+            Profiel ophalen<span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </p>
+        </div>
+      )}
     </>
   );
 };

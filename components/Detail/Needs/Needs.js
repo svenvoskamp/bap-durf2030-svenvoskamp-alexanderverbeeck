@@ -9,13 +9,17 @@ import Loading from '../../Loading/Loading';
 const UPDATE_NEED = gql`
   mutation update_need(
     $id: Int!
-    $user_id: String!
+    $other_user_id: String!
     $motivation: String!
     $pending: Boolean!
   ) {
     update_needs(
       where: { id: { _eq: $id } }
-      _set: { user_id: $user_id, motivation: $motivation, pending: $pending }
+      _set: {
+        other_user_id: $other_user_id
+        motivation: $motivation
+        pending: $pending
+      }
     ) {
       affected_rows
     }
@@ -95,7 +99,7 @@ const Needs = ({ needs, user, projectId }) => {
         variables: {
           id: selectedNeed.id,
           motivation: motivation,
-          user_id: user.id,
+          other_user_id: user.id,
           pending: true,
         },
         optimisticResponse: true,

@@ -27,7 +27,7 @@ const GET_PROJECT_BY_ID = gql`
       }
       image
       impact
-      needs(order_by: { provided: asc, pending: asc }) {
+      needs(order_by: { provided: asc, user_id: desc }) {
         id
         need
         type

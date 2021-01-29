@@ -9,6 +9,7 @@ import Info from '../components/Profile/Info/Info';
 import Mouse from '../components/Mouse';
 import Nav from '../components/Nav';
 import MyProjects from '../components/Profile/MyProjects/MyProjects';
+import style from '../css/profile.module.css';
 
 import Notifications from '../components/Profile/Notifications/Notifications';
 
@@ -39,13 +40,21 @@ const GET_USER_DATA = gql`
         theme {
           theme
         }
-        needs {
-          id
-          user_id
-          pending
-          need
-          motivation
-        }
+        title
+      }
+    }
+    needs(where: { user_id: { _eq: $id } }) {
+      id
+      motivation
+      need
+      user_id
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+      pending
+      project {
         title
       }
     }
@@ -66,18 +75,52 @@ const GET_CURRENT_USER = gql`
 
 const Profile = ({ props }) => {
   const [content, setContent] = useState(0);
-  console.log(props);
+
   return (
     <>
       <Mouse></Mouse>
-      {/* <Nav user={props}></Nav> */}
-      <Info props={props}></Info>
-      <div>
-        <button onClick={(e) => setContent(0)}>Mijn Projecten</button>
-        <button onClick={(e) => setContent(1)}>Notificaties</button>
-      </div>
-      {content == 0 && <MyProjects props={props}></MyProjects>}
-      {content == 1 && <Notifications props={props}></Notifications>}
+      <Nav user={props.users[0]}></Nav>
+      <article className={style.part}>
+        <Info props={props.users[0]}></Info>
+        <div className={style.part_content}>
+          <div className={style.tabs}>
+            {content == 0 && (
+              <>
+                <button
+                  className={`${style.tabs_title} ${style.tabs_title__active}`}
+                  onClick={(e) => setContent(0)}
+                >
+                  Mijn Projecten
+                </button>
+                <button
+                  className={style.tabs_title}
+                  onClick={(e) => setContent(1)}
+                >
+                  Notificaties
+                </button>
+              </>
+            )}
+            {content == 1 && (
+              <>
+                <button
+                  className={style.tabs_title}
+                  onClick={(e) => setContent(0)}
+                >
+                  Mijn Projecten
+                </button>
+                <button
+                  className={`${style.tabs_title} ${style.tabs_title__active}`}
+                  onClick={(e) => setContent(1)}
+                >
+                  Notificaties
+                </button>
+              </>
+            )}
+          </div>
+          {content == 0 && <MyProjects props={props.users[0]}></MyProjects>}
+          {content == 1 && <Notifications props={props.needs}></Notifications>}
+        </div>
+      </article>
     </>
   );
 };
@@ -100,7 +143,7 @@ const GetCurrentUser = ({ props }) => {
     return <></>;
   }
   if (data.users[0].first_name && !loading) {
-    return <Profile props={data.users[0]} />;
+    return <Profile props={data} />;
   }
 };
 
@@ -109,7 +152,7 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
 
   if (loading) {
-    return <Loading props={'gebruiker'} />;
+    return <Loading props={'profiel'} />;
   }
   if (!loading && user) {
     return <GetCurrentUser props={user} />;
