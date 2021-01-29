@@ -22,21 +22,60 @@ const UPDATE_NEED = gql`
   }
 `;
 
-const Needs = ({ needs, user }) => {
+const GET_PROJECT_BY_ID = gql`
+  query getProjectById($id: Int!) {
+    projects(where: { id: { _eq: $id } }) {
+      id
+      category {
+        category
+      }
+      description
+      district {
+        district
+      }
+      image
+      impact
+      needs(order_by: { provided: asc, pending: asc }) {
+        id
+        need
+        type
+        provided
+        pending
+        user_id
+        motivation
+      }
+      phase {
+        phase
+      }
+      tagline
+      theme {
+        theme
+      }
+      title
+      user {
+        first_name
+        last_name
+        company
+        company_name
+      }
+    }
+  }
+`;
+
+const Needs = ({ needs, user, projectId }) => {
   const [updateNeed] = useMutation(UPDATE_NEED);
   const [needsForm, setNeedsForm] = useState(false);
   const [selectedNeed, setSelectedNeed] = useState('');
   const [motivation, setMotivation] = useState('');
-
-  // const projectId = router.query;
-  // const realId = parseInt(projectId.id);
-  // console.log(realId);
+  const router = useRouter();
+  console.log(projectId);
 
   const goBack = () => {
     setNeedsForm(false);
   };
 
   const handleClick = (need) => {
+    console.log(need);
     if (!user) {
       router.push('/api/login');
     }
@@ -50,8 +89,7 @@ const Needs = ({ needs, user }) => {
   };
 
   const onSubmit = (e) => {
-    console.log(projectId);
-
+    // e.preventDefault();
     if (motivation != '') {
       updateNeed({
         variables: {
@@ -61,24 +99,25 @@ const Needs = ({ needs, user }) => {
           pending: true,
         },
         optimisticResponse: true,
+
         // update: (cache) => {
-        //   const existingNeeds = cache.readQuery({
-        //     query: GET_NEEDS_BY_PROJECT,
-        //     variables: { id: realId },
+        //   console.log(cache);
+        //   const projects = cache.readQuery({
+        //     query: GET_PROJECT_BY_ID,
+        //     variables: { id: projectId },
         //   });
-        //   console.log(existingNeeds);
-        //   const newNeeds = existingNeeds.needs.map((n) => {
+        //   console.log(projects);
+        //   const updatedProject = projects.project[0].needs.map((n) => {
         //     if (n.id === need.id) {
-        //       return { ...n, pending: pending };
+        //       return { ...n, pending: !n.pending };
         //     } else {
         //       return n;
         //     }
         //   });
-        //   console.log(newNeeds);
         //   cache.writeQuery({
         //     query: GET_NEEDS_BY_PROJECT,
-        //     variables: { id: realId },
-        //     data: { needs: newNeeds },
+        //     variables: { id: projectId },
+        //     data: { projects: updatedProject },
         //   });
         // },
       });
