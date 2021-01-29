@@ -235,6 +235,7 @@ html.has-scroll-dragging {
   justify-content: space-between;
   flex-direction: column;
   z-index: 10;
+  transition: .5s ease-in-out;
 }
 
 .nav-logo {
@@ -294,6 +295,10 @@ html.has-scroll-dragging {
   opacity: 0;
   transition-duration: 0.2s;
   margin-left: -3rem;
+}
+
+.navigation:hover{
+  width: 22rem;
 }
 
 .navigation:hover .nav-item--title,
@@ -375,4 +380,58 @@ html.has-scroll-dragging {
   height: 100%;
   overflow: hidden;
   object-fit: cover;
+}
+
+@media screen and (max-width: 850px) {
+
+  .nav-logo {
+    display: none;
+  }
+
+  .navigation {
+    height: auto;
+    width: 100vw;
+    padding: .5rem 5rem;
+    justify-content: space-between;
+    flex-direction: row;
+    bottom: 0;
+  }
+
+  .nav-items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    min-width: auto;
+    align-items: center;
+  }
+
+  .nav-profile {
+    width: auto;
+  }
+
+  .navigation:hover{
+    width: 100vw;
+  }
+  
+  .nav-item--title,
+  .nav-item--small {
+    display: none;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+  }
+
+  .item-nieuw {
+    display: none;
+  }
 }

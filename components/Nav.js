@@ -1,39 +1,12 @@
 import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
 import Login from './Auth/Login';
 import Logout from './Auth/Logout';
 
 const Nav = ({ user }) => {
-  const handleHover = (e) => {
-    gsap.to('.navigation', {
-      duration: 0.5,
-      width: '22rem',
-      ease: 'easeOut',
-    });
 
-    gsap.to('.nav-logo--image', {
-      padding: '0 7.5rem',
-      ease: 'easeOut',
-    });
-  };
-
-  const handleLeave = (e) => {
-    gsap.to('.navigation', {
-      duration: 0.5,
-      width: '6rem',
-      ease: 'easeOut',
-    });
-
-    gsap.to('.nav-logo--image', {
-      padding: '0 1.5rem',
-      ease: 'easeOut',
-    });
-  };
   const navRef = useRef(null);
   return (
     <nav
-      onMouseEnter={handleHover}
-      onMouseLeave={handleLeave}
       className="navigation"
     >
       <a href={'/'} className="nav-logo">
@@ -76,7 +49,7 @@ const Nav = ({ user }) => {
           </div>
           <p className=" nav-item--title">Projecten</p>
         </a>
-        <a href={'/create-project'}className="scale item">
+        <a href={'/create-project'}className="scale item item-nieuw">
           <div className=" nav-item">
             <svg className="nav-item--image" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M14 27C21.1797 27 27 21.1797 27 14C27 6.8203 21.1797 1 14 1C6.8203 1 1 6.8203 1 14C1 21.1797 6.8203 27 14 27Z" fill="#FDECD2" stroke="#FDECD2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -110,7 +83,7 @@ const Nav = ({ user }) => {
       </div>
       <div className="nav-profile">
       {user && (
-          <a href={'/'} className="scale profile">
+          <a href={'/profile'} className="scale profile">
             <div className="nav-item nav-profile--image">
               <img className="" src={user.picture} alt={user.name} />
             </div>

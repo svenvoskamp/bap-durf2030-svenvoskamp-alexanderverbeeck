@@ -7,6 +7,7 @@
 
 .part_header {
   margin-bottom: 5rem;
+  width: 100%;
 }
 
 .title {
@@ -24,24 +25,28 @@
   justify-content: flex-start;
 }
 
+/* Filter Search */ 
+
 .filter_search {
   display: flex;
   align-items: center;
 }
 
-.filter_start {
-  display: flex;
-  align-items: center;
+.search_image {
+  margin-right: 1rem;
 }
 
-.filter_end {
-  display: flex;
-  align-items: center;
-}
-
-.filter_fase {
-  display: flex;
-  margin-left: 2rem;
+.input_search {
+  border-bottom: 0.2rem solid blueColor;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  composes: empty from '../css/typo.module.css';
+  padding: 0.5rem;
+  display: none;
+  width: 100%;
+  overflow: hidden;
 }
 
 .filter_radio {
@@ -50,8 +55,11 @@
   margin-right: 0.5rem;
   padding: 0.5rem 0.5rem;
   margin-top: 0.5rem;
-  border-bottom: 0.2rem solid beigeColor;
+  border-bottom: 1rem solid beigeColor;
+  cursor: pointer;
 }
+
+/* Filter Selects */
 
 .filter_selects {
   margin-left: auto;
@@ -61,33 +69,37 @@
   border: 0.2rem solid blueColor;
   background-color: transparent;
   composes: smallCaps from '../css/typo.module.css';
-  padding: 0.5rem;
+  padding: .75rem 2rem .75rem .5rem;
   margin-right: 1rem;
   cursor: pointer;
-
-  /* -moz-appearance: none; */
-  /* -webkit-appearance: none; */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent url("../public/assets/images/select_arrow.svg") no-repeat 98% center;
 }
 
-/* Select arrow verwijderen */
-
-/* .filter_select::-ms-expand {
-  display: none;
+.filter_select:first-of-type {
+  margin-left: auto;
 }
 
 .filter_select:last-of-type {
   margin-right: 0;
-} */
+}
 
-.input {
-  border-bottom: 0.2rem solid blueColor;
-  background-color: transparent;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  composes: empty from '../css/typo.module.css';
-  padding: 0.5rem;
+.filter_delete {
+  display: flex;
+}
+
+.delete_filter__small {
   display: none;
+  composes: smallText from '../css/typo.module.css';
+  text-decoration: underline;
+}
+/* Filter Fase's */
+
+.filter_fase {
+  display: flex;
+  margin-left: 2rem;
 }
 
 .input_radio {
@@ -113,9 +125,7 @@
   display: none;
 }
 
-.search_image {
-  margin-right: 1rem;
-}
+/* Content */
 
 .part_content {
   margin-bottom: 2rem;
@@ -124,6 +134,8 @@
   margin-bottom: auto;
 }
 
+/* Projecten Grid */
+
 .projecten {
   width: 100%;
   display: grid;
@@ -131,7 +143,9 @@
   grid-gap: 5rem;
 }
 
-.empty_button {
+/* Empty State */
+
+.empty_button, .delete_button {
   border: none;
   background-color: transparent;
   margin-left: 1rem;
@@ -171,7 +185,6 @@
 
 .empty_state__button {
   composes: smallCaps from './typo.module.css';
-  margin-left: 5rem;
   border: 0.2rem solid blueColor;
   padding: 0.8rem 1rem;
   position: relative;
@@ -225,8 +238,127 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .part_filter {
+    display: grid;
+    grid-template-areas:
+    "search selectone selecttwo selectthree delete"  
+    "fase fase fase fase fase"
+    ;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    width: 100%;
+    grid-gap: 1rem;
+  }
 
-.input {
-  display: flex;
+  .input_search {
+    display: flex;
+  }
+
+  .filter_select {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .filter_select:first-of-type {
+    grid-area: selectone;
+  }
+
+  .filter_select:nth-of-type(2) {
+    grid-area: selecttwo;
+  }
+
+  .filter_select:last-of-type {
+    grid-area: selectthree;
+  }
+
+  .filter_fase {
+    grid-area: fase;
+    margin-top: 4rem;
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .filter_delete {
+    grid-area: delete;
+  }
+
+  .filter_search {
+    grid-area: search;
+  }
+
+  .delete_button {
+    margin-left: 0;
+  }
 }
+
+@media screen and (max-width: 1000px) {
+
+  .part_filter {
+    grid-column-gap: .5rem;
+  }
+
+  .search_image {
+    margin-right: .5rem;
+  }
+
+  .projecten {
+    grid-gap: 3rem;
+  }
+
 }
+
+@media screen and (max-width: 850px) {
+
+  .projecten {
+    grid-gap: 1rem;
+  }
+
+  .part_filter {
+    display: grid;
+    grid-template-areas:
+    "search selectone"
+    "selecttwo selectthree"
+    "delete delete"
+    "fase fase "
+    ;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    grid-column-gap: 1rem;
+  }
+
+  .delete_filter {
+    display: none;
+  }
+
+  .delete_button {
+    display: inline-block;
+    justify-content: center;
+  }
+
+  .filter_delete {
+    justify-content: center;
+  }
+
+  .delete_filter__small {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 550px) {
+
+  .projecten {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter_fase {
+    overflow-x: scroll;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .filter_radio {
+    white-space: nowrap;
+  }
+}
+
+

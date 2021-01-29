@@ -134,3 +134,187 @@
   font-size: 1.8rem;
   color: blueColor;
 }
+
+@media screen and (max-width: 1000px) {
+
+  .largeTitle {
+    font-size: 10rem;
+  }
+  
+  .largeTitleOutline {
+    font-size: 10rem;
+  }
+  .smallCaps {
+    font-size: 1.4rem;
+  }
+  
+  .smallCapsLight {
+    font-size: 1.4rem;
+  }
+
+
+}
+
+@media screen and (max-width: 850px) {
+
+  .largeTitle {
+    font-size: 7rem;
+  }
+  
+  .largeTitleOutline {
+    font-size: 7rem;
+  }
+
+  .mediumTitle {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+  
+  .mediumTitleOutline {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+
+  .smallCaps {
+    font-size: 1.1rem;
+  }
+  
+  .smallCapsLight {
+    font-size: 1.1rem;
+  }
+
+  .text {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  
+  .smallText {
+    font-size: 1.4rem;
+  }
+  
+  .bold {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  
+  .semiBold {
+    font-size: 1.6rem;
+  }
+  
+  .empty {
+    font-size: 1.6rem;
+  }
+
+
+}
+
+@media screen and (max-width: 550px) {
+
+  .largeTitle {
+    font-size: 6rem;
+    -webkit-text-stroke: .25rem blueColor;
+    text-stroke: .25rem blueColor;
+  }
+  
+  .largeTitleOutline {
+    font-size: 6rem;
+    -webkit-text-stroke: .25rem blueColor;
+    text-stroke: .25rem blueColor;
+  }
+
+  .mediumTitle {
+    font-size: 2.6rem;
+    line-height: 3.2rem;
+  }
+  
+  .mediumTitleOutline {
+    font-size: 2.6rem;
+    line-height: 3.2rem;
+  }
+
+  .smallCaps {
+    font-size: 1.2rem;
+  }
+  
+  .smallCapsLight {
+    font-size: 1.2rem;
+  }
+
+  .text {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  
+  .smallText {
+    font-size: 1.4rem;
+  }
+  
+  .bold {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  
+  .semiBold {
+    font-size: 1.6rem;
+  }
+  
+  .empty {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+  .largeTitle {
+    font-size: 4rem;
+    -webkit-text-stroke: .2rem blueColor;
+    text-stroke: .2rem blueColor;
+  }
+  
+  .largeTitleOutline {
+    font-size: 4rem;
+    -webkit-text-stroke: .2rem blueColor;
+    text-stroke: .2rem blueColor;
+  }
+
+  .mediumTitle {
+    font-size: 2.6rem;
+    line-height: 2.6rem;
+  }
+  
+  .mediumTitleOutline {
+    font-size: 2.6rem;
+    line-height: 2.6rem;
+  }
+
+  .smallCaps {
+    font-size: 1.2rem;
+  }
+  
+  .smallCapsLight {
+    font-size: 1.2rem;
+  }
+
+  .text {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  
+  .smallText {
+    font-size: 1.4rem;
+  }
+  
+  .bold {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+  
+  .semiBold {
+    font-size: 1.6rem;
+  }
+  
+  .empty {
+    font-size: 1.6rem;
+  }
+}
+

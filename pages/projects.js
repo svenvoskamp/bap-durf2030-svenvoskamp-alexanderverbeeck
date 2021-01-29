@@ -150,7 +150,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   value={search}
                   type="text"
                   placeholder="Zoek project"
-                  className={`${style.input} scale`}
+                  className={`${style.input_search} scale`}
                   onChange={(e) => setSearch(e.currentTarget.value)}
                 />
               </div>
@@ -187,7 +187,6 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   </>
                 ))}
               </div>
-              <div className={style.filter_selects}>
               <select
                 className={`${style.filter_select} scale`}
                 name="category"
@@ -227,14 +226,18 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                   </option>
                 ))}
               </select>
-              </div>
-              <button className={`${style.empty_button} scale`} onClick={reset}>
+              <div className={style.filter_delete}>
+                <button className={`${style.delete_button} scale`} onClick={reset}>
                 <img
-                  className={style.need_image}
+                  className={style.delete_filter}
                   src="./assets/images/delete_filter.svg"
                 />
+                <p className={style.delete_filter__small}>
+                  Verwijder filter
+                </p>
               </button>
-          </div>
+              </div>
+              </div>
         </div>
         <div className={style.part_content}>
           {newProjects && (
