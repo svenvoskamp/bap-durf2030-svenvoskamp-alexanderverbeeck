@@ -12,6 +12,7 @@ import MyProjects from '../components/Profile/MyProjects/MyProjects';
 import style from '../css/profile.module.css';
 
 import Notifications from '../components/Profile/Notifications/Notifications';
+import Requests from '../components/Profile/Requests/Requests';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -40,14 +41,21 @@ const GET_USER_DATA = gql`
         theme {
           theme
         }
+        needs {
+          id
+          type
+          need
+        }
         title
       }
     }
-    needs(where: { user_id: { _eq: $id } }) {
+    needs {
       id
       motivation
       need
       user_id
+      provided
+      other_user_id
       otheruser {
         id
         first_name
@@ -96,7 +104,13 @@ const Profile = ({ props }) => {
                   className={style.tabs_title}
                   onClick={(e) => setContent(1)}
                 >
-                  Notificaties
+                  Mijn Notificaties
+                </button>
+                <button
+                  className={style.tabs_title}
+                  onClick={(e) => setContent(2)}
+                >
+                  Mijn Aanvragen
                 </button>
               </>
             )}
@@ -112,13 +126,49 @@ const Profile = ({ props }) => {
                   className={`${style.tabs_title} ${style.tabs_title__active}`}
                   onClick={(e) => setContent(1)}
                 >
-                  Notificaties
+                  Mijn Notificaties
+                </button>
+                <button
+                  className={style.tabs_title}
+                  onClick={(e) => setContent(2)}
+                >
+                  Mijn Aanvragen
+                </button>
+              </>
+            )}
+            {content == 2 && (
+              <>
+                <button
+                  className={style.tabs_title}
+                  onClick={(e) => setContent(0)}
+                >
+                  Mijn Projecten
+                </button>
+                <button
+                  className={`${style.tabs_title} `}
+                  onClick={(e) => setContent(1)}
+                >
+                  Mijn Notificaties
+                </button>
+                <button
+                  className={`${style.tabs_title} ${style.tabs_title__active}`}
+                  onClick={(e) => setContent(2)}
+                >
+                  Mijn Aanvragen
                 </button>
               </>
             )}
           </div>
           {content == 0 && <MyProjects props={props.users[0]}></MyProjects>}
-          {content == 1 && <Notifications props={props.needs}></Notifications>}
+          {content == 1 && (
+            <Notifications
+              user={props.users[0]}
+              props={props.needs}
+            ></Notifications>
+          )}
+          {content == 2 && (
+            <Requests user={props.users[0]} props={props.needs}></Requests>
+          )}
         </div>
       </article>
     </>
@@ -132,7 +182,7 @@ const GetCurrentUser = ({ props }) => {
     variables: { id: props.sub },
   });
   if (loading) {
-    return <Loading props={'gebruiker'} />;
+    return <Loading props={'profiel'} />;
   }
   if (error) {
     console.log(error);

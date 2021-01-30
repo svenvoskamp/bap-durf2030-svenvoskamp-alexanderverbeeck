@@ -25,7 +25,7 @@
   justify-content: flex-start;
 }
 
-/* Filter Search */ 
+/* Filter Search */
 
 .filter_search {
   display: flex;
@@ -69,13 +69,14 @@
   border: 0.2rem solid blueColor;
   background-color: transparent;
   composes: smallCaps from '../css/typo.module.css';
-  padding: .75rem 2rem .75rem .5rem;
+  padding: 0.75rem 2rem 0.75rem 0.5rem;
   margin-right: 1rem;
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: transparent url("../public/assets/images/select_arrow.svg") no-repeat 98% center;
+  background: transparent url('../public/assets/images/select_arrow.svg')
+    no-repeat 98% center;
 }
 
 .filter_select:first-of-type {
@@ -145,7 +146,8 @@
 
 /* Empty State */
 
-.empty_button, .delete_button {
+.empty_button,
+.delete_button {
   border: none;
   background-color: transparent;
   margin-left: 1rem;
@@ -241,9 +243,8 @@
   .part_filter {
     display: grid;
     grid-template-areas:
-    "search selectone selecttwo selectthree delete"  
-    "fase fase fase fase fase"
-    ;
+      'search selectone selecttwo selectthree delete'
+      'fase fase fase fase fase';
     grid-template-columns: 1fr 1fr 1fr 1fr auto;
     width: 100%;
     grid-gap: 1rem;
@@ -291,23 +292,20 @@
 }
 
 @media screen and (max-width: 1000px) {
-
   .part_filter {
-    grid-column-gap: .5rem;
+    grid-column-gap: 0.5rem;
   }
 
   .search_image {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 
   .projecten {
     grid-gap: 3rem;
   }
-
 }
 
 @media screen and (max-width: 850px) {
-
   .projecten {
     grid-gap: 1rem;
   }
@@ -315,11 +313,10 @@
   .part_filter {
     display: grid;
     grid-template-areas:
-    "search selectone"
-    "selecttwo selectthree"
-    "delete delete"
-    "fase fase "
-    ;
+      'search selectone'
+      'selecttwo selectthree'
+      'delete delete'
+      'fase fase ';
     grid-template-columns: 1fr 1fr;
     width: 100%;
     grid-column-gap: 1rem;
@@ -344,7 +341,6 @@
 }
 
 @media screen and (max-width: 550px) {
-
   .projecten {
     display: flex;
     flex-direction: column;
@@ -360,5 +356,3 @@
     white-space: nowrap;
   }
 }
-
-

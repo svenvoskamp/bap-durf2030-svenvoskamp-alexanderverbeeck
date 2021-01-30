@@ -1,8 +1,7 @@
 import React from 'react';
-import style from './notifications.module.css';
+import style from './requests.module.css';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import Empty from '../../Empty/Empty';
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
@@ -78,29 +77,27 @@ const GET_USER_DATA = gql`
   }
 `;
 
-const Notifications = ({ props, user }) => {
+const Requests = ({ props, user }) => {
   const [toggleNeed] = useMutation(TOGGLE_NEED);
-  let needNotifications = [];
+  let requests = [];
+  let acceptedRequest = [];
   props.map((need) => {
-    if (need.user_id == user.id) {
+    if (need.other_user_id == user.id) {
       if (need.pending == true) {
-        needNotifications.push(need);
+        requests.push(need);
+      }
+      if (need.provided == true && need.pending == false) {
+        acceptedRequest.push(need);
       }
     }
   });
 
-  const handleClick = (e, choose, need) => {
+  const handleClick = (e, need) => {
     e.preventDefault();
     let pending = false;
-    let state;
-    let other_user_id;
-    if (choose == 'x') {
-      other_user_id = null;
-      state = false;
-    } else {
-      other_user_id = need.otheruser.id;
-      state = true;
-    }
+    let state = false;
+    let other_user_id = null;
+
     toggleNeed({
       variables: {
         id: need.id,
@@ -128,45 +125,50 @@ const Notifications = ({ props, user }) => {
           variables: { id: user.id },
           data: { needs: newNeeds, users: cachedData.users },
         });
-
-        // const newNeed = data['insert_needs'].returning[0];
-        // cache.writeQuery({
-        //   query: GET_NEEDS_BY_PROJECT,
-        //   variables: { id },
-        //   data: {
-        //     ...cachedData,
-        //     needs: [newNeed, ...cachedData.needs],
-        //   },
-        // });
       },
     });
   };
-
   return (
     <>
       <div>
-        {needNotifications.length < 1 && <Empty props={'notificaties'} />}
-        {needNotifications.length > 0 && (
+        {requests.length < 1 && (
+          <div className={style.empty_state}>
+            <p className={style.empty_state__text}>
+              je hebt
+              <span className={style.empty_state__text__outline}> geen </span>
+              lopende aanvragen.
+            </p>
+          </div>
+        )}
+
+        {requests.length > 0 && (
           <>
-            {needNotifications.map((need) => (
+            <p>In afwachting</p>
+            {requests.map((need) => (
               <>
                 <li>
                   <p>{need.project.title}</p>
                   <p>{need.need}</p>
-                  <p>
-                    {need.otheruser.first_name} {need.otheruser.last_name}
-                  </p>
                   <p>{need.motivation}</p>
-                  <button onClick={(e) => handleClick(e, 'v', need)}>V</button>
-                  <button onClick={(e) => handleClick(e, 'x', need)}>X</button>
+                  <button onClick={(e) => handleClick(e, need)}>X</button>
                 </li>
               </>
             ))}
           </>
         )}
+        <p>Goedgkeurde aanvragen</p>
+        {acceptedRequest.map((need) => (
+          <>
+            <li>
+              <p>{need.project.title}</p>
+              <p>{need.need}</p>
+              <p>{need.motivation}</p>
+            </li>
+          </>
+        ))}
       </div>
     </>
   );
 };
 
-export default Notifications;
+export default Requests;

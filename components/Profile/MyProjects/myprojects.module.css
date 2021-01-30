@@ -1,0 +1,43 @@
+@value tokens: "../../../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, redColor, greenColor from tokens;
+
+/* Projecten Grid */
+
+.projecten {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 5rem;
+  margin-right: 10rem;
+}
+
+@media screen and (min-width: 2000px) {
+  .projecten {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .projecten {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .projecten {
+    grid-gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .projecten {
+    grid-gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .projecten {
+    display: flex;
+    flex-direction: column;
+  }
+}
