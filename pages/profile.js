@@ -13,6 +13,7 @@ import style from '../css/profile.module.css';
 
 import Notifications from '../components/Profile/Notifications/Notifications';
 import Requests from '../components/Profile/Requests/Requests';
+import Contributes from '../components/Profile/Contributes/Contributes';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -51,6 +52,7 @@ const GET_USER_DATA = gql`
     }
     needs {
       id
+      type
       motivation
       need
       user_id
@@ -83,6 +85,14 @@ const GET_CURRENT_USER = gql`
 
 const Profile = ({ props }) => {
   const [content, setContent] = useState(0);
+  let incoming = [];
+  props.needs.map((need) => {
+    if (need.user_id == props.users[0].id) {
+      if (need.pending == true) {
+        incoming.push(need);
+      }
+    }
+  });
 
   return (
     <>
@@ -104,20 +114,26 @@ const Profile = ({ props }) => {
                   className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(1)}
                 >
-                  Mijn Notificaties
+                  Mijn Bijdragen
                 </button>
                 <button
                   className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(2)}
                 >
-                  Mijn Aanvragen
+                  Inkomend ({incoming.length})
+                </button>
+                <button
+                  className={`${style.tabs_title} scale`}
+                  onClick={(e) => setContent(3)}
+                >
+                  Uitgaand
                 </button>
               </>
             )}
             {content == 1 && (
               <>
                 <button
-                  className={`${style.tabs_title} scale`}
+                  className={`${style.tabs_title}  scale`}
                   onClick={(e) => setContent(0)}
                 >
                   Mijn Projecten
@@ -126,20 +142,26 @@ const Profile = ({ props }) => {
                   className={`${style.tabs_title} ${style.tabs_title__active} scale`}
                   onClick={(e) => setContent(1)}
                 >
-                  Mijn Notificaties
+                  Mijn Bijdragen
                 </button>
                 <button
                   className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(2)}
                 >
-                  Mijn Aanvragen
+                  Inkomend ({incoming.length})
+                </button>
+                <button
+                  className={`${style.tabs_title} scale`}
+                  onClick={(e) => setContent(3)}
+                >
+                  Uitgaand
                 </button>
               </>
             )}
             {content == 2 && (
               <>
                 <button
-                  className={`${style.tabs_title} scale`}
+                  className={`${style.tabs_title}  scale`}
                   onClick={(e) => setContent(0)}
                 >
                   Mijn Projecten
@@ -148,25 +170,65 @@ const Profile = ({ props }) => {
                   className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(1)}
                 >
-                  Mijn Notificaties
+                  Mijn Bijdragen
+                </button>
+                <button
+                  className={`${style.tabs_title}  ${style.tabs_title__active} scale`}
+                  onClick={(e) => setContent(2)}
+                >
+                  Inkomend ({incoming.length})
+                </button>
+                <button
+                  className={`${style.tabs_title} scale`}
+                  onClick={(e) => setContent(3)}
+                >
+                  Uitgaand
+                </button>
+              </>
+            )}
+            {content == 3 && (
+              <>
+                <button
+                  className={`${style.tabs_title}  scale`}
+                  onClick={(e) => setContent(0)}
+                >
+                  Mijn Projecten
+                </button>
+                <button
+                  className={`${style.tabs_title} scale`}
+                  onClick={(e) => setContent(1)}
+                >
+                  Mijn Bijdragen
+                </button>
+                <button
+                  className={`${style.tabs_title}   scale`}
+                  onClick={(e) => setContent(2)}
+                >
+                  Inkomend ({incoming.length})
                 </button>
                 <button
                   className={`${style.tabs_title} ${style.tabs_title__active} scale`}
-                  onClick={(e) => setContent(2)}
+                  onClick={(e) => setContent(3)}
                 >
-                  Mijn Aanvragen
+                  Uitgaand
                 </button>
               </>
             )}
           </div>
           {content == 0 && <MyProjects props={props.users[0]}></MyProjects>}
           {content == 1 && (
+            <Contributes
+              user={props.users[0]}
+              props={props.needs}
+            ></Contributes>
+          )}
+          {content == 2 && (
             <Notifications
               user={props.users[0]}
               props={props.needs}
             ></Notifications>
           )}
-          {content == 2 && (
+          {content == 3 && (
             <Requests user={props.users[0]} props={props.needs}></Requests>
           )}
         </div>

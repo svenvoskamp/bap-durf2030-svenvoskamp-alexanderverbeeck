@@ -8,12 +8,18 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-gap: 5rem;
-  margin-right: 10rem;
+  padding-right: 10rem;
 }
 
 @media screen and (min-width: 2000px) {
   .projecten {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .projecten {
+    padding-right: 4rem;
   }
 }
 
@@ -26,12 +32,14 @@
 @media screen and (max-width: 1000px) {
   .projecten {
     grid-gap: 3rem;
+    padding-right: 2rem;
   }
 }
 
 @media screen and (max-width: 850px) {
   .projecten {
     grid-gap: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -39,5 +47,6 @@
   .projecten {
     display: flex;
     flex-direction: column;
+    padding-right: 1rem;
   }
 }

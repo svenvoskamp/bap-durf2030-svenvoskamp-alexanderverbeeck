@@ -61,12 +61,15 @@
 
 .smallCircleButton {
   background-color: yellowColor;
-  border: 0.2rem solid blueColor;
+  border: 0.28rem solid blueColor;
   position: relative;
   border-radius: 50%;
-  display: block;
-  padding: 0.5rem;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+  width: 6rem;
+  height: 6rem;
 }
 
 .smallCircleButton:after {
@@ -103,6 +106,45 @@
   cursor: pointer;
   animation-play-state: running;
   webkit-animation-play-state: running;
+}
+
+.miniButton {
+  border: none;
+  background-color: transparent;
+  display: inline-block;
+}
+
+.miniCircleButton {
+  background-color: yellowColor;
+  border: 0.2rem solid blueColor;
+  position: relative;
+  border-radius: 50%;
+  display: block;
+  padding: 0.6rem 0.8rem;
+  width: 100%;
+}
+
+.miniCircleButton:after {
+  content: '';
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  bottom: 4%;
+  right: 8%;
+  width: 110%;
+  height: 110%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+  padding: 0.2rem solid colorBlue;
+}
+
+.miniButton:hover .miniCircleButton:after {
+  bottom: 0%;
+  right: 0%;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes rotation {

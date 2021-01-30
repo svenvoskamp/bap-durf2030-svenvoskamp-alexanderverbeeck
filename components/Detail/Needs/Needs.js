@@ -5,6 +5,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 import gql from 'graphql-tag';
 import Loading from '../../Loading/Loading';
+import Mouse from '../../Mouse';
 
 const UPDATE_NEED = gql`
   mutation update_need(
@@ -27,7 +28,7 @@ const UPDATE_NEED = gql`
 `;
 
 const GET_PROJECT_BY_ID = gql`
-  query getProjectById($id: Int!) {
+  query getProjectById($id: Int!, $user_id: String, $user: Boolean!) {
     projects(where: { id: { _eq: $id } }) {
       id
       category {
@@ -39,15 +40,6 @@ const GET_PROJECT_BY_ID = gql`
       }
       image
       impact
-      needs(order_by: { provided: asc, pending: asc }) {
-        id
-        need
-        type
-        provided
-        pending
-        user_id
-        motivation
-      }
       phase {
         phase
       }
@@ -63,16 +55,43 @@ const GET_PROJECT_BY_ID = gql`
         company_name
       }
     }
+    needs(
+      order_by: { provided: asc, pending: asc }
+      where: { project_id: { _eq: $id } }
+    ) {
+      id
+      type
+      motivation
+      need
+      user_id
+      provided
+      other_user_id
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+      pending
+      project {
+        title
+      }
+    }
+    users(where: { id: { _eq: $user_id } }) @include(if: $user) {
+      id
+      name
+      password
+      picture
+      first_name
+    }
   }
 `;
 
-const Needs = ({ needs, user, projectId }) => {
+const Needs = ({ needs, user, props }) => {
   const [updateNeed] = useMutation(UPDATE_NEED);
   const [needsForm, setNeedsForm] = useState(false);
   const [selectedNeed, setSelectedNeed] = useState('');
   const [motivation, setMotivation] = useState('');
   const router = useRouter();
-  console.log(projectId);
 
   const goBack = () => {
     setNeedsForm(false);
@@ -93,7 +112,7 @@ const Needs = ({ needs, user, projectId }) => {
   };
 
   const onSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     if (motivation != '') {
       updateNeed({
         variables: {
@@ -103,33 +122,47 @@ const Needs = ({ needs, user, projectId }) => {
           pending: true,
         },
         optimisticResponse: true,
-
-        // update: (cache) => {
-        //   console.log(cache);
-        //   const projects = cache.readQuery({
-        //     query: GET_PROJECT_BY_ID,
-        //     variables: { id: projectId },
-        //   });
-        //   console.log(projects);
-        //   const updatedProject = projects.project[0].needs.map((n) => {
-        //     if (n.id === need.id) {
-        //       return { ...n, pending: !n.pending };
-        //     } else {
-        //       return n;
-        //     }
-        //   });
-        //   cache.writeQuery({
-        //     query: GET_NEEDS_BY_PROJECT,
-        //     variables: { id: projectId },
-        //     data: { projects: updatedProject },
-        //   });
-        // },
+        update: (cache) => {
+          console.log(cache);
+          const cachedData = cache.readQuery({
+            query: GET_PROJECT_BY_ID,
+            variables: {
+              id: router.query.id,
+              user_id: user.id,
+              user: true,
+            },
+          });
+          console.log(cachedData);
+          const newNeeds = cachedData.needs.map((n) => {
+            if (n.id === selectedNeed.id) {
+              return { ...n, pending: !n.pending };
+            } else {
+              return n;
+            }
+          });
+          console.log(newNeeds);
+          cache.writeQuery({
+            query: GET_PROJECT_BY_ID,
+            variables: {
+              id: router.query.id,
+              user_id: user.id,
+              user: true,
+            },
+            data: {
+              projects: cachedData.projects,
+              needs: newNeeds,
+              users: cachedData.users,
+            },
+          });
+        },
       });
+      setNeedsForm(false);
     }
   };
   const providedNeeds = needs.filter((need) => need.provided);
   return (
     <>
+      <Mouse></Mouse>
       <div className={style.project_needs}>
         <div className={style.needs_header}>
           <p className={style.needs_title}>Durf mee te helpen</p>
@@ -164,7 +197,9 @@ const Needs = ({ needs, user, projectId }) => {
                                 onClick={(e) => handleClick(need)}
                                 className={style.button}
                               >
-                                <div className={style.circle_button}>
+                                <div
+                                  className={`${style.circle_button} ${style.circle_button__help} scale`}
+                                >
                                   <img
                                     className={style.button_image}
                                     src="../../../../assets/needs/needs_help.svg"
@@ -256,7 +291,7 @@ const Needs = ({ needs, user, projectId }) => {
                     </button>
                   </div>
                 </div>
-                <div>
+                <div className={style.motivation}>
                   <textarea
                     required
                     id="motivation"
@@ -269,20 +304,21 @@ const Needs = ({ needs, user, projectId }) => {
                     onChange={(e) => setMotivation(e.currentTarget.value)}
                   />
                 </div>
-                <input type="submit" value="submit" />
-
-                <label className={style.need_button} htmlFor="button">
+                <label
+                  className={style.motivation_need__button}
+                  htmlFor="button"
+                >
                   <input
                     className={style.input_submit}
                     type="submit"
-                    value="Ga verder"
+                    value="submit"
                     id="button"
                   />
-                  <div className={style.button}>
-                    <div className={style.circle_button}>
+                  <div className={style.motivation_button}>
+                    <div className={style.motivation_circle__button}>
                       <img
-                        className={style.button_image}
-                        src="../../../../assets/images/account_aanmaken.svg"
+                        className={style.motivation_button__image}
+                        src="../../../../assets/buttons/bevestig_item_button.svg"
                       />
                     </div>
                   </div>

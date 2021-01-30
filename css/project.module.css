@@ -35,7 +35,7 @@
 }
 
 .card_image {
-  height: 22rem;
+  height: 23rem;
   border: 0.4rem solid blueColor;
   object-fit: cover;
   width: 100%;
@@ -119,9 +119,8 @@
 }
 
 .info_text {
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
-
 
 .needs_number {
   margin-left: auto;
@@ -145,19 +144,14 @@
   margin-right: 0;
 }
 
-
 @media screen and (max-width: 1350px) {
-
   .card {
     min-width: 36rem;
     padding: 1rem;
   }
-
-
 }
 
 @media screen and (max-width: 850px) {
-
   .card {
     min-width: 25rem;
     padding: 1rem;
@@ -168,32 +162,28 @@
   }
 
   .card_info {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
-
 }
 
 @media screen and (max-width: 750px) {
-
   .card_image {
     height: 15rem;
   }
 }
 
 @media screen and (max-width: 550px) {
-
   .card_image {
     height: 25rem;
   }
   .project {
-    margin: 0 .5rem 0 1rem;
+    margin: 0 0.5rem 0 1rem;
   }
 
   .info_item {
     padding: 1.2rem 0;
   }
-  
-  
+
   .info_text {
     margin-left: 1rem;
   }
@@ -204,9 +194,7 @@
 }
 
 @media screen and (max-width: 450px) {
-
   .card_image {
     height: 20rem;
   }
 }
-

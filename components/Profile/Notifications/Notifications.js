@@ -5,7 +5,6 @@ import gql from 'graphql-tag';
 import Empty from '../../Empty/Empty';
 import styles from '../../../css/profile.module.css';
 
-
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
     $id: Int!
@@ -63,6 +62,7 @@ const GET_USER_DATA = gql`
     }
     needs {
       id
+      type
       motivation
       need
       user_id
@@ -150,24 +150,77 @@ const Notifications = ({ props, user }) => {
         {needNotifications.length < 1 && <Empty props={'notificaties'} />}
         {needNotifications.length > 0 && (
           <>
-          <div className={`${styles.grid} ${styles.grid_titles}`}>
-            <p className={styles.grid_title}>Projectnaam</p>
-            <p className={styles.grid_title}>Type</p>
-            <p className={styles.grid_title}>Druver</p>
-            <p className={styles.grid_title}>Akkoord</p>
+            <div
+              className={`${styles.grid_notifications} ${styles.grid_titles}`}
+            >
+              <p className={styles.grid_title}>Projectnaam</p>
+              <p className={styles.grid_title}>Type</p>
+              <p className={styles.grid_title}>Durver</p>
+              <p className={styles.grid_title}>Motivatie</p>
+              <p className={`${styles.grid_title} ${styles.grid_title__end}`}>
+                Akkoord
+              </p>
             </div>
             {needNotifications.map((need) => (
-              <div className={styles.grid}>
-                  <p>{need.project.title}</p>
-                  <p>{need.need}</p>
-                  <p>
-                    {need.otheruser.first_name} {need.otheruser.last_name}
-                  </p>
-                  <p>{need.motivation}</p>
-                  <div className={styles.buttons}>
-                    <button onClick={(e) => handleClick(e, 'v', need)}>V</button>
-                    <button onClick={(e) => handleClick(e, 'x', need)}>X</button>
+              <div
+                className={`${styles.grid_items} ${styles.grid_notifications__items}`}
+              >
+                <p className={styles.grid_bold}>{need.project.title}</p>
+                <div className={styles.grid_item}>
+                  <img
+                    src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                    alt={need.type}
+                    className={styles.grid_item__image}
+                  />
+                  <p className={styles.grid_text}>{need.need}</p>
+                </div>
+                <p className={styles.grid_text}>
+                  {need.otheruser.first_name} {need.otheruser.last_name}
+                </p>
+                <p
+                  className={`${styles.grid_text} ${styles.grid_text__italic}`}
+                >
+                  "{need.motivation}"
+                </p>
+                <div className={styles.buttons}>
+                  {/* <button onClick={(e) => handleClick(e, 'v', need)}>V</button> */}
+
+                  <div className={styles.need_button}>
+                    <button
+                      className={styles.input_submit}
+                      onClick={(e) => handleClick(e, 'v', need)}
+                    >
+                      <div className={styles.button}>
+                        <div
+                          className={`${styles.circle_button} ${styles.circle_button__accept} scale `}
+                        >
+                          <img
+                            className={styles.button_image}
+                            src="../../../assets/buttons/accept_icon.svg"
+                          />
+                        </div>
+                      </div>
+                    </button>
                   </div>
+                  <div className={styles.need_button}>
+                    <button
+                      className={styles.input_submit}
+                      onClick={(e) => handleClick(e, 'x', need)}
+                    >
+                      <div className={styles.button}>
+                        <div
+                          className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
+                        >
+                          <img
+                            className={styles.button_image}
+                            src="../../../assets/buttons/decline_icon.svg"
+                          />
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  {/* <button onClick={(e) => handleClick(e, 'x', need)}>X</button> */}
+                </div>
               </div>
             ))}
           </>

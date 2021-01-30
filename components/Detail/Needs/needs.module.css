@@ -10,7 +10,7 @@
 
 .needs_title {
   composes: mediumTitle from '../../../css/typo.module.css';
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .needs_provided {
@@ -100,15 +100,22 @@
 
 .circle_button_provided {
   background-color: beigeColor;
-  padding: 1.4rem;
+}
+
+.circle_button_provided:after {
+  display: none;
 }
 
 .button_image {
   composes: smallButtonImage from '../../../css/buttons.module.css';
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .need_motivation {
   z-index: 2;
+  position: relative;
 }
 
 .motivation_text {
@@ -118,29 +125,70 @@
 }
 
 .motivation_input {
-  border: 0.2rem solid blueColor;
+  width: 100%;
+  height: 100%;
   background-color: transparent;
+  border: none;
   composes: empty from '../../../css/typo.module.css';
+}
+
+.motivation {
+  border: 0.3rem solid blueColor;
+  background-color: beigeColor;
   padding: 0.5rem 0.5rem;
   position: relative;
   width: 100%;
-  height: 10rem;
+  height: 8rem;
 }
 
-.motivation_input:after {
+.motivation:after {
   content: '';
   position: absolute;
   display: block;
   background: inherit;
   border-radius: inherit;
   border: inherit;
-  top: 1rem;
-  left: 1rem;
+  top: 0.8rem;
+  left: 0.8rem;
   width: 100%;
   height: 100%;
   z-index: -1;
   transition: all 0.2s ease-in-out;
 }
+
+/* Motivation Button */
+
+.input_submit {
+  display: none;
+}
+
+.motivation_need__button {
+  position: absolute;
+  bottom: -3rem;
+  right: -3rem;
+}
+
+.motivation_button {
+  composes: button from '../../../css/buttons.module.css';
+}
+
+.motivation_circle__button {
+  composes: circleButton from '../../../css/buttons.module.css';
+  transition: none;
+}
+
+.circle_button_provided:after {
+  display: none;
+}
+
+.motivation_button__image {
+  composes: buttonImage from '../../../css/buttons.module.css';
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Motivation Back Button */
 
 .button_back {
   display: flex;

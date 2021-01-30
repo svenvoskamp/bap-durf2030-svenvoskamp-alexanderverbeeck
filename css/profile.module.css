@@ -28,21 +28,110 @@
   margin-right: 0;
 }
 
-.grid {
+.grid_notifications,
+.grid_notifications__items {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr 1fr;
+  grid-template-columns: 1.2fr 1fr 1fr 2fr 0.5fr;
+  padding-right: 10rem;
+}
+
+.grid_requests,
+.grid_requests__items {
+  display: grid;
+  padding-right: 10rem;
+  grid-template-columns: 5rem 1.2fr 1fr 2fr 0.5fr;
+  padding-right: 10rem;
+}
+
+.grid_items,
+.grid_items {
+  padding: 1.5rem 10rem 1.5rem 1rem;
+  background-color: #f3e3cb;
+  align-items: center;
+}
+
+.grid_items:nth-child(even),
+.grid_items:nth-child(even) {
+  background-color: beigeColor;
+}
+
+.grid_title__start {
+  grid-column: 2;
+}
+
+.grid_item {
+  display: flex;
+  align-items: center;
+}
+
+.grid_item__image {
+  margin-right: 1rem;
 }
 
 .grid_titles {
-  border-bottom: .2rem solid blueColor;
+  border-bottom: 0.2rem solid blueColor;
   margin-top: 5rem;
+  padding-bottom: 1rem;
 }
 
 .grid_title {
   composes: mediumTitle from './typo.module.css';
+}
 
+.grid_title:first-of-type {
+  margin-left: 1rem;
+}
+
+.grid_title__end {
+  text-align: center;
+}
+
+.grid_bold {
+  composes: bold from './typo.module.css';
+}
+
+.grid_text {
+  composes: text from './typo.module.css';
+}
+
+.grid_text__italic {
+  font-style: italic;
 }
 
 .buttons {
   display: flex;
+  justify-content: center;
+}
+
+.need_button {
+  z-index: 2;
+}
+
+.input_submit {
+  background-color: transparent;
+  border: none;
+}
+
+.button {
+  composes: miniButton from './buttons.module.css';
+  margin: 0 0.2rem;
+}
+
+.circle_button__accept {
+  background-color: greenColor;
+  transition: none;
+}
+
+.circle_button__decline {
+  background-color: redColor;
+  transition: none;
+}
+
+.circle_button {
+  composes: miniCircleButton from './buttons.module.css';
+  transition: none;
+}
+
+.button_image {
+  composes: miniButtonImage from './buttons.module.css';
 }

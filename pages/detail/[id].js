@@ -15,7 +15,7 @@ import style from '../../css/detail.module.css';
 import Loading from '../../components/Loading/Loading';
 
 const GET_PROJECT_BY_ID = gql`
-  query getProjectById($id: Int!) {
+  query getProjectById($id: Int!, $user_id: String, $user: Boolean!) {
     projects(where: { id: { _eq: $id } }) {
       id
       category {
@@ -27,15 +27,6 @@ const GET_PROJECT_BY_ID = gql`
       }
       image
       impact
-      needs(order_by: { provided: asc, user_id: desc }) {
-        id
-        need
-        type
-        provided
-        pending
-        user_id
-        motivation
-      }
       phase {
         phase
       }
@@ -51,12 +42,28 @@ const GET_PROJECT_BY_ID = gql`
         company_name
       }
     }
-  }
-`;
-
-const GET_CURRENT_USER = gql`
-  query getCurrentUser($id: String!) {
-    users(where: { id: { _eq: $id } }) {
+    needs(
+      order_by: { provided: asc, pending: asc }
+      where: { project_id: { _eq: $id } }
+    ) {
+      id
+      type
+      motivation
+      need
+      user_id
+      provided
+      other_user_id
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+      pending
+      project {
+        title
+      }
+    }
+    users(where: { id: { _eq: $user_id } }) @include(if: $user) {
       id
       name
       password
@@ -65,6 +72,18 @@ const GET_CURRENT_USER = gql`
     }
   }
 `;
+
+// const GET_CURRENT_USER = gql`
+//   query getCurrentUser($id: String!) {
+//     users(where: { id: { _eq: $id } }) {
+//       id
+//       name
+//       password
+//       picture
+//       first_name
+//     }
+//   }
+// `;
 
 const Detail = ({ props, user }) => {
   const scrollRef = useRef(null);
@@ -86,22 +105,14 @@ const Detail = ({ props, user }) => {
       <main ref={scrollRef} data-scroll-container>
         <article className={style.part_project}>
           <div className={style.part_info}>
-            <Header props={props}></Header>
-            <Needs user={user} needs={props.needs} projectId={props.id}></Needs>
+            <Header props={props.projects[0]}></Header>
+            <Needs user={user} needs={props.needs} props={props}></Needs>
           </div>
-          <Extra className={style.part_extra} props={props}></Extra>
-
-          <div className={style.part_info}>
-            <Header props={props}></Header>
-
-            <Needs needs={props.needs}></Needs>
-          </div>
-          <Extra props={props}></Extra>
-        </article>
-        <article>
-          <Creatie></Creatie>
+          <Extra className={style.part_extra} props={props.projects[0]}></Extra>
+          <Creatie props={props}></Creatie>
           <Crowdfunding></Crowdfunding>
         </article>
+        <article></article>
       </main>
     </>
   );
@@ -153,40 +164,49 @@ const Detail = ({ props, user }) => {
 //   return { props: { props: data.projects[0] } };
 // }
 
-const LoadDetail = ({ user }) => {
-  const router = useRouter();
-  const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
-    variables: { id: router.query.id },
-  });
-  if (loading) {
-    return <Loading props={'detail'} />;
-  }
-  if (error) {
-    console.log(error);
-  }
-  if (!loading && data) {
-    return <Detail props={data.projects[0]} user={user} />;
-  }
-  if (!loading && !data) {
-    return <>Error</>;
-  }
-};
+// const LoadDetail = ({ user }) => {
+//   const router = useRouter();
+//   const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
+//     variables: { id: router.query.id },
+//   });
+//   if (loading) {
+//     return <Loading props={'detail'} />;
+//   }
+//   if (error) {
+//     console.log(error);
+//   }
+//   if (!loading && data) {
+//     return <Detail props={data} user={user} />;
+//   }
+//   if (!loading && !data) {
+//     return <>Error</>;
+//   }
+// };
 
 const LoadUser = ({ user }) => {
   console.log(user);
+  const router = useRouter();
   if (user) {
-    const { loading, error, data } = useQuery(GET_CURRENT_USER, {
-      variables: { id: user.sub },
+    const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
+      variables: { user_id: user.sub, id: router.query.id, user: true },
     });
     if (loading) {
       return <Loading props={'detail'} />;
     }
     if (data && !loading) {
-      return <LoadDetail user={data.users[0]} />;
+      return <Detail user={data.users[0]} props={data} />;
     }
   }
   if (!user) {
-    return <LoadDetail user={user} />;
+    const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
+      variables: { user_id: '', id: router.query.id, user: false },
+    });
+    if (loading) {
+      return <Loading props={'detail'} />;
+    }
+    if (data && !loading) {
+      return <Detail user="" props={data} />;
+    }
   }
 };
 const getUser = () => {

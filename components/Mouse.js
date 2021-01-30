@@ -13,6 +13,7 @@ const Mouse = () => {
     for (let i = 0; i < targets.length; i++) {
       targets[i].addEventListener('mouseenter', onMouseHover);
       targets[i].addEventListener('mouseleave', onMouseHoverOut);
+      targets[i].addEventListener('click', onMouseClick);
     }
     document.body.addEventListener('mousemove', onMouseMove);
   });
@@ -25,12 +26,21 @@ const Mouse = () => {
     });
   }
   function onMouseHover() {
+    console.log('ik moet groot worden');
     TweenMax.to(bigBall, {
       duration: 0.3,
       scale: 2,
     });
   }
   function onMouseHoverOut() {
+    console.log('ik moet klein blijven');
+    TweenMax.to(bigBall, {
+      duration: 0.3,
+      scale: 1,
+    });
+  }
+  function onMouseClick() {
+    console.log('ik word klein');
     TweenMax.to(bigBall, {
       duration: 0.3,
       scale: 1,
