@@ -17,6 +17,7 @@
   padding: 1rem 0;
   margin-right: 5rem;
   opacity: 0.2;
+  cursor: pointer;
 }
 
 .tabs_title__active {
@@ -25,4 +26,23 @@
 
 .tabs_title:last-of-type {
   margin-right: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr;
+}
+
+.grid_titles {
+  border-bottom: .2rem solid blueColor;
+  margin-top: 5rem;
+}
+
+.grid_title {
+  composes: mediumTitle from './typo.module.css';
+
+}
+
+.buttons {
+  display: flex;
 }

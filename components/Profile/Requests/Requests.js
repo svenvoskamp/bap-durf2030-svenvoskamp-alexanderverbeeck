@@ -2,6 +2,7 @@ import React from 'react';
 import style from './requests.module.css';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import Empty from '../../Empty/Empty';
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
@@ -131,15 +132,7 @@ const Requests = ({ props, user }) => {
   return (
     <>
       <div>
-        {requests.length < 1 && (
-          <div className={style.empty_state}>
-            <p className={style.empty_state__text}>
-              je hebt
-              <span className={style.empty_state__text__outline}> geen </span>
-              lopende aanvragen.
-            </p>
-          </div>
-        )}
+        {requests.length < 1 && ( <Empty props={'inafwachting'}/> )}
 
         {requests.length > 0 && (
           <>

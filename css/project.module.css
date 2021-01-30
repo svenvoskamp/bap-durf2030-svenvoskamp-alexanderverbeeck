@@ -111,6 +111,7 @@
   display: flex;
   border-bottom: 0.2rem solid blueColor;
   align-items: center;
+  padding: 1rem 0;
 }
 
 .info_item:last-of-type {
@@ -118,9 +119,9 @@
 }
 
 .info_text {
-  padding: 1.5rem 0.5rem;
-  margin-left: 0.3rem;
+  margin-left: .5rem;
 }
+
 
 .needs_number {
   margin-left: auto;
@@ -137,6 +138,7 @@
 .need {
   display: flex;
   margin-right: 0.5rem;
+  align-items: center;
 }
 
 .need:last-of-type {
@@ -185,6 +187,15 @@
   }
   .project {
     margin: 0 .5rem 0 1rem;
+  }
+
+  .info_item {
+    padding: 1.2rem 0;
+  }
+  
+  
+  .info_text {
+    margin-left: 1rem;
   }
 
   .card {

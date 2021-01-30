@@ -3,6 +3,8 @@ import style from './notifications.module.css';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import Empty from '../../Empty/Empty';
+import styles from '../../../css/profile.module.css';
+
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
@@ -148,19 +150,25 @@ const Notifications = ({ props, user }) => {
         {needNotifications.length < 1 && <Empty props={'notificaties'} />}
         {needNotifications.length > 0 && (
           <>
+          <div className={`${styles.grid} ${styles.grid_titles}`}>
+            <p className={styles.grid_title}>Projectnaam</p>
+            <p className={styles.grid_title}>Type</p>
+            <p className={styles.grid_title}>Druver</p>
+            <p className={styles.grid_title}>Akkoord</p>
+            </div>
             {needNotifications.map((need) => (
-              <>
-                <li>
+              <div className={styles.grid}>
                   <p>{need.project.title}</p>
                   <p>{need.need}</p>
                   <p>
                     {need.otheruser.first_name} {need.otheruser.last_name}
                   </p>
                   <p>{need.motivation}</p>
-                  <button onClick={(e) => handleClick(e, 'v', need)}>V</button>
-                  <button onClick={(e) => handleClick(e, 'x', need)}>X</button>
-                </li>
-              </>
+                  <div className={styles.buttons}>
+                    <button onClick={(e) => handleClick(e, 'v', need)}>V</button>
+                    <button onClick={(e) => handleClick(e, 'x', need)}>X</button>
+                  </div>
+              </div>
             ))}
           </>
         )}

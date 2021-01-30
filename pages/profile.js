@@ -95,19 +95,19 @@ const Profile = ({ props }) => {
             {content == 0 && (
               <>
                 <button
-                  className={`${style.tabs_title} ${style.tabs_title__active}`}
+                  className={`${style.tabs_title} ${style.tabs_title__active} scale`}
                   onClick={(e) => setContent(0)}
                 >
                   Mijn Projecten
                 </button>
                 <button
-                  className={style.tabs_title}
+                  className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(1)}
                 >
                   Mijn Notificaties
                 </button>
                 <button
-                  className={style.tabs_title}
+                  className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(2)}
                 >
                   Mijn Aanvragen
@@ -117,19 +117,19 @@ const Profile = ({ props }) => {
             {content == 1 && (
               <>
                 <button
-                  className={style.tabs_title}
+                  className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(0)}
                 >
                   Mijn Projecten
                 </button>
                 <button
-                  className={`${style.tabs_title} ${style.tabs_title__active}`}
+                  className={`${style.tabs_title} ${style.tabs_title__active} scale`}
                   onClick={(e) => setContent(1)}
                 >
                   Mijn Notificaties
                 </button>
                 <button
-                  className={style.tabs_title}
+                  className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(2)}
                 >
                   Mijn Aanvragen
@@ -139,19 +139,19 @@ const Profile = ({ props }) => {
             {content == 2 && (
               <>
                 <button
-                  className={style.tabs_title}
+                  className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(0)}
                 >
                   Mijn Projecten
                 </button>
                 <button
-                  className={`${style.tabs_title} `}
+                  className={`${style.tabs_title} scale`}
                   onClick={(e) => setContent(1)}
                 >
                   Mijn Notificaties
                 </button>
                 <button
-                  className={`${style.tabs_title} ${style.tabs_title__active}`}
+                  className={`${style.tabs_title} ${style.tabs_title__active} scale`}
                   onClick={(e) => setContent(2)}
                 >
                   Mijn Aanvragen
