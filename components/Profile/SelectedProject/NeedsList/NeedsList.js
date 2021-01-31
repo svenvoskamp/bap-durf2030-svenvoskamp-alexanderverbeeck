@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../create/Step3/step3.module.css';
+import style from '../../../Create/Step3/step3.module.css';
 import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 

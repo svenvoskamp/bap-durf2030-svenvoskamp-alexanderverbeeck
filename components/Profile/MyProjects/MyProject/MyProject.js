@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import style from '../../../../css/project.module.css';
-import styles from '../myprojects.module.css';
 
 const MyProject = ({ props, project, setSelectedProject, needs }) => {
   let projectNeeds = [];
