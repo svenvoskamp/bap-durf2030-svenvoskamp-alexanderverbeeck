@@ -190,7 +190,6 @@ const Requests = ({ props, user, feedbacks }) => {
   };
   return (
     <>
-      <div>
         {requests.length < 1 && feedbackRequests.length < 1 && (
           <Empty props={'inafwachting'} />
         )}
@@ -300,7 +299,6 @@ const Requests = ({ props, user, feedbacks }) => {
             ))}
           </>
         )}
-      </div>
     </>
   );
 };

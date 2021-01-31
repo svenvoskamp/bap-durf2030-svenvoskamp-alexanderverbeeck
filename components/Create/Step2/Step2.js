@@ -94,9 +94,7 @@ const Step2 = ({
                   onChange={(e) => setTitle(e.currentTarget.value)}
                 />
               </div>
-              <div
-                className={`${style.input_container} ${style.input_district}`}
-              >
+              <div className={`${style.input_container} ${style.input_district}`}>
                 <label for="districts" className={style.label}>
                   Waar gaat uw project plaatsvinden:
                 </label>
@@ -115,9 +113,7 @@ const Step2 = ({
                   ))}
                 </select>
               </div>
-              <div
-                className={`${style.input_container} ${style.input_tagline}`}
-              >
+              <div className={`${style.input_container} ${style.input_tagline}`} >
                 <label htmlFor="tagline" className={style.label}>
                   Tagline
                   <span className={style.label_extra}>(max 50 karakters)</span>
@@ -134,10 +130,8 @@ const Step2 = ({
                   onChange={(e) => setTagline(e.currentTarget.value)}
                 />
               </div>
-            </div>
-            <div className={`${style.form_grid} ${style.form_image}`}>
               <div className={style.subtitle_image}>
-                <h2 className={`${style.subtitle} ${style.subtitle_image}`}>
+                <h2 className={`${style.subtitle}`}>
                   Projectfoto
                 </h2>
                 <label htmlFor="img" className={style.label}>
@@ -159,18 +153,21 @@ const Step2 = ({
                   }}
                 />
               </div>
-              <label htmlFor="img" className={style.input_image}>
-                <img
-                  id="id_img"
-                  className={style.input_image__picture}
-                  class
-                  alt=""
-                  src="./assets/images/add_image.svg"
-                />
-              </label>
+              
+                <label htmlFor="img" className={style.input_image}>
+                  <div className={style.image}>
+                  <img
+                    id="id_img"
+                    className={style.input_image__picture}
+                    class
+                    alt=""
+                    src="./assets/images/add_image.svg"
+                  />
+                                </div>
+                </label>
             </div>
             <div className={`${style.form_grid} ${style.form_description}`}>
-              <h2 className={`${style.subtitle} ${style.subtitle_image}`}>
+              <h2 className={style.subtitle}>
                 Projectbeschrijving
               </h2>
               <div className={`${style.input_container} ${style.input_impact}`}>

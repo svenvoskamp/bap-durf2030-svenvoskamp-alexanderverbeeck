@@ -39,45 +39,36 @@
   margin-bottom: 2rem;
 }
 
-.form {
+/* .form {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr 40rem;
   grid-column-gap: 5rem;
-}
+} */
 
 .form_grid {
   grid-column-gap: 2rem;
   margin-top: 2rem;
 }
 
+/* Grid Project Inputs */
+
 .form_project {
-  grid-column: 1/3;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1.8rem;
   margin-top: 2rem;
-  max-height: 100%;
+  width: 100%;
 }
 
-.form_image {
-  margin-top: 2rem;
+.subtitle_project {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.subtitle_image {
   grid-column: 3;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
-}
-
-.form_description {
-  grid-column: span 3;
-  margin-top: 5rem;
-}
-
-.input_container {
-  display: flex;
-  flex-direction: column;
-  padding: 1.2rem 0;
+  grid-row: 1;
 }
 
 .input {
@@ -88,18 +79,6 @@
   border-left: none;
   composes: empty from '../../../css/typo.module.css';
   padding: 0.2rem 0.5rem;
-}
-
-.input_title {
-  grid-row: 2;
-}
-
-.input_district {
-  grid-row: 3;
-}
-
-.input_tagline {
-  grid-column: span 2;
 }
 
 .input_text {
@@ -114,18 +93,42 @@
   display: none;
 }
 
+.input_title {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.input_district {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.input_tagline {
+  grid-column: span 2;
+  grid-row: 4;
+}
+
 .input_image {
+  grid-column: 3;
+  grid-row: span 3;
+  height: 21rem;
+  width: 100%;
+  z-index: 2;
+
+}
+
+.image {
   border: 0.2rem solid blueColor;
   background-color: beigeColor;
   position: relative;
   margin-top: 0.5rem;
   width: 100%;
-  height: 25rem;
+  height: 21rem;
   object-fit: cover;
   cursor: pointer;
 }
 
-.input_image:after {
+.image:after {
   content: '';
   position: absolute;
   display: block;
@@ -139,6 +142,27 @@
   z-index: -1;
   transition: all 0.2s ease-in-out;
 }
+/* .form_image {
+  margin-top: 2rem;
+  grid-column: 3;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+} */
+
+
+/* Grid Text Input */
+.form_description {
+  grid-column: span 3;
+  margin-top: 5rem;
+}
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 0;
+}
 
 .label {
   composes: semiBold from '../../../css/typo.module.css';
@@ -148,6 +172,8 @@
 .label_extra {
   composes: smallText from '../../../css/typo.module.css';
 }
+
+/* Button End */
 
 .part_end {
   display: grid;
@@ -201,4 +227,134 @@
 
 .back_text {
   composes: bold from '../../../css/typo.module.css';
+}
+
+@media screen and (max-width: 1150px) {
+
+  .form_project {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    grid-column-gap: 1.8rem;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+
+  .input_title {
+    grid-column: span 2;
+  }
+  
+  .input_district {
+    grid-column: span 2;
+  }
+}
+
+@media screen and (max-width: 850px) {
+
+  .part_content {
+    margin-right: 1rem;
+  }
+
+  .form_project {
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+
+  .subtitle_project {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .subtitle_image {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  
+  .input_tagline {
+    grid-column: span 3;
+    grid-row: 4;
+  }
+
+  .input_image, .image {
+    height: 16rem;
+  }
+  
+  .input_image {
+    grid-column: 3;
+    grid-row: span 2;
+    /* height: 21rem; */
+    width: 100%;
+    z-index: 2;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+
+  .part_content {
+    margin-right: 1rem;
+  }
+
+  .input_image, .image {
+    height: 14rem;
+  }
+
+
+}
+
+@media screen and (max-width: 550px) {
+
+  .form_project {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: unset;
+    margin-top: 0rem;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .subtitle_project {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 5rem;
+  }
+  
+  .subtitle_image {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0 7rem;
+  }
+  
+  .input_title {
+    grid-row: 4;
+    grid-column: 1;
+  }
+  
+  .input_district {
+    grid-row: 5;
+    grid-column: 1;
+  }
+  
+  .input_tagline {
+    grid-column: 1;
+    grid-row: 6;
+  }
+  
+  .input_image {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .input_image {
+    height: 18rem;
+    width: 100%;
+    padding: 0 7rem;
+  }
+
+  .image {
+    height: 18rem;
+  }
+  
+
+
 }

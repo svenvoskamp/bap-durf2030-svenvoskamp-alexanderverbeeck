@@ -46,7 +46,7 @@
 }
 
 .content_theme {
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 
 .content_options {
@@ -135,4 +135,21 @@
   to {
     transform: rotate(359deg);
   }
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+.content_theme,
+.content_category {
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content_theme {
+  margin-bottom: 5rem;
+}
 }

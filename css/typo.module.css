@@ -135,13 +135,43 @@
   color: blueColor;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1250px) {
+  .largeTitle {
+    font-size: 11rem;
+  }
+
+  .largeTitleOutline {
+    font-size: 11rem;
+  }
+}
+
+@media screen and (max-width: 1150px) {
   .largeTitle {
     font-size: 10rem;
   }
 
   .largeTitleOutline {
     font-size: 10rem;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .largeTitle {
+    font-size: 9.25rem;
+  }
+
+  .largeTitleOutline {
+    font-size: 9.25rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .largeTitle {
+    font-size: 8.75rem;
+  }
+
+  .largeTitleOutline {
+    font-size: 8.75rem;
   }
   .smallCaps {
     font-size: 1.4rem;
@@ -152,13 +182,23 @@
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 950px) {
   .largeTitle {
-    font-size: 7rem;
+    font-size: 8.15rem;
   }
 
   .largeTitleOutline {
-    font-size: 7rem;
+    font-size: 8.15rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .largeTitle {
+    font-size: 8rem;
+  }
+
+  .largeTitleOutline {
+    font-size: 8rem;
   }
 
   .mediumTitle {
@@ -202,7 +242,7 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 715px) {
   .largeTitle {
     font-size: 6rem;
     -webkit-text-stroke: 0.25rem blueColor;
@@ -211,6 +251,20 @@
 
   .largeTitleOutline {
     font-size: 6rem;
+    -webkit-text-stroke: 0.25rem blueColor;
+    text-stroke: 0.25rem blueColor;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .largeTitle {
+    font-size: 5rem;
+    -webkit-text-stroke: 0.25rem blueColor;
+    text-stroke: 0.25rem blueColor;
+  }
+
+  .largeTitleOutline {
+    font-size: 5rem;
     -webkit-text-stroke: 0.25rem blueColor;
     text-stroke: 0.25rem blueColor;
   }
@@ -250,13 +304,13 @@
 
 @media screen and (max-width: 450px) {
   .largeTitle {
-    font-size: 4rem;
+    font-size: 4.75rem;
     -webkit-text-stroke: 0.2rem blueColor;
     text-stroke: 0.2rem blueColor;
   }
 
   .largeTitleOutline {
-    font-size: 4rem;
+    font-size: 4.75rem;
     -webkit-text-stroke: 0.2rem blueColor;
     text-stroke: 0.2rem blueColor;
   }

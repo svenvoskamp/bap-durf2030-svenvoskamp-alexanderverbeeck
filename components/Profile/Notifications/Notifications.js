@@ -225,7 +225,7 @@ const Notifications = ({ props, user, feedbacks }) => {
 
   return (
     <>
-      <div>
+      <>
         {feedbackNotifications.length < 1 && needNotifications.length < 1 && (
           <Empty props={'noneedsnofeedback'} />
         )}
@@ -315,7 +315,7 @@ const Notifications = ({ props, user, feedbacks }) => {
             ))}
           </>
         )}
-      </div>
+      </>
       <div>
         {feedbackNotifications.length < 1 && needNotifications.length > 0 && (
           <>

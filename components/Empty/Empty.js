@@ -51,8 +51,8 @@ const Empty = ({ props }) => {
       {props == 'inafwachting' && (
         <div className={style.empty_state}>
           <p className={style.empty_state__text}>
-            je hebt
-            <span className={style.empty_state__text__outline}> geen </span>
+            je hebt{' '}
+            <span className={style.empty_state__text__outline}> geen </span>{' '}
             lopende aanvragen.
           </p>
         </div>

@@ -125,7 +125,6 @@ const Profile = ({ props }) => {
       <Nav user={props.users[0]}></Nav>
       <article className={style.part}>
         <Info props={props.users[0]}></Info>
-        <div className={style.part_content}>
           <div className={style.tabs}>
             {content == 0 && (
               <>
@@ -262,7 +261,6 @@ const Profile = ({ props }) => {
               feedbacks={props.feedbacks}
             ></Requests>
           )}
-        </div>
       </article>
     </>
   );

@@ -6,7 +6,6 @@
 }
 
 .part_header {
-  margin-bottom: 5rem;
   width: 100%;
 }
 
@@ -142,6 +141,12 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-gap: 5rem;
+  margin-top: 5rem;
+}
+
+.projecten:empty
+{
+    display:none;
 }
 
 /* Empty State */
@@ -170,6 +175,7 @@
   color: #e5d6c0;
   text-align: center;
   font-size: 4rem;
+  line-height: 5rem;
 }
 
 .empty_state__text__outline {
@@ -178,6 +184,7 @@
   text-stroke: 0.1rem #e5d6c0;
   display: inline-block;
   font-size: 4rem;
+  line-height: 5rem;
 }
 
 .empty_state__buttons {
