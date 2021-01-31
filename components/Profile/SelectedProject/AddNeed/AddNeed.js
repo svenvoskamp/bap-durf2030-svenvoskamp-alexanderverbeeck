@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import style from '../../../create/Step3/step3.module.css';
+import style from '../../../../create/Step3/step3.module.css';
 
 const ADD_NEED = gql`
   mutation addNeed(
