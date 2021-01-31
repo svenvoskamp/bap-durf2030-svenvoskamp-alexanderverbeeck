@@ -68,6 +68,24 @@ const GET_USER_DATA = gql`
         title
       }
     }
+    feedbacks {
+      id
+      type
+      motivation
+      user_id
+      other_user_id
+      accepted
+      pending
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+
+      project {
+        title
+      }
+    }
   }
 `;
 
@@ -90,6 +108,13 @@ const Profile = ({ props }) => {
     if (need.user_id == props.users[0].id) {
       if (need.pending == true) {
         incoming.push(need);
+      }
+    }
+  });
+  props.feedbacks.map((feedback) => {
+    if (feedback.user_id == props.users[0].id) {
+      if (feedback.pending == true) {
+        incoming.push(feedback);
       }
     }
   });
@@ -220,16 +245,22 @@ const Profile = ({ props }) => {
             <Contributes
               user={props.users[0]}
               props={props.needs}
+              feedbacks={props.feedbacks}
             ></Contributes>
           )}
           {content == 2 && (
             <Notifications
               user={props.users[0]}
               props={props.needs}
+              feedbacks={props.feedbacks}
             ></Notifications>
           )}
           {content == 3 && (
-            <Requests user={props.users[0]} props={props.needs}></Requests>
+            <Requests
+              user={props.users[0]}
+              props={props.needs}
+              feedbacks={props.feedbacks}
+            ></Requests>
           )}
         </div>
       </article>

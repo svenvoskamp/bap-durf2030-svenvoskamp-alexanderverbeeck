@@ -48,6 +48,7 @@ const GET_PROJECT_BY_ID = gql`
         theme
       }
       title
+      user_id
       user {
         first_name
         last_name

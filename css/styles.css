@@ -317,6 +317,10 @@ html.has-scroll-dragging {
   flex-direction: column;
 }
 
+.nav-profile--mobile {
+  display: none;
+}
+
 .profile {
   width: 100%;
   display: flex;
@@ -400,17 +404,32 @@ html.has-scroll-dragging {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    align-items: center;
   }
 
   .nav-item {
     display: flex;
     flex-direction: column;
-    min-width: auto;
+    width: auto;
     align-items: center;
+  }
+
+  .item {
+    width: unset;
   }
 
   .nav-profile {
     width: auto;
+    display: none;
+  }
+
+  .nav-profile--mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile {
+    padding: 0;
   }
 
   .navigation:hover {

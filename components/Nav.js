@@ -3,12 +3,9 @@ import Login from './Auth/Login';
 import Logout from './Auth/Logout';
 
 const Nav = ({ user }) => {
-
   const navRef = useRef(null);
   return (
-    <nav
-      className="navigation"
-    >
+    <nav className="navigation">
       <a href={'/'} className="nav-logo">
         <svg
           className="nav-logo--image scale"
@@ -142,8 +139,7 @@ const Nav = ({ user }) => {
           <p className=" nav-item--title">Projecten</p>
         </a>
 
-        <a href={'/create-project'}className="scale item item-nieuw">
-
+        <a href={'/create-project'} className="scale item item-nieuw">
           <div className=" nav-item">
             <svg
               className="nav-item--image"
@@ -177,7 +173,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </div>
-          <p className=" nav-item--title">Nieuw project</p>
+          <p className="nav-item--title">Nieuw project</p>
         </a>
         <a href={'/'} className="scale item">
           <div className="nav-item">
@@ -244,9 +240,29 @@ const Nav = ({ user }) => {
           </div>
           <p className=" nav-item--title">Durf 2030</p>
         </a>
+        <div className="nav-profile--mobile">
+          {user && (
+            <a href={'/profile'} className="scale profile">
+              <div className="nav-item nav-profile--image">
+                <img className="" src={user.picture} alt={user.name} />
+              </div>
+              <p className="nav-item--title">Mijn profiel</p>
+            </a>
+          )}
+          {/* {!user && (
+            <>
+              <Login></Login>
+            </>
+          )}
+
+          {user && (
+            <>
+              <Logout></Logout>
+            </>
+          )} */}
+        </div>
       </div>
       <div className="nav-profile">
-
         {user && (
           <a href={'/profile'} className="scale profile">
             <div className="nav-item nav-profile--image">

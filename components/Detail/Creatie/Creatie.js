@@ -11,7 +11,7 @@ const ADD_FEEDBACK = gql`
     $other_user_id: String!
     $project_id: Int!
   ) {
-    insert_needs(
+    insert_feedbacks(
       objects: {
         type: $type
         motivation: $motivation
@@ -25,23 +25,46 @@ const ADD_FEEDBACK = gql`
         id
         type
         motivation
-        need
-        provided
         user_id
+        other_user_id
+        project_id
+        pending
+        accepted
+        created_at
+        updated_at
       }
     }
   }
 `;
 
 const Creatie = ({ props }) => {
+  console.log(props);
   const [typeFeedback, setTypeFeedback] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [motivation, setMotivation] = useState('');
+  const [addFeedback] = useMutation(ADD_FEEDBACK);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (typeFeedback != '' && motivation != '') {
+      addFeedback({
+        variables: {
+          type: typeFeedback,
+          motivation: motivation,
+          user_id: props.projects[0].user_id,
+          other_user_id: props.users[0].id,
+          project_id: props.projects[0].id,
+        },
+      });
+      setCurrentIndex(2);
     }
+  };
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    setMotivation('');
+    setTypeFeedback('');
+    setCurrentIndex(0);
   };
   return (
     <>
@@ -156,6 +179,12 @@ const Creatie = ({ props }) => {
                 onChange={(e) => setMotivation(e.currentTarget.value)}
               />
               <input type="submit" value="Verzend feedback" />
+            </>
+          )}
+          {currentIndex == 2 && (
+            <>
+              <p>Uw feedback is in behandeling bij de projecteigenaar!</p>
+              <button onClick={handleBack}>meer toevoegen</button>
             </>
           )}
         </div>

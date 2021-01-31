@@ -25,6 +25,17 @@ const TOGGLE_NEED = gql`
   }
 `;
 
+const TOGGLE_FEEDBACK = gql`
+  mutation toggleFeedback($id: Int!, $accepted: Boolean!, $pending: Boolean!) {
+    update_feedbacks(
+      where: { id: { _eq: $id } }
+      _set: { accepted: $accepted, pending: $pending }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
     users(where: { id: { _eq: $id } }) {
@@ -67,6 +78,7 @@ const GET_USER_DATA = gql`
       need
       user_id
       provided
+      other_user_id
       otheruser {
         id
         first_name
@@ -77,12 +89,32 @@ const GET_USER_DATA = gql`
         title
       }
     }
+    feedbacks {
+      id
+      type
+      motivation
+      user_id
+      other_user_id
+      accepted
+      pending
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+
+      project {
+        title
+      }
+    }
   }
 `;
 
-const Notifications = ({ props, user }) => {
+const Notifications = ({ props, user, feedbacks }) => {
   const [toggleNeed] = useMutation(TOGGLE_NEED);
+  const [toggleFeedback] = useMutation(TOGGLE_FEEDBACK);
   let needNotifications = [];
+  let feedbackNotifications = [];
   props.map((need) => {
     if (need.user_id == user.id) {
       if (need.pending == true) {
@@ -90,6 +122,15 @@ const Notifications = ({ props, user }) => {
       }
     }
   });
+  feedbacks.map((feedback) => {
+    if (feedback.user_id == user.id) {
+      if (feedback.pending == true) {
+        feedbackNotifications.push(feedback);
+      }
+    }
+  });
+  console.log(feedbackNotifications);
+  console.log(needNotifications);
 
   const handleClick = (e, choose, need) => {
     e.preventDefault();
@@ -128,18 +169,56 @@ const Notifications = ({ props, user }) => {
         cache.writeQuery({
           query: GET_USER_DATA,
           variables: { id: user.id },
-          data: { needs: newNeeds, users: cachedData.users },
+          data: {
+            needs: newNeeds,
+            users: cachedData.users,
+            feedbacks: cachedData.feedbacks,
+          },
+        });
+      },
+    });
+  };
+
+  const handleFeedback = (e, choose, feedback) => {
+    e.preventDefault();
+    let pending = false;
+    let accepted;
+
+    if (choose == 'x') {
+      accepted = false;
+    } else {
+      accepted = true;
+    }
+    toggleFeedback({
+      variables: {
+        id: feedback.id,
+        accepted: accepted,
+        pending: pending,
+      },
+      optimisticResponse: true,
+      update: (cache) => {
+        const cachedData = cache.readQuery({
+          query: GET_USER_DATA,
+          variables: { id: user.id },
         });
 
-        // const newNeed = data['insert_needs'].returning[0];
-        // cache.writeQuery({
-        //   query: GET_NEEDS_BY_PROJECT,
-        //   variables: { id },
-        //   data: {
-        //     ...cachedData,
-        //     needs: [newNeed, ...cachedData.needs],
-        //   },
-        // });
+        const newFeedback = cachedData.feedbacks.map((f) => {
+          if (f.id === feedback.id) {
+            return { ...f, pending: !f.pending };
+          } else {
+            return f;
+          }
+        });
+
+        cache.writeQuery({
+          query: GET_USER_DATA,
+          variables: { id: user.id },
+          data: {
+            needs: cachedData.needs,
+            users: cachedData.users,
+            feedbacks: newFeedback,
+          },
+        });
       },
     });
   };
@@ -147,9 +226,20 @@ const Notifications = ({ props, user }) => {
   return (
     <>
       <div>
-        {needNotifications.length < 1 && <Empty props={'notificaties'} />}
+        {feedbackNotifications.length < 1 && needNotifications.length < 1 && (
+          <Empty props={'noneedsnofeedback'} />
+        )}
+        {needNotifications.length < 1 && feedbackNotifications.length > 0 && (
+          <>
+            <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+              Benodigheden
+            </p>
+            <Empty props={'needsincoming'} />
+          </>
+        )}
         {needNotifications.length > 0 && (
           <>
+            <p className={styles.subtitle}>Benodigheden</p>
             <div
               className={`${styles.grid_notifications} ${styles.grid_titles}`}
             >
@@ -206,6 +296,89 @@ const Notifications = ({ props, user }) => {
                     <button
                       className={styles.input_submit}
                       onClick={(e) => handleClick(e, 'x', need)}
+                    >
+                      <div className={styles.button}>
+                        <div
+                          className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
+                        >
+                          <img
+                            className={styles.button_image}
+                            src="../../../assets/buttons/decline_icon.svg"
+                          />
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  {/* <button onClick={(e) => handleClick(e, 'x', need)}>X</button> */}
+                </div>
+              </div>
+            ))}
+          </>
+        )}
+      </div>
+      <div>
+        {feedbackNotifications.length < 1 && needNotifications.length > 0 && (
+          <>
+            <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+              Feedback
+            </p>
+            <Empty props={'feedbackincoming'} />
+          </>
+        )}
+        {feedbackNotifications.length > 0 && (
+          <>
+            <p className={styles.subtitle}>Feedback</p>
+            <div
+              className={`${styles.grid_notifications} ${styles.grid_titles}`}
+            >
+              <p className={styles.grid_title}>Projectnaam</p>
+              <p className={styles.grid_title}>Type</p>
+              <p className={styles.grid_title}>Durver</p>
+              <p className={styles.grid_title}>Motivatie</p>
+              <p className={`${styles.grid_title} ${styles.grid_title__end}`}>
+                Akkoord
+              </p>
+            </div>
+            {feedbackNotifications.map((feedback) => (
+              <div
+                className={`${styles.grid_items} ${styles.grid_notifications__items}`}
+              >
+                <p className={styles.grid_bold}>{feedback.project.title}</p>
+                <div className={styles.grid_item}>
+                  <p className={styles.grid_text}>{feedback.type}</p>
+                </div>
+                <p className={styles.grid_text}>
+                  {feedback.otheruser.first_name} {feedback.otheruser.last_name}
+                </p>
+                <p
+                  className={`${styles.grid_text} ${styles.grid_text__italic}`}
+                >
+                  "{feedback.motivation}"
+                </p>
+                <div className={styles.buttons}>
+                  {/* <button onClick={(e) => handleClick(e, 'v', need)}>V</button> */}
+
+                  <div className={styles.need_button}>
+                    <button
+                      className={styles.input_submit}
+                      onClick={(e) => handleFeedback(e, 'v', feedback)}
+                    >
+                      <div className={styles.button}>
+                        <div
+                          className={`${styles.circle_button} ${styles.circle_button__accept} scale `}
+                        >
+                          <img
+                            className={styles.button_image}
+                            src="../../../assets/buttons/accept_icon.svg"
+                          />
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div className={styles.need_button}>
+                    <button
+                      className={styles.input_submit}
+                      onClick={(e) => handleFeedback(e, 'x', feedback)}
                     >
                       <div className={styles.button}>
                         <div

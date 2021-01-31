@@ -28,6 +28,17 @@
   margin-right: 0;
 }
 
+.subtitle {
+  composes: mediumTitleOutline from './typo.module.css';
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.subtitle_empty {
+  border-bottom: 0.2rem solid blueColor;
+  padding-bottom: 3rem;
+}
+
 .grid_notifications,
 .grid_notifications__items {
   display: grid;
@@ -70,7 +81,6 @@
 
 .grid_titles {
   border-bottom: 0.2rem solid blueColor;
-  margin-top: 5rem;
   padding-bottom: 1rem;
 }
 
