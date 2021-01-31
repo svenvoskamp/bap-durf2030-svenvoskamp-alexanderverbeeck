@@ -9,8 +9,6 @@ html {
 #__next {
   min-height: 100vh;
   background-color: #fdecd2;
-  display: flex;
-  flex-direction: column;
 }
 
 /* stylelint-disable */
@@ -408,7 +406,7 @@ html.has-scroll-dragging {
   .navigation {
     height: auto;
     width: 100vw;
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
     justify-content: space-between;
     flex-direction: row;
     bottom: 0;
@@ -422,7 +420,6 @@ html.has-scroll-dragging {
 
   .navigation-header--mobile--logo {
     margin: 0.5rem 0 0 2rem;
-    padding: 0.2rem;
   }
 
   .nav-items {

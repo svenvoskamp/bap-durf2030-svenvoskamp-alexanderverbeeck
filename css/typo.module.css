@@ -229,12 +229,12 @@
   }
 
   .bold {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     line-height: 2rem;
   }
 
   .semiBold {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .empty {
@@ -258,13 +258,13 @@
 
 @media screen and (max-width: 550px) {
   .largeTitle {
-    font-size: 5rem;
+    font-size: 4.8rem;
     -webkit-text-stroke: 0.2rem blueColor;
     text-stroke: 0.2rem blueColor;
   }
 
   .largeTitleOutline {
-    font-size: 5rem;
+    font-size: 4.8rem;
     -webkit-text-stroke: 0.2rem blueColor;
     text-stroke: 0.2rem blueColor;
   }
@@ -286,15 +286,6 @@
 
   .smallText {
     font-size: 1.4rem;
-  }
-
-  .bold {
-    font-size: 1.6rem;
-    line-height: 2rem;
-  }
-
-  .semiBold {
-    font-size: 1.6rem;
   }
 
   .empty {
@@ -304,13 +295,13 @@
 
 @media screen and (max-width: 450px) {
   .largeTitle {
-    font-size: 4.75rem;
+    font-size: 4rem;
     -webkit-text-stroke: 0.15rem blueColor;
     text-stroke: 0.15rem blueColor;
   }
 
   .largeTitleOutline {
-    font-size: 4.75rem;
+    font-size: 4rem;
     -webkit-text-stroke: 0.15rem blueColor;
     text-stroke: 0.15rem blueColor;
   }
@@ -337,10 +328,6 @@
   .bold {
     font-size: 1.6rem;
     line-height: 2rem;
-  }
-
-  .semiBold {
-    font-size: 1.6rem;
   }
 
   .empty {

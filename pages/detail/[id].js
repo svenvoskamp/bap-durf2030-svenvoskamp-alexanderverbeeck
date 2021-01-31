@@ -64,6 +64,27 @@ const GET_PROJECT_BY_ID = gql`
         title
       }
     }
+    feedbacks(
+      order_by: { updated_at: asc }
+      where: {
+        updated_at: {}
+        project_id: { _eq: $id }
+        pending: { _eq: false }
+        accepted: { _eq: true }
+      }
+    ) {
+      id
+      updated_at
+      motivation
+      other_user_id
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+      type
+      project_id
+    }
     users(where: { id: { _eq: $user_id } }) @include(if: $user) {
       id
       name

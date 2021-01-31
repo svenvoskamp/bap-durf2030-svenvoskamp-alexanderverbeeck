@@ -200,4 +200,7 @@
 }
 
 @media screen and (max-width: 450px) {
+  .input_container {
+    padding: 1.5rem 0;
+  }
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './creatie.module.css';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
+import Feedback from './Feedback/Feedback';
 
 const ADD_FEEDBACK = gql`
   mutation addFeedback(
@@ -38,7 +39,6 @@ const ADD_FEEDBACK = gql`
 `;
 
 const Creatie = ({ props }) => {
-  console.log(props);
   const [typeFeedback, setTypeFeedback] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [motivation, setMotivation] = useState('');
@@ -189,6 +189,11 @@ const Creatie = ({ props }) => {
           )}
         </div>
       </form>
+      <div>
+        {props.feedbacks.map((feedback) => (
+          <Feedback feedback={feedback}></Feedback>
+        ))}
+      </div>
     </>
   );
 };

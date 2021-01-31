@@ -170,11 +170,17 @@ const Notifications = ({ props, user, feedbacks }) => {
 
         const newNeeds = cachedData.needs.map((n) => {
           if (n.id === need.id) {
-            return { ...n, pending: !n.pending };
+            return {
+              ...n,
+              pending: !n.pending,
+              provided: state,
+              other_user_id: other_user_id,
+            };
           } else {
             return n;
           }
         });
+        console.log(newNeeds);
 
         cache.writeQuery({
           query: GET_USER_DATA,
