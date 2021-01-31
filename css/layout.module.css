@@ -49,20 +49,20 @@
 
 @media screen and (max-width: 550px) {
   .view {
-    margin: 0 2rem 5rem 2rem;
+    margin: 0 1.5rem 5rem 1.5rem;
   }
 
   .viewLarge {
-    margin: 0 0 5rem 2rem;
+    margin: 0 0 5rem 1.5rem;
   }
 }
 
 @media screen and (max-width: 450px) {
   .view {
-    margin: 0 1rem 5rem 1rem;
+    margin: 0 .5rem 5rem .5rem;
   }
 
   .viewLarge {
-    margin: 0 0 5rem 1rem;
+    margin: 0 0 5rem .5rem;
   }
 }

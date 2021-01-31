@@ -194,11 +194,11 @@
 
 @media screen and (max-width: 850px) {
   .largeTitle {
-    font-size: 8rem;
+    font-size: 7.5rem;
   }
 
   .largeTitleOutline {
-    font-size: 8rem;
+    font-size: 7.5rem;
   }
 
   .mediumTitle {
@@ -244,13 +244,13 @@
 
 @media screen and (max-width: 715px) {
   .largeTitle {
-    font-size: 6rem;
+    font-size: 5.6rem;
     -webkit-text-stroke: 0.25rem blueColor;
     text-stroke: 0.25rem blueColor;
   }
 
   .largeTitleOutline {
-    font-size: 6rem;
+    font-size: 5.6rem;
     -webkit-text-stroke: 0.25rem blueColor;
     text-stroke: 0.25rem blueColor;
   }
@@ -258,13 +258,13 @@
 
 @media screen and (max-width: 550px) {
   .largeTitle {
-    font-size: 4.8rem;
+    font-size: 4.5rem;
     -webkit-text-stroke: 0.2rem blueColor;
     text-stroke: 0.2rem blueColor;
   }
 
   .largeTitleOutline {
-    font-size: 4.8rem;
+    font-size: 4.5rem;
     -webkit-text-stroke: 0.2rem blueColor;
     text-stroke: 0.2rem blueColor;
   }
@@ -295,13 +295,13 @@
 
 @media screen and (max-width: 450px) {
   .largeTitle {
-    font-size: 4rem;
+    font-size: 3.6rem;
     -webkit-text-stroke: 0.15rem blueColor;
     text-stroke: 0.15rem blueColor;
   }
 
   .largeTitleOutline {
-    font-size: 4rem;
+    font-size: 3.6rem;
     -webkit-text-stroke: 0.15rem blueColor;
     text-stroke: 0.15rem blueColor;
   }
@@ -337,13 +337,13 @@
 
 @media screen and (max-width: 350px) {
   .largeTitle {
-    font-size: 4rem;
+    font-size: 3.4rem;
     -webkit-text-stroke: 0.15rem blueColor;
     text-stroke: 0.15rem blueColor;
   }
 
   .largeTitleOutline {
-    font-size: 4rem;
+    font-size: 3.4rem;
     -webkit-text-stroke: 0.15rem blueColor;
     text-stroke: 0.15rem blueColor;
   }

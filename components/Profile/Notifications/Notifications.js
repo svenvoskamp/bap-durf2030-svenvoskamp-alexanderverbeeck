@@ -254,12 +254,12 @@ const Notifications = ({ props, user, feedbacks }) => {
           </>
         )}
         {needNotifications.length > 0 && (
-          <>
+          <div className={`${styles.subdivision} `}>
             <p className={styles.subtitle}>Benodigheden</p>
             <div
               className={`${styles.grid_notifications} ${styles.grid_titles}`}
             >
-              <p className={styles.grid_title}>Projectnaam</p>
+              <p className={`${styles.grid_title} ${styles.grid_title__left}`}>Projectnaam</p>
               <p className={styles.grid_title}>Type</p>
               <p className={styles.grid_title}>Durver</p>
               <p className={styles.grid_title}>Motivatie</p>
@@ -271,7 +271,7 @@ const Notifications = ({ props, user, feedbacks }) => {
               <div
                 className={`${styles.grid_items} ${styles.grid_notifications__items}`}
               >
-                <p className={styles.grid_bold}>{need.project.title}</p>
+                <p className={`${styles.grid_bold} ${styles.grid_bold__title}`}>{need.project.title}</p>
                 <div className={styles.grid_item}>
                   <img
                     src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
@@ -289,8 +289,6 @@ const Notifications = ({ props, user, feedbacks }) => {
                   "{need.motivation}"
                 </p>
                 <div className={styles.buttons}>
-                  {/* <button onClick={(e) => handleClick(e, 'v', need)}>V</button> */}
-
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
@@ -325,11 +323,10 @@ const Notifications = ({ props, user, feedbacks }) => {
                       </div>
                     </button>
                   </div>
-                  {/* <button onClick={(e) => handleClick(e, 'x', need)}>X</button> */}
                 </div>
               </div>
             ))}
-          </>
+          </div>
         )}
       </>
       <div>
@@ -342,7 +339,7 @@ const Notifications = ({ props, user, feedbacks }) => {
           </>
         )}
         {feedbackNotifications.length > 0 && (
-          <>
+          <div className={`${styles.subdivision} `}>
             <p className={styles.subtitle}>Feedback</p>
             <div
               className={`${styles.grid_notifications} ${styles.grid_titles}`}
@@ -412,7 +409,7 @@ const Notifications = ({ props, user, feedbacks }) => {
                 </div>
               </div>
             ))}
-          </>
+          </div>
         )}
       </div>
     </>

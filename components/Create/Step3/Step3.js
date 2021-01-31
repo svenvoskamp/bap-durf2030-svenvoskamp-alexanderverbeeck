@@ -225,7 +225,6 @@ const Needs = ({ project_id, user }) => {
                     />
                     <p className={style.checkbox_text}>Persoon</p>
                     <div className={`${style.checkbox_image} scale`}>
-                      {/* <img src="./assets/images/persoon_icon.svg" /> */}
                       <svg
                         width="46"
                         height="47"
@@ -254,7 +253,6 @@ const Needs = ({ project_id, user }) => {
                     />
                     <p className={style.checkbox_text}>Item</p>
                     <div className={`${style.checkbox_image} scale`}>
-                      {/* <img src="./assets/images/item_icon.svg" /> */}
                       <svg
                         width="40"
                         height="47"
@@ -283,7 +281,6 @@ const Needs = ({ project_id, user }) => {
                     />
                     <p className={style.checkbox_text}>Drank</p>
                     <div className={`${style.checkbox_image} scale`}>
-                      {/* <img src="./assets/images/drank_icon.svg" /> */}
                       <svg
                         width="36"
                         height="47"
@@ -312,7 +309,6 @@ const Needs = ({ project_id, user }) => {
                     />
                     <p className={style.checkbox_text}>Gebouw</p>
                     <div className={`${style.checkbox_image} scale`}>
-                      {/* <img src="./assets/images/gebouw_icon.svg" /> */}
                       <svg
                         width="47"
                         height="47"
@@ -426,8 +422,7 @@ const Needs = ({ project_id, user }) => {
                   {data.needs.length >= 1 && (
                     <>
                       <p className={style.empty_add}>
-                        Bedankt voor het toevoegen! Wil je nog meer benodigheden
-                        toevoegen?
+                        Bedankt voor het toevoegen! Je kan nog meer benogidheden toevoegen.
                       </p>
                     </>
                   )}
@@ -558,6 +553,7 @@ const Needs = ({ project_id, user }) => {
           </div>
         </div>
         <div className={style.part_end}>
+          <div className={style.button_next}>
           <a href={'/'} className={style.button}>
             <div className={style.circle_button}>
               <img
@@ -566,6 +562,7 @@ const Needs = ({ project_id, user }) => {
               />
             </div>
           </a>
+          </div>
         </div>
       </article>
     </>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import style from '../../../Create/Step3/step3.module.css';
+import styles from '../../../../css/profile.module.css';
 
 const ADD_NEED = gql`
   mutation addNeed(
@@ -171,7 +172,8 @@ const AddNeed = ({ project, user }) => {
   };
   return (
     <>
-      <div className={style.form}>
+      <div className={styles.grid_item__add}>
+      <p className={`${styles.grid_title} ${styles.grid_title__benodigdheden}`}>Benodigdheden toevoegen</p>
         <form className={style.form_needs} onSubmit={handleSubmit}>
           <div className={style.checkboxes}>
             <div className={style.checkbox_container}>
@@ -399,7 +401,7 @@ const AddNeed = ({ project, user }) => {
             )}
           </div>
           <p className={style.empty_add}>
-            Klik om een benodigheed toe te voegen
+            Klik om een benodigdheid toe te voegen.
           </p>
         </form>
       </div>

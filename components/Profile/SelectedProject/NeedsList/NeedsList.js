@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../../../Create/Step3/step3.module.css';
+import styles from '../../../../css/profile.module.css';
 import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 
@@ -163,7 +164,9 @@ const NeedsList = ({ needs, user }) => {
     });
   };
   return (
-    <>
+    <div className={styles.grid_item__add}>
+      <p className={`${styles.grid_title} ${style.subtitle_needs}`}>Mijn Benodigdheden</p>
+      <div className={style.needs_list}>
       {needs.map((need) => (
         <div className={style.need_item}>
           <li className={style.need_types}>
@@ -274,7 +277,8 @@ const NeedsList = ({ needs, user }) => {
           )}
         </div>
       ))}
-    </>
+      </div>
+    </div>
   );
 };
 

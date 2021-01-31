@@ -57,21 +57,12 @@ const Empty = ({ props }) => {
           </p>
         </div>
       )}
-      {props == 'needs' && (
-        <div className={style.loading}>
-          <p className={style.loading_text}>
-            Benodigdheden ophalen<span>.</span>
-            <span>.</span>
-            <span>.</span>
-          </p>
-        </div>
-      )}
-      {props == 'profiel' && (
-        <div className={style.loading}>
-          <p className={style.loading_text}>
-            Profiel ophalen<span>.</span>
-            <span>.</span>
-            <span>.</span>
+      {props == 'noneeds' && (
+        <div className={style.empty_state}>
+          <p className={style.empty_state__text}>
+            je hebt{' '}
+            <span className={style.empty_state__text__outline}> nog geen </span>{' '}
+            benodigdheden.
           </p>
         </div>
       )}
