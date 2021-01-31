@@ -14,6 +14,7 @@ import style from '../css/profile.module.css';
 import Notifications from '../components/Profile/Notifications/Notifications';
 import Requests from '../components/Profile/Requests/Requests';
 import Contributes from '../components/Profile/Contributes/Contributes';
+import SelectedProject from '../components/Profile/SelectedProject/SelectedProject';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -29,6 +30,7 @@ const GET_USER_DATA = gql`
       picture
       department
       projects {
+        id
         category {
           category
         }
@@ -36,11 +38,19 @@ const GET_USER_DATA = gql`
           district
         }
         image
+        impact
+        tagline
+        description
         phase {
           phase
         }
         theme {
           theme
+        }
+        user {
+          id
+          first_name
+          last_name
         }
         needs {
           id
@@ -58,6 +68,7 @@ const GET_USER_DATA = gql`
       user_id
       provided
       other_user_id
+      project_id
       otheruser {
         id
         first_name
@@ -103,7 +114,9 @@ const GET_CURRENT_USER = gql`
 
 const Profile = ({ props }) => {
   const [content, setContent] = useState(0);
+  const [selectedProject, setSelectedProject] = useState('');
   let incoming = [];
+  let outgoing = [];
   props.needs.map((need) => {
     if (need.user_id == props.users[0].id) {
       if (need.pending == true) {
@@ -118,6 +131,21 @@ const Profile = ({ props }) => {
       }
     }
   });
+  props.needs.map((need) => {
+    if (need.other_user_id == props.users[0].id) {
+      if (need.pending == true) {
+        outgoing.push(need);
+      }
+    }
+  });
+
+  props.feedbacks.map((feedback) => {
+    if (feedback.other_user_id == props.users[0].id) {
+      if (feedback.pending == true) {
+        outgoing.push(feedback);
+      }
+    }
+  });
 
   return (
     <>
@@ -125,142 +153,159 @@ const Profile = ({ props }) => {
       <Nav user={props.users[0]}></Nav>
       <article className={style.part}>
         <Info props={props.users[0]}></Info>
-          <div className={style.tabs}>
-            {content == 0 && (
-              <>
-                <button
-                  className={`${style.tabs_title} ${style.tabs_title__active} scale`}
-                  onClick={(e) => setContent(0)}
-                >
-                  Mijn Projecten
-                </button>
-                <button
-                  className={`${style.tabs_title} scale`}
-                  onClick={(e) => setContent(1)}
-                >
-                  Mijn Bijdragen
-                </button>
-                <button
-                  className={`${style.tabs_title} scale`}
-                  onClick={(e) => setContent(2)}
-                >
-                  Inkomend ({incoming.length})
-                </button>
-                <button
-                  className={`${style.tabs_title} scale`}
-                  onClick={(e) => setContent(3)}
-                >
-                  Uitgaand
-                </button>
-              </>
-            )}
-            {content == 1 && (
-              <>
-                <button
-                  className={`${style.tabs_title}  scale`}
-                  onClick={(e) => setContent(0)}
-                >
-                  Mijn Projecten
-                </button>
-                <button
-                  className={`${style.tabs_title} ${style.tabs_title__active} scale`}
-                  onClick={(e) => setContent(1)}
-                >
-                  Mijn Bijdragen
-                </button>
-                <button
-                  className={`${style.tabs_title} scale`}
-                  onClick={(e) => setContent(2)}
-                >
-                  Inkomend ({incoming.length})
-                </button>
-                <button
-                  className={`${style.tabs_title} scale`}
-                  onClick={(e) => setContent(3)}
-                >
-                  Uitgaand
-                </button>
-              </>
-            )}
-            {content == 2 && (
-              <>
-                <button
-                  className={`${style.tabs_title}  scale`}
-                  onClick={(e) => setContent(0)}
-                >
-                  Mijn Projecten
-                </button>
-                <button
-                  className={`${style.tabs_title} scale`}
-                  onClick={(e) => setContent(1)}
-                >
-                  Mijn Bijdragen
-                </button>
-                <button
-                  className={`${style.tabs_title}  ${style.tabs_title__active} scale`}
-                  onClick={(e) => setContent(2)}
-                >
-                  Inkomend ({incoming.length})
-                </button>
-                <button
-                  className={`${style.tabs_title} scale`}
-                  onClick={(e) => setContent(3)}
-                >
-                  Uitgaand
-                </button>
-              </>
-            )}
-            {content == 3 && (
-              <>
-                <button
-                  className={`${style.tabs_title}  scale`}
-                  onClick={(e) => setContent(0)}
-                >
-                  Mijn Projecten
-                </button>
-                <button
-                  className={`${style.tabs_title} scale`}
-                  onClick={(e) => setContent(1)}
-                >
-                  Mijn Bijdragen
-                </button>
-                <button
-                  className={`${style.tabs_title}   scale`}
-                  onClick={(e) => setContent(2)}
-                >
-                  Inkomend ({incoming.length})
-                </button>
-                <button
-                  className={`${style.tabs_title} ${style.tabs_title__active} scale`}
-                  onClick={(e) => setContent(3)}
-                >
-                  Uitgaand
-                </button>
-              </>
-            )}
-          </div>
-          {content == 0 && <MyProjects props={props.users[0]}></MyProjects>}
+        <div className={style.tabs}>
+          {content == 0 && (
+            <>
+              <button
+                className={`${style.tabs_title} ${style.tabs_title__active} scale`}
+                onClick={(e) => setContent(0)}
+              >
+                Mijn Projecten
+              </button>
+              <button
+                className={`${style.tabs_title} scale`}
+                onClick={(e) => setContent(1)}
+              >
+                Mijn Bijdragen
+              </button>
+              <button
+                className={`${style.tabs_title} scale`}
+                onClick={(e) => setContent(2)}
+              >
+                Inkomend ({incoming.length})
+              </button>
+              <button
+                className={`${style.tabs_title} scale`}
+                onClick={(e) => setContent(3)}
+              >
+                Uitgaand ({outgoing.length})
+              </button>
+            </>
+          )}
           {content == 1 && (
-            <Contributes
-              user={props.users[0]}
-              props={props.needs}
-              feedbacks={props.feedbacks}
-            ></Contributes>
+            <>
+              <button
+                className={`${style.tabs_title}  scale`}
+                onClick={(e) => setContent(0)}
+              >
+                Mijn Projecten
+              </button>
+              <button
+                className={`${style.tabs_title} ${style.tabs_title__active} scale`}
+                onClick={(e) => setContent(1)}
+              >
+                Mijn Bijdragen
+              </button>
+              <button
+                className={`${style.tabs_title} scale`}
+                onClick={(e) => setContent(2)}
+              >
+                Inkomend ({incoming.length})
+              </button>
+              <button
+                className={`${style.tabs_title} scale`}
+                onClick={(e) => setContent(3)}
+              >
+                Uitgaand ({outgoing.length})
+              </button>
+            </>
           )}
           {content == 2 && (
-            <Notifications
-              user={props.users[0]}
-              props={props.needs}
-              feedbacks={props.feedbacks}
-            ></Notifications>
+            <>
+              <button
+                className={`${style.tabs_title}  scale`}
+                onClick={(e) => setContent(0)}
+              >
+                Mijn Projecten
+              </button>
+              <button
+                className={`${style.tabs_title} scale`}
+                onClick={(e) => setContent(1)}
+              >
+                Mijn Bijdragen
+              </button>
+              <button
+                className={`${style.tabs_title}  ${style.tabs_title__active} scale`}
+                onClick={(e) => setContent(2)}
+              >
+                Inkomend ({incoming.length})
+              </button>
+              <button
+                className={`${style.tabs_title} scale`}
+                onClick={(e) => setContent(3)}
+              >
+                Uitgaand ({outgoing.length})
+              </button>
+            </>
           )}
           {content == 3 && (
-            <Requests
-              user={props.users[0]}
-              props={props.needs}
-              feedbacks={props.feedbacks}
-            ></Requests>
+            <>
+              <button
+                className={`${style.tabs_title}  scale`}
+                onClick={(e) => setContent(0)}
+              >
+                Mijn Projecten
+              </button>
+              <button
+                className={`${style.tabs_title} scale`}
+                onClick={(e) => setContent(1)}
+              >
+                Mijn Bijdragen
+              </button>
+              <button
+                className={`${style.tabs_title}   scale`}
+                onClick={(e) => setContent(2)}
+              >
+                Inkomend ({incoming.length})
+              </button>
+              <button
+                className={`${style.tabs_title} ${style.tabs_title__active} scale`}
+                onClick={(e) => setContent(3)}
+              >
+                Uitgaand ({outgoing.length})
+              </button>
+            </>
           )}
+        </div>
+        {content == 0 && selectedProject == '' && (
+          <MyProjects
+            props={props.users[0]}
+            setSelectedProject={setSelectedProject}
+            selectedProject={selectedProject}
+            needs={props.needs}
+          ></MyProjects>
+        )}
+        {content == 0 && selectedProject != '' && (
+          <>
+            <SelectedProject
+              project={selectedProject}
+              needs={props.needs}
+              user={props.users[0]}
+              setSelectedProject={setSelectedProject}
+            ></SelectedProject>
+          </>
+        )}
+        {content == 1 && (
+          <Contributes
+            user={props.users[0]}
+            props={props.needs}
+            feedbacks={props.feedbacks}
+          ></Contributes>
+        )}
+        {content == 2 && (
+          <Notifications
+            user={props.users[0]}
+            props={props.needs}
+            feedbacks={props.feedbacks}
+          ></Notifications>
+        )}
+        {content == 3 && (
+          <Requests
+            user={props.users[0]}
+            props={props.needs}
+            feedbacks={props.feedbacks}
+          ></Requests>
+        )}
       </article>
     </>
   );

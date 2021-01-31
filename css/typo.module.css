@@ -259,14 +259,14 @@
 @media screen and (max-width: 550px) {
   .largeTitle {
     font-size: 5rem;
-    -webkit-text-stroke: 0.25rem blueColor;
-    text-stroke: 0.25rem blueColor;
+    -webkit-text-stroke: 0.2rem blueColor;
+    text-stroke: 0.2rem blueColor;
   }
 
   .largeTitleOutline {
     font-size: 5rem;
-    -webkit-text-stroke: 0.25rem blueColor;
-    text-stroke: 0.25rem blueColor;
+    -webkit-text-stroke: 0.2rem blueColor;
+    text-stroke: 0.2rem blueColor;
   }
 
   .mediumTitle {
@@ -305,14 +305,14 @@
 @media screen and (max-width: 450px) {
   .largeTitle {
     font-size: 4.75rem;
-    -webkit-text-stroke: 0.2rem blueColor;
-    text-stroke: 0.2rem blueColor;
+    -webkit-text-stroke: 0.15rem blueColor;
+    text-stroke: 0.15rem blueColor;
   }
 
   .largeTitleOutline {
     font-size: 4.75rem;
-    -webkit-text-stroke: 0.2rem blueColor;
-    text-stroke: 0.2rem blueColor;
+    -webkit-text-stroke: 0.15rem blueColor;
+    text-stroke: 0.15rem blueColor;
   }
 
   .mediumTitle {
@@ -345,5 +345,19 @@
 
   .empty {
     font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .largeTitle {
+    font-size: 4rem;
+    -webkit-text-stroke: 0.15rem blueColor;
+    text-stroke: 0.15rem blueColor;
+  }
+
+  .largeTitleOutline {
+    font-size: 4rem;
+    -webkit-text-stroke: 0.15rem blueColor;
+    text-stroke: 0.15rem blueColor;
   }
 }

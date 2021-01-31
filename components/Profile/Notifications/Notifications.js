@@ -50,6 +50,7 @@ const GET_USER_DATA = gql`
       picture
       department
       projects {
+        id
         category {
           category
         }
@@ -57,11 +58,19 @@ const GET_USER_DATA = gql`
           district
         }
         image
+        impact
+        tagline
+        description
         phase {
           phase
         }
         theme {
           theme
+        }
+        user {
+          id
+          first_name
+          last_name
         }
         needs {
           id
@@ -79,6 +88,7 @@ const GET_USER_DATA = gql`
       user_id
       provided
       other_user_id
+      project_id
       otheruser {
         id
         first_name

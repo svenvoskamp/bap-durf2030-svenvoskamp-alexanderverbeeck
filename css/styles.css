@@ -9,6 +9,8 @@ html {
 #__next {
   min-height: 100vh;
   background-color: #fdecd2;
+  display: flex;
+  flex-direction: column;
 }
 
 /* stylelint-disable */
@@ -238,6 +240,10 @@ html.has-scroll-dragging {
   transition: 0.5s ease-in-out;
 }
 
+.navigation-header--mobile {
+  display: none;
+}
+
 .nav-logo {
   width: auto;
   display: flex;
@@ -391,13 +397,32 @@ html.has-scroll-dragging {
     display: none;
   }
 
+  .nav-logo--image {
+    width: 100%;
+    position: unset;
+    padding: 0 1.5rem;
+    cursor: pointer;
+    display: in;
+  }
+
   .navigation {
     height: auto;
     width: 100vw;
-    padding: 0.5rem 5rem;
+    padding: 0.5rem 1rem;
     justify-content: space-between;
     flex-direction: row;
     bottom: 0;
+  }
+
+  .navigation-header--mobile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .navigation-header--mobile--logo {
+    margin: 0.5rem 0 0 2rem;
+    padding: 0.2rem;
   }
 
   .nav-items {
