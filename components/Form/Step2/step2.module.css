@@ -148,3 +148,34 @@
 .back_text {
   composes: bold from "../../../css/typo.module.css";
 }
+
+@media screen and (max-width: 1150px) {
+  .form {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+  }
+
+
+}
+
+@media screen and (max-width: 950px) {
+
+
+
+}
+
+@media screen and (max-width: 550px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+}
+
+@media screen and (max-width: 450px) {
+
+
+}
