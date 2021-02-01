@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './notifications.module.css';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
@@ -61,6 +61,11 @@ const GET_USER_DATA = gql`
         impact
         tagline
         description
+        reward_one
+        reward_two
+        reward_three
+        donated
+        phase_id
         phase {
           phase
         }
@@ -120,11 +125,37 @@ const GET_USER_DATA = gql`
   }
 `;
 
-const Notifications = ({ props, user, feedbacks }) => {
+const UPDATE_PROJECT = gql`
+  mutation updateProject(
+    $id: Int!
+    $reward_one: String!
+    $reward_two: String!
+    $reward_three: String!
+  ) {
+    update_projects(
+      where: { id: { _eq: $id } }
+      _set: {
+        reward_one: $reward_one
+        reward_two: $reward_two
+        reward_three: $reward_three
+      }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
+const Notifications = ({ props, user, feedbacks, projects }) => {
   const [toggleNeed] = useMutation(TOGGLE_NEED);
   const [toggleFeedback] = useMutation(TOGGLE_FEEDBACK);
+  const [updateProject] = useMutation(UPDATE_PROJECT);
+  const [one, setOne] = useState('');
+  const [two, setTwo] = useState('');
+  const [three, setThree] = useState('');
+  const [currentProject, setCurrentProject] = useState('');
   let needNotifications = [];
   let feedbackNotifications = [];
+  let projectNotifications = [];
   props.map((need) => {
     if (need.user_id == user.id) {
       if (need.pending == true) {
@@ -139,8 +170,63 @@ const Notifications = ({ props, user, feedbacks }) => {
       }
     }
   });
-  console.log(feedbackNotifications);
-  console.log(needNotifications);
+  projects.map((project) => {
+    if (project.phase_id == 3) {
+      if (!project.reward_one) {
+        projectNotifications.push(project);
+      }
+    }
+  });
+
+  const handlePhase = (e, project) => {
+    e.preventDefault();
+    console.log(project);
+
+    if ((one != '', two != '', three != '')) {
+      updateProject({
+        variables: {
+          id: project.id,
+          reward_one: one,
+          reward_two: two,
+          reward_three: three,
+        },
+        optimisticResponse: true,
+        update: (cache) => {
+          const cachedData = cache.readQuery({
+            query: GET_USER_DATA,
+            variables: { id: user.id },
+          });
+          console.log(cachedData);
+
+          const newUser = cachedData.users.map((u) => {
+            const length = u.projects.length;
+            u.projects.map((p) => {
+              if (p.id === project.id) {
+                p.reward_one = one;
+                p.reward_two = two;
+                p.reward_three = three;
+                u.projects.push(p);
+              } else {
+                u.projects.push(p);
+              }
+            });
+            u.projects.splice(0, length);
+            return u;
+          });
+          cache.writeQuery({
+            query: GET_USER_DATA,
+            variables: { id: user.id },
+            data: {
+              needs: cachedData.needs,
+              users: newUser,
+              feedbacks: cachedData.feedbacks,
+            },
+          });
+        },
+      });
+    }
+    setCurrentProject('');
+  };
 
   const handleClick = (e, choose, need) => {
     e.preventDefault();
@@ -242,17 +328,20 @@ const Notifications = ({ props, user, feedbacks }) => {
   return (
     <>
       <>
-        {feedbackNotifications.length < 1 && needNotifications.length < 1 && (
-          <Empty props={'noneedsnofeedback'} />
-        )}
-        {needNotifications.length < 1 && feedbackNotifications.length > 0 && (
-          <>
-            <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
-              Benodigheden
-            </p>
-            <Empty props={'needsincoming'} />
-          </>
-        )}
+        {feedbackNotifications.length < 1 &&
+          needNotifications.length < 1 &&
+          projectNotifications.length < 1 && (
+            <Empty props={'noneedsnofeedback'} />
+          )}
+        {(needNotifications.length < 1 && feedbackNotifications.length > 0) ||
+          (projectNotifications.lenght > 0 && (
+            <>
+              <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+                Benodigheden
+              </p>
+              <Empty props={'needsincoming'} />
+            </>
+          ))}
         {needNotifications.length > 0 && (
           <div className={`${styles.subdivision} `}>
             <p className={styles.subtitle}>Benodigheden</p>
@@ -334,14 +423,15 @@ const Notifications = ({ props, user, feedbacks }) => {
         )}
       </>
       <div>
-        {feedbackNotifications.length < 1 && needNotifications.length > 0 && (
-          <>
-            <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
-              Feedback
-            </p>
-            <Empty props={'feedbackincoming'} />
-          </>
-        )}
+        {(feedbackNotifications.length < 1 && needNotifications.length > 0) ||
+          (projectNotifications > 0 && (
+            <>
+              <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+                Feedback
+              </p>
+              <Empty props={'feedbackincoming'} />
+            </>
+          ))}
         {feedbackNotifications.length > 0 && (
           <div className={`${styles.subdivision} `}>
             <p className={styles.subtitle}>Feedback</p>
@@ -416,6 +506,74 @@ const Notifications = ({ props, user, feedbacks }) => {
           </div>
         )}
       </div>
+      <div>
+        {(projectNotifications.length < 1 &&
+          feedbackNotifications.length > 0) ||
+          (needNotifications > 0 && (
+            <>
+              <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+                Projectupdates
+              </p>
+              <Empty props={'feedbackincoming'} />
+            </>
+          ))}
+        <p className={styles.subtitle}>Projectupdates</p>
+        {projectNotifications.map((project) => (
+          <>
+            <p onClick={(e) => setCurrentProject(project)}>
+              Gefeliciteerd! Crowdfundfase behaald! Klik hier om de
+              donatierewards van {project.title} in te vullen om de
+              crowdfundfase te starten!
+            </p>
+          </>
+        ))}
+      </div>
+      {currentProject != '' && (
+        <>
+          <form onSubmit={(e) => handlePhase(e, currentProject)}>
+            <label htmlFor={currentProject.title} className={style.label}>
+              Donatiereward 1 (€5 - €20) voor {currentProject.title}:
+            </label>
+            <input
+              required
+              id={currentProject.title}
+              min="0"
+              max="100"
+              value={one}
+              type="text"
+              placeholder="Ticket op de 1e rij"
+              onChange={(e) => setOne(e.currentTarget.value)}
+            />
+            <label htmlFor={currentProject.title} className={style.label}>
+              Donatiereward 2 (€20 - €50) voor {currentProject.title}:
+            </label>
+            <input
+              required
+              id={currentProject.title}
+              min="0"
+              max="100"
+              value={two}
+              type="text"
+              placeholder="Ticket op de 1e rij en ontmoeting kunstenaar"
+              onChange={(e) => setTwo(e.currentTarget.value)}
+            />
+            <label htmlFor={currentProject.title} className={style.label}>
+              Donatiereward 3 (€50+) voor {currentProject.title}:
+            </label>
+            <input
+              required
+              id={currentProject.title}
+              min="0"
+              max="100"
+              value={three}
+              type="text"
+              placeholder="Ticket op de 1e rij, ontmoeting kunstenaar en gratis drankjes"
+              onChange={(e) => setThree(e.currentTarget.value)}
+            />
+            <input type="submit" value="Verzend" id="button" />
+          </form>
+        </>
+      )}
     </>
   );
 };

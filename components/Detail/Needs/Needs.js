@@ -40,6 +40,10 @@ const GET_PROJECT_BY_ID = gql`
       }
       image
       impact
+      reward_one
+      reward_two
+      reward_three
+      donated
       phase {
         phase
       }

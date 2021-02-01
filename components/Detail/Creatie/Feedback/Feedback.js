@@ -11,10 +11,20 @@ const Creatie = ({ feedback }) => {
   const finalDate = `${day}/${month}/${year}`;
 
   return (
-    <>
+    <div className={style.part_feedback}>
+      <div className={style.feedback_icon}>
+        <div className={style.icon_circle}>
+          <img
+            className={style.icon_circle__image}
+            src={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}.svg`}
+          />
+        </div>
+      </div>
       <li className={style.feedback}>
-      <div className={style.feedback_card}>
-          <p className={style.feedback_name}>{feedback.otheruser.first_name}:</p>
+        <div className={style.feedback_card}>
+          <p className={style.feedback_name}>
+            {feedback.otheruser.first_name}:
+          </p>
           <p className={style.feedback_text}>"{feedback.motivation}"</p>
         </div>
         <div>
@@ -24,7 +34,7 @@ const Creatie = ({ feedback }) => {
           <p className={style.feedback_date}>Toegevoegd op {finalDate}</p>
         </div>
       </li>
-    </>
+    </div>
   );
 };
 

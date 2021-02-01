@@ -41,6 +41,11 @@ const GET_USER_DATA = gql`
         impact
         tagline
         description
+        reward_one
+        reward_two
+        reward_three
+        donated
+        phase_id
         phase {
           phase
         }
@@ -128,6 +133,13 @@ const Profile = ({ props }) => {
     if (feedback.user_id == props.users[0].id) {
       if (feedback.pending == true) {
         incoming.push(feedback);
+      }
+    }
+  });
+  props.users[0].projects.map((project) => {
+    if (project.phase_id == 3) {
+      if (!project.reward_one) {
+        incoming.push(project);
       }
     }
   });
@@ -298,6 +310,7 @@ const Profile = ({ props }) => {
             user={props.users[0]}
             props={props.needs}
             feedbacks={props.feedbacks}
+            projects={props.users[0].projects}
           ></Notifications>
         )}
         {content == 3 && (

@@ -1,7 +1,7 @@
 .view {
   min-height: 100vh;
   padding: 8rem 0;
-  margin: 0 10rem 0 14rem;
+  margin: 0 8vh 0 14rem;
   display: flex;
   flex-direction: column;
 }
@@ -59,10 +59,10 @@
 
 @media screen and (max-width: 450px) {
   .view {
-    margin: 0 .5rem 5rem .5rem;
+    margin: 0 0.5rem 5rem 0.5rem;
   }
 
   .viewLarge {
-    margin: 0 0 5rem .5rem;
+    margin: 0 0 5rem 0.5rem;
   }
 }

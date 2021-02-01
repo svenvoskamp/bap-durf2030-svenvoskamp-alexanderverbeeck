@@ -390,18 +390,17 @@ html.has-scroll-dragging {
   object-fit: cover;
 }
 
-.need-pending--false + .need-item--true {
-  opacity: .2;
+.need-pending--false {
+  opacity: 0.2;
 }
 
-.need-pending--false + .need-item--true + .need-user--null {
+.need-pending--false.need-user--null {
   opacity: 1;
 }
 
-.need-pending--false + .need-item--false + .need-user--null {
+.need-pending--false.need-item--false.need-user--null {
   opacity: 1;
 }
-
 
 @media screen and (max-width: 850px) {
   .nav-logo {

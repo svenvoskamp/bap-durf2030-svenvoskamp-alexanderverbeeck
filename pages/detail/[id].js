@@ -27,6 +27,10 @@ const GET_PROJECT_BY_ID = gql`
       }
       image
       impact
+      reward_one
+      reward_two
+      reward_three
+      donated
       phase {
         phase
       }
@@ -132,7 +136,9 @@ const Detail = ({ props, user }) => {
           </div>
           <Extra className={style.part_extra} props={props.projects[0]}></Extra>
           <Creatie props={props}></Creatie>
-          <Crowdfunding></Crowdfunding>
+          {props.projects[0].reward_one && (
+            <Crowdfunding props={props}></Crowdfunding>
+          )}
         </article>
         <article></article>
       </main>

@@ -17,6 +17,7 @@
   padding: 2rem;
   min-width: 40rem;
   height: 100%;
+  cursor: pointer;
 }
 
 .card:after {
@@ -32,6 +33,11 @@
   height: 100%;
   z-index: -1;
   transition: all 0.2s ease-in-out;
+}
+
+.card:hover .card:after {
+  top: 0;
+  right: 0;
 }
 
 .card_image {

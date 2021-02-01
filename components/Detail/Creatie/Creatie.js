@@ -68,10 +68,11 @@ const Creatie = ({ props }) => {
   };
   return (
     <div className={style.timeline}>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className={style.form_feedback} onSubmit={handleSubmit}>
+        <div className={style.feedback}>
+          <p className={style.subtitle}>Bouw mee met het project</p>
           {currentIndex == 0 && (
-            <>
+            <div className={style.feedback_card}>
               <p>1. Kies de juiste bouwsteen voor jouw denkwijze.</p>
               <label htmlFor="change">
                 <input
@@ -141,7 +142,7 @@ const Creatie = ({ props }) => {
                   </svg> */}
                 </div>
               </label>
-            </>
+            </div>
           )}
           {currentIndex == 1 && (
             <>

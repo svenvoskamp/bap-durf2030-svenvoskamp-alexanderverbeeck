@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from '../../../../css/project.module.css';
 
 const MyProject = ({ props, project, setSelectedProject, needs }) => {
+  console.log(project);
   let projectNeeds = [];
   needs.map((need) => {
     if (need.user_id == props.id) {
