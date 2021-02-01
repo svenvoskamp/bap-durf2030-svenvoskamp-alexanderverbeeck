@@ -60,7 +60,7 @@ const GET_USER_DATA = gql`
         title
       }
     }
-    needs {
+    needs(order_by: { pending: desc, provided: asc }) {
       id
       type
       motivation
@@ -282,6 +282,7 @@ const Profile = ({ props }) => {
               needs={props.needs}
               user={props.users[0]}
               setSelectedProject={setSelectedProject}
+              setContent={setContent}
             ></SelectedProject>
           </>
         )}

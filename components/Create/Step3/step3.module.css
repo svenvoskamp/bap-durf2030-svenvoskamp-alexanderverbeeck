@@ -204,7 +204,7 @@
 .button_voorzien {
   margin-left: 5rem;
   border: 0.2rem solid blueColor;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem 0.8rem;
   position: relative;
   background-color: beigeColor;
   composes: text from '../../../css/typo.module.css';
@@ -236,7 +236,7 @@
   background-color: beigeColor;
   border: 0.3rem solid blueColor;
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem 1rem;
   min-height: 50rem;
   height: 100%;
 }
@@ -265,7 +265,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
 }
 
 .need_item:nth-child(even) {
@@ -276,7 +276,7 @@
   list-style-type: none;
   display: flex;
   align-items: center;
-  margin-right: 3rem;
+  margin-right: 1rem;
 }
 
 .need_type__text {
@@ -291,9 +291,8 @@
   margin-right: 1rem;
 }
 
-.need_buttons {
-  display: flex;
-  align-items: center;
+.need_voorzien {
+  padding: 0;
 }
 
 .empty {
@@ -351,9 +350,7 @@
   composes: buttonImage from '../../../css/buttons.module.css';
 }
 
-
 @media screen and (max-width: 1350px) {
-
   .checkbox_image {
     padding: 2rem 2.2rem;
   }
@@ -387,12 +384,11 @@
     margin-top: 3rem;
   }
 
-
   .needs_list {
     margin-top: 1rem;
     height: 60%;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 2rem;
   }
 
@@ -400,7 +396,8 @@
     background-color: transparent;
   }
 
-  .need_item:nth-child(4n), .need_item:nth-child(3n) {
+  .need_item:nth-child(4n),
+  .need_item:nth-child(3n) {
     background-color: #f3e3cb;
   }
 
@@ -418,7 +415,7 @@
     display: flex;
     justify-content: flex-end;
   }
-  
+
   .button_next {
     text-align: center;
     margin-right: 3rem;
@@ -430,11 +427,10 @@
 
   .checkbox_container:last-of-type {
     margin-right: 0;
-  } 
+  }
 }
 
 @media screen and (max-width: 850px) {
-
   .needs_list {
     margin-top: 1rem;
     height: 60%;
@@ -461,7 +457,7 @@
 
 @media screen and (max-width: 550px) {
   .true_false {
-    padding: .3rem .4rem;
+    padding: 0.3rem 0.4rem;
   }
 }
 

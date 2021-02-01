@@ -89,7 +89,7 @@ const GET_USER_DATA = gql`
         title
       }
     }
-    needs {
+    needs(order_by: { pending: desc, provided: asc }) {
       id
       type
       motivation
@@ -173,7 +173,11 @@ const AddNeed = ({ project, user }) => {
   return (
     <>
       <div className={styles.grid_item__add}>
-      <p className={`${styles.grid_title} ${styles.grid_title__benodigdheden}`}>Benodigdheden toevoegen</p>
+        <p
+          className={`${styles.grid_title} ${styles.grid_title__benodigdheden}`}
+        >
+          Benodigdheden toevoegen
+        </p>
         <form className={style.form_needs} onSubmit={handleSubmit}>
           <div className={style.checkboxes}>
             <div className={style.checkbox_container}>

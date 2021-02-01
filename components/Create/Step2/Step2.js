@@ -179,8 +179,8 @@ const Step2 = ({
                   rows="6"
                   required
                   id="impact"
-                  min="50"
-                  max="250"
+                  minLength="50"
+                  max="300"
                   value={impact}
                   placeholder="Vertel hier wat over de impact dat uw project kan hebben.."
                   className={style.input_text}

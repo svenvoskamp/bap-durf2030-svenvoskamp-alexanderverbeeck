@@ -4,7 +4,13 @@ import AddNeed from './AddNeed/AddNeed';
 import style from './selectedproject.module.css';
 import Empty from '../../Empty/Empty';
 import styles from '../../../css/profile.module.css';
-const SelectedProject = ({ project, setSelectedProject, needs, user }) => {
+const SelectedProject = ({
+  project,
+  setSelectedProject,
+  needs,
+  user,
+  setContent,
+}) => {
   let projectNeeds = [];
 
   needs.map((need) => {
@@ -18,16 +24,30 @@ const SelectedProject = ({ project, setSelectedProject, needs, user }) => {
   return (
     <div className={style.part_content}>
       <div className={`${styles.grid_selectedproject} ${styles.grid_titles}`}>
-        <button className={style.button_back} onClick={(e) => setSelectedProject('')}>
-            <img className={style.back_image} src="./assets/images/button_back.svg" />
-            <span className={style.back_text}>Terug</span>  
-          </button>
-        <p className={`${styles.grid_title} ${style.title_outline} `}>{project.title}</p>
+        <button
+          className={style.button_back}
+          onClick={(e) => setSelectedProject('')}
+        >
+          <img
+            className={style.back_image}
+            src="./assets/images/button_back.svg"
+          />
+          <span className={style.back_text}>Terug</span>
+        </button>
+        <p className={`${styles.grid_title} ${style.title_outline} `}>
+          {project.title}
+        </p>
       </div>
 
-      <div className={`${styles.grid_selectedproject__items} ${style.grid_selectedproject__items}`}>
+      <div
+        className={`${styles.grid_selectedproject__items} ${style.grid_selectedproject__items}`}
+      >
         <div classname={`${style.grid_item} ${style.grid_item__image}`}>
-          <img className={style.grid_image} src={project.image} alt={project.title} />
+          <img
+            className={style.grid_image}
+            src={project.image}
+            alt={project.title}
+          />
           <div className={style.grid_tags}>
             <p className={style.grid_tag}>{project.theme.theme}</p>
             <p className={style.grid_tag}>{project.category.category}</p>
@@ -35,7 +55,7 @@ const SelectedProject = ({ project, setSelectedProject, needs, user }) => {
         </div>
 
         <div classname={`${style.grid_item} ${style.grid_item__info}`}>
-        <p className={style.grid_tagline}>"{project.tagline}"</p>
+          <p className={style.grid_tagline}>"{project.tagline}"</p>
           {/* <p className={style.title}>{project.title}</p>
           <p className={style.title_outline}>
             {project.user.first_name} {project.user.last_name}
@@ -86,7 +106,12 @@ const SelectedProject = ({ project, setSelectedProject, needs, user }) => {
         </div>
 
         {projectNeeds.length > 0 && (
-          <NeedsList needs={projectNeeds} user={user}></NeedsList>
+          <NeedsList
+            needs={projectNeeds}
+            user={user}
+            setSelectedProject={setSelectedProject}
+            setContent={setContent}
+          ></NeedsList>
         )}
         {/* {projectNeeds.length == 0 && (
             <Empty props={'noneeds'} />

@@ -422,7 +422,8 @@ const Needs = ({ project_id, user }) => {
                   {data.needs.length >= 1 && (
                     <>
                       <p className={style.empty_add}>
-                        Bedankt voor het toevoegen! Je kan nog meer benodigdheden toevoegen.
+                        Bedankt voor het toevoegen! Je kan nog meer
+                        benodigdheden toevoegen.
                       </p>
                     </>
                   )}
@@ -486,7 +487,7 @@ const Needs = ({ project_id, user }) => {
                         <div className={style.need_buttons}>
                           {need.provided && (
                             <div className={style.need_toggles}>
-                              <button className={style.button}>
+                              <button className={`${style.button_toggles}`}>
                                 <div
                                   className={`${style.true_false} ${style.toggle_true} scale`}
                                 >
@@ -523,7 +524,7 @@ const Needs = ({ project_id, user }) => {
                             </div>
                           )}
                           <button
-                            className={style.button}
+                            className={`${style.button} scale`}
                             onClick={() => handleDelete(need)}
                           >
                             <img src="./assets/images/delete_icon.svg" />
@@ -554,14 +555,14 @@ const Needs = ({ project_id, user }) => {
         </div>
         <div className={style.part_end}>
           <div className={style.button_next}>
-          <a href={'/'} className={style.button}>
-            <div className={style.circle_button}>
-              <img
-                className={style.button_image}
-                src="./assets/buttons/project_afronden_button.svg"
-              />
-            </div>
-          </a>
+            <a href={'/profile'} className={style.button}>
+              <div className={style.circle_button}>
+                <img
+                  className={style.button_image}
+                  src="./assets/buttons/project_afronden_button.svg"
+                />
+              </div>
+            </a>
           </div>
         </div>
       </article>

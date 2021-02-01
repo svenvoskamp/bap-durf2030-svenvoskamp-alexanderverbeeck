@@ -80,7 +80,7 @@ const GET_USER_DATA = gql`
         title
       }
     }
-    needs {
+    needs(order_by: { pending: desc, provided: asc }) {
       id
       type
       motivation
@@ -259,7 +259,9 @@ const Notifications = ({ props, user, feedbacks }) => {
             <div
               className={`${styles.grid_notifications} ${styles.grid_titles}`}
             >
-              <p className={`${styles.grid_title} ${styles.grid_title__left}`}>Projectnaam</p>
+              <p className={`${styles.grid_title} ${styles.grid_title__left}`}>
+                Projectnaam
+              </p>
               <p className={styles.grid_title}>Type</p>
               <p className={styles.grid_title}>Durver</p>
               <p className={styles.grid_title}>Motivatie</p>
@@ -271,7 +273,9 @@ const Notifications = ({ props, user, feedbacks }) => {
               <div
                 className={`${styles.grid_items} ${styles.grid_notifications__items}`}
               >
-                <p className={`${styles.grid_bold} ${styles.grid_bold__title}`}>{need.project.title}</p>
+                <p className={`${styles.grid_bold} ${styles.grid_bold__title}`}>
+                  {need.project.title}
+                </p>
                 <div className={styles.grid_item}>
                   <img
                     src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}

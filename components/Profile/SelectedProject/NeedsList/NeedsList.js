@@ -48,7 +48,7 @@ const GET_USER_DATA = gql`
         title
       }
     }
-    needs {
+    needs(order_by: { pending: desc, provided: asc }) {
       id
       type
       motivation
@@ -104,7 +104,7 @@ const REMOVE_NEED = gql`
   }
 `;
 
-const NeedsList = ({ needs, user }) => {
+const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
   const [toggleNeed] = useMutation(TOGGLE_NEED);
   const [removeNeed] = useMutation(REMOVE_NEED);
 
@@ -163,120 +163,143 @@ const NeedsList = ({ needs, user }) => {
       },
     });
   };
+
+  const toNotifications = () => {
+    setSelectedProject('');
+    setContent(2);
+  };
   return (
     <div className={styles.grid_item__add}>
-      <p className={`${styles.grid_title} ${style.subtitle_needs}`}>Mijn Benodigdheden</p>
+      <p className={`${styles.grid_title} ${style.subtitle_needs}`}>
+        Mijn Benodigdheden
+      </p>
       <div className={style.needs_list}>
-      {needs.map((need) => (
-        <div className={style.need_item}>
-          <li className={style.need_types}>
-            {need.type == 'Gebouw' && (
-              <>
-                <img
-                  className={style.need_image}
-                  src="./assets/images/gebouw_icon__small.svg"
-                />
-              </>
-            )}
-            {need.type == 'Eten' && (
-              <>
-                <img
-                  className={style.need_image}
-                  src="./assets/images/eten_icon__small.svg"
-                />
-              </>
-            )}
-            {need.type == 'Persoon' && (
-              <>
-                <img
-                  className={style.need_image}
-                  src="./assets/images/persoon_icon__small.svg"
-                />
-              </>
-            )}
-            {need.type == 'Item' && (
-              <>
-                <img
-                  className={style.need_image}
-                  src="./assets/images/item_icon__small.svg"
-                />
-              </>
-            )}
-            {need.type == 'Drank' && (
-              <>
-                <img
-                  className={style.need_image}
-                  src="./assets/images/drank_icon__small.svg"
-                />
-              </>
-            )}
-            <span className={style.need_type__text}>{need.need}</span>
-          </li>
-          {!need.other_user_id && (
-            <div className={style.need_buttons}>
-              {need.provided && (
-                <div className={style.need_toggles}>
-                  <button className={style.button}>
-                    <div
-                      className={`${style.true_false} ${style.toggle_true} scale`}
-                    >
-                      <img src="./assets/images/true_icon.svg" />
-                    </div>
-                  </button>
-                  <button
-                    className={style.button}
-                    onClick={() => handleToggle(need)}
-                  >
-                    <div className={`${style.true_false} scale`}>
-                      <img src="./assets/images/false_icon.svg" />
-                    </div>
-                  </button>
-                </div>
+        {needs.map((need) => (
+          <div className={style.need_item}>
+            <li className={style.need_types}>
+              {need.type == 'Gebouw' && (
+                <>
+                  <img
+                    className={style.need_image}
+                    src="./assets/images/gebouw_icon__small.svg"
+                  />
+                </>
               )}
-              {!need.provided && (
-                <div className={style.need_toggles}>
-                  <button
-                    className={style.button}
-                    onClick={() => handleToggle(need)}
-                  >
-                    <div className={`${style.true_false} scale`}>
-                      <img src="./assets/images/true_icon.svg" />
-                    </div>
-                  </button>
-                  <button className={style.button}>
-                    <div
-                      className={`${style.true_false} ${style.toggle_false} scale`}
-                    >
-                      <img src="./assets/images/false_icon.svg" />
-                    </div>
-                  </button>
-                </div>
+              {need.type == 'Eten' && (
+                <>
+                  <img
+                    className={style.need_image}
+                    src="./assets/images/eten_icon__small.svg"
+                  />
+                </>
               )}
-              <button
-                className={style.button}
-                onClick={() => handleDelete(need)}
-              >
-                <img src="./assets/images/delete_icon.svg" />
-              </button>
-            </div>
-          )}
-          {need.other_user_id && (
-            <>
-              {need.provided && (
-                <div className={style.need_toggles}>
-                  <button className={style.button}>
-                    <div
-                      className={`${style.true_false} ${style.toggle_true} scale`}
-                    >
-                      <img src="./assets/images/true_icon.svg" />
-                    </div>
-                  </button>
-                </div>
+              {need.type == 'Persoon' && (
+                <>
+                  <img
+                    className={style.need_image}
+                    src="./assets/images/persoon_icon__small.svg"
+                  />
+                </>
               )}
-            </>
-          )}
-        </div>
-      ))}
+              {need.type == 'Item' && (
+                <>
+                  <img
+                    className={style.need_image}
+                    src="./assets/images/item_icon__small.svg"
+                  />
+                </>
+              )}
+              {need.type == 'Drank' && (
+                <>
+                  <img
+                    className={style.need_image}
+                    src="./assets/images/drank_icon__small.svg"
+                  />
+                </>
+              )}
+              <span className={style.need_type__text}>{need.need}</span>
+            </li>
+            {!need.other_user_id && (
+              <div className={style.need_buttons}>
+                {need.provided && (
+                  <div className={style.need_toggles}>
+                    <button className={style.button}>
+                      <div
+                        className={`${style.true_false} ${style.toggle_true} scale`}
+                      >
+                        <img src="./assets/images/true_icon.svg" />
+                      </div>
+                    </button>
+                    <button
+                      className={style.button}
+                      onClick={() => handleToggle(need)}
+                    >
+                      <div className={`${style.true_false} scale`}>
+                        <img src="./assets/images/false_icon.svg" />
+                      </div>
+                    </button>
+                  </div>
+                )}
+                {!need.provided && (
+                  <div className={style.need_toggles}>
+                    <button
+                      className={style.button}
+                      onClick={() => handleToggle(need)}
+                    >
+                      <div className={`${style.true_false} scale`}>
+                        <img src="./assets/images/true_icon.svg" />
+                      </div>
+                    </button>
+                    <button className={style.button}>
+                      <div
+                        className={`${style.true_false} ${style.toggle_false} scale`}
+                      >
+                        <img src="./assets/images/false_icon.svg" />
+                      </div>
+                    </button>
+                  </div>
+                )}
+                <button
+                  className={style.button}
+                  onClick={() => handleDelete(need)}
+                >
+                  <img src="./assets/images/delete_icon.svg" />
+                </button>
+              </div>
+            )}
+            {need.other_user_id && (
+              <>
+                {need.provided && (
+                  <>
+                    <p>
+                      Door: {need.otheruser.first_name}{' '}
+                      {need.otheruser.last_name}
+                    </p>
+                    <div className={style.need_toggles}>
+                      <button className={style.button}>
+                        <img src="./assets/images/true_icon.svg" />
+                      </button>
+                    </div>
+                  </>
+                )}
+                {!need.provided && (
+                  <>
+                    <p>
+                      Door: {need.otheruser.first_name}{' '}
+                      {need.otheruser.last_name}
+                    </p>
+                    <div className={style.need_toggles}>
+                      <img
+                        onClick={toNotifications}
+                        src="./assets/needs/needs_pending.svg"
+                      />
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
