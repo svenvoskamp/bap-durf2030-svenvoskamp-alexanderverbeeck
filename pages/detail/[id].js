@@ -40,6 +40,19 @@ const GET_PROJECT_BY_ID = gql`
       }
       title
       user_id
+      donations(order_by: { created_at: asc }) {
+        id
+        created_at
+        amount
+        reward
+        updated_at
+        user {
+          first_name
+          last_name
+        }
+        project_id
+        user_id
+      }
       user {
         first_name
         last_name
@@ -137,7 +150,7 @@ const Detail = ({ props, user }) => {
           <Extra className={style.part_extra} props={props.projects[0]}></Extra>
           <Creatie props={props}></Creatie>
           {props.projects[0].reward_one && (
-            <Crowdfunding props={props}></Crowdfunding>
+            <Crowdfunding props={props} user={user}></Crowdfunding>
           )}
         </article>
         <article></article>

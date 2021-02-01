@@ -53,6 +53,19 @@ const GET_PROJECT_BY_ID = gql`
       }
       title
       user_id
+      donations(order_by: { created_at: asc }) {
+        id
+        created_at
+        amount
+        reward
+        updated_at
+        user {
+          first_name
+          last_name
+        }
+        project_id
+        user_id
+      }
       user {
         first_name
         last_name

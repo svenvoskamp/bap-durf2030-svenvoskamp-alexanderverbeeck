@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './feedback.module.css';
 
-const Creatie = ({ feedback }) => {
+const Feedback = ({ feedback }) => {
   console.log(feedback);
   const date = new Date(feedback.updated_at.replace(' ', 'T'));
 
@@ -13,7 +13,11 @@ const Creatie = ({ feedback }) => {
   return (
     <div className={style.part_feedback}>
       <div className={style.feedback_icon}>
-        <div className={style.icon_circle}>
+        <div
+          className={`${
+            style.icon_circle
+          } icon-circle--${feedback.type.toLowerCase()} `}
+        >
           <img
             className={style.icon_circle__image}
             src={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}.svg`}
@@ -38,4 +42,4 @@ const Creatie = ({ feedback }) => {
   );
 };
 
-export default Creatie;
+export default Feedback;

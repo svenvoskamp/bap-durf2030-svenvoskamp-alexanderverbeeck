@@ -143,6 +143,17 @@
   color: blueColor;
 }
 
+.number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.3rem blueColor;
+  text-stroke: 0.3rem blueColor;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
 @media screen and (max-width: 1250px) {
   .largeTitle {
     font-size: 11rem;
@@ -262,7 +273,6 @@
     -webkit-text-stroke: 0.25rem blueColor;
     text-stroke: 0.25rem blueColor;
   }
-  
 }
 
 @media screen and (max-width: 550px) {

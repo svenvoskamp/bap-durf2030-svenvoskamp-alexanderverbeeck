@@ -32,7 +32,7 @@
 
 .feedback_card {
   border: 0.3rem solid blueColor;
-  padding: 3rem 2rem;
+  padding: 3rem;
   position: relative;
   background-color: beigeColor;
   width: 35rem;
@@ -47,7 +47,7 @@
   background: inherit;
   border-radius: inherit;
   border: inherit;
-  top: 4%;
+  top: 5%;
   left: 4%;
   width: 100%;
   height: 100%;
@@ -85,16 +85,6 @@
 
 .icon_circle {
   text-align: center;
-  background-color: greenColor;
-  padding: 1rem;
-  border-radius: 50%;
-  display: inline-block;
-  border: 0.3rem solid blueColor;
-}
-
-.part_feedback:nth-child(even) .feedback_icon .icon_circle {
-  text-align: center;
-  background-color: yellowColor;
   padding: 1rem;
   border-radius: 50%;
   display: inline-block;
