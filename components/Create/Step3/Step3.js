@@ -422,7 +422,7 @@ const Needs = ({ project_id, user }) => {
                   {data.needs.length >= 1 && (
                     <>
                       <p className={style.empty_add}>
-                        Bedankt voor het toevoegen! Je kan nog meer benogidheden toevoegen.
+                        Bedankt voor het toevoegen! Je kan nog meer benodigdheden toevoegen.
                       </p>
                     </>
                   )}

@@ -182,7 +182,13 @@
 .empty_state__buttons {
   margin-top: 3rem;
   z-index: 2;
-}
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+} 
+
 
 .empty_state__button {
   composes: smallCaps from './typo.module.css';
@@ -190,8 +196,8 @@
   padding: 0.8rem 1rem;
   position: relative;
   background-color: beigeColor;
-  margin-right: 3rem;
   cursor: pointer;
+  margin: 0 2rem;
 }
 
 .empty_state__button:after {

@@ -1,0 +1,23 @@
+@value tokens: "../../../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
+
+.feedback_timeline {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.timeline_line {
+    position: absolute;
+    top: 50%;
+    height: .4rem;
+    background-color: blueColor;
+    width: 100%;
+    left: 0;
+}

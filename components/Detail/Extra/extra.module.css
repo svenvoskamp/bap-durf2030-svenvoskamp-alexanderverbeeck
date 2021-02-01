@@ -40,7 +40,7 @@
   content: '';
   position: absolute;
   display: block;
-  background: inherit;
+  background: beigeColor;
   border-radius: inherit;
   border: inherit;
   top: 1.5rem;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import style from './feedback.module.css';
 
 const Creatie = ({ feedback }) => {
   console.log(feedback);
@@ -11,16 +12,16 @@ const Creatie = ({ feedback }) => {
 
   return (
     <>
-      <li>
-        <div>
-          <p>
-            {feedback.type} {feedback.otheruser.first_name}
-          </p>
-          <p>toegevoegd op {finalDate}</p>
+      <li className={style.feedback}>
+      <div className={style.feedback_card}>
+          <p className={style.feedback_name}>{feedback.otheruser.first_name}:</p>
+          <p className={style.feedback_text}>"{feedback.motivation}"</p>
         </div>
         <div>
-          <p>{feedback.otheruser.first_name}:</p>
-          <p>{feedback.motivation}</p>
+          <p className={style.feedback_type}>
+            {feedback.type} {feedback.otheruser.first_name}
+          </p>
+          <p className={style.feedback_date}>Toegevoegd op {finalDate}</p>
         </div>
       </li>
     </>

@@ -108,9 +108,17 @@
 
 .smallText {
   font-family: Montserrat, sans-serif;
-  font-weight: 500;
+  font-weight: 200;
   font-size: 1.4rem;
   color: blueColor;
+}
+
+.feedback {
+  font-family: Montserrat, sans-serif;
+  font-weight: 200;
+  font-size: 1.6rem;
+  color: blueColor;
+  font-style: italic;
 }
 
 .bold {
@@ -254,6 +262,7 @@
     -webkit-text-stroke: 0.25rem blueColor;
     text-stroke: 0.25rem blueColor;
   }
+  
 }
 
 @media screen and (max-width: 550px) {
@@ -290,6 +299,14 @@
 
   .empty {
     font-size: 1.6rem;
+  }
+
+  .smallCaps {
+    font-size: 1.3rem;
+  }
+
+  .smallCapsLight {
+    font-size: 1.3rem;
   }
 }
 
