@@ -356,34 +356,17 @@ const Needs = ({ project_id, user }) => {
                         >
                           Is dit al voorzien?
                         </p>
-                        <div className={style.buttons_voorzien}>
-                          <div className={style.voorzien}>
-                            <label htmlFor="true">
-                              <input
-                                id="true"
-                                type="radio"
-                                name="gotneed"
-                                className={`${style.checkbox} ${style.checkbox_voorzien}`}
-                                onClick={(e) => setGotNeed(true)}
-                              />
-                              <div
-                                className={`${style.true_false} ${style.checkbox_true} scale`}
-                              >
+                        <div className={style.need_buttons}>
+                          <div className={style.need_toggles}>
+                            <label className={style.button_toggles} htmlFor="true">
+                              <input id="true" type="radio" name="gotneed" className={`${style.checkbox} ${style.checkbox_voorzien}`} onClick={(e) => setGotNeed(true)} />
+                              <div className={`${style.true_false} ${style.checkbox_true} scale`} >
                                 <img src="./assets/images/true_icon.svg" />
                               </div>
                             </label>
-                            <label htmlFor="false">
-                              <input
-                                id="false"
-                                type="radio"
-                                name="gotneed"
-                                className={`${style.checkbox} ${style.checkbox_voorzien}`}
-                                defaultChecked
-                                onClick={(e) => setGotNeed(false)}
-                              />
-                              <div
-                                className={`${style.true_false} ${style.checkbox_false} scale`}
-                              >
+                            <label className={style.button_toggles} htmlFor="false">
+                              <input id="false" type="radio" name="gotneed" className={`${style.checkbox} ${style.checkbox_voorzien}`} defaultChecked onClick={(e) => setGotNeed(false)} />
+                              <div className={`${style.true_false} ${style.checkbox_false} scale`} >
                                 <img src="./assets/images/false_icon.svg" />
                               </div>
                             </label>
@@ -440,64 +423,24 @@ const Needs = ({ project_id, user }) => {
                     {data.needs.map((need) => (
                       <div className={style.need_item}>
                         <li className={style.need_types}>
-                          {need.type == 'Gebouw' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/gebouw_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Eten' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/eten_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Persoon' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/persoon_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Item' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/item_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Drank' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/drank_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          <span className={style.need_type__text}>
+                        <img
+                          src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                          alt={need.need}
+                          className={style.need_image}
+                        />
+                          <p className={style.need_type__text}>
                             {need.need}
-                          </span>
+                          </p>
                         </li>
                         <div className={style.need_buttons}>
                           {need.provided && (
                             <div className={style.need_toggles}>
                               <button className={`${style.button_toggles}`}>
-                                <div
-                                  className={`${style.true_false} ${style.toggle_true} scale`}
-                                >
+                                <div className={`${style.true_false} ${style.toggle_true} scale`} >
                                   <img src="./assets/images/true_icon.svg" />
                                 </div>
                               </button>
-                              <button
-                                className={style.button}
-                                onClick={() => handleToggle(need)}
-                              >
+                              <button className={`${style.button_toggles}`}onClick={() => handleToggle(need)} >
                                 <div className={`${style.true_false} scale`}>
                                   <img src="./assets/images/false_icon.svg" />
                                 </div>
@@ -506,18 +449,13 @@ const Needs = ({ project_id, user }) => {
                           )}
                           {!need.provided && (
                             <div className={style.need_toggles}>
-                              <button
-                                className={style.button}
-                                onClick={() => handleToggle(need)}
-                              >
+                              <button className={`${style.button_toggles}`} onClick={() => handleToggle(need)} >
                                 <div className={`${style.true_false} scale`}>
                                   <img src="./assets/images/true_icon.svg" />
                                 </div>
                               </button>
-                              <button className={style.button}>
-                                <div
-                                  className={`${style.true_false} ${style.toggle_false} scale`}
-                                >
+                              <button className={`${style.button_toggles}`}>
+                                <div className={`${style.true_false} ${style.toggle_false} scale`} >
                                   <img src="./assets/images/false_icon.svg" />
                                 </div>
                               </button>

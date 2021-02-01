@@ -73,7 +73,6 @@
   align-items: center;
 }
 
-.grid_items:nth-child(even),
 .grid_items:nth-child(even) {
   background-color: beigeColor;
 }
@@ -206,6 +205,10 @@
   .grid_selectedproject__items {
     display: flex;
     flex-direction: column;
+  }
+
+  .needs {
+    margin-top: 3rem;
   }
 
   .grid_item__needs {

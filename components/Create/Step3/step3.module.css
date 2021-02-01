@@ -173,15 +173,33 @@
   display: flex;
 }
 
-.true_false {
-  border: 0.2rem solid blueColor;
-  padding: 0.8rem 1rem;
-  display: inline-block;
-  cursor: pointer;
+
+/* Toggles */
+
+.button_toggles {
+  padding: 0;
+  border: none;
+  background-color: transparent;
 }
 
-.checkbox_true {
-  margin-right: 0.5rem;
+.need_buttons {
+  display: flex;
+  align-items: center;
+}
+
+.need_toggles {
+  margin-right: 1rem;
+}
+
+.button_toggles:first-of-type {
+  margin-right: -.2rem;
+}
+
+.true_false {
+  border: 0.2rem solid blueColor;
+  padding: 0.6rem .8rem;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .checkbox_voorzien[type='radio']:checked ~ .checkbox_true {
@@ -223,6 +241,14 @@
   height: 100%;
   z-index: -1;
   transition: all 0.2s ease-in-out;
+}
+
+.toggle_true {
+  background-color: greenColor;
+}
+
+.toggle_false {
+  background-color: redColor;
 }
 
 /* Mijn benodigdheden */
@@ -288,11 +314,7 @@
 }
 
 .need_image {
-  margin-right: 1rem;
-}
-
-.need_voorzien {
-  padding: 0;
+  margin-right: .5rem;
 }
 
 .empty {
@@ -316,14 +338,6 @@
   text-stroke: 0.1rem #e5d6c0;
 }
 
-.toggle_true {
-  background-color: greenColor;
-}
-
-.toggle_false {
-  background-color: redColor;
-}
-
 /* Part End */
 
 .part_end {
@@ -339,7 +353,7 @@
 
 .button {
   composes: button from '../../../css/buttons.module.css';
-  align-self: flex-end;
+  padding: 0;
 }
 
 .circle_button {
@@ -389,7 +403,7 @@
     height: 60%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 2rem;
+    grid-column-gap: 1rem;
   }
 
   .need_item:nth-child(even) {
@@ -455,11 +469,6 @@
   }
 }
 
-@media screen and (max-width: 550px) {
-  .true_false {
-    padding: 0.3rem 0.4rem;
-  }
-}
 
 @media screen and (max-width: 750px) {
   .checkbox_image {
@@ -467,6 +476,40 @@
   }
   .checkbox_container {
     padding: 1.2rem 0;
-    margin-right: 2rem;
+    margin-right: 1rem;
   }
 }
+
+@media screen and (max-width: 550px) {
+
+  .checkboxes {
+    justify-content: center;
+  }
+
+  .checkbox_container {
+    margin: 0 3rem;
+  }
+
+  .checkbox_container:first-of-type,.checkbox_container:nth-of-type(4){
+    margin-left: 0;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+
+  .checkboxes {
+    justify-content: center;
+  }
+
+  .checkbox_container {
+    margin: 0 2rem;
+  }
+
+  .checkbox_container:first-of-type,.checkbox_container:nth-of-type(4){
+    margin-left: 0;
+  }
+
+}
+
+

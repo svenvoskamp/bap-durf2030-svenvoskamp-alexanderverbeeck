@@ -73,47 +73,12 @@ const Project = ({ project, key }) => {
                   <>
                     <div className={style.needs_text}>
                       {project.needs.slice(0, 2).map((need) => (
-                        <div className={style.need}>
-                          {need.type == 'Gebouw' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/gebouw_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Eten' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/eten_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Persoon' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/persoon_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Item' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/item_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Drank' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="./assets/images/drank_icon__small.svg"
-                              />
-                            </>
-                          )}
+                        <div className={style.need}> 
+                          <img
+                            src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                            alt={need.need}
+                            className={style.need_image}
+                          />
                           <p
                             className={`${style.info_text} ${style.info_light} `}
                           >
@@ -133,46 +98,11 @@ const Project = ({ project, key }) => {
                   <>
                     {project.needs.map((need) => (
                       <div className={style.need}>
-                        {need.type == 'Gebouw' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/gebouw_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Eten' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/eten_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Persoon' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/persoon_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Item' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/item_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Drank' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="./assets/images/drank_icon__small.svg"
-                            />
-                          </>
-                        )}
+                      <img
+                        src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                        alt={need.need}
+                        className={style.need_image}
+                      />
                         <p className={`${style.info_text} ${style.info_light}`}>
                           {need.need}
                         </p>

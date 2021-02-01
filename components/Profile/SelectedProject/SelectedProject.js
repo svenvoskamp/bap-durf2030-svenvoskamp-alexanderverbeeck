@@ -42,7 +42,7 @@ const SelectedProject = ({
       <div
         className={`${styles.grid_selectedproject__items} ${style.grid_selectedproject__items}`}
       >
-        <div classname={`${style.grid_item} ${style.grid_item__image}`}>
+        <div classname={style.grid_item__image}>
           <img
             className={style.grid_image}
             src={project.image}
@@ -54,7 +54,7 @@ const SelectedProject = ({
           </div>
         </div>
 
-        <div classname={`${style.grid_item} ${style.grid_item__info}`}>
+        <div classname={style.grid_item__info}>
           <p className={style.grid_tagline}>"{project.tagline}"</p>
           {/* <p className={style.title}>{project.title}</p>
           <p className={style.title_outline}>

@@ -169,71 +169,53 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
     setContent(2);
   };
   return (
-    <div className={styles.grid_item__add}>
+    <div className={styles.needs}>
       <p className={`${styles.grid_title} ${style.subtitle_needs}`}>
         Mijn Benodigdheden
       </p>
       <div className={style.needs_list}>
         {needs.map((need) => (
-          <div className={style.need_item}>
+          <div className={`${style.need_item} need-pending--${need.pending} need-item--${need.provided} need-user--${need.otheruser}`}>
             <li className={style.need_types}>
-              {need.type == 'Gebouw' && (
-                <>
-                  <img
-                    className={style.need_image}
-                    src="./assets/images/gebouw_icon__small.svg"
-                  />
-                </>
-              )}
-              {need.type == 'Eten' && (
-                <>
-                  <img
-                    className={style.need_image}
-                    src="./assets/images/eten_icon__small.svg"
-                  />
-                </>
-              )}
-              {need.type == 'Persoon' && (
-                <>
-                  <img
-                    className={style.need_image}
-                    src="./assets/images/persoon_icon__small.svg"
-                  />
-                </>
-              )}
-              {need.type == 'Item' && (
-                <>
-                  <img
-                    className={style.need_image}
-                    src="./assets/images/item_icon__small.svg"
-                  />
-                </>
-              )}
-              {need.type == 'Drank' && (
-                <>
-                  <img
-                    className={style.need_image}
-                    src="./assets/images/drank_icon__small.svg"
-                  />
-                </>
-              )}
-              <span className={style.need_type__text}>{need.need}</span>
+              <img
+                src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                alt={need.need}
+                className={style.need_image}
+              />
+              <div>
+              <p className={style.need_type__text}>{need.need}</p>
+              {need.other_user_id && (
+              <>
+                {need.provided && (
+                  <>
+                    <p>
+                      Door: {need.otheruser.first_name}{' '}
+                      {need.otheruser.last_name}
+                    </p>
+                  </>
+                )}
+                {!need.provided && (
+                  <>
+                    <p>
+                      Door: {need.otheruser.first_name}{' '}
+                      {need.otheruser.last_name}
+                    </p>
+                  </>
+                )}
+              </>
+            )}
+              </div>
             </li>
             {!need.other_user_id && (
               <div className={style.need_buttons}>
                 {need.provided && (
                   <div className={style.need_toggles}>
-                    <button className={style.button}>
-                      <div
-                        className={`${style.true_false} ${style.toggle_true} scale`}
-                      >
+                    <button className={`${style.button_toggles}`}>
+                      <div className={`${style.true_false} ${style.toggle_true} scale`} >
                         <img src="./assets/images/true_icon.svg" />
                       </div>
                     </button>
-                    <button
-                      className={style.button}
-                      onClick={() => handleToggle(need)}
-                    >
+                    <button className={`${style.button_toggles}`} onClick={() => handleToggle(need)} >
                       <div className={`${style.true_false} scale`}>
                         <img src="./assets/images/false_icon.svg" />
                       </div>
@@ -242,18 +224,13 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                 )}
                 {!need.provided && (
                   <div className={style.need_toggles}>
-                    <button
-                      className={style.button}
-                      onClick={() => handleToggle(need)}
-                    >
+                    <button className={`${style.button_toggles}`} onClick={() => handleToggle(need)}>
                       <div className={`${style.true_false} scale`}>
                         <img src="./assets/images/true_icon.svg" />
                       </div>
                     </button>
-                    <button className={style.button}>
-                      <div
-                        className={`${style.true_false} ${style.toggle_false} scale`}
-                      >
+                    <button className={`${style.button_toggles}`}>
+                      <div className={`${style.true_false} ${style.toggle_false} scale`} >
                         <img src="./assets/images/false_icon.svg" />
                       </div>
                     </button>
@@ -263,7 +240,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                   className={style.button}
                   onClick={() => handleDelete(need)}
                 >
-                  <img src="./assets/images/delete_icon.svg" />
+                  <img src="./assets/needs/needs_delete.svg" />
                 </button>
               </div>
             )}
@@ -271,27 +248,17 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
               <>
                 {need.provided && (
                   <>
-                    <p>
-                      Door: {need.otheruser.first_name}{' '}
-                      {need.otheruser.last_name}
-                    </p>
-                    <div className={style.need_toggles}>
-                      <button className={style.button}>
+                    <div>
                         <img src="./assets/images/true_icon.svg" />
-                      </button>
                     </div>
                   </>
                 )}
                 {!need.provided && (
                   <>
-                    <p>
-                      Door: {need.otheruser.first_name}{' '}
-                      {need.otheruser.last_name}
-                    </p>
-                    <div className={style.need_toggles}>
+                    <div>
                       <img
                         onClick={toNotifications}
-                        src="./assets/needs/needs_pending.svg"
+                        src="./assets/needs/needs_message.svg"
                       />
                     </div>
                   </>

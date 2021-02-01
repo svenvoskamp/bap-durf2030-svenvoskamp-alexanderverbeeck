@@ -355,9 +355,9 @@ const AddNeed = ({ project, user }) => {
                     >
                       Is dit al voorzien?
                     </p>
-                    <div className={style.buttons_voorzien}>
-                      <div className={style.voorzien}>
-                        <label htmlFor="true">
+                    <div className={style.need_buttons}>
+                      <div className={style.need_toggles}>
+                        <label className={style.button_toggles} htmlFor="true">
                           <input
                             id="true"
                             type="radio"
@@ -371,7 +371,7 @@ const AddNeed = ({ project, user }) => {
                             <img src="./assets/images/true_icon.svg" />
                           </div>
                         </label>
-                        <label htmlFor="false">
+                        <label className={style.button_toggles} htmlFor="false">
                           <input
                             id="false"
                             type="radio"
