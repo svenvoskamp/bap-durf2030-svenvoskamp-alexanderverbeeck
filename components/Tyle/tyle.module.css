@@ -68,3 +68,16 @@
 .button_image {
   composes: buttonImage from "../../css/buttons.module.css";
 }
+
+@media screen and (max-width: 550px) {
+  .card_title {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .card_image {
+    height: 18rem;
+    border: 0.3rem solid blueColor;
+    width: 100%;
+    margin-bottom: 10vh;
+  }
+}

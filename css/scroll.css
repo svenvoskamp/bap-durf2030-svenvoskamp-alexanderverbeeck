@@ -1,0 +1,28 @@
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-init body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth .data-scroll-container-home {
+  min-height: 100vh;
+}
+
+[data-scroll-direction="horizontal"] .data-scroll-container-home {
+  /* white-space: nowrap; */
+  height: 100vh;
+  display: inline-block;
+}
+
+@media screen and (max-width: 850px) {
+  .has-scroll-smooth .data-scroll-container-home {
+    min-height: unset;
+  }
+
+  [data-scroll-direction="horizontal"] .data-scroll-container-home {
+    height: unset;
+    display: inline-block;
+  }
+}

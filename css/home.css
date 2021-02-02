@@ -1,6 +1,187 @@
 @value tokens: "./tokens.module.css";
 @value blueColor, yellowColor, beigeColor, redColor, greenColor from tokens;
 
+/* Ontdek Durf 2030 */
+
+.home_start {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* margin: 0 10rem; */
+  margin-right: 10rem;
+}
+
+/* Text */
+
+.text-large--inner {
+  font-size: 10vw;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.4rem #091422;
+  text-stroke: 0.4rem #091422;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-weight: 900;
+  font-family: Montserrat;
+  /* margin-bottom: -6vw; */
+  position: relative;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.text-large--fill {
+  font-size: 10vw;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0.4rem #091422;
+  text-stroke: 0.4rem #091422;
+  -webkit-text-fill-color: #091422;
+  text-fill-color: #091422;
+  font-weight: 900;
+  font-family: Montserrat;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Large Text Durf 2030 */
+
+.home_text {
+}
+
+.text-start--button {
+  position: relative;
+}
+
+.start-text--large--fill {
+  position: relative;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  display: inline-block;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: -1vw;
+  margin-top: 24vw;
+}
+
+.circle_button {
+  background-color: #ffeb3d;
+  border: 0.2rem solid #091422;
+  position: relative;
+  border-radius: 50%;
+  display: block;
+  padding: 0.5rem;
+  width: 6vw;
+  height: 6vw;
+}
+
+.circle_button:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  bottom: 3%;
+  right: 3%;
+  width: 105%;
+  height: 105%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover .circle_button:after {
+  bottom: 0%;
+  right: 0%;
+  width: 100%;
+  height: 100%;
+}
+
+.button_image {
+  animation: rotation 4s infinite linear;
+  animation-play-state: paused;
+  webkit-animation-play-state: paused;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.button:hover .button_image {
+  animation: rotation 4s infinite linear;
+  cursor: pointer;
+  animation-play-state: running;
+  webkit-animation-play-state: running;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.text_start {
+  margin-bottom: -6vw;
+}
+
+/* Durf 2030 Tekst + Buttons */
+
+.home_subtitle {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: blueColor;
+  margin-bottom: 5rem;
+  width: 80%;
+}
+
+.home_button__arrow {
+  display: flex;
+  align-items: center;
+}
+
+.button_arrow__image {
+  margin-left: 5rem;
+}
+
+.home_button__bold {
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  color: blueColor;
+  white-space: nowrap;
+}
+
+.home_button__light {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  color: blueColor;
+  border-bottom: 0.1rem solid #091422;
+  display: inline-block;
+  padding: 0.5rem 0;
+  color: #091422;
+}
+
+/* Card Gallery */
+
+.gallery {
+  display: flex;
+  /* margin-left: 12vw;
+  margin-right: 12vw; */
+  margin: 0 12vw;
+  height: 100%;
+  align-items: center;
+}
+
 .cards {
   display: flex;
   height: 100vh;
@@ -71,208 +252,30 @@
   background-color: #4fc8b1;
 }
 
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
-.gallery {
-  display: flex;
-  margin-left: 12vw;
-  margin-right: 12vw;
-  height: 100%;
-  align-items: center;
-}
-
-/* Ontdek Durf 2030 */
-
-.home_start {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 10rem;
-}
-
-/* Large Text Durf 2030 */
-
-.home_text {
-  position: relative;
-}
-
-.text_start {
-  font-size: 10vw;
-  text-transform: uppercase;
-  -webkit-text-stroke: 0.4rem #091422;
-  text-stroke: 0.4rem #091422;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-  font-weight: 900;
-  font-family: Montserrat;
-  margin-bottom: -6vw;
-  position: relative;
-}
-
-.text-large--fill {
-  -webkit-text-fill-color: #091422;
-  text-fill-color: #2c2d30;
-  white-space: nowrap;
-}
-
-.text-large--inner {
-  font-size: 9vw;
-  white-space: nowrap;
-}
-
-/* Durf 2030 Tekst + Buttons */
-
-/* .home_start__info {
-  margin-top: -10%;
-} */
-
-.home_subtitle {
-  font-family: Montserrat, sans-serif;
-  font-weight: 600;
-  font-size: 2rem;
-  color: blueColor;
-  margin-bottom: 5rem;
-  width: 80%;
-}
-
-.home_button__arrow {
-  display: flex;
-  align-items: center;
-}
-
-.button_arrow__image {
-  margin-left: 5rem;
-}
-
-.home_button__bold {
-  font-family: Montserrat, sans-serif;
-  font-weight: 800;
-  font-size: 1.5rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  color: blueColor;
-  white-space: nowrap;
-}
-
-.home_button__light {
-  font-family: Montserrat, sans-serif;
-  font-weight: 500;
-  font-size: 1.4rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  color: blueColor;
-  border-bottom: 0.1rem solid #091422;
-  display: inline-block;
-  padding: 0.5rem 0;
-  color: #091422;
-}
-
-.button {
-  border: none;
-  background-color: transparent;
-  display: inline-block;
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  left: -2rem;
-  margin-top: 22vw;
-}
-
-.circle_button {
-  background-color: #ffeb3d;
-  border: 0.2rem solid #091422;
-  position: relative;
-  border-radius: 50%;
-  display: block;
-  padding: 0.5rem;
-  width: 6vw;
-  height: 6vw;
-}
-
-.circle_button:after {
-  content: "";
-  position: absolute;
-  display: block;
-  background: inherit;
-  border-radius: inherit;
-  border: inherit;
-  bottom: 3%;
-  right: 3%;
-  width: 105%;
-  height: 105%;
-  z-index: -1;
-  transition: all 0.2s ease-in-out;
-}
-
-.button:hover .circle_button:after {
-  bottom: 0%;
-  right: 0%;
-  width: 100%;
-  height: 100%;
-}
-
-.button_image {
-  animation: rotation 4s infinite linear;
-  animation-play-state: paused;
-  webkit-animation-play-state: paused;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.button:hover .button_image {
-  animation: rotation 4s infinite linear;
-  cursor: pointer;
-  animation-play-state: running;
-  webkit-animation-play-state: running;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
 /* End Nieuw Project */
-
-.home_end__info {
-  margin-top: 5rem;
-}
-
-/* Start Nu jouw Project */
 
 .home_end {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* margin-left: 10rem; */
+  width: 100%;
 }
 
-.text_end {
-  -webkit-text-stroke: 0.4rem #091422;
-  text-stroke: 0.4rem #091422;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-  font-weight: 900;
-  font-family: Montserrat;
+/* Start Nu jouw Project */
+
+.end-text--large--fill {
+  font-size: 9vw;
+}
+
+.end-text--large--inner {
+  font-size: 9vw;
 }
 
 .home_end__buttons {
   display: flex;
   align-items: center;
+  margin-top: 8rem;
 }
 
 .home_button__start {
@@ -311,39 +314,22 @@
   left: 0;
 }
 
-@media screen and (max-width: 1050px) {
-  .gallery {
-    margin-left: 10vw;
-    margin-right: 8vw;
-    display: flex;
+@media screen and (max-width: 1250px) {
+  .start-text--large--inner {
+    font-size: 12vw;
   }
 
-  .text_start {
-    font-size: 9vw;
-    -webkit-text-stroke: 0.4rem #091422;
-    text-stroke: 0.4rem #091422;
-    margin-bottom: -5vh;
+  .start-text--large--fill {
+    font-size: 12vw;
   }
 
-  .home_subtitle {
-    width: 100%;
-    margin-top: 3vh;
-  }
-
-  .text-large--fill {
-    -webkit-text-fill-color: #091422;
-    text-fill-color: #2c2d30;
-    white-space: nowrap;
-  }
-
-  .text-large--inner {
-    font-size: 8;
-    white-space: nowrap;
+  .home_start__info {
+    margin-top: 12rem;
   }
 
   .circle_button {
-    width: 8vw;
-    height: 8vw;
+    width: 7vw;
+    height: 7vw;
   }
 
   .button {
@@ -351,10 +337,48 @@
   }
 }
 
+@media screen and (max-width: 1050px) {
+  .gallery {
+    margin-left: 12vw;
+    margin-right: 12vw;
+    display: flex;
+  }
+
+  .start-text--large--inner {
+    font-size: 12vw;
+  }
+
+  .start-text--large--fill {
+    font-size: 12vw;
+  }
+
+  .end-text--large--inner {
+    font-size: 8vw;
+  }
+
+  .end-text--large--fill {
+    font-size: 8vw;
+  }
+
+  .home_subtitle {
+    width: 100%;
+  }
+
+  .circle_button {
+    width: 8vw;
+    height: 8vw;
+    left: -1.5vw;
+  }
+
+  .button {
+    margin-top: 25vw;
+  }
+}
+
 @media screen and (max-width: 850px) {
   .gallery {
     margin-left: 4vw;
-    margin-right: 4vw;
+    margin-right: 10vw;
     display: flex;
   }
 
@@ -364,98 +388,146 @@
 
   .button {
     left: -1rem;
-    margin-top: 30vw;
+    margin-top: 27vw;
   }
 
   .circle_button {
-    width: 10vw;
-    height: 10vw;
+    width: 9vw;
+    height: 9vw;
   }
 
   .circle_button:after {
-    bottom: 6%;
-    right: 6%;
+    bottom: 5%;
+    right: 5%;
   }
-
-  /* Large Text Durf 2030 */
-
-  .text_start {
-    font-size: 11vw;
-    text-transform: uppercase;
-    -webkit-text-stroke: 0.25rem #091422;
-    text-stroke: 0.3rem #091422;
-  }
-
-  .home_subtitle {
-    width: 100%;
-    margin-top: 5vh;
-  }
-
-  .text-large--inner {
-    font-size: 10vw;
-  }
-
-  /* Durf 2030 Tekst + Buttons */
 
   .home_start__info {
-    margin-top: unset;
+    margin-top: 8rem;
   }
 
   .home_start {
     margin-right: 6rem;
   }
+
+  .start-text--large--inner {
+    -webkit-text-stroke: 0.35rem #091422;
+    text-stroke: 0.35rem #091422;
+  }
+
+  .start-text--large--fill {
+    -webkit-text-stroke: 0.35rem #091422;
+    text-stroke: 0.35rem #091422;
+  }
+
+  .end-text--large--inner {
+    font-size: 9vw;
+    -webkit-text-stroke: 0.28rem #091422;
+    text-stroke: 0.28rem #091422;
+  }
+
+  .end-text--large--fill {
+    font-size: 9vw;
+    -webkit-text-stroke: 0.2rem #091422;
+    text-stroke: 0.28rem #091422;
+  }
+
+  .home_end__buttons {
+    margin-top: 5rem;
+  }
 }
 
 @media screen and (max-width: 550px) {
-  .text_start {
+  .home_start {
+    margin-right: 1rem;
+    justify-content: flex-start;
+    margin-top: 30vh;
+  }
+
+  .start-text--large--inner {
     font-size: 14vw;
     -webkit-text-stroke: 0.25rem #091422;
     text-stroke: 0.3rem #091422;
   }
 
-  .home_start {
-    margin-right: 4rem;
+  .start-text--large--fill {
+    font-size: 14vw;
+    -webkit-text-stroke: 0.15rem #091422;
+    text-stroke: 0.3rem #091422;
+  }
+
+  .end-text--large--inner {
+    font-size: 8vw;
+    -webkit-text-stroke: 0.15rem #091422;
+    text-stroke: 0.3rem #091422;
+  }
+
+  .end-text--large--fill {
+    font-size: 8vw;
+    -webkit-text-stroke: 0.15rem #091422;
+    text-stroke: 0.3rem #091422;
   }
 
   .home_subtitle {
-    width: 100%;
-    margin-top: 3vh;
-    margin-bottom: vh;
     font-size: 1.6rem;
+    margin-top: 3vh;
+    margin-bottom: 12rem;
+  }
+
+  .home_start__info {
+    margin-top: unset;
+  }
+
+  .home_end {
+    justify-content: center;
+  }
+
+  .home_button__start,
+  .home_button__light {
+    white-space: nowrap;
   }
 
   .button {
     left: -0.7rem;
-    margin-top: 29vw;
+    margin-top: 27vw;
+    display: none;
   }
 
-  .text_start {
-    margin-bottom: 0;
+  .circle_button {
+    width: 11vw;
+    height: 11vw;
   }
 
   .button_arrow__image {
     margin-left: 1.5rem;
   }
 
-  .home_subtitle {
-    margin-top: 0;
-    margin-bottom: 10vh;
-  }
-
   .gallery {
     margin-left: 2rem;
-    margin-right: 0;
-    display: flex;
+    margin-right: 14vw;
+  }
+
+  .card {
+    width: 30rem;
+    margin: 0 6rem;
+  }
+
+  .card_info {
+    border: 0.3rem solid #091422;
+    padding: 1rem;
   }
 }
 
 @media screen and (max-width: 450px) {
   .home_subtitle {
-    margin-top: 2vh;
+    margin-top: 5rem;
     margin-bottom: 10vh;
   }
 
   .home_start {
     margin-right: 1rem;
+  }
+
+  .home_button_start {
+    padding: 0.75rem 2rem;
   }
 }
