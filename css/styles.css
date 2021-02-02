@@ -11,6 +11,10 @@ html.has-scroll-smooth {
   overflow: hidden;
 }
 
+html.has-scroll-init {
+  overflow: hidden;
+}
+
 /* html.has-scroll-dragging {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -22,11 +26,15 @@ html.has-scroll-smooth {
   overflow: hidden;
 }
 
+.has-scroll-init body {
+  overflow: hidden;
+}
+
 .has-scroll-smooth .data-scroll-container-home {
   min-height: 100vh;
 }
 
-[data-scroll-direction="horizontal"] .data-scroll-container-home {
+[data-scroll-direction='horizontal'] .data-scroll-container-home {
   /* white-space: nowrap; */
   height: 100vh;
   display: inline-block;
@@ -37,7 +45,7 @@ html.has-scroll-smooth {
     min-height: unset;
   }
 
-  [data-scroll-direction="horizontal"] .data-scroll-container-home {
+  [data-scroll-direction='horizontal'] .data-scroll-container-home {
     height: unset;
     display: inline-block;
   }
@@ -357,7 +365,7 @@ a {
 }
 
 .form_card__two__toevoeging:before {
-  content: url("../public/assets/creatie/creatie_toevoeging_form_extra.svg");
+  content: url('../public/assets/creatie/creatie_toevoeging_form_extra.svg');
   position: absolute;
   display: block;
   right: -12%;
@@ -367,7 +375,7 @@ a {
 }
 
 .form_card__two__aanpassing:before {
-  content: url("../public/assets/creatie/creatie_aanpassing_form_extra.svg");
+  content: url('../public/assets/creatie/creatie_aanpassing_form_extra.svg');
   position: absolute;
   display: block;
   right: -12%;
@@ -377,7 +385,7 @@ a {
 }
 
 .form_card__two__overig:before {
-  content: url("../public/assets/creatie/creatie_overig_form_extra.svg");
+  content: url('../public/assets/creatie/creatie_overig_form_extra.svg');
   position: absolute;
   display: block;
   right: -12%;
