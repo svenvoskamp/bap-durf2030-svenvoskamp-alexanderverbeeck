@@ -1,17 +1,18 @@
-import React, { useRef, useEffect } from "react";
-import Login from "./Auth/Login";
-import Logout from "./Auth/Logout";
-import { useRouter } from "next/router";
+import React, { useRef, useEffect } from 'react';
+import Login from './Auth/Login';
+import Logout from './Auth/Logout';
+import { useRouter } from 'next/router';
 
 const Nav = ({ user }) => {
+  console.log(user);
   const navRef = useRef(null);
   const router = useRouter();
   const path = router.pathname;
   return (
     <>
-      {path == "/" && (
+      {path == '/' && (
         <div className="navigation-header--mobile navigation-header--mobile--fixed">
-          <a href={"/"}>
+          <a href={'/'}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -66,7 +67,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={"/create-project"}>
+          <a href={'/create-project'}>
             <div>
               <svg
                 width="70"
@@ -98,9 +99,9 @@ const Nav = ({ user }) => {
           </a>
         </div>
       )}
-      {path != "/" && (
+      {path != '/' && (
         <div className="navigation-header--mobile">
-          <a href={"/"}>
+          <a href={'/'}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -155,7 +156,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={"/create-project"}>
+          <a href={'/create-project'}>
             <div>
               <svg
                 width="70"
@@ -188,7 +189,7 @@ const Nav = ({ user }) => {
         </div>
       )}
       <nav className="navigation">
-        <a href={"/"} className="nav-logo">
+        <a href={'/'} className="nav-logo">
           <svg
             className="nav-logo--image scale"
             width="40"
@@ -244,7 +245,7 @@ const Nav = ({ user }) => {
           </svg>
         </a>
         <div className="nav-items">
-          <a href={"/"} className="scale item">
+          <a href={'/'} className="scale item">
             <div className=" nav-item">
               <svg
                 width="27"
@@ -289,7 +290,7 @@ const Nav = ({ user }) => {
               Ontdekken
             </p>
           </a>
-          <a href={"/projects"} className="scale item">
+          <a href={'/projects'} className="scale item">
             <div className=" nav-item">
               <svg
                 width="30"
@@ -345,7 +346,7 @@ const Nav = ({ user }) => {
             <p className=" nav-item--title">Projecten</p>
           </a>
 
-          <a href={"/create-project"} className="scale item item-nieuw">
+          <a href={'/create-project'} className="scale item item-nieuw">
             <div className=" nav-item">
               <svg
                 className="nav-item--image"
@@ -381,7 +382,7 @@ const Nav = ({ user }) => {
             </div>
             <p className="nav-item--title">Nieuw project</p>
           </a>
-          <a href={"/"} className="scale item">
+          <a href={'/'} className="scale item">
             <div className="nav-item">
               <svg
                 width="33"
@@ -433,7 +434,7 @@ const Nav = ({ user }) => {
             </div>
             <p className="  nav-item--title">Community</p>
           </a>
-          <a href={"/"} className="scale item">
+          <a href={'/'} className="scale item">
             <div className="nav-item">
               <svg
                 width="26"
@@ -467,9 +468,49 @@ const Nav = ({ user }) => {
             </div>
             <p className=" nav-item--title">Durf 2030</p>
           </a>
+          {user && (
+            <>
+              {user.sub == 'auth0|6019996f27e50e006cb10777' && (
+                <a href={'/'} className="scale item">
+                  <div className="nav-item">
+                    <svg
+                      width="26"
+                      height="27"
+                      viewBox="0 0 26 27"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.46154 20.9441H5.63445C5.07824 20.9441 4.62892 20.4903 4.6345 19.9341L4.67391 16.0098C4.67875 15.5279 4.28948 15.1348 3.80762 15.1348V15.1348C2.34916 15.1348 1.06571 14.0734 1.00737 12.6769C0.890698 11.1687 2.17414 9.88396 3.74928 9.88396V9.88396C4.29701 9.88396 4.74104 9.43994 4.74104 8.89221V5.02874C4.74104 4.47255 5.19485 4.02324 5.75101 4.02879L9.95053 4.07067C10.1658 4.07282 10.3415 3.89888 10.3415 3.68356V3.68356C10.3415 2.28707 11.45 1.05816 12.9084 1.0023C14.4836 0.946443 15.7692 1.90952 15.767 3.6277V3.6277C15.767 3.90616 15.9913 4.13267 16.2697 4.13545L20.3675 4.17632C20.9198 4.18183 21.363 4.63403 21.3575 5.18631L21.3191 9.00398C21.3136 9.55006 21.7548 9.99568 22.3009 9.99568V9.99568C23.9927 9.99568 25.3345 11.5039 24.9261 13.1797C24.6344 14.4086 23.4677 15.1906 22.1259 15.1906V15.1906C21.6455 15.1906 21.2587 15.5852 21.2684 16.0655L21.347 19.9799C21.3583 20.54 20.9074 21 20.3472 21H18.5385"
+                        stroke="#FDECD2"
+                        strokeWidth="1.8"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M10 16.6176C10.5392 15.6471 11.5098 15 12.6961 15C14.3137 15 15.7156 16.2941 15.7156 18.0196C15.7156 19.7451 14.3137 20.9313 12.6961 20.9313C12.4804 20.9313 12.3725 20.9313 12.1568 20.9313"
+                        stroke="#FDECD2"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M12.8041 25.9999C13.2806 25.9999 13.6669 25.6136 13.6669 25.1372C13.6669 24.6607 13.2806 24.2744 12.8041 24.2744C12.3277 24.2744 11.9414 24.6607 11.9414 25.1372C11.9414 25.6136 12.3277 25.9999 12.8041 25.9999Z"
+                        fill="#FDECD2"
+                        stroke="#FDECD2"
+                        strokeWidth="0.8"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <p className=" nav-item--title">Adminpaneel</p>
+                </a>
+              )}
+            </>
+          )}
           <div className="nav-profile--mobile">
             {user && (
-              <a href={"/profile"} className="scale profile">
+              <a href={'/profile'} className="scale profile">
                 <div className="nav-item nav-profile--image">
                   <img className="" src={user.picture} alt={user.name} />
                 </div>
@@ -491,7 +532,7 @@ const Nav = ({ user }) => {
         </div>
         <div className="nav-profile">
           {user && (
-            <a href={"/profile"} className="scale profile">
+            <a href={'/profile'} className="scale profile">
               <div className="nav-item nav-profile--image">
                 <img className="" src={user.picture} alt={user.name} />
               </div>
