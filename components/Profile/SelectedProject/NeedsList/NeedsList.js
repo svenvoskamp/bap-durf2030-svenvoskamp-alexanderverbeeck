@@ -17,6 +17,19 @@ const GET_USER_DATA = gql`
       sector
       picture
       department
+      donations(order_by: { created_at: asc }) {
+        id
+        created_at
+        amount
+        reward
+        updated_at
+        user {
+          first_name
+          last_name
+        }
+        project_id
+        user_id
+      }
       projects {
         id
         category {
@@ -29,6 +42,11 @@ const GET_USER_DATA = gql`
         impact
         tagline
         description
+        reward_one
+        reward_two
+        reward_three
+        donated
+        phase_id
         phase {
           phase
         }
@@ -175,7 +193,9 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
       </p>
       <div className={style.needs_list}>
         {needs.map((need) => (
-          <div className={`${style.need_item} need-pending--${need.pending} need-item--${need.provided} need-user--${need.otheruser}`}>
+          <div
+            className={`${style.need_item} need-pending--${need.pending} need-item--${need.provided} need-user--${need.otheruser}`}
+          >
             <li className={style.need_types}>
               <img
                 src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
@@ -183,27 +203,27 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                 className={style.need_image}
               />
               <div>
-              <p className={style.need_type__text}>{need.need}</p>
-              {need.other_user_id && (
-              <>
-                {need.provided && (
+                <p className={style.need_type__text}>{need.need}</p>
+                {need.other_user_id && (
                   <>
-                    <p>
-                      Door: {need.otheruser.first_name}{' '}
-                      {need.otheruser.last_name}
-                    </p>
+                    {need.provided && (
+                      <>
+                        <p>
+                          Door: {need.otheruser.first_name}{' '}
+                          {need.otheruser.last_name}
+                        </p>
+                      </>
+                    )}
+                    {!need.provided && (
+                      <>
+                        <p>
+                          Door: {need.otheruser.first_name}{' '}
+                          {need.otheruser.last_name}
+                        </p>
+                      </>
+                    )}
                   </>
                 )}
-                {!need.provided && (
-                  <>
-                    <p>
-                      Door: {need.otheruser.first_name}{' '}
-                      {need.otheruser.last_name}
-                    </p>
-                  </>
-                )}
-              </>
-            )}
               </div>
             </li>
             {!need.other_user_id && (
@@ -211,11 +231,16 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                 {need.provided && (
                   <div className={style.need_toggles}>
                     <button className={`${style.button_toggles}`}>
-                      <div className={`${style.true_false} ${style.toggle_true} scale`} >
+                      <div
+                        className={`${style.true_false} ${style.toggle_true} scale`}
+                      >
                         <img src="./assets/images/true_icon.svg" />
                       </div>
                     </button>
-                    <button className={`${style.button_toggles}`} onClick={() => handleToggle(need)} >
+                    <button
+                      className={`${style.button_toggles}`}
+                      onClick={() => handleToggle(need)}
+                    >
                       <div className={`${style.true_false} scale`}>
                         <img src="./assets/images/false_icon.svg" />
                       </div>
@@ -224,13 +249,18 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                 )}
                 {!need.provided && (
                   <div className={style.need_toggles}>
-                    <button className={`${style.button_toggles}`} onClick={() => handleToggle(need)}>
+                    <button
+                      className={`${style.button_toggles}`}
+                      onClick={() => handleToggle(need)}
+                    >
                       <div className={`${style.true_false} scale`}>
                         <img src="./assets/images/true_icon.svg" />
                       </div>
                     </button>
                     <button className={`${style.button_toggles}`}>
-                      <div className={`${style.true_false} ${style.toggle_false} scale`} >
+                      <div
+                        className={`${style.true_false} ${style.toggle_false} scale`}
+                      >
                         <img src="./assets/images/false_icon.svg" />
                       </div>
                     </button>
@@ -249,7 +279,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                 {need.provided && (
                   <>
                     <div>
-                        <img src="./assets/images/true_icon.svg" />
+                      <img src="./assets/images/true_icon.svg" />
                     </div>
                   </>
                 )}

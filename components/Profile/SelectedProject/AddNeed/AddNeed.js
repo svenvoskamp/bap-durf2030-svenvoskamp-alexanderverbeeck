@@ -58,6 +58,19 @@ const GET_USER_DATA = gql`
       sector
       picture
       department
+      donations(order_by: { created_at: asc }) {
+        id
+        created_at
+        amount
+        reward
+        updated_at
+        user {
+          first_name
+          last_name
+        }
+        project_id
+        user_id
+      }
       projects {
         id
         category {
@@ -70,6 +83,11 @@ const GET_USER_DATA = gql`
         impact
         tagline
         description
+        reward_one
+        reward_two
+        reward_three
+        donated
+        phase_id
         phase {
           phase
         }
