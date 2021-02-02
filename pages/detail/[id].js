@@ -13,7 +13,6 @@ import { useFetchUser } from '../../lib/user';
 import Nav from '../../components/Nav';
 import style from '../../css/detail.module.css';
 import Loading from '../../components/Loading/Loading';
-import Head from 'next/head';
 
 const GET_PROJECT_BY_ID = gql`
   query getProjectById($id: Int!, $user_id: String, $user: Boolean!) {
@@ -146,9 +145,6 @@ const Detail = ({ props, user }) => {
 
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <Mouse></Mouse>
       <Nav user={user}></Nav>
       <main ref={scrollRef} data-scroll-container>

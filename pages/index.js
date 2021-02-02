@@ -7,7 +7,6 @@ import { withApollo } from '../lib/withApollo';
 import dynamic from 'next/dynamic';
 import Nav from '../components/Nav';
 import { useFetchUser } from '../lib/user';
-import Head from 'next/head';
 
 const Home = ({ projects }) => {
   const { user, loading } = useFetchUser();
@@ -53,9 +52,6 @@ const Home = ({ projects }) => {
 
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <Mouse></Mouse>
       <Nav user={user}></Nav>
       <main
