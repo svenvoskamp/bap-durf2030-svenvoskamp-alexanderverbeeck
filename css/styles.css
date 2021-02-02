@@ -36,8 +36,6 @@ a {
 
 .content {
   height: 100vh;
-  position: absolute;
-  top: 50%;
 }
 
 .data-scroll-container-home {
@@ -143,6 +141,10 @@ a {
 
 .navigation-header--mobile {
   display: none;
+}
+
+.navigation-header--mobile--fixed {
+  position: fixed;
 }
 
 .nav-logo {

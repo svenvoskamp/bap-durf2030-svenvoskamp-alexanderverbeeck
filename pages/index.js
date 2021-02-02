@@ -59,13 +59,13 @@ const Home = ({ projects }) => {
         data-scroll-container
         className="data-scroll-container-home"
       >
-        <div class="content">
-          <div class="gallery">
+        <div className="content">
+          <div className="gallery">
             <div className="home_start">
               <div className="home_text">
-                <div class="text_start">
+                <div className="text_start">
                   <p
-                    class="text-large--fill"
+                    className="text-large--fill"
                     data-scroll
                     data-scroll-speed="5"
                     data-scroll-direction="vertical"
@@ -77,7 +77,7 @@ const Home = ({ projects }) => {
                     data-scroll
                     data-scroll-speed="5"
                     data-scroll-direction="vertical"
-                    class="text-large--inner"
+                    className="text-large--inner"
                   >
                     {" "}
                     DURF 2030.{" "}
@@ -111,10 +111,16 @@ const Home = ({ projects }) => {
                 <div className="home_start__buttons">
                   <div className="home_button__arrow">
                     <p className="home_button__bold">Projecten in de kijker</p>
-                    <img
-                      className="button_arrow__image"
-                      src="./assets/images/arrow_large.svg"
-                    />
+                    <picture>
+                      <source
+                        media="(max-width: 850px)"
+                        srcset="./assets/images/arrow_small.svg"
+                      />
+                      <img
+                        className="button_arrow__image"
+                        src="./assets/images/arrow_large.svg"
+                      />
+                    </picture>
                   </div>
                   <a href={"/projects"} className="home_button__light scale">
                     Alle projecten
@@ -149,9 +155,9 @@ const Home = ({ projects }) => {
             </div>
 
             <div className="home_end">
-              <div class="text_end">
+              <div className="text_end">
                 <p
-                  class="text-large--inner text-large--fill "
+                  className="text-large--inner text-large--fill "
                   data-scroll
                   data-scroll-speed="2"
                   data-scroll-direction="vertical"
@@ -163,7 +169,7 @@ const Home = ({ projects }) => {
                   data-scroll
                   data-scroll-speed="-2"
                   data-scroll-direction="vertical"
-                  class="text-large--inner"
+                  className="text-large--inner"
                 >
                   {" "}
                   START NU.{" "}

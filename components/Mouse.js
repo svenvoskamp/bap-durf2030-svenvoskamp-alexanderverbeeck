@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from "react";
 
-import TweenMax from 'gsap';
+import TweenMax from "gsap";
 
 const Mouse = () => {
   let bigBall;
@@ -8,14 +8,14 @@ const Mouse = () => {
   let targets;
 
   useEffect(() => {
-    bigBall = document.querySelector('.cursor__ball--big');
+    bigBall = document.querySelector(".cursor__ball--big");
     targets = document.querySelectorAll(`.scale`);
     for (let i = 0; i < targets.length; i++) {
-      targets[i].addEventListener('mouseenter', onMouseHover);
-      targets[i].addEventListener('mouseleave', onMouseHoverOut);
-      targets[i].addEventListener('click', onMouseClick);
+      targets[i].addEventListener("mouseenter", onMouseHover);
+      targets[i].addEventListener("mouseleave", onMouseHoverOut);
+      targets[i].addEventListener("click", onMouseClick);
     }
-    document.body.addEventListener('mousemove', onMouseMove);
+    document.body.addEventListener("mousemove", onMouseMove);
   });
 
   function onMouseMove(e) {
@@ -26,21 +26,18 @@ const Mouse = () => {
     });
   }
   function onMouseHover() {
-    console.log('ik moet groot worden');
     TweenMax.to(bigBall, {
       duration: 0.3,
       scale: 2,
     });
   }
   function onMouseHoverOut() {
-    console.log('ik moet klein blijven');
     TweenMax.to(bigBall, {
       duration: 0.3,
       scale: 1,
     });
   }
   function onMouseClick() {
-    console.log('ik word klein');
     TweenMax.to(bigBall, {
       duration: 0.3,
       scale: 1,
@@ -49,8 +46,8 @@ const Mouse = () => {
 
   return (
     <>
-      <div class="cursor">
-        <div class="cursor__ball cursor__ball--big">
+      <div className="cursor">
+        <div className="cursor__ball cursor__ball--big">
           <svg height="30" width="30">
             <circle cx="15" cy="15" r="12" strokeWidth="0"></circle>
           </svg>

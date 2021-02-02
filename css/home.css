@@ -15,7 +15,8 @@
   height: 40vh;
 }
 
-.card:nth-child(even) {
+.card:first-of-type {
+  margin-left: 0;
 }
 
 .card:hover {
@@ -94,7 +95,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 6rem;
+  margin-right: 10rem;
 }
 
 /* Large Text Durf 2030 */
@@ -112,7 +113,7 @@
   text-fill-color: transparent;
   font-weight: 900;
   font-family: Montserrat;
-  margin-bottom: -10%;
+  margin-bottom: -10vh;
   position: relative;
 }
 
@@ -158,6 +159,7 @@
   letter-spacing: 0.05rem;
   text-transform: uppercase;
   color: blueColor;
+  white-space: nowrap;
 }
 
 .home_button__light {
@@ -192,7 +194,8 @@
   border-radius: 50%;
   display: block;
   padding: 0.5rem;
-  width: 100%;
+  width: 6vw;
+  height: 6vw;
 }
 
 .circle_button:after {
@@ -221,6 +224,9 @@
   animation: rotation 4s infinite linear;
   animation-play-state: paused;
   webkit-animation-play-state: paused;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .button:hover .button_image {
@@ -323,12 +329,13 @@
     text-fill-color: transparent;
     font-weight: 900;
     font-family: Montserrat;
-    margin-bottom: 5%;
     position: relative;
+    margin-bottom: -5vh;
   }
 
   .home_subtitle {
     width: 100%;
+    margin-top: 3vh;
   }
 
   .text-large--fill {
@@ -352,12 +359,21 @@
     font-weight: 900;
     font-family: Montserrat;
   }
+
+  .circle_button {
+    width: 8vw;
+    height: 8vw;
+  }
+
+  .button {
+    margin-top: 26vw;
+  }
 }
 
 @media screen and (max-width: 850px) {
   .gallery {
     margin-left: 4vw;
-    margin-right: 4vw;
+    margin-right: 0;
     display: flex;
   }
 
@@ -365,7 +381,45 @@
     align-self: unset;
   }
 
+  .button {
+    left: -1rem;
+    margin-top: 30vw;
+  }
+
+  .circle_button {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  .circle_button:after {
+    bottom: 6%;
+    right: 6%;
+  }
+
   /* Large Text Durf 2030 */
+
+  .text_start {
+    font-size: 14vw;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.4rem #091422;
+    text-stroke: 0.4rem #091422;
+  }
+
+  .home_subtitle {
+    width: 100%;
+    margin-top: 5vh;
+  }
+
+  .text-large--fill {
+    -webkit-text-fill-color: #091422;
+    text-fill-color: #2c2d30;
+    white-space: nowrap;
+  }
+
+  .text-large--inner {
+    font-size: 13vw;
+    white-space: nowrap;
+  }
 
   /* Durf 2030 Tekst + Buttons */
 
@@ -374,16 +428,60 @@
   }
 
   .home_start {
-    margin-right: unset;
-    margin-top: unset;
+    margin-right: 6rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .text_start {
+    font-size: 14vw;
+    -webkit-text-stroke: 0.3rem #091422;
+    text-stroke: 0.3rem #091422;
+  }
+
+  .home_start {
+    margin-right: 4rem;
   }
 
   .home_subtitle {
-    font-family: Montserrat, sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    color: blueColor;
-    margin-bottom: unset;
     width: 100%;
+    margin-top: 3vh;
+    margin-bottom: vh;
+    font-size: 1.6rem;
+  }
+
+  .button {
+    left: -0.7rem;
+    margin-top: 29vw;
+  }
+
+  .text_start {
+    margin-bottom: 0;
+  }
+
+  .button_arrow__image {
+    margin-left: 1.5rem;
+  }
+
+  .home_subtitle {
+    margin-top: 0;
+    margin-bottom: 10vh;
+  }
+
+  .gallery {
+    margin-left: 2rem;
+    margin-right: 0;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .home_subtitle {
+    margin-top: 2vh;
+    margin-bottom: 10vh;
+  }
+
+  .home_start {
+    margin-right: 1rem;
   }
 }
