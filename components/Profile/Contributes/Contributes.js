@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Contributes = ({ props, user, feedbacks }) => {
   let acceptedRequest = [];
@@ -22,25 +22,11 @@ const Contributes = ({ props, user, feedbacks }) => {
   return (
     <>
       <div>
-        <p>Goedgkeurde aanvragen</p>
-        {acceptedRequest.map((need) => (
-          <>
-            <li>
-              <p>{need.project.title}</p>
-              <p>{need.need}</p>
-              <p>{need.motivation}</p>
-            </li>
-          </>
-        ))}
-        {acceptedFeedback.map((feedback) => (
-          <>
-            <li>
-              <p>{feedback.project.title}</p>
-              <p>{feedback.type}</p>
-              <p>{feedback.motivation}</p>
-            </li>
-          </>
-        ))}
+        <div>
+          <h1>Afgeronde Projecten</h1>
+          <img src="" alt="" />
+          <p>Level 1 Doener</p>
+        </div>
       </div>
     </>
   );

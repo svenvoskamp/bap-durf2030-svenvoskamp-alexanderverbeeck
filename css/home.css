@@ -3,9 +3,8 @@
 
 .cards {
   display: flex;
-  height: 70vh;
-  justify-content: top;
-  align-items: flex-end;
+  height: 100vh;
+  align-items: center;
   margin-right: 15rem;
 }
 
@@ -13,22 +12,22 @@
   width: 35rem;
   position: relative;
   margin: 0 8rem;
+  height: 40vh;
 }
 
 .card:nth-child(even) {
-  align-self: flex-start;
 }
 
 .card:hover {
   cursor: pointer;
 }
 
-.card:hover .button_image {
+/* .card:hover .button_image {
   animation: rotation 4s infinite linear;
   cursor: pointer;
   animation-play-state: running;
   webkit-animation-play-state: running;
-}
+} */
 
 .card:hover .card_info:after {
   top: 0%;
@@ -130,9 +129,9 @@
 
 /* Durf 2030 Tekst + Buttons */
 
-.home_start__info {
+/* .home_start__info {
   margin-top: -10%;
-}
+} */
 
 .home_subtitle {
   font-family: Montserrat, sans-serif;
@@ -309,6 +308,12 @@
 }
 
 @media screen and (max-width: 1050px) {
+  .gallery {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    display: flex;
+  }
+
   .text_start {
     font-size: 12vw;
     text-transform: uppercase;
@@ -351,53 +356,16 @@
 
 @media screen and (max-width: 850px) {
   .gallery {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 4vw;
+    margin-right: 4vw;
     display: flex;
   }
-
-  /* .cards {
-    display: flex;
-    height: unset;
-    justify-content: top;
-    align-items: center;
-    margin-right: 0;
-  }
-
-  .card {
-    width: 80%;
-    position: relative;
-    margin: 0;
-    align-self: unset;
-  } */
 
   .card:nth-child(even) {
     align-self: unset;
   }
 
   /* Large Text Durf 2030 */
-
-  .text_start {
-    font-size: 10vw;
-    text-transform: uppercase;
-    -webkit-text-stroke: 0.2rem #091222;
-    text-stroke: 0.4rem #091422;
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
-    font-weight: 900;
-    margin-bottom: unset;
-  }
-
-  .text-large--fill {
-    -webkit-text-fill-color: #091422;
-    text-fill-color: #2c2d30;
-    white-space: nowrap;
-  }
-
-  .text-large--inner {
-    font-size: 9vw;
-    white-space: nowrap;
-  }
 
   /* Durf 2030 Tekst + Buttons */
 
@@ -417,15 +385,5 @@
     color: blueColor;
     margin-bottom: unset;
     width: 100%;
-  }
-
-  .home_start__buttons {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .home_button__arrow {
-    display: flex;
-    flex-direction: column;
   }
 }

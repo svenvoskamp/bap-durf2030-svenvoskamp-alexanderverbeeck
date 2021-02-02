@@ -1,13 +1,13 @@
-import React, { useRef, useEffect } from 'react';
-import Login from './Auth/Login';
-import Logout from './Auth/Logout';
+import React, { useRef, useEffect } from "react";
+import Login from "./Auth/Login";
+import Logout from "./Auth/Logout";
 
 const Nav = ({ user }) => {
   const navRef = useRef(null);
   return (
     <>
       <div className="navigation-header--mobile">
-        <a href={'/'}>
+        <a href={"/"}>
           <svg
             className="navigation-header--mobile--logo"
             width="40"
@@ -62,7 +62,7 @@ const Nav = ({ user }) => {
             />
           </svg>
         </a>
-        <a href={'/create-project'}>
+        <a href={"/create-project"}>
           <div>
             <svg
               width="70"
@@ -94,7 +94,7 @@ const Nav = ({ user }) => {
         </a>
       </div>
       <nav className="navigation">
-        <a href={'/'} className="nav-logo">
+        <a href={"/"} className="nav-logo">
           <svg
             className="nav-logo--image scale"
             width="40"
@@ -150,7 +150,7 @@ const Nav = ({ user }) => {
           </svg>
         </a>
         <div className="nav-items">
-          <a href={'/'} className="scale item">
+          <a href={"/"} className="scale item">
             <div className=" nav-item">
               <svg
                 width="27"
@@ -195,7 +195,7 @@ const Nav = ({ user }) => {
               Ontdekken
             </p>
           </a>
-          <a href={'/projects'} className="scale item">
+          <a href={"/projects"} className="scale item">
             <div className=" nav-item">
               <svg
                 width="30"
@@ -251,7 +251,7 @@ const Nav = ({ user }) => {
             <p className=" nav-item--title">Projecten</p>
           </a>
 
-          <a href={'/create-project'} className="scale item item-nieuw">
+          <a href={"/create-project"} className="scale item item-nieuw">
             <div className=" nav-item">
               <svg
                 className="nav-item--image"
@@ -287,7 +287,7 @@ const Nav = ({ user }) => {
             </div>
             <p className="nav-item--title">Nieuw project</p>
           </a>
-          <a href={'/'} className="scale item">
+          <a href={"/"} className="scale item">
             <div className="nav-item">
               <svg
                 width="33"
@@ -339,7 +339,7 @@ const Nav = ({ user }) => {
             </div>
             <p className="  nav-item--title">Community</p>
           </a>
-          <a href={'/'} className="scale item">
+          <a href={"/"} className="scale item">
             <div className="nav-item">
               <svg
                 width="26"
@@ -375,7 +375,7 @@ const Nav = ({ user }) => {
           </a>
           <div className="nav-profile--mobile">
             {user && (
-              <a href={'/profile'} className="scale profile">
+              <a href={"/profile"} className="scale profile">
                 <div className="nav-item nav-profile--image">
                   <img className="" src={user.picture} alt={user.name} />
                 </div>
@@ -397,7 +397,7 @@ const Nav = ({ user }) => {
         </div>
         <div className="nav-profile">
           {user && (
-            <a href={'/profile'} className="scale profile">
+            <a href={"/profile"} className="scale profile">
               <div className="nav-item nav-profile--image">
                 <img className="" src={user.picture} alt={user.name} />
               </div>

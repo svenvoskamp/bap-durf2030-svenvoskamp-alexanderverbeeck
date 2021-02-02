@@ -36,6 +36,12 @@ a {
 
 .content {
   height: 100vh;
+  position: absolute;
+  top: 50%;
+}
+
+.data-scroll-container-home {
+  position: relative;
 }
 
 /* Mouse */

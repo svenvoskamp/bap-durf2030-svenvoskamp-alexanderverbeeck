@@ -68,12 +68,3 @@
 .button_image {
   composes: buttonImage from "../../css/buttons.module.css";
 }
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}

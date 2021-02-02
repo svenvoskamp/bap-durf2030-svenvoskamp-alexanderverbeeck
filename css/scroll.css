@@ -25,17 +25,11 @@ html.has-scroll-smooth {
 }
 
 @media screen and (max-width: 850px) {
-  /* html.has-scroll-smooth {
-    overflow-x: unset;
-    overflow-y: hidden;
-  } */
-
   .has-scroll-smooth .data-scroll-container-home {
     min-height: unset;
   }
 
   [data-scroll-direction="horizontal"] .data-scroll-container-home {
-    /* white-space: nowrap; */
     height: unset;
     display: inline-block;
   }

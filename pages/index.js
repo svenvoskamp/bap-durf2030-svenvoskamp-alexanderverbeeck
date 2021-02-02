@@ -67,7 +67,7 @@ const Home = ({ projects }) => {
                   <p
                     class="text-large--fill"
                     data-scroll
-                    data-scroll-speed="6"
+                    data-scroll-speed="5"
                     data-scroll-direction="vertical"
                   >
                     {" "}
@@ -75,7 +75,7 @@ const Home = ({ projects }) => {
                   </p>
                   <p
                     data-scroll
-                    data-scroll-speed="6"
+                    data-scroll-speed="5"
                     data-scroll-direction="vertical"
                     class="text-large--inner"
                   >
@@ -101,7 +101,7 @@ const Home = ({ projects }) => {
               <div
                 className="home_start__info"
                 data-scroll
-                data-scroll-speed="-6"
+                data-scroll-speed="-5"
                 data-scroll-direction="vertical"
               >
                 <p className="home_subtitle">
