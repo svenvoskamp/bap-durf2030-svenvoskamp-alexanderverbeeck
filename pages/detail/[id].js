@@ -148,7 +148,7 @@ const Detail = ({ props, user }) => {
             <Needs user={user} needs={props.needs} props={props}></Needs>
           </div>
           <Extra className={style.part_extra} props={props.projects[0]}></Extra>
-          <Creatie props={props}></Creatie>
+          <Creatie props={props} user={user}></Creatie>
           {props.projects[0].reward_one && (
             <Crowdfunding props={props} user={user}></Crowdfunding>
           )}

@@ -151,6 +151,19 @@ const Crowdfunding = ({ props, user }) => {
   // const [updateAmount] = useMutation(UPDATE_PROJECT);
   const router = useRouter();
 
+  const checkUser = (typeAmount) => {
+    if (!user) {
+      router.push('/api/login');
+    }
+    if (user && !user.first_name) {
+      router.push(`/register`);
+    }
+    if (user && user.first_name) {
+      setTypeAmount(typeAmount);
+      setCurrentIndex(1);
+    }
+  };
+
   const handleSubmit = (e) => {
     let totalAmount;
     totalAmount = +props.projects[0].donated + +amount;
@@ -243,8 +256,7 @@ const Crowdfunding = ({ props, user }) => {
                   type="radio"
                   name="rewards"
                   onClick={(e) => {
-                    setTypeAmount('1');
-                    setCurrentIndex(1);
+                    checkUser('1');
                   }}
                 />
                 <p>1. {props.projects[0].reward_one}</p>
@@ -255,8 +267,7 @@ const Crowdfunding = ({ props, user }) => {
                   type="radio"
                   name="rewards"
                   onClick={(e) => {
-                    setTypeAmount('2');
-                    setCurrentIndex(1);
+                    checkUser('2');
                   }}
                 />
                 <p>1. {props.projects[0].reward_two}</p>
@@ -267,11 +278,10 @@ const Crowdfunding = ({ props, user }) => {
                   type="radio"
                   name="rewards"
                   onClick={(e) => {
-                    setTypeAmount('3');
-                    setCurrentIndex(1);
+                    checkUser('3');
                   }}
                 />
-                <p>1. {props.projects[0].reward_one}</p>
+                <p>1. {props.projects[0].reward_three}</p>
               </label>
             </div>
           )}

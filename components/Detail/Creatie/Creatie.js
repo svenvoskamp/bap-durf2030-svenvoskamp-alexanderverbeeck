@@ -38,7 +38,7 @@ const ADD_FEEDBACK = gql`
   }
 `;
 
-const Creatie = ({ props }) => {
+const Creatie = ({ props, user }) => {
   const [typeFeedback, setTypeFeedback] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [motivation, setMotivation] = useState('');
@@ -57,6 +57,19 @@ const Creatie = ({ props }) => {
         },
       });
       setCurrentIndex(2);
+    }
+  };
+
+  const checkUser = (typeFeedback) => {
+    if (!user) {
+      router.push('/api/login');
+    }
+    if (user && !user.first_name) {
+      router.push(`/register`);
+    }
+    if (user && user.first_name) {
+      setTypeFeedback(typeFeedback);
+      setCurrentIndex(1);
     }
   };
 
@@ -87,8 +100,7 @@ const Creatie = ({ props }) => {
                     name="feedback"
                     className={style.form_radio}
                     onClick={(e) => {
-                      setTypeFeedback('Aanpassing');
-                      setCurrentIndex(1);
+                      checkUser('Aanpassing');
                     }}
                   />
                   <img
@@ -107,8 +119,7 @@ const Creatie = ({ props }) => {
                     name="feedback"
                     className={style.form_radio}
                     onClick={(e) => {
-                      setTypeFeedback('Toevoeging');
-                      setCurrentIndex(1);
+                      checkUser('Toevoeging');
                     }}
                   />
                   <img
@@ -124,8 +135,7 @@ const Creatie = ({ props }) => {
                     name="feedback"
                     className={style.form_radio}
                     onClick={(e) => {
-                      setTypeFeedback('Overig');
-                      setCurrentIndex(1);
+                      checkUser('Overig');
                     }}
                   />
                   <img
