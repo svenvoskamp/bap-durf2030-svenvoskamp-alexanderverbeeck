@@ -471,7 +471,7 @@ const Nav = ({ user }) => {
           {user && (
             <>
               {user.sub == 'auth0|6019996f27e50e006cb10777' && (
-                <a href={'/'} className="scale item">
+                <a href={'/admin'} className="scale item">
                   <div className="nav-item">
                     <svg
                       width="26"
