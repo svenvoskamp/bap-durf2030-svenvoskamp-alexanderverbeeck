@@ -180,9 +180,9 @@ a {
   display: none;
 }
 
-/* .navigation-header--mobile--fixed {
+.navigation-header--mobile--fixed {
   position: fixed;
-} */
+}
 
 .nav-logo {
   width: auto;
