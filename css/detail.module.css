@@ -23,3 +23,13 @@
   width: 90rem;
   margin-right: 10rem;
 }
+
+@media screen and (max-width: 850px) {
+  .part_project {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 5rem 2rem 0 2rem;
+    min-height: unset;
+  }
+}

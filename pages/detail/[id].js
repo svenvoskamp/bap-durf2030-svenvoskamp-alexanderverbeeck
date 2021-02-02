@@ -131,7 +131,13 @@ const Detail = ({ props, user }) => {
     const lscroll = new locomotiveModule.default({
       el: scrollRef.current,
       smooth: true,
-      direction: "horizontal",
+      direction: "vertical",
+      reloadOnContextChange: true,
+      smartphone: {
+        smooth: true,
+        gestureDirection: "vertical",
+        direction: "vertical",
+      },
     });
 
     // Preload images and fonts

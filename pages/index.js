@@ -1,18 +1,24 @@
 import { map, clamp } from "../lib/utils";
-
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Tyle from "../components/Tyle/Tyle";
 import Mouse from "../components/Mouse";
 import gql from "graphql-tag";
 import { withApollo } from "../lib/withApollo";
 import dynamic from "next/dynamic";
-
 import Nav from "../components/Nav";
 import { useFetchUser } from "../lib/user";
 
 const Home = ({ projects }) => {
   const { user, loading } = useFetchUser();
 
+  useEffect(() => {
+    window.addEventListener("resize", reportWindowSize);
+    const reportWindowSize = () => {
+      if (window.innerWidth < 500) {
+        console.log("Mobile");
+      }
+    };
+  });
   const scrollRef = useRef(null);
 
   import("locomotive-scroll").then((locomotiveModule) => {
@@ -20,11 +26,10 @@ const Home = ({ projects }) => {
       el: scrollRef.current,
       smooth: true,
       direction: "horizontal",
-      reloadOnContextChange: true,
       smartphone: {
         smooth: true,
-        gestureDirection: "vertical",
-        direction: "vertical",
+        gestureDirection: "horizontal",
+        direction: "horizontal",
       },
     });
 
@@ -43,15 +48,17 @@ const Home = ({ projects }) => {
       }
     });
     lscroll.update();
-
-    // Preload images and fonts
   });
 
   return (
     <>
       <Mouse></Mouse>
       <Nav user={user}></Nav>
-      <main ref={scrollRef} data-scroll-container>
+      <main
+        ref={scrollRef}
+        data-scroll-container
+        className="data-scroll-container-home"
+      >
         <div class="content">
           <div class="gallery">
             <div className="home_start">
@@ -146,7 +153,7 @@ const Home = ({ projects }) => {
                 <p
                   class="text-large--inner text-large--fill "
                   data-scroll
-                  // data-scroll-speed="2"
+                  data-scroll-speed="2"
                   data-scroll-direction="vertical"
                 >
                   {" "}
@@ -154,7 +161,7 @@ const Home = ({ projects }) => {
                 </p>
                 <p
                   data-scroll
-                  // data-scroll-speed="-2"
+                  data-scroll-speed="-2"
                   data-scroll-direction="vertical"
                   class="text-large--inner"
                 >
@@ -165,7 +172,7 @@ const Home = ({ projects }) => {
               <div
                 className="home_end__info"
                 data-scroll
-                // data-scroll-speed="3"
+                data-scroll-speed="3"
                 data-scroll-direction="vertical"
               >
                 <div className="home_end__buttons">
