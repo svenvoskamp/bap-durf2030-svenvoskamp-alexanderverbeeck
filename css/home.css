@@ -12,7 +12,7 @@
   width: 35rem;
   position: relative;
   margin: 0 8rem;
-  height: 40vh;
+  height: auto;
 }
 
 .card:first-of-type {
@@ -113,7 +113,7 @@
   text-fill-color: transparent;
   font-weight: 900;
   font-family: Montserrat;
-  margin-bottom: -10vh;
+  margin-bottom: -6vw;
   position: relative;
 }
 
@@ -253,23 +253,21 @@
 
 /* Start Nu jouw Project */
 
-.text_end {
-  font-size: 14rem;
-  text-transform: uppercase;
-  -webkit-text-stroke: 0.4rem #091422;
-  text-stroke: 0.4rem #091422;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-  font-weight: 900;
-  font-family: Montserrat;
-}
-
 .home_end {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* margin-left: 10rem; */
+}
+
+.text_end {
+  -webkit-text-stroke: 0.4rem #091422;
+  text-stroke: 0.4rem #091422;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-weight: 900;
+  font-family: Montserrat;
 }
 
 .home_end__buttons {
@@ -316,20 +314,14 @@
 @media screen and (max-width: 1050px) {
   .gallery {
     margin-left: 10vw;
-    margin-right: 10vw;
+    margin-right: 8vw;
     display: flex;
   }
 
   .text_start {
-    font-size: 12vw;
-    text-transform: uppercase;
+    font-size: 9vw;
     -webkit-text-stroke: 0.4rem #091422;
     text-stroke: 0.4rem #091422;
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
-    font-weight: 900;
-    font-family: Montserrat;
-    position: relative;
     margin-bottom: -5vh;
   }
 
@@ -345,19 +337,8 @@
   }
 
   .text-large--inner {
-    font-size: 11vw;
+    font-size: 8;
     white-space: nowrap;
-  }
-
-  .text_end {
-    font-size: 14rem;
-    text-transform: uppercase;
-    -webkit-text-stroke: 0.4rem #091422;
-    text-stroke: 0.4rem #091422;
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
-    font-weight: 900;
-    font-family: Montserrat;
   }
 
   .circle_button {
@@ -373,7 +354,7 @@
 @media screen and (max-width: 850px) {
   .gallery {
     margin-left: 4vw;
-    margin-right: 0;
+    margin-right: 4vw;
     display: flex;
   }
 
@@ -399,10 +380,10 @@
   /* Large Text Durf 2030 */
 
   .text_start {
-    font-size: 14vw;
+    font-size: 11vw;
     text-transform: uppercase;
-    -webkit-text-stroke: 0.4rem #091422;
-    text-stroke: 0.4rem #091422;
+    -webkit-text-stroke: 0.25rem #091422;
+    text-stroke: 0.3rem #091422;
   }
 
   .home_subtitle {
@@ -410,15 +391,8 @@
     margin-top: 5vh;
   }
 
-  .text-large--fill {
-    -webkit-text-fill-color: #091422;
-    text-fill-color: #2c2d30;
-    white-space: nowrap;
-  }
-
   .text-large--inner {
-    font-size: 13vw;
-    white-space: nowrap;
+    font-size: 10vw;
   }
 
   /* Durf 2030 Tekst + Buttons */
@@ -435,7 +409,7 @@
 @media screen and (max-width: 550px) {
   .text_start {
     font-size: 14vw;
-    -webkit-text-stroke: 0.3rem #091422;
+    -webkit-text-stroke: 0.25rem #091422;
     text-stroke: 0.3rem #091422;
   }
 
