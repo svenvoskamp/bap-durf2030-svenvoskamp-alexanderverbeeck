@@ -29,7 +29,7 @@ const Home = ({ projects }) => {
       direction: 'horizontal',
       smartphone: {
         smooth: true,
-        gestureDirection: 'vertical',
+        horizontalGesture: true,
         direction: 'horizontal',
       },
     });
