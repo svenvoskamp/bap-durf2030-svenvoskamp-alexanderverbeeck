@@ -28,7 +28,7 @@ const Home = ({ projects }) => {
       direction: "horizontal",
       smartphone: {
         smooth: true,
-        gestureDirection: "horizontal",
+        gestureDirection: "vertical",
         direction: "horizontal",
       },
     });
