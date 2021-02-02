@@ -3,7 +3,7 @@
 
 .cards {
   display: flex;
-  height: 90%;
+  height: 70vh;
   justify-content: top;
   align-items: flex-end;
   margin-right: 15rem;
@@ -147,7 +147,7 @@
 
 .text-large--fill {
   -webkit-text-fill-color: #091422;
-  text-fill-color: #091422;
+  text-fill-color: #2c2d30;
   white-space: nowrap;
 }
 
@@ -161,7 +161,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 10rem;
+  margin-right: 6rem;
 }
 
 .home_start__info {
@@ -173,7 +173,7 @@
 }
 
 .text_end {
-  font-size: 10vw;
+  font-size: 14rem;
   text-transform: uppercase;
   -webkit-text-stroke: 0.4rem #091422;
   text-stroke: 0.4rem #091422;
@@ -188,7 +188,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 10rem;
+  /* margin-left: 10rem; */
 }
 
 .home_end__buttons {
@@ -237,9 +237,11 @@
   background-color: transparent;
   display: inline-block;
   position: absolute;
-  margin-top: 15%;
   z-index: 2;
+  top: 0;
+  left: 0;
   left: -2rem;
+  margin-top: 22vw;
 }
 
 .circle_button {
@@ -293,5 +295,91 @@
   }
   to {
     transform: rotate(359deg);
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .text_start {
+    font-size: 12vw;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.4rem #091422;
+    text-stroke: 0.4rem #091422;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    font-weight: 900;
+    font-family: Montserrat;
+    margin-bottom: 5%;
+    position: relative;
+  }
+
+  .home_subtitle {
+    width: 100%;
+  }
+
+  .text-large--fill {
+    -webkit-text-fill-color: #091422;
+    text-fill-color: #2c2d30;
+    white-space: nowrap;
+  }
+
+  .text-large--inner {
+    font-size: 11vw;
+    white-space: nowrap;
+  }
+
+  .text_end {
+    font-size: 14rem;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.4rem #091422;
+    text-stroke: 0.4rem #091422;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    font-weight: 900;
+    font-family: Montserrat;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  /* .gallery {
+    display: flex;
+    margin-left: 5vw;
+    margin-right: 12vw;
+    height: unset;
+    align-items: unset;
+    flex-direction: column;
+  } */
+
+  /* .home_start {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 0;
+  } */
+
+  .gallery {
+    margin-left: 5vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cards {
+    display: flex;
+    height: 100%;
+    justify-content: top;
+    align-items: center;
+    margin-right: 0;
+    flex-direction: column;
+  }
+
+  .card {
+    width: 35rem;
+    position: relative;
+    margin: 0 8rem;
+  }
+
+  .card:nth-child(even) {
+    align-self: center;
   }
 }

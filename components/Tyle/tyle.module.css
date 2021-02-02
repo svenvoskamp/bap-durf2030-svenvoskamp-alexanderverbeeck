@@ -50,12 +50,12 @@
   height: 20rem;
   border: 0.4rem solid blueColor;
   width: 100%;
-  margin-bottom: 12rem;
+  margin-bottom: 10vh;
 }
 
 .button {
   position: absolute;
-  bottom: -10%;
+  bottom: -6%;
   right: -10%;
   z-index: 2;
   composes: button from "../../css/buttons.module.css";

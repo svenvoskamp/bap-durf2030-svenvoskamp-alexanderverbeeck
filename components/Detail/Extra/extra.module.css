@@ -17,7 +17,7 @@
 }
 
 .tagline_text {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
   position: relative;
 }
 
@@ -25,19 +25,17 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  display: block;
 }
 
 .extra_image {
-  z-index: 2;
   border: 0.3rem solid blueColor;
   position: relative;
   width: 100%;
-  height: 50rem;
+  height: 50vh;
 }
 
 .extra_image:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: beigeColor;
@@ -64,7 +62,7 @@
 }
 
 .extra_button__text {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
 }
 
 .extra_button__arrow {

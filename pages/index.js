@@ -1,34 +1,36 @@
-import { map, clamp } from '../lib/utils';
+import { map, clamp } from "../lib/utils";
 
-import React, { useRef } from 'react';
-import Tyle from '../components/Tyle/Tyle';
-import Mouse from '../components/Mouse';
-import gql from 'graphql-tag';
-import { withApollo } from '../lib/withApollo';
+import React, { useRef } from "react";
+import Tyle from "../components/Tyle/Tyle";
+import Mouse from "../components/Mouse";
+import gql from "graphql-tag";
+import { withApollo } from "../lib/withApollo";
+import dynamic from "next/dynamic";
 
-import Nav from '../components/Nav';
-import { useFetchUser } from '../lib/user';
+import Nav from "../components/Nav";
+import { useFetchUser } from "../lib/user";
 
 const Home = ({ projects }) => {
   const { user, loading } = useFetchUser();
 
   const scrollRef = useRef(null);
 
-  import('locomotive-scroll').then((locomotiveModule) => {
+  import("locomotive-scroll").then((locomotiveModule) => {
     const lscroll = new locomotiveModule.default({
       el: scrollRef.current,
       smooth: true,
-      direction: 'horizontal',
+      direction: "horizontal",
+      reloadOnContextChange: true,
       smartphone: {
         smooth: true,
-        horizontalGesture: true,
-        direction: 'horizontal',
+        gestureDirection: "vertical",
+        direction: "vertical",
       },
     });
 
-    lscroll.on('scroll', (obj) => {
+    lscroll.on("scroll", (obj) => {
       for (const key of Object.keys(obj.currentElements)) {
-        if (obj.currentElements[key].el.classList.contains('card')) {
+        if (obj.currentElements[key].el.classList.contains("card")) {
           let progress = obj.currentElements[key].progress;
           const brightnessVal =
             progress < 0.5
@@ -61,8 +63,8 @@ const Home = ({ projects }) => {
                     data-scroll-speed="6"
                     data-scroll-direction="vertical"
                   >
-                    {' '}
-                    ONTDEK.{' '}
+                    {" "}
+                    ONTDEK.{" "}
                   </p>
                   <p
                     data-scroll
@@ -70,12 +72,12 @@ const Home = ({ projects }) => {
                     data-scroll-direction="vertical"
                     class="text-large--inner"
                   >
-                    {' '}
-                    DURF 2030.{' '}
+                    {" "}
+                    DURF 2030.{" "}
                   </p>
                 </div>
                 <a
-                  href={'/'}
+                  href={"/"}
                   className="button scale"
                   data-scroll
                   data-scroll-speed="8"
@@ -107,7 +109,7 @@ const Home = ({ projects }) => {
                       src="./assets/images/arrow_large.svg"
                     />
                   </div>
-                  <a href={'/projects'} className="home_button__light scale">
+                  <a href={"/projects"} className="home_button__light scale">
                     Alle projecten
                   </a>
                 </div>
@@ -121,7 +123,7 @@ const Home = ({ projects }) => {
                     <Tyle
                       color="red"
                       direction="3"
-                      button="0.5"
+                      button=".5"
                       project={project}
                       key={key}
                     />
@@ -130,7 +132,7 @@ const Home = ({ projects }) => {
                     <Tyle
                       color="yellow"
                       direction="-3"
-                      button="-0.5"
+                      button="-.5"
                       project={project}
                       key={key}
                     />
@@ -144,36 +146,36 @@ const Home = ({ projects }) => {
                 <p
                   class="text-large--inner text-large--fill "
                   data-scroll
-                  data-scroll-speed="2"
+                  // data-scroll-speed="2"
                   data-scroll-direction="vertical"
                 >
-                  {' '}
-                  JOUW PROJECT.{' '}
+                  {" "}
+                  JOUW PROJECT.{" "}
                 </p>
                 <p
                   data-scroll
-                  data-scroll-speed="-2"
+                  // data-scroll-speed="-2"
                   data-scroll-direction="vertical"
                   class="text-large--inner"
                 >
-                  {' '}
-                  START NU.{' '}
+                  {" "}
+                  START NU.{" "}
                 </p>
               </div>
               <div
                 className="home_end__info"
                 data-scroll
-                data-scroll-speed="3"
+                // data-scroll-speed="3"
                 data-scroll-direction="vertical"
               >
                 <div className="home_end__buttons">
                   <a
-                    href={'/create-project'}
+                    href={"/create-project"}
                     className="home_button__start scale"
                   >
                     Start Nu
                   </a>
-                  <a href={'/projects'} className="home_button__light scale">
+                  <a href={"/projects"} className="home_button__light scale">
                     Alle projecten
                   </a>
                 </div>
@@ -187,8 +189,8 @@ const Home = ({ projects }) => {
 };
 
 export async function getStaticProps() {
-  const apollo = require('../lib/apolloClient'); // import client
-  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+  const apollo = require("../lib/apolloClient"); // import client
+  var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   var xhr = new XMLHttpRequest();
   const GET_PROJECTS = gql`
     query getProjects {

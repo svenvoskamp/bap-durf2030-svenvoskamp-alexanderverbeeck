@@ -1,18 +1,18 @@
-import React, { useRef } from 'react';
-import { useRouter } from 'next/router';
-import { gql, useQuery } from '@apollo/react-hooks';
-import { withApollo } from '../../lib/withApollo';
-import Mouse from '../../components/Mouse';
-import Header from '../../components/Detail/Header/Header';
-import Extra from '../../components/Detail/Extra/Extra';
-import Needs from '../../components/Detail/Needs/Needs';
-import Creatie from '../../components/Detail/Creatie/Creatie';
-import Crowdfunding from '../../components/Detail/Crowdfunding/Crowdfunding';
-import { useFetchUser } from '../../lib/user';
+import React, { useRef } from "react";
+import { useRouter } from "next/router";
+import { gql, useQuery } from "@apollo/react-hooks";
+import { withApollo } from "../../lib/withApollo";
+import Mouse from "../../components/Mouse";
+import Header from "../../components/Detail/Header/Header";
+import Extra from "../../components/Detail/Extra/Extra";
+import Needs from "../../components/Detail/Needs/Needs";
+import Creatie from "../../components/Detail/Creatie/Creatie";
+import Crowdfunding from "../../components/Detail/Crowdfunding/Crowdfunding";
+import { useFetchUser } from "../../lib/user";
 
-import Nav from '../../components/Nav';
-import style from '../../css/detail.module.css';
-import Loading from '../../components/Loading/Loading';
+import Nav from "../../components/Nav";
+import style from "../../css/detail.module.css";
+import Loading from "../../components/Loading/Loading";
 
 const GET_PROJECT_BY_ID = gql`
   query getProjectById($id: Int!, $user_id: String, $user: Boolean!) {
@@ -127,11 +127,11 @@ const GET_PROJECT_BY_ID = gql`
 const Detail = ({ props, user }) => {
   const scrollRef = useRef(null);
 
-  import('locomotive-scroll').then((locomotiveModule) => {
+  import("locomotive-scroll").then((locomotiveModule) => {
     const lscroll = new locomotiveModule.default({
       el: scrollRef.current,
       smooth: true,
-      direction: 'horizontal',
+      direction: "horizontal",
     });
 
     // Preload images and fonts
@@ -153,7 +153,6 @@ const Detail = ({ props, user }) => {
             <Crowdfunding props={props} user={user}></Crowdfunding>
           )}
         </article>
-        <article></article>
       </main>
     </>
   );
@@ -232,7 +231,7 @@ const LoadUser = ({ user }) => {
       variables: { user_id: user.sub, id: router.query.id, user: true },
     });
     if (loading) {
-      return <Loading props={'detail'} />;
+      return <Loading props={"detail"} />;
     }
     if (data && !loading) {
       return <Detail user={data.users[0]} props={data} />;
@@ -240,10 +239,10 @@ const LoadUser = ({ user }) => {
   }
   if (!user) {
     const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
-      variables: { user_id: '', id: router.query.id, user: false },
+      variables: { user_id: "", id: router.query.id, user: false },
     });
     if (loading) {
-      return <Loading props={'detail'} />;
+      return <Loading props={"detail"} />;
     }
     if (data && !loading) {
       return <Detail user="" props={data} />;
@@ -254,7 +253,7 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
 
   if (loading) {
-    return <Loading props={'detail'} />;
+    return <Loading props={"detail"} />;
   }
   if (!loading && user) {
     return <LoadUser user={user} />;

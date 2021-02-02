@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
 
-import Image from 'next/image';
-import style from './tyle.module.css';
+import Image from "next/image";
+import style from "./tyle.module.css";
 
 const Tyle = ({ color, direction, button, project }) => {
   return (
@@ -21,7 +21,7 @@ const Tyle = ({ color, direction, button, project }) => {
         <p className={style.card_tag__text}>{project.theme.theme}</p>
         <p className={style.card_tag__text}>{project.category.category}</p>
       </div>
-      <a href={'/detail/' + project.id} data-scroll>
+      <a href={"/detail/" + project.id} data-scroll>
         <div className={`card_info card_info__${color}`}>
           <p className={style.card_fase}>{project.phase.phase}</p>
           <div className={style.card_title} data-scroll>
