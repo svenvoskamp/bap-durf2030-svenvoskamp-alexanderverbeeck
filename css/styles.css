@@ -6,6 +6,43 @@ html {
   cursor: none;
 }
 
+/*! locomotive-scroll v4.0.4 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+/* html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+} */
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth .data-scroll-container-home {
+  min-height: 100vh;
+}
+
+[data-scroll-direction="horizontal"] .data-scroll-container-home {
+  /* white-space: nowrap; */
+  height: 100vh;
+  display: inline-block;
+}
+
+@media screen and (max-width: 850px) {
+  .has-scroll-smooth .data-scroll-container-home {
+    min-height: unset;
+  }
+
+  [data-scroll-direction="horizontal"] .data-scroll-container-home {
+    height: unset;
+    display: inline-block;
+  }
+}
+
 #__next {
   min-height: 100vh;
   background-color: #fdecd2;
@@ -143,9 +180,9 @@ a {
   display: none;
 }
 
-.navigation-header--mobile--fixed {
+/* .navigation-header--mobile--fixed {
   position: fixed;
-}
+} */
 
 .nav-logo {
   width: auto;
