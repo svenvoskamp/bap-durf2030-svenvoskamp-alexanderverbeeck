@@ -10,9 +10,9 @@ html.has-scroll-smooth {
   user-select: none;
 } */
 
-/* .has-scroll-smooth body {
+.has-scroll-smooth body {
   overflow: hidden;
-} */
+}
 
 .has-scroll-smooth .data-scroll-container-home {
   min-height: 100vh;
