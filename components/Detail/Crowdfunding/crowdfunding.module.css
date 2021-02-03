@@ -9,6 +9,7 @@
   justify-content: flex-start;
   flex-direction: column;
   padding: 10rem 20rem;
+  margin-right: 10rem;
 }
 
 .header {

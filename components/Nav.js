@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from 'react';
-import Login from './Auth/Login';
-import Logout from './Auth/Logout';
-import { useRouter } from 'next/router';
+import React, { useRef, useEffect } from "react";
+import Login from "./Auth/Login";
+import Logout from "./Auth/Logout";
+import { useRouter } from "next/router";
 
 const Nav = ({ user }) => {
   console.log(user);
@@ -10,9 +10,9 @@ const Nav = ({ user }) => {
   const path = router.pathname;
   return (
     <>
-      {path == '/' && (
+      {path == "/" && (
         <div className="navigation-header--mobile navigation-header--mobile--fixed">
-          <a href={'/'}>
+          <a href={"/"}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -67,7 +67,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={'/create-project'}>
+          <a href={"/create-project"}>
             <div>
               <svg
                 width="70"
@@ -99,9 +99,9 @@ const Nav = ({ user }) => {
           </a>
         </div>
       )}
-      {path != '/' && (
+      {path != "/" && (
         <div className="navigation-header--mobile">
-          <a href={'/'}>
+          <a href={"/"}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -156,7 +156,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={'/create-project'}>
+          <a href={"/create-project"}>
             <div>
               <svg
                 width="70"
@@ -189,7 +189,7 @@ const Nav = ({ user }) => {
         </div>
       )}
       <nav className="navigation">
-        <a href={'/'} className="nav-logo">
+        <a href={"/"} className="nav-logo">
           <svg
             className="nav-logo--image scale"
             width="40"
@@ -245,7 +245,7 @@ const Nav = ({ user }) => {
           </svg>
         </a>
         <div className="nav-items">
-          <a href={'/'} className="scale item">
+          <a href={"/"} className="scale item">
             <div className=" nav-item">
               <svg
                 width="27"
@@ -290,7 +290,7 @@ const Nav = ({ user }) => {
               Ontdekken
             </p>
           </a>
-          <a href={'/projects'} className="scale item">
+          <a href={"/projects"} className="scale item">
             <div className=" nav-item">
               <svg
                 width="30"
@@ -346,7 +346,7 @@ const Nav = ({ user }) => {
             <p className=" nav-item--title">Projecten</p>
           </a>
 
-          <a href={'/create-project'} className="scale item item-nieuw">
+          <a href={"/create-project"} className="scale item item-nieuw">
             <div className=" nav-item">
               <svg
                 className="nav-item--image"
@@ -382,7 +382,7 @@ const Nav = ({ user }) => {
             </div>
             <p className="nav-item--title">Nieuw project</p>
           </a>
-          <a href={'/'} className="scale item">
+          <a href={"/"} className="scale item">
             <div className="nav-item">
               <svg
                 width="33"
@@ -434,44 +434,11 @@ const Nav = ({ user }) => {
             </div>
             <p className="  nav-item--title">Community</p>
           </a>
-          <a href={'/'} className="scale item">
-            <div className="nav-item">
-              <svg
-                width="26"
-                height="27"
-                viewBox="0 0 26 27"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7.46154 20.9441H5.63445C5.07824 20.9441 4.62892 20.4903 4.6345 19.9341L4.67391 16.0098C4.67875 15.5279 4.28948 15.1348 3.80762 15.1348V15.1348C2.34916 15.1348 1.06571 14.0734 1.00737 12.6769C0.890698 11.1687 2.17414 9.88396 3.74928 9.88396V9.88396C4.29701 9.88396 4.74104 9.43994 4.74104 8.89221V5.02874C4.74104 4.47255 5.19485 4.02324 5.75101 4.02879L9.95053 4.07067C10.1658 4.07282 10.3415 3.89888 10.3415 3.68356V3.68356C10.3415 2.28707 11.45 1.05816 12.9084 1.0023C14.4836 0.946443 15.7692 1.90952 15.767 3.6277V3.6277C15.767 3.90616 15.9913 4.13267 16.2697 4.13545L20.3675 4.17632C20.9198 4.18183 21.363 4.63403 21.3575 5.18631L21.3191 9.00398C21.3136 9.55006 21.7548 9.99568 22.3009 9.99568V9.99568C23.9927 9.99568 25.3345 11.5039 24.9261 13.1797C24.6344 14.4086 23.4677 15.1906 22.1259 15.1906V15.1906C21.6455 15.1906 21.2587 15.5852 21.2684 16.0655L21.347 19.9799C21.3583 20.54 20.9074 21 20.3472 21H18.5385"
-                  stroke="#FDECD2"
-                  strokeWidth="1.8"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M10 16.6176C10.5392 15.6471 11.5098 15 12.6961 15C14.3137 15 15.7156 16.2941 15.7156 18.0196C15.7156 19.7451 14.3137 20.9313 12.6961 20.9313C12.4804 20.9313 12.3725 20.9313 12.1568 20.9313"
-                  stroke="#FDECD2"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M12.8041 25.9999C13.2806 25.9999 13.6669 25.6136 13.6669 25.1372C13.6669 24.6607 13.2806 24.2744 12.8041 24.2744C12.3277 24.2744 11.9414 24.6607 11.9414 25.1372C11.9414 25.6136 12.3277 25.9999 12.8041 25.9999Z"
-                  fill="#FDECD2"
-                  stroke="#FDECD2"
-                  strokeWidth="0.8"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-            <p className=" nav-item--title">Durf 2030</p>
-          </a>
+
           {user && (
             <>
-              {user.sub == 'auth0|6019996f27e50e006cb10777' && (
-                <a href={'/admin'} className="scale item">
+              {user.sub != "auth0|6019996f27e50e006cb10777" && (
+                <a href={"/"} className="scale item">
                   <div className="nav-item">
                     <svg
                       width="26"
@@ -503,14 +470,46 @@ const Nav = ({ user }) => {
                       />
                     </svg>
                   </div>
-                  <p className=" nav-item--title">Adminpaneel</p>
+                  <p className=" nav-item--title">Durf 2030</p>
+                </a>
+              )}
+            </>
+          )}
+          {user && (
+            <>
+              {user.sub == "auth0|6019996f27e50e006cb10777" && (
+                <a href={"/admin"} className="scale item">
+                  <div className="nav-item">
+                    <svg
+                      width="26"
+                      height="30"
+                      viewBox="0 0 26 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.46154 20.9441H5.63445C5.07824 20.9441 4.62892 20.4903 4.6345 19.9341L4.67391 16.0098C4.67875 15.5279 4.28948 15.1348 3.80762 15.1348V15.1348C2.34916 15.1348 1.06571 14.0734 1.00737 12.6769C0.890698 11.1687 2.17414 9.88396 3.74928 9.88396V9.88396C4.29701 9.88396 4.74104 9.43994 4.74104 8.89221V5.02874C4.74104 4.47255 5.19485 4.02324 5.75101 4.02879L9.95053 4.07067C10.1658 4.07282 10.3415 3.89888 10.3415 3.68356V3.68356C10.3415 2.28707 11.45 1.05816 12.9084 1.0023C14.4836 0.946443 15.7692 1.90952 15.767 3.6277V3.6277C15.767 3.90616 15.9913 4.13267 16.2697 4.13545L20.3675 4.17632C20.9198 4.18183 21.363 4.63403 21.3575 5.18631L21.3191 9.00398C21.3136 9.55006 21.7548 9.99568 22.3009 9.99568V9.99568C23.9927 9.99568 25.3345 11.5039 24.9261 13.1797C24.6344 14.4086 23.4677 15.1906 22.1259 15.1906V15.1906C21.6455 15.1906 21.2587 15.5852 21.2684 16.0655L21.347 19.9799C21.3583 20.54 20.9074 21 20.3472 21H18.5385"
+                        stroke="#FDECD2"
+                        stroke-width="1.8"
+                        stroke-miterlimit="10"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M16.075 22.2V22.25H16.125C16.6097 22.25 17.0741 22.4348 17.4162 22.7633C17.7582 23.0916 17.95 23.5365 17.95 24V28.2C17.95 28.6635 17.7582 29.1084 17.4162 29.4367C17.0741 29.7652 16.6097 29.95 16.125 29.95H9.875C9.39034 29.95 8.92591 29.7652 8.5838 29.4367C8.24176 29.1084 8.05 28.6635 8.05 28.2V24C8.05 23.5365 8.24176 23.0916 8.5838 22.7633C8.92591 22.4348 9.39034 22.25 9.875 22.25H9.925V22.2V21C9.925 20.2183 10.2485 19.4682 10.8249 18.9147C11.4015 18.3613 12.1838 18.05 13 18.05C13.8162 18.05 14.5985 18.3613 15.1751 18.9147C15.7515 19.4682 16.075 20.2183 16.075 21V22.2ZM14.875 22.25H14.925V22.2V21C14.925 20.5087 14.7217 20.0379 14.3605 19.6911C13.9993 19.3444 13.5099 19.15 13 19.15C12.4901 19.15 12.0007 19.3444 11.6395 19.6911C11.2783 20.0379 11.075 20.5087 11.075 21V22.2V22.25H11.125H14.875ZM12.5927 24.8118C12.7004 24.7084 12.8469 24.65 13 24.65C13.1531 24.65 13.2996 24.7084 13.4073 24.8118C13.5149 24.9151 13.575 25.0548 13.575 25.2V27C13.575 27.1452 13.5149 27.2849 13.4073 27.3882C13.2996 27.4916 13.1531 27.55 13 27.55C12.8469 27.55 12.7004 27.4916 12.5927 27.3882C12.4851 27.2849 12.425 27.1452 12.425 27V25.2C12.425 25.0548 12.4851 24.9151 12.5927 24.8118ZM16.6016 28.6603C16.7284 28.5386 16.8 28.3731 16.8 28.2V24C16.8 23.8269 16.7284 23.6614 16.6016 23.5397C16.4748 23.418 16.3034 23.35 16.125 23.35H9.875C9.69662 23.35 9.52516 23.418 9.39843 23.5397C9.27163 23.6614 9.2 23.8269 9.2 24V28.2C9.2 28.3731 9.27163 28.5386 9.39843 28.6603C9.52516 28.782 9.69662 28.85 9.875 28.85H16.125C16.3034 28.85 16.4748 28.782 16.6016 28.6603Z"
+                        fill="#FDECD2"
+                        stroke="#FDECD2"
+                        stroke-width="0.1"
+                      />
+                    </svg>
+                  </div>
+                  <p className=" nav-item--title">Admin-paneel</p>
                 </a>
               )}
             </>
           )}
           <div className="nav-profile--mobile">
             {user && (
-              <a href={'/profile'} className="scale profile">
+              <a href={"/profile"} className="scale profile">
                 <div className="nav-item nav-profile--image">
                   <img className="" src={user.picture} alt={user.name} />
                 </div>
@@ -532,7 +531,7 @@ const Nav = ({ user }) => {
         </div>
         <div className="nav-profile">
           {user && (
-            <a href={'/profile'} className="scale profile">
+            <a href={"/profile"} className="scale profile">
               <div className="nav-item nav-profile--image">
                 <img className="" src={user.picture} alt={user.name} />
               </div>

@@ -2,7 +2,7 @@
 @value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
 
 .part {
-  composes: viewLarge from './layout.module.css';
+  composes: viewLarge from "./layout.module.css";
 }
 
 .tabs {
@@ -11,7 +11,7 @@
 }
 
 .tabs_title {
-  composes: smallCaps from './typo.module.css';
+  composes: smallCaps from "./typo.module.css";
   border: none;
   background-color: transparent;
   padding: 1rem 0;
@@ -33,7 +33,7 @@
 }
 
 .subtitle {
-  composes: mediumTitleOutline from './typo.module.css';
+  composes: mediumTitleOutline from "./typo.module.css";
   margin-bottom: 3rem;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .grid_title {
-  composes: mediumTitle from './typo.module.css';
+  composes: mediumTitle from "./typo.module.css";
 }
 
 .grid_title__benodigdheden {
@@ -117,7 +117,7 @@
 }
 
 .grid_bold {
-  composes: bold from './typo.module.css';
+  composes: bold from "./typo.module.css";
 }
 
 .grid_bold__title {
@@ -125,7 +125,7 @@
 }
 
 .grid_text {
-  composes: text from './typo.module.css';
+  composes: text from "./typo.module.css";
 }
 
 .grid_text__italic {
@@ -147,7 +147,7 @@
 }
 
 .button {
-  composes: miniButton from './buttons.module.css';
+  composes: miniButton from "./buttons.module.css";
   margin: 0 0.2rem;
 }
 
@@ -162,12 +162,12 @@
 }
 
 .circle_button {
-  composes: miniCircleButton from './buttons.module.css';
+  composes: miniCircleButton from "./buttons.module.css";
   transition: none;
 }
 
 .button_image {
-  composes: miniButtonImage from './buttons.module.css';
+  composes: miniButtonImage from "./buttons.module.css";
 }
 
 @media screen and (max-width: 1500px) {

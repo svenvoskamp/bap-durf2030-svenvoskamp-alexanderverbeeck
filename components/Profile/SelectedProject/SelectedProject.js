@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import NeedsList from './NeedsList/NeedsList';
-import AddNeed from './AddNeed/AddNeed';
-import style from './selectedproject.module.css';
-import Empty from '../../Empty/Empty';
-import styles from '../../../css/profile.module.css';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import React, { useState } from "react";
+import NeedsList from "./NeedsList/NeedsList";
+import AddNeed from "./AddNeed/AddNeed";
+import style from "./selectedproject.module.css";
+import Empty from "../../Empty/Empty";
+import styles from "../../../css/profile.module.css";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -120,6 +120,7 @@ const TOGGLE_PROJECT = gql`
     }
   }
 `;
+
 const SelectedProject = ({
   project,
   setSelectedProject,
@@ -129,7 +130,7 @@ const SelectedProject = ({
 }) => {
   let projectNeeds = [];
   const [toggleProject] = useMutation(TOGGLE_PROJECT);
-  const [update, setUpdate] = useState('');
+  const [update, setUpdate] = useState("");
 
   needs.map((need) => {
     if (need.user_id == project.user.id) {
@@ -182,7 +183,7 @@ const SelectedProject = ({
       <div className={`${styles.grid_selectedproject} ${styles.grid_titles}`}>
         <button
           className={style.button_back}
-          onClick={(e) => setSelectedProject('')}
+          onClick={(e) => setSelectedProject("")}
         >
           <img
             className={style.back_image}
@@ -190,18 +191,38 @@ const SelectedProject = ({
           />
           <span className={style.back_text}>Terug</span>
         </button>
-        <p className={`${styles.grid_title} ${style.title_outline} `}>
-          {project.title}
-        </p>
-        {project.phase_id != 1 && (
-          <a href={`/detail/${project.id}`}>Ga naar detail </a>
-        )}
-        {project.phase_id == 2 && project.create_finished == false && (
-          <button onClick={handleClick}>Co-Creatie fase afronden</button>
-        )}
-        {update == 1 && (
-          <p>We nemen zo spoedig mogelijk contact op voor de jury!</p>
-        )}
+        <div className={style.part_header}>
+          <p className={`${styles.grid_title} ${style.title_outline} `}>
+            {project.title}
+          </p>
+          {project.phase_id != 1 && (
+            <a
+              className={`${style.header_button} scale`}
+              href={`/detail/${project.id}`}
+            >
+              <img
+                className={style.back_image}
+                src="./assets/profiel/profiel_bekijken.svg"
+              />
+              <p className={style.header_button__text}>Naar detail</p>
+            </a>
+          )}
+          {project.phase_id == 2 && project.create_finished == false && (
+            <button
+              className={`${style.header_button} scale`}
+              onClick={handleClick}
+            >
+              <img
+                className={style.back_image}
+                src="./assets/profiel/profiel_doorsturen.svg"
+              />
+              <p className={style.header_button__text}>inzenden voor jury</p>
+            </button>
+          )}
+          {update == 1 && (
+            <p>We nemen zo spoedig mogelijk contact op voor de jury!</p>
+          )}
+        </div>
       </div>
 
       <div
@@ -227,28 +248,28 @@ const SelectedProject = ({
           </p> */}
           <div className={style.info_items}>
             <div className={`${style.info_fase} ${style.info_item}`}>
-              {project.phase.phase == 'Conceptvoorstel' && (
+              {project.phase.phase == "Conceptvoorstel" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_concept}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Co-creatie' && (
+              {project.phase.phase == "Co-creatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_creatie}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Crowdfunding' && (
+              {project.phase.phase == "Crowdfunding" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_crowdfunding}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Realisatie' && (
+              {project.phase.phase == "Realisatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_realisatie}`}
@@ -278,9 +299,7 @@ const SelectedProject = ({
             setContent={setContent}
           ></NeedsList>
         )}
-        {/* {projectNeeds.length == 0 && (
-            <Empty props={'noneeds'} />
-        )} */}
+        {projectNeeds.length == 0 && <div></div>}
         <AddNeed project={project} user={user}></AddNeed>
       </div>
     </div>

@@ -1,16 +1,16 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useFetchUser } from '../lib/user';
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import { withApollo } from '../lib/withApollo';
-import Step1 from '../components/Form/Step1/Step1';
-import Step2 from '../components/Form/Step2/Step2';
-import { useStores } from '../hooks/index';
-import { useRouter } from 'next/router';
-import { useMutation } from '@apollo/react-hooks';
-import Nav from '../components/Nav';
-import Loading from '../components/Loading/Loading';
-import Mouse from '../components/Mouse';
+import React, { useRef, useEffect, useState } from "react";
+import { useFetchUser } from "../lib/user";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import { withApollo } from "../lib/withApollo";
+import { useStores } from "../hooks/index";
+import { useRouter } from "next/router";
+import { useMutation } from "@apollo/react-hooks";
+import Nav from "../components/Nav";
+import Loading from "../components/Loading/Loading";
+import Mouse from "../components/Mouse";
+import style from "../css/admin.module.css";
+import styles from "../css/profile.module.css";
 
 const GET_DATA = gql`
   query MyQuery {
@@ -95,7 +95,7 @@ const FUND_PROJECT = gql`
 `;
 
 const Admin = ({ props, user }) => {
-  const [currentProject, setCurrentProject] = useState('');
+  const [currentProject, setCurrentProject] = useState("");
   const [removeProject] = useMutation(REMOVE_PROJECT);
   const [coCreateProject] = useMutation(CREATE_PROJECT);
   const [setBackProject] = useMutation(SET_PROJECT_BACK);
@@ -116,7 +116,7 @@ const Admin = ({ props, user }) => {
 
   const handleClick = (e, choose, project) => {
     e.preventDefault();
-    if (choose == 'x' && project.phase_id == 1) {
+    if (choose == "x" && project.phase_id == 1) {
       removeProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -145,7 +145,7 @@ const Admin = ({ props, user }) => {
         },
       });
     }
-    if (choose == 'v' && project.phase_id == 1) {
+    if (choose == "v" && project.phase_id == 1) {
       coCreateProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -177,7 +177,7 @@ const Admin = ({ props, user }) => {
         },
       });
     }
-    if (choose == 'x' && project.phase_id == 2) {
+    if (choose == "x" && project.phase_id == 2) {
       setBackProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -209,7 +209,7 @@ const Admin = ({ props, user }) => {
         },
       });
     }
-    if (choose == 'v' && project.phase_id == 2) {
+    if (choose == "v" && project.phase_id == 2) {
       fundProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -245,35 +245,102 @@ const Admin = ({ props, user }) => {
   return (
     <>
       <Mouse></Mouse>
-      {/* <Nav user={user}></Nav> */}
-      {currentProject == '' && (
-        <div>
-          <>
-            {projects.map((project) => (
-              <>
-                <li>
-                  <p onClick={(e) => setCurrentProject(project)}>
-                    {project.title}
-                  </p>
-                  <p>
-                    {project.user.first_name} {project.user.last_name}
-                  </p>
-                  {project.phase_id == 1 && <p>Co-Creatie aanvraag</p>}
-                  {project.phase_id == 2 && <p>Crowdfund aanvraag</p>}
+      <Nav user={user}></Nav>
+      {currentProject == "" && (
+        <>
+          <article className={styles.part}>
+            <div className={style.part_header}>
+              <h1 className={style.title}>
+                Durf2030.
+                {/* <span className={style.title_outline}>{props.last_name}.</span> */}
+              </h1>
+            </div>
+            <>
+              <div className={`${style.grid_admin} ${styles.grid_titles}`}>
+                <p
+                  className={`${styles.grid_title} ${styles.grid_title__left}`}
+                >
+                  Projectnaam
+                </p>
+                <p className={styles.grid_title}>Projecteigenaar</p>
+                <p className={styles.grid_title}>Fase-Aanvraag</p>
+                <p className={`${styles.grid_title} ${styles.grid_title__end}`}>
+                  Akkoord
+                </p>
+              </div>
+              {projects.map((project) => (
+                <>
+                  <div
+                    className={`${styles.grid_items} ${style.grid_admin__items}`}
+                  >
+                    <p
+                      className={`${styles.grid_bold} ${styles.grid_bold__title}`}
+                      onClick={(e) => setCurrentProject(project)}
+                    >
+                      {project.title}
+                    </p>
+                    <p className={styles.grid_text}>
+                      {project.user.first_name} {project.user.last_name}
+                    </p>
+                    {project.phase_id == 1 && (
+                      <p className={styles.grid_text}>Co-Creatie aanvraag</p>
+                    )}
+                    {project.phase_id == 2 && (
+                      <p className={styles.grid_text}>Crowdfunding aanvraag</p>
+                    )}
+                    {/* <div>
+                      <button onClick={(e) => handleClick(e, "x", project)}>
+                        X
+                      </button>
+                      <button onClick={(e) => handleClick(e, "v", project)}>
+                        V
+                      </button>
+                    </div> */}
 
-                  <button onClick={(e) => handleClick(e, 'x', project)}>
-                    X
-                  </button>
-                  <button onClick={(e) => handleClick(e, 'v', project)}>
-                    V
-                  </button>
-                </li>
-              </>
-            ))}
-          </>
-        </div>
+                    <div className={styles.buttons}>
+                      <div className={styles.need_button}>
+                        <button
+                          className={styles.input_submit}
+                          onClick={(e) => handleClick(e, "v", project)}
+                        >
+                          <div className={styles.button}>
+                            <div
+                              className={`${styles.circle_button} ${styles.circle_button__accept} scale `}
+                            >
+                              <img
+                                className={styles.button_image}
+                                src="../../../assets/buttons/accept_icon.svg"
+                              />
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                      <div className={styles.need_button}>
+                        <button
+                          className={styles.input_submit}
+                          onClick={(e) => handleClick(e, "x", project)}
+                        >
+                          <div className={styles.button}>
+                            <div
+                              className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
+                            >
+                              <img
+                                className={styles.button_image}
+                                src="../../../assets/buttons/decline_icon.svg"
+                              />
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ))}
+            </>
+          </article>
+        </>
       )}
-      {currentProject != '' && <Project project={currentProject}></Project>}
+      {currentProject != "" && <Project project={currentProject}></Project>}
     </>
   );
 };
@@ -281,7 +348,7 @@ const Admin = ({ props, user }) => {
 const GetAdminData = ({ user }) => {
   const { loading, error, data } = useQuery(GET_DATA);
   if (loading) {
-    return <Loading props={'gebruiker'} />;
+    return <Loading props={"gebruiker"} />;
   }
   if (error) {
     console.log(error);
@@ -293,25 +360,25 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
   const router = useRouter();
   if (loading) {
-    return <Loading props={'gebruiker'} />;
+    return <Loading props={"gebruiker"} />;
   }
   if (!loading && !user) {
-    router.push('/');
+    router.push("/");
     return <></>;
   }
   if (!user) {
-    router.push('/');
+    router.push("/");
     return <></>;
   }
   if (user && !loading) {
-    if (!loading && user.sub != 'auth0|6019996f27e50e006cb10777') {
-      router.push('/');
+    if (!loading && user.sub != "auth0|6019996f27e50e006cb10777") {
+      router.push("/");
       return <></>;
     }
-    if (!loading && user.sub == 'auth0|6019996f27e50e006cb10777')
+    if (!loading && user.sub == "auth0|6019996f27e50e006cb10777")
       return <GetAdminData user={user}></GetAdminData>;
   }
-  router.push('/');
+  router.push("/");
 };
 
 export default withApollo({ ssr: true })(getUser);

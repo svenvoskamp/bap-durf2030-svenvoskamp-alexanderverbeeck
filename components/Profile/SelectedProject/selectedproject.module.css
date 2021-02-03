@@ -2,96 +2,110 @@
 @value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
 
 .part_content {
-
 }
 
 .grid_item__image {
-    grid-column: 1;
+  grid-column: 1;
 }
 
 .button_back {
-    composes: buttonBack from '../../../css/buttons.module.css';
+  composes: buttonBack from "../../../css/buttons.module.css";
 }
-  
+
 .back_image {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .back_text {
-    composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
 }
 
 .grid_selectedproject__items {
-    margin-top: 3rem;
+  margin-top: 3rem;
+}
+
+.part_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
-    composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
 }
 
 .title_outline {
-    composes: mediumTitleOutline from '../../../css/typo.module.css';
+  composes: mediumTitleOutline from "../../../css/typo.module.css";
+}
+
+.header_button {
+  display: flex;
+  align-items: center;
+}
+
+.header_button__text {
+  composes: smallCaps from "../../../css/typo.module.css";
 }
 
 .grid_image {
-    width: 100%;
-    border: .4rem solid blueColor;
+  width: 100%;
+  border: 0.4rem solid blueColor;
 }
 
 .grid_tags {
-    display: flex;
-    composes: smallCaps from '../../../css/typo.module.css';
-    color: beigeColor;
-    margin-top: 1rem;
-    flex-wrap: wrap;
+  display: flex;
+  composes: smallCaps from "../../../css/typo.module.css";
+  color: beigeColor;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .grid_tag {
-    background-color: blueColor;
-    padding: 0.5rem 1rem;
+  background-color: blueColor;
+  padding: 0.5rem 1rem;
 }
 
 .grid_tag:first-of-type {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .grid_tagline {
-    composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
 }
 
 .info_items {
-    display: flex;
-    margin-bottom: 3rem;
+  display: flex;
+  margin-bottom: 3rem;
 }
 
 .info_item {
-    display: flex;
-    align-items: center;
-    padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .info_item:first-of-type {
-    margin-right: 2rem;
+  margin-right: 2rem;
 }
 
 .info_text {
-    margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .info_light {
-    composes: smallCapsLight from '../../../css/typo.module.css';
+  composes: smallCapsLight from "../../../css/typo.module.css";
 }
-  
+
 .fase_color {
-    height: 1.5rem;
-    border-radius: 50%;
-    width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  width: 1.5rem;
 }
 
 .fase_concept {
-    background-color: blueColor;
+  background-color: blueColor;
 }
-  
+
 .fase_creatie {
   background-color: yellowColor;
 }
@@ -108,29 +122,27 @@
   display: flex;
   align-items: flex-start;
 }
-  
+
 .description_bold {
-    composes: bold from '../../../css/typo.module.css';
-    color: #3b4045;
-    margin-bottom: 2rem;
-}
-  
-.description_light {
-    composes: text from '../../../css/typo.module.css';
-    color: #3b4045;
+  composes: bold from "../../../css/typo.module.css";
+  color: #3b4045;
+  margin-bottom: 2rem;
 }
 
+.description_light {
+  composes: text from "../../../css/typo.module.css";
+  color: #3b4045;
+}
 
 @media screen and (max-width: 1150px) {
-    .grid_image {
-        width: 30rem;
-        border: .4rem solid blueColor;
-    }
-
+  .grid_image {
+    width: 30rem;
+    border: 0.4rem solid blueColor;
+  }
 }
 
 @media screen and (max-width: 850px) {
-    .grid_item__image{
-        margin: 0 auto;
-    }
+  .grid_item__image {
+    margin: 0 auto;
+  }
 }

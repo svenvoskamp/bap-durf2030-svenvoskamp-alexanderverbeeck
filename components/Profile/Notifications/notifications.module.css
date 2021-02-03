@@ -1,51 +1,12 @@
 @value tokens: "../../../css/tokens.module.css";
 @value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
 
-/* Empty State */
-
-.empty_state {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  grid-column: span 3;
-  z-index: 2;
-  margin-top: auto;
-}
-
-.empty_state__text {
-  composes: mediumTitle from "../../../css/typo.module.css";
-  -webkit-text-stroke: 0.1rem #e5d6c0;
-  text-stroke: 0.1rem #e5d6c0;
-  display: inline-block;
-  font-size: 4rem;
-  color: #e5d6c0;
-}
-
-.empty_state__text__outline {
-  composes: mediumTitleOutline from "../../../css/typo.module.css";
-  -webkit-text-stroke: 0.1rem #e5d6c0;
-  text-stroke: 0.1rem #e5d6c0;
-  display: inline-block;
-  font-size: 4rem;
-  margin: 0 0.5rem;
-}
-
-.empty_button {
-  border: none;
-  background-color: transparent;
-  margin-left: 1rem;
-  padding: 0.5rem 0.5rem;
-  cursor: pointer;
-}
-
-.empty_state__buttons {
+.project_button {
   margin-top: 3rem;
   z-index: 2;
 }
 
-.empty_state__button {
+.button {
   composes: smallCaps from "../../../css/typo.module.css";
   border: 0.2rem solid blueColor;
   padding: 0.8rem 1rem;
@@ -53,9 +14,10 @@
   background-color: beigeColor;
   margin-right: 3rem;
   cursor: pointer;
+  display: inline-block;
 }
 
-.empty_state__button:after {
+.button:after {
   content: "";
   position: absolute;
   display: block;
@@ -70,21 +32,40 @@
   transition: all 0.2s ease-in-out;
 }
 
-.empty_state__button:hover .empty_state__button:after {
+.button:hover .button:after {
   top: 0;
   left: 0;
 }
 
-.empty_state__button__extra {
-  composes: smallCapsLight from "../../../css/typo.module.css";
-  border-bottom: 0.1rem solid #091422;
-  display: inline-block;
-  padding: 0.5rem 0;
-  color: #091422;
+.donation_form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 5rem;
+  padding: 3rem 10rem 3rem 2rem;
+  background-color: #f3e3cb;
+  margin-top: 2rem;
+}
+
+.donation_option {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  composes: smallCaps from "../../../css/typo.module.css";
+  margin-bottom: 1rem;
+}
+
+.input {
+  border-bottom: 0.2rem solid blueColor;
+  background-color: transparent;
   border-top: none;
   border-right: none;
   border-left: none;
-  background-color: transparent;
-  margin-top: 1rem;
-  cursor: pointer;
+  composes: empty from "../../../css/typo.module.css";
+  padding: 0.2rem 0.5rem;
+}
+
+.checkbox {
+  display: none;
 }
