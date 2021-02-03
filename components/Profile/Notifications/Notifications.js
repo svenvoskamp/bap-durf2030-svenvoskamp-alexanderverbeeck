@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import style from './notifications.module.css';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import Empty from '../../Empty/Empty';
-import styles from '../../../css/profile.module.css';
+import React, { useState } from "react";
+import style from "./notifications.module.css";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import Empty from "../../Empty/Empty";
+import styles from "../../../css/profile.module.css";
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
@@ -163,10 +163,10 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
   const [toggleNeed] = useMutation(TOGGLE_NEED);
   const [toggleFeedback] = useMutation(TOGGLE_FEEDBACK);
   const [updateProject] = useMutation(UPDATE_PROJECT);
-  const [one, setOne] = useState('');
-  const [two, setTwo] = useState('');
-  const [three, setThree] = useState('');
-  const [currentProject, setCurrentProject] = useState('');
+  const [one, setOne] = useState("");
+  const [two, setTwo] = useState("");
+  const [three, setThree] = useState("");
+  const [currentProject, setCurrentProject] = useState("");
   let needNotifications = [];
   let feedbackNotifications = [];
   let projectNotifications = [];
@@ -216,7 +216,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     e.preventDefault();
     console.log(project);
 
-    if ((one != '', two != '', three != '')) {
+    if ((one != "", two != "", three != "")) {
       updateProject({
         variables: {
           id: project.id,
@@ -259,7 +259,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         },
       });
     }
-    setCurrentProject('');
+    setCurrentProject("");
   };
 
   const handleClick = (e, choose, need) => {
@@ -267,7 +267,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     let pending = false;
     let state;
     let other_user_id;
-    if (choose == 'x') {
+    if (choose == "x") {
       other_user_id = null;
       state = false;
     } else {
@@ -320,7 +320,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     let pending = false;
     let accepted;
 
-    if (choose == 'x') {
+    if (choose == "x") {
       accepted = false;
     } else {
       accepted = true;
@@ -365,7 +365,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         {feedbackNotifications.length < 1 &&
           needNotifications.length < 1 &&
           projectNotifications.length < 1 && (
-            <Empty props={'noneedsnofeedback'} />
+            <Empty props={"noneedsnofeedback"} />
           )}
         <div>
           {showProjectNots && (
@@ -373,20 +373,20 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
                 Projectupdates
               </p>
-              <Empty props={'feedbackincoming'} />
+              <Empty props={"feedbackincoming"} />
             </>
           )}
 
           {projectNotifications.map((project) => (
-            <>
+            <div className={`${styles.subdivision} `}>
               <p className={styles.subtitle}>Projectupdates</p>
               <p className={styles.grid_bold}>Gefeliciteerd!</p>
               <p className={styles.grid_text}>
                 Je hebt de crowdfundingsfase behaald! Om deze fase te starten
-                moet je de donatierewards invullen voor{' '}
+                moet je de donatierewards invullen voor{" "}
                 <span className={styles.grid_bold}>“{project.title}”</span>.
               </p>
-              {currentProject == '' && (
+              {currentProject == "" && (
                 <div className={style.project_buttons}>
                   <div className={style.project_button}>
                     <button
@@ -398,10 +398,10 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   </div>
                 </div>
               )}
-            </>
+            </div>
           ))}
         </div>
-        {currentProject != '' && (
+        {currentProject != "" && (
           <>
             <form
               className={style.donation_form}
@@ -409,7 +409,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             >
               <div className={style.donation_option}>
                 <label htmlFor={currentProject.title} className={style.label}>
-                  Donatiereward 1{' '}
+                  Donatiereward 1{" "}
                   <span className={styles.grid_text}>(€5 - €20):</span>
                 </label>
                 <input
@@ -426,7 +426,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               </div>
               <div className={style.donation_option}>
                 <label htmlFor={currentProject.title} className={style.label}>
-                  Donatiereward 2{' '}
+                  Donatiereward 2{" "}
                   <span className={styles.grid_text}>(€20 - €50):</span>
                 </label>
                 <input
@@ -443,7 +443,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               </div>
               <div className={style.donation_option}>
                 <label htmlFor={currentProject.title} className={style.label}>
-                  Donatiereward 3{' '}
+                  Donatiereward 3{" "}
                   <span className={styles.grid_text}>(€50+):</span>
                 </label>
                 <input
@@ -477,7 +477,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
               Benodigheden
             </p>
-            <Empty props={'needsincoming'} />
+            <Empty props={"needsincoming"} />
           </>
         )}
         {needNotifications.length > 0 && (
@@ -523,7 +523,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, 'v', need)}
+                      onClick={(e) => handleClick(e, "v", need)}
                     >
                       <div className={styles.button}>
                         <div
@@ -540,7 +540,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, 'x', need)}
+                      onClick={(e) => handleClick(e, "x", need)}
                     >
                       <div className={styles.button}>
                         <div
@@ -566,7 +566,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
               Feedback
             </p>
-            <Empty props={'feedbackincoming'} />
+            <Empty props={"feedbackincoming"} />
           </>
         )}
         {feedbackNotifications.length > 0 && (
@@ -605,7 +605,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleFeedback(e, 'v', feedback)}
+                      onClick={(e) => handleFeedback(e, "v", feedback)}
                     >
                       <div className={styles.button}>
                         <div
@@ -622,7 +622,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleFeedback(e, 'x', feedback)}
+                      onClick={(e) => handleFeedback(e, "x", feedback)}
                     >
                       <div className={styles.button}>
                         <div
