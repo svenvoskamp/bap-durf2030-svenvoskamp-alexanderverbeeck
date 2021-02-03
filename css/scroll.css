@@ -1,3 +1,12 @@
+/*! locomotive-scroll v4.0.4 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-init {
+  overflow: hidden;
+}
+
 .has-scroll-smooth body {
   overflow: hidden;
 }
@@ -10,7 +19,17 @@
   min-height: 100vh;
 }
 
-[data-scroll-direction="horizontal"] .data-scroll-container-home {
+[data-scroll-direction='horizontal'] .data-scroll-container-home {
+  /* white-space: nowrap; */
+  height: 100vh;
+  display: inline-block;
+}
+
+.has-scroll-smooth .data-scroll-container-detail {
+  min-height: 100vh;
+}
+
+[data-scroll-direction='horizontal'] .data-scroll-container-detail {
   /* white-space: nowrap; */
   height: 100vh;
   display: inline-block;
@@ -21,7 +40,7 @@
     min-height: unset;
   }
 
-  [data-scroll-direction="horizontal"] .data-scroll-container-home {
+  [data-scroll-direction='horizontal'] .data-scroll-container-home {
     height: unset;
     display: inline-block;
   }

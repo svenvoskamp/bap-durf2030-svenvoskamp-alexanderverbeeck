@@ -1,7 +1,7 @@
 @value tokens: "../../../../css/tokens.module.css";
 @value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
 
-.part_feedback {
+.feedback {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +10,7 @@
   width: 30rem;
 }
 
-.feedback {
+.feedback_content {
   z-index: 2;
   list-style-type: none;
   display: flex;
@@ -19,12 +19,7 @@
   bottom: 0;
 }
 
-/* .part_feedback:nth-of-type(even) {
-  display: flex;
-  flex-direction: column;
-} */
-
-.part_feedback:nth-child(even) .feedback {
+.feedback:nth-child(even) .feedback_content {
   top: 0;
   bottom: unset;
   flex-direction: column;

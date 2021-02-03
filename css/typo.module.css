@@ -145,11 +145,11 @@
 
 .number {
   font-family: 'Montserrat', sans-serif;
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 900;
   text-transform: uppercase;
-  -webkit-text-stroke: 0.3rem blueColor;
-  text-stroke: 0.3rem blueColor;
+  -webkit-text-stroke: 0.25rem blueColor;
+  text-stroke: 0.25rem blueColor;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
 }

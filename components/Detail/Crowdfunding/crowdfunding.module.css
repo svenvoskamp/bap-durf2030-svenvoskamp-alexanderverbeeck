@@ -1,0 +1,140 @@
+@value tokens: "../../../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
+
+.timeline {
+  background-color: blueColor;
+  padding: 0 20rem;
+  position: relative;
+}
+
+.title {
+  composes: largeTitleOutline from '../../../css/typo.module.css';
+  margin-bottom: 1rem;
+  -webkit-text-stroke: 0.3rem beigeColor;
+  text-stroke: 0.3rem beigeColor;
+  -webkit-text-fill-color: beigeColor;
+  text-fill-color: beigeColor;
+}
+
+.title_outline {
+  composes: largeTitle from '../../../css/typo.module.css';
+  -webkit-text-stroke: 0.3rem beigeColor;
+  text-stroke: 0.3rem beigeColor;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.title_description {
+  composes: semiBold from '../../../css/typo.module.css';
+  color: beigeColor;
+}
+
+.header {
+  display: flex;
+}
+
+.part_title {
+  margin-right: 10rem;
+}
+
+.timeline_line {
+  position: absolute;
+  top: 50%;
+  height: 0.3rem;
+  background-color: beigeColor;
+  width: 100%;
+  left: 0;
+}
+
+.donations_timeline {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form_crowdfunding {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: blueColor;
+  z-index: 1;
+  margin-right: 15rem;
+}
+
+.form_crowdfunding {
+  background-color: blueColor;
+}
+
+.form_card__crowdfunding {
+  border: 0.3rem solid beigeColor;
+  background-color: blueColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form_option__text__crowdfunding {
+  color: beigeColor;
+  display: grid;
+  grid-template-columns: 3.8rem auto 5rem;
+  align-items: center;
+  grid-column-gap: 1rem;
+  line-height: 1.4;
+}
+
+.crowdfunding_number {
+  composes: number from '../../../css/typo.module.css';
+  -webkit-text-stroke: 0.25rem beigeColor;
+  text-stroke: 0.25rem beigeColor;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.crowdfunding_value {
+  composes: smallCaps from '../../../css/typo.module.css';
+  background-color: greenColor;
+  width: 5rem;
+}
+
+.crowdfunding_reward {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back_text__crowdfunding {
+  color: beigeColor;
+}
+
+.button_back__crowdfunding {
+  composes: buttonBack from '../../../css/buttons.module.css';
+}
+
+.form_card__crowdfunding__input {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_option__text__crowdfunding {
+  composes: smallCaps from '../../../css/typo.module.css';
+}
+
+.input {
+  border-bottom: 0.2rem solid beigeColor;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  composes: empty from '../../../css/typo.module.css';
+  padding: 0.2rem 0.5rem;
+}
+
+.button_voorzien__crowdfunding {
+  border: 0.2rem solid beigeColor;
+  padding: 0.6rem 0.8rem;
+  position: relative;
+  background-color: blueColor;
+  color: beigeColor;
+  composes: text from '../../../css/typo.module.css';
+}

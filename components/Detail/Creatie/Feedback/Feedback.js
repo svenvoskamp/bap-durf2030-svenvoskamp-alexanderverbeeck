@@ -11,7 +11,7 @@ const Feedback = ({ feedback }) => {
   const finalDate = `${day}/${month}/${year}`;
 
   return (
-    <div className={style.part_feedback}>
+    <div className={style.feedback}>
       <div className={style.feedback_icon}>
         <div
           className={`${
@@ -24,7 +24,7 @@ const Feedback = ({ feedback }) => {
           />
         </div>
       </div>
-      <li className={style.feedback}>
+      <li className={style.feedback_content}>
         <div className={style.feedback_card}>
           <p className={style.feedback_name}>
             {feedback.otheruser.first_name}:
@@ -37,6 +37,7 @@ const Feedback = ({ feedback }) => {
           </p>
           <p className={style.feedback_date}>Toegevoegd op {finalDate}</p>
         </div>
+
       </li>
     </div>
   );

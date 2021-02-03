@@ -131,9 +131,10 @@ const Detail = ({ props, user }) => {
     const lscroll = new locomotiveModule.default({
       el: scrollRef.current,
       smooth: true,
-      direction: 'vertical',
+      direction: 'horizontal',
       reloadOnContextChange: true,
       smartphone: {
+        reloadOnContextChange: true,
         smooth: true,
         gestureDirection: 'vertical',
         direction: 'vertical',
@@ -147,7 +148,11 @@ const Detail = ({ props, user }) => {
     <>
       <Mouse></Mouse>
       <Nav user={user}></Nav>
-      <main ref={scrollRef} data-scroll-container>
+      <main
+        ref={scrollRef}
+        data-scroll-container
+        className="data-scroll-container-detail"
+      >
         <article className={style.part_project}>
           <div className={style.part_info}>
             <Header props={props.projects[0]}></Header>

@@ -86,6 +86,7 @@ const GET_USER_DATA = gql`
         reward_one
         reward_two
         reward_three
+        create_finished
         donated
         phase_id
         phase {

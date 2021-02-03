@@ -1,0 +1,85 @@
+@value tokens: "../../../../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
+
+/* .donation_wrapper {
+  position: relative;
+} */
+
+.donation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 30rem;
+}
+
+.donation_icon {
+  /* text-align: center; */
+  z-index: 1;
+}
+
+.icon_circle {
+  text-align: center;
+  padding: 1rem;
+  object-fit: cover;
+  border-radius: 50%;
+  display: inline-block;
+  border: 0.3rem solid beige;
+  background-color: blueColor;
+}
+
+.donation_content {
+  z-index: 2;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.donation_card {
+  border: 0.3rem solid beigeColor;
+  position: relative;
+  background-color: blueColor;
+  /* width: 12rem;
+  height: 5vh;
+  margin: 1.5rem 0; */
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+.donation_card:after {
+  content: '';
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 5%;
+  left: 4%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.donation_text {
+  color: beigeColor;
+  composes: mediumTitle from '../../../../css/typo.module.css';
+}
+
+.donation_date {
+  composes: smallText from '../../../../css/typo.module.css';
+  text-align: center;
+  margin-top: 0.5rem;
+  color: beigeColor;
+}
+
+.donation_type {
+  composes: smallCaps from '../../../../css/typo.module.css';
+  text-align: center;
+  color: beigeColor;
+}

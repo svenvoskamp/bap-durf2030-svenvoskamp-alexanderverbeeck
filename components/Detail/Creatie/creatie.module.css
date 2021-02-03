@@ -11,6 +11,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  padding: 0 20rem;
 }
 
 .timeline_line {
@@ -28,7 +29,7 @@
   justify-content: center;
   background-color: beigeColor;
   z-index: 1;
-  margin: 0 10rem;
+  margin-right: 15rem;
 }
 
 .form_card {
@@ -64,10 +65,6 @@
   composes: number from '../../../css/typo.module.css';
 }
 
-.form_radio {
-  display: none;
-}
-
 .form_card__one {
   display: flex;
   justify-content: space-between;
@@ -85,11 +82,6 @@
   margin-right: 1rem;
 }
 
-.form_option__text {
-  composes: smallCaps from '../../../css/typo.module.css';
-  margin-top: 1rem;
-}
-
 .form_input {
   border: none;
   background-color: transparent;
@@ -99,39 +91,6 @@
   resize: none;
   display: inline-block;
   margin-bottom: 1rem;
-}
-
-.form_buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.button_back {
-  composes: buttonBack from '../../../css/buttons.module.css';
-}
-
-.back_image {
-  margin-right: 0.5rem;
-}
-
-.back_text {
-  composes: bold from '../../../css/typo.module.css';
-}
-
-.checkbox {
-  display: none;
-}
-
-.voorzien {
-  z-index: 2;
-}
-
-.button_voorzien {
-  border: 0.2rem solid blueColor;
-  padding: 0.6rem 0.8rem;
-  position: relative;
-  background-color: beigeColor;
-  composes: text from '../../../css/typo.module.css';
 }
 
 .voorzien_three {

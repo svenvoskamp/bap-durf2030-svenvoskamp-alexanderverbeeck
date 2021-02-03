@@ -1,9 +1,125 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NeedsList from './NeedsList/NeedsList';
 import AddNeed from './AddNeed/AddNeed';
 import style from './selectedproject.module.css';
 import Empty from '../../Empty/Empty';
 import styles from '../../../css/profile.module.css';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
+const GET_USER_DATA = gql`
+  query getUser($id: String!) {
+    users(where: { id: { _eq: $id } }) {
+      company
+      company_name
+      first_name
+      last_name
+      id
+      last_name
+      phone_number
+      sector
+      picture
+      department
+      donations(order_by: { created_at: asc }) {
+        id
+        created_at
+        amount
+        reward
+        updated_at
+        user {
+          first_name
+          last_name
+        }
+        project_id
+        user_id
+      }
+      projects {
+        id
+        category {
+          category
+        }
+        district {
+          district
+        }
+        image
+        impact
+        tagline
+        description
+        reward_one
+        reward_two
+        reward_three
+        create_finished
+        donated
+        phase_id
+        phase {
+          phase
+        }
+        theme {
+          theme
+        }
+        user {
+          id
+          first_name
+          last_name
+        }
+        needs {
+          id
+          type
+          need
+        }
+        title
+      }
+    }
+    needs(order_by: { pending: desc, provided: asc }) {
+      id
+      type
+      motivation
+      need
+      user_id
+      provided
+      other_user_id
+      project_id
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+      pending
+      project {
+        title
+      }
+    }
+    feedbacks {
+      id
+      type
+      motivation
+      user_id
+      other_user_id
+      accepted
+      pending
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+
+      project {
+        title
+      }
+    }
+  }
+`;
+
+const TOGGLE_PROJECT = gql`
+  mutation toggleProject($id: Int!) {
+    update_projects(
+      where: { id: { _eq: $id } }
+      _set: { create_finished: true }
+    ) {
+      affected_rows
+    }
+  }
+`;
 const SelectedProject = ({
   project,
   setSelectedProject,
@@ -12,6 +128,8 @@ const SelectedProject = ({
   setContent,
 }) => {
   let projectNeeds = [];
+  const [toggleProject] = useMutation(TOGGLE_PROJECT);
+  const [update, setUpdate] = useState('');
 
   needs.map((need) => {
     if (need.user_id == project.user.id) {
@@ -20,6 +138,44 @@ const SelectedProject = ({
       }
     }
   });
+
+  const handleClick = () => {
+    toggleProject({
+      variables: { id: project.id },
+      optimisticResponse: true,
+      update: (cache) => {
+        const cachedData = cache.readQuery({
+          query: GET_USER_DATA,
+          variables: { id: user.id },
+        });
+
+        const newUser = cachedData.users.map((u) => {
+          const length = u.projects.length;
+          u.projects.map((p) => {
+            if (p.id === project.id) {
+              p.create_finished = true;
+              u.projects.push(p);
+            } else {
+              u.projects.push(p);
+            }
+          });
+          u.projects.splice(0, length);
+          return u;
+        });
+
+        cache.writeQuery({
+          query: GET_USER_DATA,
+          variables: { id: user.id },
+          data: {
+            needs: cachedData.needs,
+            users: newUser,
+            feedbacks: cachedData.feedbacks,
+          },
+        });
+      },
+    });
+    setUpdate(1);
+  };
 
   return (
     <div className={style.part_content}>
@@ -37,6 +193,15 @@ const SelectedProject = ({
         <p className={`${styles.grid_title} ${style.title_outline} `}>
           {project.title}
         </p>
+        {project.phase_id != 1 && (
+          <a href={`/detail/${project.id}`}>Ga naar detail </a>
+        )}
+        {project.phase_id == 2 && project.create_finished == false && (
+          <button onClick={handleClick}>Co-Creatie fase afronden</button>
+        )}
+        {update == 1 && (
+          <p>We nemen zo spoedig mogelijk contact op voor de jury!</p>
+        )}
       </div>
 
       <div

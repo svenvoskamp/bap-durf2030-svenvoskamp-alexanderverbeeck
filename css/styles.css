@@ -6,22 +6,6 @@ html {
   cursor: none;
 }
 
-/*! locomotive-scroll v4.0.4 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
-html.has-scroll-smooth {
-  overflow: hidden;
-}
-
-html.has-scroll-init {
-  overflow: hidden;
-}
-
-/* html.has-scroll-dragging {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-} */
-
 #__next {
   min-height: 100vh;
   background-color: #fdecd2;
@@ -274,7 +258,7 @@ a {
 }
 
 .form_card__two__toevoeging:before {
-  content: url("../public/assets/creatie/creatie_toevoeging_form_extra.svg");
+  content: url('../public/assets/creatie/creatie_toevoeging_form_extra.svg');
   position: absolute;
   display: block;
   right: -12%;
@@ -284,7 +268,7 @@ a {
 }
 
 .form_card__two__aanpassing:before {
-  content: url("../public/assets/creatie/creatie_aanpassing_form_extra.svg");
+  content: url('../public/assets/creatie/creatie_aanpassing_form_extra.svg');
   position: absolute;
   display: block;
   right: -12%;
@@ -294,7 +278,7 @@ a {
 }
 
 .form_card__two__overig:before {
-  content: url("../public/assets/creatie/creatie_overig_form_extra.svg");
+  content: url('../public/assets/creatie/creatie_overig_form_extra.svg');
   position: absolute;
   display: block;
   right: -12%;

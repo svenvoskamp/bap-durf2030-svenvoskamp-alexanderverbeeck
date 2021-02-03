@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import style from './donation.module.css';
 
 const Donation = ({ donation }) => {
   console.log(donation);
@@ -10,15 +11,29 @@ const Donation = ({ donation }) => {
   const finalDate = `${day}/${month}/${year}`;
 
   return (
-    <div>
-      <p>
-        {donation.user.first_name} {donation.user.last_name}
-      </p>
-      <p>Gedoneer op {finalDate}</p>
-      <div>
-        <p>€{donation.amount}</p>
+    <>
+      <div className={style.donation}>
+        <div className={style.donation_icon}>
+          <div className={style.icon_circle}>
+            <img
+              className={style.icon_circle__image}
+              src={`../../../../assets/crowdfunding/crowdfunding_icon.svg`}
+            />
+          </div>
+        </div>
+        <li className={style.donation_content}>
+          <div className={style.donation_card}>
+            <p className={style.donation_text}>€{donation.amount},</p>
+          </div>
+          <div className={style.donation_info}>
+            <p className={style.donation_type}>
+              Donatie {donation.user.first_name} {donation.user.last_name}
+            </p>
+            <p className={style.donation_date}>Gedoneerd op {finalDate}</p>
+          </div>
+        </li>
       </div>
-    </div>
+    </>
   );
 };
 
