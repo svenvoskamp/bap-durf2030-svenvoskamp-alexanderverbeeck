@@ -9,20 +9,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
   align-items: center;
   justify-content: center;
-  width: 30rem;
+  margin-top: auto;
+  width: 35rem;
 }
 
 .donation_icon {
   /* text-align: center; */
   z-index: 1;
+  justify-self: center;
+  align-self: center;
+  position: absolute;
+  -webkit-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
 }
 
 .icon_circle {
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   object-fit: cover;
   border-radius: 50%;
   display: inline-block;
@@ -33,53 +42,61 @@
 .donation_content {
   z-index: 2;
   list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   text-align: center;
+  margin-top: auto;
+  margin-bottom: 21vh;
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .donation_card {
   border: 0.3rem solid beigeColor;
   position: relative;
   background-color: blueColor;
-  /* width: 12rem;
+  width: 12rem;
   height: 5vh;
-  margin: 1.5rem 0; */
-  display: inline-block;
+  /* margin: 1.5rem 0; */
+  display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .donation_card:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
   border-radius: inherit;
   border: inherit;
-  top: 5%;
-  left: 4%;
-  width: 100%;
-  height: 100%;
+  top: 1rem;
+  left: 0.5rem;
+  width: 105%;
+  height: 105%;
   z-index: -1;
   transition: all 0.2s ease-in-out;
 }
 
+.donation_info {
+  margin-bottom: 2rem;
+}
+
 .donation_text {
   color: beigeColor;
-  composes: mediumTitle from '../../../../css/typo.module.css';
+  composes: mediumTitle from "../../../../css/typo.module.css";
 }
 
 .donation_date {
-  composes: smallText from '../../../../css/typo.module.css';
+  composes: smallText from "../../../../css/typo.module.css";
   text-align: center;
   margin-top: 0.5rem;
   color: beigeColor;
 }
 
 .donation_type {
-  composes: smallCaps from '../../../../css/typo.module.css';
+  composes: smallCaps from "../../../../css/typo.module.css";
   text-align: center;
   color: beigeColor;
 }

@@ -5,6 +5,7 @@
   display: flex;
   height: 100%;
   flex-direction: row;
+  padding: 10rem 0;
 }
 
 .timeline {
@@ -43,7 +44,7 @@
 }
 
 .form_card:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -58,11 +59,11 @@
 }
 
 .form_title {
-  composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
 }
 
 .form_number {
-  composes: number from '../../../css/typo.module.css';
+  composes: number from "../../../css/typo.module.css";
 }
 
 .form_card__one {
@@ -85,7 +86,7 @@
 .form_input {
   border: none;
   background-color: transparent;
-  composes: empty from '../../../css/typo.module.css';
+  composes: empty from "../../../css/typo.module.css";
   height: 15.5rem;
   width: 45rem;
   resize: none;
@@ -99,7 +100,7 @@
 }
 
 .button_voorzien:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;

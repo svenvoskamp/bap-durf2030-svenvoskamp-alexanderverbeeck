@@ -3,30 +3,12 @@
 
 .timeline {
   background-color: blueColor;
-  padding: 0 20rem;
+  /* padding: 0 20rem; */
   position: relative;
-}
-
-.title {
-  composes: largeTitleOutline from '../../../css/typo.module.css';
-  margin-bottom: 1rem;
-  -webkit-text-stroke: 0.3rem beigeColor;
-  text-stroke: 0.3rem beigeColor;
-  -webkit-text-fill-color: beigeColor;
-  text-fill-color: beigeColor;
-}
-
-.title_outline {
-  composes: largeTitle from '../../../css/typo.module.css';
-  -webkit-text-stroke: 0.3rem beigeColor;
-  text-stroke: 0.3rem beigeColor;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-}
-
-.title_description {
-  composes: semiBold from '../../../css/typo.module.css';
-  color: beigeColor;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 10rem 20rem;
 }
 
 .header {
@@ -35,6 +17,28 @@
 
 .part_title {
   margin-right: 10rem;
+}
+
+.title {
+  composes: largeTitleOutline from "../../../css/typo.module.css";
+  margin-bottom: 1rem;
+  -webkit-text-stroke: 0.3rem beigeColor;
+  text-stroke: 0.3rem beigeColor;
+  -webkit-text-fill-color: beigeColor;
+  text-fill-color: beigeColor;
+}
+
+.title_outline {
+  composes: largeTitle from "../../../css/typo.module.css";
+  -webkit-text-stroke: 0.3rem beigeColor;
+  text-stroke: 0.3rem beigeColor;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.title_description {
+  composes: semiBold from "../../../css/typo.module.css";
+  color: beigeColor;
 }
 
 .timeline_line {
@@ -77,30 +81,60 @@
 .form_option__text__crowdfunding {
   color: beigeColor;
   display: grid;
-  grid-template-columns: 3.8rem auto 5rem;
+  grid-template-columns: 3.8rem auto;
   align-items: center;
   grid-column-gap: 1rem;
   line-height: 1.4;
 }
 
 .crowdfunding_number {
-  composes: number from '../../../css/typo.module.css';
+  composes: number from "../../../css/typo.module.css";
   -webkit-text-stroke: 0.25rem beigeColor;
   text-stroke: 0.25rem beigeColor;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
 }
 
-.crowdfunding_value {
-  composes: smallCaps from '../../../css/typo.module.css';
-  background-color: greenColor;
-  width: 5rem;
-}
-
 .crowdfunding_reward {
+  /* display: grid;
+  grid-template-columns: auto 15rem;
+  grid-row-gap: 0.5fr; */
   display: flex;
   justify-content: space-between;
+  z-index: 5;
+  /* display: grid;
+  grid-template-columns: auto 12rem; */
+}
+
+.value {
+  display: flex;
   align-items: center;
+}
+
+.crowdfunding_value {
+  composes: smallCaps from "../../../css/typo.module.css";
+  background-color: greenColor;
+  border: 0.2rem solid blueColor;
+  position: relative;
+  width: 12rem;
+  text-align: center;
+  display: inline-block;
+  padding: 0.75rem 0;
+}
+
+.crowdfunding_value:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 0.5rem;
+  left: 0.15rem;
+  width: 105%;
+  height: 105%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
 }
 
 .back_text__crowdfunding {
@@ -108,7 +142,7 @@
 }
 
 .button_back__crowdfunding {
-  composes: buttonBack from '../../../css/buttons.module.css';
+  composes: buttonBack from "../../../css/buttons.module.css";
 }
 
 .form_card__crowdfunding__input {
@@ -117,7 +151,7 @@
 }
 
 .form_option__text__crowdfunding {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
 }
 
 .input {
@@ -126,7 +160,7 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from '../../../css/typo.module.css';
+  composes: empty from "../../../css/typo.module.css";
   padding: 0.2rem 0.5rem;
 }
 
@@ -136,5 +170,10 @@
   position: relative;
   background-color: blueColor;
   color: beigeColor;
-  composes: text from '../../../css/typo.module.css';
+  composes: text from "../../../css/typo.module.css";
+}
+
+.crowdfunding_timeline {
+  display: flex;
+  margin-top: auto;
 }

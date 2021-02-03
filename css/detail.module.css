@@ -3,7 +3,7 @@
 
 .part_project {
   min-height: 100vh;
-  padding: 10rem 0;
+  /* padding: 10rem 0; */
   margin: 0 0 0 14rem;
   display: flex;
   flex-direction: row;
@@ -22,6 +22,7 @@
   justify-content: space-between;
   width: 90rem;
   margin-right: 10rem;
+  padding: 10rem 0;
 }
 
 @media screen and (max-width: 850px) {
@@ -51,7 +52,7 @@
 }
 
 .form_card:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -70,7 +71,7 @@
 }
 
 .form_option__text {
-  composes: smallCaps from './typo.module.css';
+  composes: smallCaps from "./typo.module.css";
   margin-top: 1rem;
 }
 
@@ -88,7 +89,7 @@
 }
 
 .button_back {
-  composes: buttonBack from './buttons.module.css';
+  composes: buttonBack from "./buttons.module.css";
 }
 
 .back_image {
@@ -96,7 +97,7 @@
 }
 
 .back_text {
-  composes: bold from './typo.module.css';
+  composes: bold from "./typo.module.css";
 }
 
 .button_voorzien {
@@ -104,5 +105,5 @@
   padding: 0.6rem 0.8rem;
   position: relative;
   background-color: beigeColor;
-  composes: text from './typo.module.css';
+  composes: text from "./typo.module.css";
 }
