@@ -33,10 +33,16 @@
 
 .progressbar {
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   appearance: none;
   width: 22rem;
   height: 1.5rem;
   margin-right: 1rem;
+  border: none;
+  background-color: beigeColor;
+  border: 0.3rem solid blueColor;
 }
 
 .progressbar::-webkit-progress-bar {
@@ -133,7 +139,6 @@
   .image {
     width: 10rem;
     height: 10rem;
-
     margin-right: 3rem;
   }
 
