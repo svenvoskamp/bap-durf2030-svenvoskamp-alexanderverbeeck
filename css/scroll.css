@@ -25,6 +25,11 @@ html.has-scroll-init {
   display: inline-block;
 }
 
+/* [data-scroll-repeat='true'].is-inview {
+  transition: 0.5s ease-in-out;
+  background-color: blue;
+} */
+
 .has-scroll-smooth .data-scroll-container-detail {
   min-height: 100vh;
 }
