@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import style from "./notifications.module.css";
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import Empty from "../../Empty/Empty";
-import styles from "../../../css/profile.module.css";
+import React, { useState } from 'react';
+import style from './notifications.module.css';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import Empty from '../../Empty/Empty';
+import styles from '../../../css/profile.module.css';
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
@@ -163,10 +163,10 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
   const [toggleNeed] = useMutation(TOGGLE_NEED);
   const [toggleFeedback] = useMutation(TOGGLE_FEEDBACK);
   const [updateProject] = useMutation(UPDATE_PROJECT);
-  const [one, setOne] = useState("");
-  const [two, setTwo] = useState("");
-  const [three, setThree] = useState("");
-  const [currentProject, setCurrentProject] = useState("");
+  const [one, setOne] = useState('');
+  const [two, setTwo] = useState('');
+  const [three, setThree] = useState('');
+  const [currentProject, setCurrentProject] = useState('');
   let needNotifications = [];
   let feedbackNotifications = [];
   let projectNotifications = [];
@@ -192,11 +192,31 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     }
   });
 
+  let showProjectNots = false;
+  let showNeedNots = false;
+  let showFeedbackNots = false;
+
+  if (feedbackNotifications.length > 0 || needNotifications.length > 0) {
+    if (projectNotifications == 0) {
+      showProjectNots = true;
+    }
+  }
+  if (projectNotifications.length > 0 || feedbackNotifications.length > 0) {
+    if (needNotifications == 0) {
+      showNeedNots = true;
+    }
+  }
+  if (needNotifications.length > 0 || projectNotifications.length > 0) {
+    if (feedbackNotifications == 0) {
+      showFeedbackNots = true;
+    }
+  }
+
   const handlePhase = (e, project) => {
     e.preventDefault();
     console.log(project);
 
-    if ((one != "", two != "", three != "")) {
+    if ((one != '', two != '', three != '')) {
       updateProject({
         variables: {
           id: project.id,
@@ -239,7 +259,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         },
       });
     }
-    setCurrentProject("");
+    setCurrentProject('');
   };
 
   const handleClick = (e, choose, need) => {
@@ -247,7 +267,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     let pending = false;
     let state;
     let other_user_id;
-    if (choose == "x") {
+    if (choose == 'x') {
       other_user_id = null;
       state = false;
     } else {
@@ -300,7 +320,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     let pending = false;
     let accepted;
 
-    if (choose == "x") {
+    if (choose == 'x') {
       accepted = false;
     } else {
       accepted = true;
@@ -345,17 +365,121 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         {feedbackNotifications.length < 1 &&
           needNotifications.length < 1 &&
           projectNotifications.length < 1 && (
-            <Empty props={"noneedsnofeedback"} />
+            <Empty props={'noneedsnofeedback'} />
           )}
-        {(needNotifications.length < 1 && feedbackNotifications.length > 0) ||
-          (projectNotifications.lenght > 0 && (
+        <div>
+          {showProjectNots && (
             <>
               <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
-                Benodigheden
+                Projectupdates
               </p>
-              <Empty props={"needsincoming"} />
+              <Empty props={'feedbackincoming'} />
+            </>
+          )}
+
+          {projectNotifications.map((project) => (
+            <>
+              <p className={styles.subtitle}>Projectupdates</p>
+              <p className={styles.grid_bold}>Gefeliciteerd!</p>
+              <p className={styles.grid_text}>
+                Je hebt de crowdfundingsfase behaald! Om deze fase te starten
+                moet je de donatierewards invullen voor{' '}
+                <span className={styles.grid_bold}>“{project.title}”</span>.
+              </p>
+              {currentProject == '' && (
+                <div className={style.project_buttons}>
+                  <div className={style.project_button}>
+                    <button
+                      onClick={(e) => setCurrentProject(project)}
+                      className={`${style.button} scale`}
+                    >
+                      Invullen
+                    </button>
+                  </div>
+                </div>
+              )}
             </>
           ))}
+        </div>
+        {currentProject != '' && (
+          <>
+            <form
+              className={style.donation_form}
+              onSubmit={(e) => handlePhase(e, currentProject)}
+            >
+              <div className={style.donation_option}>
+                <label htmlFor={currentProject.title} className={style.label}>
+                  Donatiereward 1{' '}
+                  <span className={styles.grid_text}>(€5 - €20):</span>
+                </label>
+                <input
+                  required
+                  id={currentProject.title}
+                  min="0"
+                  max="100"
+                  value={one}
+                  type="text"
+                  placeholder="Ticket op de 1e rij"
+                  className={style.input}
+                  onChange={(e) => setOne(e.currentTarget.value)}
+                />
+              </div>
+              <div className={style.donation_option}>
+                <label htmlFor={currentProject.title} className={style.label}>
+                  Donatiereward 2{' '}
+                  <span className={styles.grid_text}>(€20 - €50):</span>
+                </label>
+                <input
+                  required
+                  id={currentProject.title}
+                  min="0"
+                  max="100"
+                  value={two}
+                  type="text"
+                  placeholder="Ticket op de 1e rij en ontmoeting kunstenaar"
+                  className={style.input}
+                  onChange={(e) => setTwo(e.currentTarget.value)}
+                />
+              </div>
+              <div className={style.donation_option}>
+                <label htmlFor={currentProject.title} className={style.label}>
+                  Donatiereward 3{' '}
+                  <span className={styles.grid_text}>(€50+):</span>
+                </label>
+                <input
+                  required
+                  id={currentProject.title}
+                  min="0"
+                  max="100"
+                  value={three}
+                  type="text"
+                  placeholder="Ticket op de 1e rij, ontmoeting kunstenaar en gratis drankjes"
+                  className={style.input}
+                  onChange={(e) => setThree(e.currentTarget.value)}
+                />
+              </div>
+              <label className={style.project_button} htmlFor="button">
+                <input
+                  id="button"
+                  className={`${style.checkbox} scale`}
+                  type="submit"
+                />
+                <div className={style.button}>
+                  <p>Verzenden</p>
+                </div>
+              </label>
+            </form>
+          </>
+        )}
+
+        {showNeedNots && (
+          <>
+            <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+              Benodigheden
+            </p>
+            <Empty props={'needsincoming'} />
+          </>
+        )}
         {needNotifications.length > 0 && (
           <div className={`${styles.subdivision} `}>
             <p className={styles.subtitle}>Benodigheden</p>
@@ -399,7 +523,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, "v", need)}
+                      onClick={(e) => handleClick(e, 'v', need)}
                     >
                       <div className={styles.button}>
                         <div
@@ -416,7 +540,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, "x", need)}
+                      onClick={(e) => handleClick(e, 'x', need)}
                     >
                       <div className={styles.button}>
                         <div
@@ -437,15 +561,14 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         )}
       </>
       <div>
-        {(feedbackNotifications.length < 1 && needNotifications.length > 0) ||
-          (projectNotifications > 0 && (
-            <>
-              <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
-                Feedback
-              </p>
-              <Empty props={"feedbackincoming"} />
-            </>
-          ))}
+        {showFeedbackNots && (
+          <>
+            <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+              Feedback
+            </p>
+            <Empty props={'feedbackincoming'} />
+          </>
+        )}
         {feedbackNotifications.length > 0 && (
           <div className={`${styles.subdivision} `}>
             <p className={styles.subtitle}>Feedback</p>
@@ -482,7 +605,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleFeedback(e, "v", feedback)}
+                      onClick={(e) => handleFeedback(e, 'v', feedback)}
                     >
                       <div className={styles.button}>
                         <div
@@ -499,7 +622,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleFeedback(e, "x", feedback)}
+                      onClick={(e) => handleFeedback(e, 'x', feedback)}
                     >
                       <div className={styles.button}>
                         <div
@@ -520,109 +643,6 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
           </div>
         )}
       </div>
-      <div>
-        {(projectNotifications.length < 1 &&
-          feedbackNotifications.length > 0) ||
-          (needNotifications > 0 && (
-            <>
-              <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
-                Projectupdates
-              </p>
-              <Empty props={"feedbackincoming"} />
-            </>
-          ))}
-        <p className={styles.subtitle}>Projectupdates</p>
-        {projectNotifications.map((project) => (
-          <>
-            <p className={styles.grid_bold}>Gefeliciteerd!</p>
-            <p className={styles.grid_text}>
-              Je hebt de crowdfundingsfase behaald! Om deze fase te starten moet
-              je de donatierewards invullen voor{" "}
-              <span className={styles.grid_bold}>“{project.title}”</span>.
-            </p>
-            <div className={style.project_buttons}>
-              <div className={style.project_button}>
-                <button
-                  onClick={(e) => setCurrentProject(project)}
-                  className={`${style.button} scale`}
-                >
-                  Invullen
-                </button>
-              </div>
-            </div>
-          </>
-        ))}
-      </div>
-      {currentProject != "" && (
-        <>
-          <form
-            className={style.donation_form}
-            onSubmit={(e) => handlePhase(e, currentProject)}
-          >
-            <div className={style.donation_option}>
-              <label htmlFor={currentProject.title} className={style.label}>
-                Donatiereward 1{" "}
-                <span className={styles.grid_text}>(€5 - €20):</span>
-              </label>
-              <input
-                required
-                id={currentProject.title}
-                min="0"
-                max="100"
-                value={one}
-                type="text"
-                placeholder="Ticket op de 1e rij"
-                className={style.input}
-                onChange={(e) => setOne(e.currentTarget.value)}
-              />
-            </div>
-            <div className={style.donation_option}>
-              <label htmlFor={currentProject.title} className={style.label}>
-                Donatiereward 2{" "}
-                <span className={styles.grid_text}>(€20 - €50):</span>
-              </label>
-              <input
-                required
-                id={currentProject.title}
-                min="0"
-                max="100"
-                value={two}
-                type="text"
-                placeholder="Ticket op de 1e rij en ontmoeting kunstenaar"
-                className={style.input}
-                onChange={(e) => setTwo(e.currentTarget.value)}
-              />
-            </div>
-            <div className={style.donation_option}>
-              <label htmlFor={currentProject.title} className={style.label}>
-                Donatiereward 3{" "}
-                <span className={styles.grid_text}>(€50+):</span>
-              </label>
-              <input
-                required
-                id={currentProject.title}
-                min="0"
-                max="100"
-                value={three}
-                type="text"
-                placeholder="Ticket op de 1e rij, ontmoeting kunstenaar en gratis drankjes"
-                className={style.input}
-                onChange={(e) => setThree(e.currentTarget.value)}
-              />
-            </div>
-            <label className={style.project_button} htmlFor="button">
-              <input
-                id="button"
-                className={`${style.checkbox} scale`}
-                type="submit"
-              />
-              <div className={style.button}>
-                <p>Verzenden</p>
-              </div>
-            </label>
-          </form>
-        </>
-      )}
     </>
   );
 };
