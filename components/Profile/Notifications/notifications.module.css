@@ -15,7 +15,7 @@
 }
 
 .empty_state__text {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
   -webkit-text-stroke: 0.1rem #e5d6c0;
   text-stroke: 0.1rem #e5d6c0;
   display: inline-block;
@@ -24,7 +24,7 @@
 }
 
 .empty_state__text__outline {
-  composes: mediumTitleOutline from '../../../css/typo.module.css';
+  composes: mediumTitleOutline from "../../../css/typo.module.css";
   -webkit-text-stroke: 0.1rem #e5d6c0;
   text-stroke: 0.1rem #e5d6c0;
   display: inline-block;
@@ -46,7 +46,7 @@
 }
 
 .empty_state__button {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
   border: 0.2rem solid blueColor;
   padding: 0.8rem 1rem;
   position: relative;
@@ -56,7 +56,7 @@
 }
 
 .empty_state__button:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -76,7 +76,7 @@
 }
 
 .empty_state__button__extra {
-  composes: smallCapsLight from '../../../css/typo.module.css';
+  composes: smallCapsLight from "../../../css/typo.module.css";
   border-bottom: 0.1rem solid #091422;
   display: inline-block;
   padding: 0.5rem 0;
