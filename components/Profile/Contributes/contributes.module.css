@@ -59,6 +59,9 @@
   background-color: greenColor;
 }
 
+.progressbar::-moz-progress-bar {
+  background-color: greenColor;
+}
 .progress_text {
   composes: smallCaps from "../../../css/typo.module.css";
 }
