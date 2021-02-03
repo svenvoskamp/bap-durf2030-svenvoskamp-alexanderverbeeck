@@ -8,8 +8,11 @@ html {
 
 #__next {
   min-height: 100vh;
-  background-color: #fdecd2;
 }
+
+/* #__next:after {
+ 
+} */
 
 /* stylelint-disable */
 *,
@@ -21,9 +24,22 @@ html {
 
 body {
   min-height: 100vh;
+  background-color: #fdecd2;
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #fdecd2;
+  transition-delay: 0.5s;
+  transition: background-color 1s ease-in-out;
+}
+
+body.dark-mode {
+  background-color: #091422;
+  transition-delay: 0.5s;
+  transition: background-color 1s ease-in-out;
 }
 
 a {

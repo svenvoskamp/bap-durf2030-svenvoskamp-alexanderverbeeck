@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import style from "./crowdfunding.module.css";
-import styles from "../../../css/detail.module.css";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
-import Donation from "./Donation/Donation";
-import { useRouter } from "next/router";
+import React, { useState } from 'react';
+import style from './crowdfunding.module.css';
+import styles from '../../../css/detail.module.css';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
+import Donation from './Donation/Donation';
+import { useRouter } from 'next/router';
 
 const ADD_DONATION = gql`
   mutation addDonation(
@@ -145,8 +145,8 @@ const GET_PROJECT_BY_ID = gql`
 `;
 
 const Crowdfunding = ({ props, user }) => {
-  const [typeAmount, setTypeAmount] = useState("");
-  const [amount, setAmount] = useState("");
+  const [typeAmount, setTypeAmount] = useState('');
+  const [amount, setAmount] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [addDonation] = useMutation(ADD_DONATION);
   // const [updateAmount] = useMutation(UPDATE_PROJECT);
@@ -154,7 +154,7 @@ const Crowdfunding = ({ props, user }) => {
 
   const checkUser = (typeAmount) => {
     if (!user) {
-      router.push("/api/login");
+      router.push('/api/login');
     }
     if (user && !user.first_name) {
       router.push(`/register`);
@@ -180,7 +180,7 @@ const Crowdfunding = ({ props, user }) => {
       finalReward = props.projects[0].reward_three;
     }
     e.preventDefault();
-    if (amount != "" && typeAmount != "") {
+    if (amount != '' && typeAmount != '') {
       addDonation({
         variables: {
           amount: amount,
@@ -201,7 +201,7 @@ const Crowdfunding = ({ props, user }) => {
           });
 
           const newProject = props.projects.map((p) => {
-            const newDonation = data["insert_donations"].returning[0];
+            const newDonation = data['insert_donations'].returning[0];
             p.donated = totalAmount;
             p.donations.push(newDonation);
             return p;
@@ -233,13 +233,17 @@ const Crowdfunding = ({ props, user }) => {
 
   const handleStart = () => {
     setCurrentIndex(0);
-    setTypeAmount("");
-    setAmount("");
+    setTypeAmount('');
+    setAmount('');
   };
 
   return (
     <div className={style.timeline}>
-      <div className={style.header}>
+      <div
+        className={`${style.header} donations`}
+        data-scroll
+        data-scroll-repeat
+      >
         <div className={style.part_title}>
           <p className={style.title}>
             durf.
@@ -265,11 +269,11 @@ const Crowdfunding = ({ props, user }) => {
                   name="rewards"
                   className={styles.form_radio}
                   onClick={(e) => {
-                    checkUser("1");
+                    checkUser('1');
                   }}
                 />
                 <p className={`${style.form_option__text__crowdfunding}`}>
-                  <span className={style.crowdfunding_number}>1.</span>{" "}
+                  <span className={style.crowdfunding_number}>1.</span>{' '}
                   {props.projects[0].reward_one}
                 </p>
                 <div className={style.value}>
@@ -283,11 +287,11 @@ const Crowdfunding = ({ props, user }) => {
                   name="rewards"
                   className={styles.form_radio}
                   onClick={(e) => {
-                    checkUser("2");
+                    checkUser('2');
                   }}
                 />
                 <p className={`${style.form_option__text__crowdfunding}`}>
-                  <span className={style.crowdfunding_number}>2.</span>{" "}
+                  <span className={style.crowdfunding_number}>2.</span>{' '}
                   {props.projects[0].reward_two}
                 </p>
                 <div className={style.value}>
@@ -301,11 +305,11 @@ const Crowdfunding = ({ props, user }) => {
                   name="rewards"
                   className={styles.form_radio}
                   onClick={(e) => {
-                    checkUser("3");
+                    checkUser('3');
                   }}
                 />
                 <p className={`${style.form_option__text__crowdfunding}`}>
-                  <span className={style.crowdfunding_number}>3.</span>{" "}
+                  <span className={style.crowdfunding_number}>3.</span>{' '}
                   {props.projects[0].reward_three}
                 </p>
                 <div className={style.value}>
@@ -322,7 +326,7 @@ const Crowdfunding = ({ props, user }) => {
                 {typeAmount == 1 && (
                   <>
                     <p className={`${style.form_option__text__crowdfunding}`}>
-                      <span className={style.crowdfunding_number}>1.</span>{" "}
+                      <span className={style.crowdfunding_number}>1.</span>{' '}
                       {props.projects[0].reward_one}
                     </p>
 
@@ -340,9 +344,9 @@ const Crowdfunding = ({ props, user }) => {
                 )}
                 {typeAmount == 2 && (
                   <>
-                    {" "}
+                    {' '}
                     <p className={`${style.form_option__text__crowdfunding}`}>
-                      <span className={style.crowdfunding_number}>2.</span>{" "}
+                      <span className={style.crowdfunding_number}>2.</span>{' '}
                       {props.projects[0].reward_two}
                     </p>
                     <input
@@ -354,14 +358,14 @@ const Crowdfunding = ({ props, user }) => {
                       className={style.input}
                       placeholder="Een bedrag tussen de 20 en 50 euro"
                       onChange={(e) => setAmount(e.currentTarget.value)}
-                    />{" "}
+                    />{' '}
                   </>
                 )}
                 {typeAmount == 3 && (
                   <>
-                    {" "}
+                    {' '}
                     <p className={`${style.form_option__text__crowdfunding}`}>
-                      <span className={style.crowdfunding_number}>3.</span>{" "}
+                      <span className={style.crowdfunding_number}>3.</span>{' '}
                       {props.projects[0].reward_three}
                     </p>
                     <input

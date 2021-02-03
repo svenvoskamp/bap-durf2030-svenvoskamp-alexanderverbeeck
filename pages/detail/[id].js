@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { gql, useQuery } from '@apollo/react-hooks';
 import { withApollo } from '../../lib/withApollo';
@@ -9,6 +9,7 @@ import Needs from '../../components/Detail/Needs/Needs';
 import Creatie from '../../components/Detail/Creatie/Creatie';
 import Crowdfunding from '../../components/Detail/Crowdfunding/Crowdfunding';
 import { useFetchUser } from '../../lib/user';
+import gsap from 'gsap';
 
 import Nav from '../../components/Nav';
 import style from '../../css/detail.module.css';
@@ -143,6 +144,32 @@ const Detail = ({ props, user }) => {
 
     // Preload images and fonts
   });
+
+  const onScroll = () => {
+    if (
+      props.projects[0].phase.phase == 'Crowdfunding' &&
+      props.projects[0].reward_one
+    ) {
+      const div = document.getElementsByTagName('body');
+      const el = document.querySelector(`.donations`);
+
+      if (el.classList.contains(`is-inview`)) {
+        if (div[0].classList.contains(`dark-mode`)) {
+        } else {
+          div[0].classList.add(`dark-mode`);
+        }
+      }
+      if (!el.classList.contains(`is-inview`)) {
+        if (div[0].classList.contains(`dark-mode`)) {
+          div[0].classList.remove(`dark-mode`);
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('wheel', onScroll);
+  }, [window.removeEventListener('wheel', onScroll)]);
 
   return (
     <>
