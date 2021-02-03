@@ -7,6 +7,12 @@
   grid-gap: 2rem;
 }
 
+.subdivision_progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .level_text__outline {
   composes: smallCaps from "../../../css/typo.module.css";
   -webkit-text-fill-color: blueColor;
@@ -47,7 +53,6 @@
 
 .progressbar::-webkit-progress-bar {
   background-color: beigeColor;
-  border: 0.3rem solid blueColor;
 }
 
 .progressbar::-webkit-progress-value {
@@ -112,18 +117,27 @@
 
     margin-right: 2rem;
   }
+
+  .progressbar {
+    width: 16rem;
+    height: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 1050px) {
   .image {
-    width: 6rem;
-    height: 6rem;
-    margin-right: 2rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-right: 1.5rem;
   }
 
   .progressbar {
-    width: 18rem;
+    width: 14rem;
     height: 1.5rem;
+  }
+
+  .info_text {
+    padding: 0;
   }
 }
 
@@ -132,10 +146,6 @@
     display: flex;
     flex-direction: column;
   }
-
-  .subdivision {
-    margin: 3rem 0;
-  }
   .image {
     width: 10rem;
     height: 10rem;
@@ -143,7 +153,29 @@
   }
 
   .progressbar {
-    width: 35rem;
+    width: 35vw;
     height: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .image {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .progressbar {
+    width: 65vw;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .progress {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 }

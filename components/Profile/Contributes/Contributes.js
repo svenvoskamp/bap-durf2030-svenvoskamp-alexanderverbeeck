@@ -41,7 +41,9 @@ const Contributes = ({ props, user, feedbacks }) => {
     <>
       <div className={style.grid}>
         <div>
-          <div className={`${styles.subdivision} `}>
+          <div
+            className={`${styles.subdivision} ${style.subdivision_progress}`}
+          >
             <p className={styles.subtitle}>Afgeronde projecten</p>
             <div className={style.grid_info}>
               <div className={style.info_image}>
@@ -80,7 +82,7 @@ const Contributes = ({ props, user, feedbacks }) => {
             </div>
           </div>
         </div>
-        <div className={`${styles.subdivision} `}>
+        <div className={`${styles.subdivision} ${style.subdivision_progress}`}>
           <p className={styles.subtitle}>Ondersteunende feedback</p>
           <div className={style.grid_info}>
             <div className={style.info_image}>
@@ -120,7 +122,7 @@ const Contributes = ({ props, user, feedbacks }) => {
             </div>
           </div>
         </div>
-        <div className={`${styles.subdivision} `}>
+        <div className={`${styles.subdivision} ${style.subdivision_progress}`}>
           <p className={styles.subtitle}>Geholpen benodigdheden</p>
           <div className={style.grid_info}>
             <div className={style.info_image}>
@@ -160,7 +162,7 @@ const Contributes = ({ props, user, feedbacks }) => {
             </div>
           </div>
         </div>
-        <div className={`${styles.subdivision} `}>
+        <div className={`${styles.subdivision} ${style.subdivision_progress}`}>
           <p className={styles.subtitle}>Gegeven donaties</p>
           <div className={style.grid_info}>
             <div className={style.info_image}>
