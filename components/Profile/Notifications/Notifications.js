@@ -370,7 +370,9 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         <div>
           {showProjectNots && (
             <>
-              <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+              <p
+                className={`${styles.subtitle} ${styles.subtitle_notifications} ${styles.subtitle_empty}`}
+              >
                 Projectupdates
               </p>
               <Empty props={"feedbackincoming"} />
@@ -379,7 +381,11 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
 
           {projectNotifications.map((project) => (
             <div className={`${styles.subdivision}`}>
-              <p className={styles.subtitle}>Projectupdates</p>
+              <p
+                className={`${styles.subtitle} ${styles.subtitle_notifications}`}
+              >
+                Projectupdates
+              </p>
               <div className={`${styles.project_update}`}>
                 <p className={styles.grid_bold}>Gefeliciteerd!</p>
                 <p className={styles.grid_text}>
@@ -476,7 +482,9 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
 
         {showNeedNots && (
           <>
-            <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+            <p
+              className={`${styles.subtitle} ${styles.subtitle_notifications} ${styles.subtitle_empty}`}
+            >
               Benodigheden
             </p>
             <Empty props={"needsincoming"} />
@@ -484,7 +492,11 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         )}
         {needNotifications.length > 0 && (
           <div className={`${styles.subdivision} `}>
-            <p className={styles.subtitle}>Benodigheden</p>
+            <p
+              className={`${styles.subtitle} ${styles.subtitle_notifications}`}
+            >
+              Benodigheden
+            </p>
             <div
               className={`${styles.grid_notifications} ${styles.grid_titles}`}
             >
@@ -598,7 +610,9 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
       <div>
         {showFeedbackNots && (
           <>
-            <p className={`${styles.subtitle} ${styles.subtitle_empty}`}>
+            <p
+              className={`${styles.subtitle} ${styles.subtitle_notifications} ${styles.subtitle_empty}`}
+            >
               Feedback
             </p>
             <Empty props={"feedbackincoming"} />
@@ -606,7 +620,11 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         )}
         {feedbackNotifications.length > 0 && (
           <div className={`${styles.subdivision} `}>
-            <p className={styles.subtitle}>Feedback</p>
+            <p
+              className={`${styles.subtitle} ${styles.subtitle_notifications}`}
+            >
+              Feedback
+            </p>
             <div
               className={`${styles.grid_notifications} ${styles.grid_titles}`}
             >

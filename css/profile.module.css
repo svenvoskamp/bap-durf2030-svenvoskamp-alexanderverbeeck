@@ -297,8 +297,9 @@
     padding-left: 2rem;
   }
 
-  .subtitle,
-  .project_update {
+  .subtitle_notifications,
+  .project_update,
+  .subdivision_progress {
     padding: 0 2rem;
   }
 
@@ -360,5 +361,30 @@
     flex-direction: row;
     align-items: center;
     align-self: flex-end;
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .tabs {
+    padding-left: 2rem;
+  }
+
+  .subtitle_notifications,
+  .project_update,
+  .subdivision_progress {
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .tabs {
+    padding-left: 1rem;
+  }
+
+  .subtitle_notifications,
+  .project_update,
+  .subdivision_progress {
+    padding: 0 1rem;
   }
 }

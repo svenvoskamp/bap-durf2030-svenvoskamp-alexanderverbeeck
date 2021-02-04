@@ -40,3 +40,9 @@
     padding: 0 2rem;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .part_header {
+    padding: 0 2rem;
+  }
+}
