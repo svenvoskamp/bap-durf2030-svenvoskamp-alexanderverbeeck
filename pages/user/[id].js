@@ -10,6 +10,7 @@ import style from '../../css/profile.module.css';
 import Info from '../../components/User/Info/Info';
 import UserProjects from '../../components/User/UserProjects/UserProjects';
 import Nav from '../../components/Nav';
+import Contributes from '../../components/User/Contributes/Contributes';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -111,6 +112,43 @@ const GET_USER_DATA = gql`
         }
       }
     }
+    needs(order_by: { pending: desc, provided: asc }) {
+      id
+      type
+      motivation
+      need
+      user_id
+      provided
+      other_user_id
+      project_id
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+      pending
+      project {
+        title
+      }
+    }
+    feedbacks {
+      id
+      type
+      motivation
+      user_id
+      other_user_id
+      accepted
+      pending
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+
+      project {
+        title
+      }
+    }
   }
 `;
 
@@ -170,8 +208,8 @@ const User = ({ props }) => {
         {content == 1 && (
           <Contributes
             user={props.users[0]}
-            props={props.needs}
-            feedbacks={props.feedbacks}
+            needs={props.needs}
+            feedbacks={props.users[0].feedbacks}
           ></Contributes>
         )}
       </article>
