@@ -217,7 +217,7 @@ const User = ({ props }) => {
   );
 };
 
-const GetCurrentUser = ({ props }) => {
+const getUser = ({}) => {
   const router = useRouter();
   const { loading, error, data } = useQuery(GET_USER_DATA, {
     variables: { id: router.query.id },
@@ -229,28 +229,16 @@ const GetCurrentUser = ({ props }) => {
     console.log(error);
   }
   console.log(data);
+  if (!data.users[0] && !loading) {
+    router.push('/');
+    return <></>;
+  }
   if (!data.users[0].first_name && !loading) {
     router.push('/register');
     return <></>;
   }
   if (data.users[0].first_name && !loading) {
     return <User props={data} />;
-  }
-};
-
-const getUser = () => {
-  const router = useRouter();
-  const { user, loading } = useFetchUser();
-
-  if (loading) {
-    return <Loading props={'profiel'} />;
-  }
-  if (!loading && user) {
-    return <GetCurrentUser props={user} />;
-  }
-  if (!user && !loading) {
-    router.push('/api/login');
-    return <></>;
   }
 };
 

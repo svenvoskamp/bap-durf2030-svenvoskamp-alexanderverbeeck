@@ -271,6 +271,18 @@ const LoadUser = ({ user }) => {
     if (loading) {
       return <Loading props={'detail'} />;
     }
+    if (!data && !loading) {
+      router.push('/');
+      return <></>;
+    }
+    if (!data.projects[0] && !loading) {
+      router.push('/');
+      return <></>;
+    }
+    if (data.projects[0].phase.phase == 'Conceptvoorstel' && !loading) {
+      router.push('/');
+      return <></>;
+    }
     if (data && !loading) {
       return <Detail user={data.users[0]} props={data} />;
     }
@@ -281,6 +293,18 @@ const LoadUser = ({ user }) => {
     });
     if (loading) {
       return <Loading props={'detail'} />;
+    }
+    if (!data && !loading) {
+      router.push('/');
+      return <></>;
+    }
+    if (!data.projects[0] && !loading) {
+      router.push('/');
+      return <></>;
+    }
+    if (data.projects[0].phase.phase == 'Conceptvoorstel' && !loading) {
+      router.push('/');
+      return <></>;
     }
     if (data && !loading) {
       return <Detail user="" props={data} />;
