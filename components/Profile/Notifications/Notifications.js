@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import style from "./notifications.module.css";
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import Empty from "../../Empty/Empty";
-import styles from "../../../css/profile.module.css";
+import React, { useState } from 'react';
+import style from './notifications.module.css';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import Empty from '../../Empty/Empty';
+import styles from '../../../css/profile.module.css';
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
@@ -79,6 +79,8 @@ const GET_USER_DATA = gql`
         reward_three
         create_finished
         donated
+        crowdfunding_finished
+        speech
         phase_id
         phase {
           phase
@@ -159,17 +161,32 @@ const UPDATE_PROJECT = gql`
   }
 `;
 
+const UPDATE_REAL = gql`
+  mutation updateProject($id: Int!, $speech: String!) {
+    update_projects(
+      where: { id: { _eq: $id } }
+      _set: { speech: $speech, crowdfunding_finished: true }
+    ) {
+      affected_rows
+    }
+  }
+`;
+
 const Notifications = ({ props, user, feedbacks, projects }) => {
   const [toggleNeed] = useMutation(TOGGLE_NEED);
   const [toggleFeedback] = useMutation(TOGGLE_FEEDBACK);
   const [updateProject] = useMutation(UPDATE_PROJECT);
-  const [one, setOne] = useState("");
-  const [two, setTwo] = useState("");
-  const [three, setThree] = useState("");
-  const [currentProject, setCurrentProject] = useState("");
+  const [updateReal] = useMutation(UPDATE_REAL);
+  const [one, setOne] = useState('');
+  const [two, setTwo] = useState('');
+  const [three, setThree] = useState('');
+  const [speech, setSpeech] = useState('');
+  const [currentProject, setCurrentProject] = useState('');
+  const [currentSelected, setCurrentSelected] = useState('');
   let needNotifications = [];
   let feedbackNotifications = [];
   let projectNotifications = [];
+  let projectReal = [];
   props.map((need) => {
     if (need.user_id == user.id) {
       if (need.pending == true) {
@@ -191,22 +208,42 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
       }
     }
   });
+  projects.map((project) => {
+    if (project.phase_id == 3) {
+      if (project.donated > 1500 && project.crowdfunding_finished == false) {
+        projectReal.push(project);
+      }
+    }
+  });
+  console.log(projectNotifications);
 
   let showProjectNots = false;
   let showNeedNots = false;
   let showFeedbackNots = false;
 
-  if (feedbackNotifications.length > 0 || needNotifications.length > 0) {
+  if (
+    feedbackNotifications.length > 0 ||
+    needNotifications.length > 0 ||
+    projectReal.length > 0
+  ) {
     if (projectNotifications == 0) {
       showProjectNots = true;
     }
   }
-  if (projectNotifications.length > 0 || feedbackNotifications.length > 0) {
+  if (
+    projectNotifications.length > 0 ||
+    feedbackNotifications.length > 0 ||
+    projectReal.length > 0
+  ) {
     if (needNotifications == 0) {
       showNeedNots = true;
     }
   }
-  if (needNotifications.length > 0 || projectNotifications.length > 0) {
+  if (
+    needNotifications.length > 0 ||
+    projectNotifications.length > 0 ||
+    projectReal.length > 0
+  ) {
     if (feedbackNotifications == 0) {
       showFeedbackNots = true;
     }
@@ -216,7 +253,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     e.preventDefault();
     console.log(project);
 
-    if ((one != "", two != "", three != "")) {
+    if ((one != '', two != '', three != '')) {
       updateProject({
         variables: {
           id: project.id,
@@ -259,7 +296,53 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         },
       });
     }
-    setCurrentProject("");
+    setCurrentProject('');
+  };
+
+  const handleReal = (e, project) => {
+    e.preventDefault();
+
+    if (speech != '') {
+      updateReal({
+        variables: {
+          id: project.id,
+          speech: speech,
+        },
+        optimisticResponse: true,
+        update: (cache) => {
+          const cachedData = cache.readQuery({
+            query: GET_USER_DATA,
+            variables: { id: user.id },
+          });
+          console.log(cachedData);
+
+          const newUser = cachedData.users.map((u) => {
+            const length = u.projects.length;
+            u.projects.map((p) => {
+              if (p.id === project.id) {
+                p.crowdfunding_finished = true;
+                p.speech = speech;
+                p.u.projects.push(p);
+              } else {
+                u.projects.push(p);
+              }
+            });
+            u.projects.splice(0, length);
+            return u;
+          });
+          cache.writeQuery({
+            query: GET_USER_DATA,
+            variables: { id: user.id },
+            data: {
+              needs: cachedData.needs,
+              users: newUser,
+              feedbacks: cachedData.feedbacks,
+            },
+          });
+        },
+      });
+    }
+    setCurrentSelected('');
   };
 
   const handleClick = (e, choose, need) => {
@@ -267,7 +350,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     let pending = false;
     let state;
     let other_user_id;
-    if (choose == "x") {
+    if (choose == 'x') {
       other_user_id = null;
       state = false;
     } else {
@@ -320,7 +403,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     let pending = false;
     let accepted;
 
-    if (choose == "x") {
+    if (choose == 'x') {
       accepted = false;
     } else {
       accepted = true;
@@ -364,9 +447,8 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
       <>
         {feedbackNotifications.length < 1 &&
           needNotifications.length < 1 &&
-          projectNotifications.length < 1 && (
-            <Empty props={"noneedsnofeedback"} />
-          )}
+          projectNotifications.length < 1 &&
+          projectReal.length < 1 && <Empty props={'noneedsnofeedback'} />}
         <div>
           {showProjectNots && (
             <>
@@ -375,111 +457,193 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               >
                 Projectupdates
               </p>
-              <Empty props={"feedbackincoming"} />
+              <Empty props={'feedbackincoming'} />
+            </>
+          )}
+          {!feedbackNotifications.length < 1 &&
+            !needNotifications.length < 1 &&
+            !projectNotifications.length < 1 &&
+            !projectReal.length < 1 && (
+              <>
+                <p
+                  className={`${styles.subtitle} ${styles.subtitle_notifications} ${styles.subtitle_empty}`}
+                >
+                  Projectupdates
+                </p>
+              </>
+            )}
+
+          {projectNotifications.map((project) => (
+            <>
+              <div className={`${styles.subdivision}`}>
+                <div className={`${styles.project_update}`}>
+                  <p className={styles.grid_item__title}>{project.title}</p>
+                  <p className={styles.grid_text}>
+                    <span className={styles.grid_bold}>Gefeliciteerd!</span>
+                    <br /> Je kan van start met de crowdfunding van je project{' '}
+                    <span className={styles.grid_bold}>“{project.title}”</span>!
+                    Om deze fase te starten moet je de donatierewards invullen .
+                  </p>
+                  {currentProject == '' && (
+                    <div className={style.project_buttons}>
+                      <div className={style.project_button}>
+                        <button
+                          onClick={(e) => setCurrentProject(project)}
+                          className={`${style.button} scale`}
+                        >
+                          Invullen
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          ))}
+          {currentProject != '' && (
+            <>
+              <form
+                className={style.donation_form}
+                onSubmit={(e) => handlePhase(e, currentProject)}
+              >
+                <div className={style.donation_option}>
+                  <label htmlFor={currentProject.title} className={style.label}>
+                    Donatiereward 1{' '}
+                    <span className={styles.grid_text}>(€5 - €20):</span>
+                  </label>
+                  <input
+                    required
+                    id={currentProject.title}
+                    min="0"
+                    max="100"
+                    value={one}
+                    type="text"
+                    placeholder="Ticket op de 1e rij"
+                    className={style.input}
+                    onChange={(e) => setOne(e.currentTarget.value)}
+                  />
+                </div>
+                <div className={style.donation_option}>
+                  <label htmlFor={currentProject.title} className={style.label}>
+                    Donatiereward 2{' '}
+                    <span className={styles.grid_text}>(€20 - €50):</span>
+                  </label>
+                  <input
+                    required
+                    id={currentProject.title}
+                    min="0"
+                    max="100"
+                    value={two}
+                    type="text"
+                    placeholder="Ticket op de 1e rij en ontmoeting kunstenaar"
+                    className={style.input}
+                    onChange={(e) => setTwo(e.currentTarget.value)}
+                  />
+                </div>
+                <div className={style.donation_option}>
+                  <label htmlFor={currentProject.title} className={style.label}>
+                    Donatiereward 3{' '}
+                    <span className={styles.grid_text}>(€50+):</span>
+                  </label>
+                  <input
+                    required
+                    id={currentProject.title}
+                    min="0"
+                    max="100"
+                    value={three}
+                    type="text"
+                    placeholder="Ticket op de 1e rij, ontmoeting kunstenaar en gratis drankjes"
+                    className={style.input}
+                    onChange={(e) => setThree(e.currentTarget.value)}
+                  />
+                </div>
+                <label className={style.project_button} htmlFor="button">
+                  <input
+                    id="button"
+                    className={`${style.checkbox} scale`}
+                    type="submit"
+                  />
+                  <div className={style.button}>
+                    <p>Verzenden</p>
+                  </div>
+                </label>
+              </form>
             </>
           )}
 
-          {projectNotifications.map((project) => (
-            <div className={`${styles.subdivision}`}>
-              <p
-                className={`${styles.subtitle} ${styles.subtitle_notifications}`}
-              >
-                Projectupdates
-              </p>
-              <div className={`${styles.project_update}`}>
-                <p className={styles.grid_item__title}>{project.title}</p>
-                <p className={styles.grid_text}>
-                  <span className={styles.grid_bold}>Gefeliciteerd!</span>
-                  <br /> Je kan van start met de crowdfunding van je project{" "}
-                  <span className={styles.grid_bold}>“{project.title}”</span>!
-                  Om deze fase te starten moet je de donatierewards invullen .
-                </p>
-                {currentProject == "" && (
-                  <div className={style.project_buttons}>
-                    <div className={style.project_button}>
-                      <button
-                        onClick={(e) => setCurrentProject(project)}
-                        className={`${style.button} scale`}
-                      >
-                        Invullen
-                      </button>
-                    </div>
+          {projectReal.map((project) => (
+            <>
+              {project.donated > 1500 && (
+                <div className={`${styles.subdivision}`}>
+                  <div className={`${styles.project_update}`}>
+                    <p className={styles.grid_item__title}>{project.title}</p>
+                    <p className={styles.grid_text}>
+                      <span className={styles.grid_bold}>Gefeliciteerd!</span>
+                      <br /> Je kan nu van start met de realisatiefase{' '}
+                      <span className={styles.grid_bold}>
+                        “{project.title}”
+                      </span>
+                      ! Geef een dankwoord aan de doneerders en een update over
+                      jouw project!
+                    </p>
+                    {currentSelected == '' && (
+                      <div className={style.project_buttons}>
+                        <div className={style.project_button}>
+                          <button
+                            onClick={(e) => setCurrentSelected(project)}
+                            className={`${style.button} scale`}
+                          >
+                            Invullen
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-        {currentProject != "" && (
-          <>
-            <form
-              className={style.donation_form}
-              onSubmit={(e) => handlePhase(e, currentProject)}
-            >
-              <div className={style.donation_option}>
-                <label htmlFor={currentProject.title} className={style.label}>
-                  Donatiereward 1{" "}
-                  <span className={styles.grid_text}>(€5 - €20):</span>
-                </label>
-                <input
-                  required
-                  id={currentProject.title}
-                  min="0"
-                  max="100"
-                  value={one}
-                  type="text"
-                  placeholder="Ticket op de 1e rij"
-                  className={style.input}
-                  onChange={(e) => setOne(e.currentTarget.value)}
-                />
-              </div>
-              <div className={style.donation_option}>
-                <label htmlFor={currentProject.title} className={style.label}>
-                  Donatiereward 2{" "}
-                  <span className={styles.grid_text}>(€20 - €50):</span>
-                </label>
-                <input
-                  required
-                  id={currentProject.title}
-                  min="0"
-                  max="100"
-                  value={two}
-                  type="text"
-                  placeholder="Ticket op de 1e rij en ontmoeting kunstenaar"
-                  className={style.input}
-                  onChange={(e) => setTwo(e.currentTarget.value)}
-                />
-              </div>
-              <div className={style.donation_option}>
-                <label htmlFor={currentProject.title} className={style.label}>
-                  Donatiereward 3{" "}
-                  <span className={styles.grid_text}>(€50+):</span>
-                </label>
-                <input
-                  required
-                  id={currentProject.title}
-                  min="0"
-                  max="100"
-                  value={three}
-                  type="text"
-                  placeholder="Ticket op de 1e rij, ontmoeting kunstenaar en gratis drankjes"
-                  className={style.input}
-                  onChange={(e) => setThree(e.currentTarget.value)}
-                />
-              </div>
-              <label className={style.project_button} htmlFor="button">
-                <input
-                  id="button"
-                  className={`${style.checkbox} scale`}
-                  type="submit"
-                />
-                <div className={style.button}>
-                  <p>Verzenden</p>
                 </div>
-              </label>
-            </form>
-          </>
-        )}
+              )}
+            </>
+          ))}
+
+          {currentSelected != '' && (
+            <>
+              <form
+                className={style.donation_form}
+                onSubmit={(e) => handleReal(e, currentSelected)}
+              >
+                <div className={style.donation_option}>
+                  <label
+                    htmlFor={currentSelected.title}
+                    className={style.label}
+                  >
+                    Dankwoord <span className={styles.grid_text}></span>
+                  </label>
+                  <input
+                    required
+                    id={currentSelected.title}
+                    min="0"
+                    max="100"
+                    value={speech}
+                    type="text"
+                    placeholder="Ik wil jullie bedanken.."
+                    className={style.input}
+                    onChange={(e) => setSpeech(e.currentTarget.value)}
+                  />
+                </div>
+
+                <label className={style.project_button} htmlFor="button">
+                  <input
+                    id="button"
+                    className={`${style.checkbox} scale`}
+                    type="submit"
+                  />
+                  <div className={style.button}>
+                    <p>Verzenden</p>
+                  </div>
+                </label>
+              </form>
+            </>
+          )}
+        </div>
 
         {showNeedNots && (
           <>
@@ -488,7 +652,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             >
               Benodigheden
             </p>
-            <Empty props={"needsincoming"} />
+            <Empty props={'needsincoming'} />
           </>
         )}
         {needNotifications.length > 0 && (
@@ -571,7 +735,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, "v", need)}
+                      onClick={(e) => handleClick(e, 'v', need)}
                     >
                       <div className={styles.button}>
                         <div
@@ -588,7 +752,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, "x", need)}
+                      onClick={(e) => handleClick(e, 'x', need)}
                     >
                       <div className={styles.button}>
                         <div
@@ -616,7 +780,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             >
               Feedback
             </p>
-            <Empty props={"feedbackincoming"} />
+            <Empty props={'feedbackincoming'} />
           </>
         )}
         {feedbackNotifications.length > 0 && (
@@ -685,7 +849,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <p
                     className={`${styles.grid_text} ${styles.grid_item__hidden} ${styles.grid_item__name__hidden}`}
                   >
-                    {feedback.otheruser.first_name}{" "}
+                    {feedback.otheruser.first_name}{' '}
                     {feedback.otheruser.last_name}
                   </p>
                   <p
@@ -702,7 +866,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleFeedback(e, "v", feedback)}
+                      onClick={(e) => handleFeedback(e, 'v', feedback)}
                     >
                       <div className={styles.button}>
                         <div
@@ -719,7 +883,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleFeedback(e, "x", feedback)}
+                      onClick={(e) => handleFeedback(e, 'x', feedback)}
                     >
                       <div className={styles.button}>
                         <div

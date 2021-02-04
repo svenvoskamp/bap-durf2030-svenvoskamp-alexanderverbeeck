@@ -1,9 +1,9 @@
-import React from "react";
-import style from "./requests.module.css";
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import Empty from "../../Empty/Empty";
-import styles from "../../../css/profile.module.css";
+import React from 'react';
+import style from './requests.module.css';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import Empty from '../../Empty/Empty';
+import styles from '../../../css/profile.module.css';
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed($id: Int!, $provided: Boolean!, $pending: Boolean) {
@@ -67,6 +67,8 @@ const GET_USER_DATA = gql`
         reward_three
         create_finished
         donated
+        crowdfunding_finished
+        speech
         phase_id
         phase {
           phase
@@ -219,7 +221,7 @@ const Requests = ({ props, user, feedbacks }) => {
   return (
     <>
       {requests.length < 1 && feedbackRequests.length < 1 && (
-        <Empty props={"inafwachting"} />
+        <Empty props={'inafwachting'} />
       )}
 
       {requests.length > 0 && (
@@ -244,7 +246,7 @@ const Requests = ({ props, user, feedbacks }) => {
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
                 <div className={styles.pending}>
-                  {" "}
+                  {' '}
                   <img
                     class
                     className={styles.grid_image__pending}
@@ -334,7 +336,7 @@ const Requests = ({ props, user, feedbacks }) => {
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
                 <div className={styles.pending}>
-                  {" "}
+                  {' '}
                   <img
                     class
                     className={styles.grid_image__pending}
