@@ -165,7 +165,7 @@ const UPDATE_REAL = gql`
   mutation updateProject($id: Int!, $speech: String!) {
     update_projects(
       where: { id: { _eq: $id } }
-      _set: { speech: $speech, crowdfunding_finished: true }
+      _set: { speech: $speech, crowdfunding_finished: true, phase_id: 4 }
     ) {
       affected_rows
     }

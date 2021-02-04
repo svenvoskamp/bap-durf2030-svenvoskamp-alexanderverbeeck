@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import style from "./crowdfunding.module.css";
-import styles from "../../../css/detail.module.css";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
-import Donation from "./Donation/Donation";
-import { useRouter } from "next/router";
+import React, { useState } from 'react';
+import style from './crowdfunding.module.css';
+import styles from '../../../css/detail.module.css';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
+import Donation from './Donation/Donation';
+import { useRouter } from 'next/router';
 
 const ADD_DONATION = gql`
   mutation addDonation(
@@ -145,8 +145,8 @@ const GET_PROJECT_BY_ID = gql`
 `;
 
 const Crowdfunding = ({ props, user }) => {
-  const [typeAmount, setTypeAmount] = useState("");
-  const [amount, setAmount] = useState("");
+  const [typeAmount, setTypeAmount] = useState('');
+  const [amount, setAmount] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [addDonation] = useMutation(ADD_DONATION);
   // const [updateAmount] = useMutation(UPDATE_PROJECT);
@@ -154,7 +154,7 @@ const Crowdfunding = ({ props, user }) => {
 
   const checkUser = (typeAmount) => {
     if (!user) {
-      router.push("/api/login");
+      router.push('/api/login');
     }
     if (user && !user.first_name) {
       router.push(`/register`);
@@ -180,7 +180,7 @@ const Crowdfunding = ({ props, user }) => {
       finalReward = props.projects[0].reward_three;
     }
     e.preventDefault();
-    if (amount != "" && typeAmount != "") {
+    if (amount != '' && typeAmount != '') {
       addDonation({
         variables: {
           amount: amount,
@@ -201,7 +201,7 @@ const Crowdfunding = ({ props, user }) => {
           });
 
           const newProject = props.projects.map((p) => {
-            const newDonation = data["insert_donations"].returning[0];
+            const newDonation = data['insert_donations'].returning[0];
             p.donated = totalAmount;
             p.donations.push(newDonation);
             return p;
@@ -233,201 +233,242 @@ const Crowdfunding = ({ props, user }) => {
 
   const handleStart = () => {
     setCurrentIndex(0);
-    setTypeAmount("");
-    setAmount("");
+    setTypeAmount('');
+    setAmount('');
   };
 
   return (
     <div className={style.timeline}>
-      <div
-        className={`${style.header} donations`}
-        data-scroll
-        data-scroll-repeat
-      >
-        <div className={style.part_title}>
-          <p className={style.title}>
-            durf.
-            <span className={style.title_outline}>doneren.</span>
-          </p>
-          <p className={style.title_description}>
-            Super dat je een project wilt starten voor DURF 2030, we beginnen
-            met de basis.
-          </p>
-        </div>
-        <form
-          className={`${styles.form} ${style.form_crowdfunding}`}
-          onSubmit={handleSubmit}
-        >
-          {currentIndex == 0 && (
-            <div
-              className={`${styles.form_card} ${style.form_card__crowdfunding}`}
-            >
-              <label className={style.crowdfunding_reward} htmlFor="reward1">
-                <input
-                  id="reward1"
-                  type="radio"
-                  name="rewards"
-                  className={styles.form_radio}
-                  onClick={(e) => {
-                    checkUser("1");
-                  }}
-                />
-                <p className={`${style.form_option__text__crowdfunding}`}>
-                  <span className={style.crowdfunding_number}>1.</span>{" "}
-                  {props.projects[0].reward_one}
-                </p>
-                <div className={`${style.value} scale `}>
-                  <p className={style.crowdfunding_value}>€5 - €20</p>
-                </div>
-              </label>
-              <label className={style.crowdfunding_reward} htmlFor="reward2">
-                <input
-                  id="reward2"
-                  type="radio"
-                  name="rewards"
-                  className={styles.form_radio}
-                  onClick={(e) => {
-                    checkUser("2");
-                  }}
-                />
-                <p className={`${style.form_option__text__crowdfunding}`}>
-                  <span className={style.crowdfunding_number}>2.</span>{" "}
-                  {props.projects[0].reward_two}
-                </p>
-                <div className={`${style.value} scale `}>
-                  <p className={style.crowdfunding_value}>€20 - €50</p>
-                </div>
-              </label>
-              <label className={style.crowdfunding_reward} htmlFor="reward3">
-                <input
-                  id="reward3"
-                  type="radio"
-                  name="rewards"
-                  className={styles.form_radio}
-                  onClick={(e) => {
-                    checkUser("3");
-                  }}
-                />
-                <p className={`${style.form_option__text__crowdfunding}`}>
-                  <span className={style.crowdfunding_number}>3.</span>{" "}
-                  {props.projects[0].reward_three}
-                </p>
-                <div className={`${style.value} scale `}>
-                  <p className={style.crowdfunding_value}>+ €50</p>
-                </div>
-              </label>
+      {props.projects[0].phase.phase == 'Crowdfunding' && (
+        <>
+          <div
+            className={`${style.header} donations`}
+            data-scroll
+            data-scroll-repeat
+          >
+            <div className={style.part_title}>
+              <p className={style.title}>
+                durf.
+                <span className={style.title_outline}>doneren.</span>
+              </p>
+              <p className={style.title_description}>
+                Super dat je een project wilt starten voor DURF 2030, we
+                beginnen met de basis.
+              </p>
             </div>
-          )}
-          {currentIndex == 1 && (
-            <>
-              <div
-                className={`${styles.form_card} ${style.form_card__crowdfunding}`}
-              >
-                {typeAmount == 1 && (
-                  <>
+            <form
+              className={`${styles.form} ${style.form_crowdfunding}`}
+              onSubmit={handleSubmit}
+            >
+              {currentIndex == 0 && (
+                <div
+                  className={`${styles.form_card} ${style.form_card__crowdfunding}`}
+                >
+                  <label
+                    className={style.crowdfunding_reward}
+                    htmlFor="reward1"
+                  >
+                    <input
+                      id="reward1"
+                      type="radio"
+                      name="rewards"
+                      className={styles.form_radio}
+                      onClick={(e) => {
+                        checkUser('1');
+                      }}
+                    />
                     <p className={`${style.form_option__text__crowdfunding}`}>
-                      <span className={style.crowdfunding_number}>1.</span>{" "}
+                      <span className={style.crowdfunding_number}>1.</span>{' '}
                       {props.projects[0].reward_one}
                     </p>
-
+                    <div className={`${style.value} scale `}>
+                      <p className={style.crowdfunding_value}>€5 - €20</p>
+                    </div>
+                  </label>
+                  <label
+                    className={style.crowdfunding_reward}
+                    htmlFor="reward2"
+                  >
                     <input
-                      type="number"
-                      required
-                      min="5"
-                      max="20"
-                      value={amount}
-                      className={style.input}
-                      placeholder="Een bedrag tussen de 5 en 20 euro"
-                      onChange={(e) => setAmount(e.currentTarget.value)}
+                      id="reward2"
+                      type="radio"
+                      name="rewards"
+                      className={styles.form_radio}
+                      onClick={(e) => {
+                        checkUser('2');
+                      }}
                     />
-                  </>
-                )}
-                {typeAmount == 2 && (
-                  <>
-                    {" "}
                     <p className={`${style.form_option__text__crowdfunding}`}>
-                      <span className={style.crowdfunding_number}>2.</span>{" "}
+                      <span className={style.crowdfunding_number}>2.</span>{' '}
                       {props.projects[0].reward_two}
                     </p>
+                    <div className={`${style.value} scale `}>
+                      <p className={style.crowdfunding_value}>€20 - €50</p>
+                    </div>
+                  </label>
+                  <label
+                    className={style.crowdfunding_reward}
+                    htmlFor="reward3"
+                  >
                     <input
-                      type="number"
-                      required
-                      min="20"
-                      max="50"
-                      value={amount}
-                      className={style.input}
-                      placeholder="Een bedrag tussen de 20 en 50 euro"
-                      onChange={(e) => setAmount(e.currentTarget.value)}
-                    />{" "}
-                  </>
-                )}
-                {typeAmount == 3 && (
-                  <>
-                    {" "}
+                      id="reward3"
+                      type="radio"
+                      name="rewards"
+                      className={styles.form_radio}
+                      onClick={(e) => {
+                        checkUser('3');
+                      }}
+                    />
                     <p className={`${style.form_option__text__crowdfunding}`}>
-                      <span className={style.crowdfunding_number}>3.</span>{" "}
+                      <span className={style.crowdfunding_number}>3.</span>{' '}
                       {props.projects[0].reward_three}
                     </p>
-                    <input
-                      type="number"
-                      required
-                      min="50"
-                      max="3000"
-                      value={amount}
-                      className={style.input}
-                      placeholder="Een bedrag hoger dan 50 euro"
-                      onChange={(e) => setAmount(e.currentTarget.value)}
-                    />
-                  </>
-                )}
-                <div className={styles.form_buttons}>
-                  <button
-                    className={`${styles.button_back} ${style.button_back__crowdfunding} scale`}
-                    onClick={handleBack}
-                  >
-                    <img
-                      className={style.back_image}
-                      src="../assets/images/button_back__beige.svg"
-                    />
-                    <span
-                      className={`${styles.back_text} ${style.back_text__crowdfunding}`}
-                    >
-                      Terug
-                    </span>
-                  </button>
-
-                  <label className={styles.voorzien} htmlFor="verzend">
-                    <input
-                      id="verzend"
-                      className={styles.checkbox}
-                      type="submit"
-                    />
-                    <div
-                      className={`${styles.button_voorzien} ${style.button_voorzien__crowdfunding} scale`}
-                    >
-                      <p>Verzenden</p>
+                    <div className={`${style.value} scale `}>
+                      <p className={style.crowdfunding_value}>+ €50</p>
                     </div>
                   </label>
                 </div>
-              </div>
-              {/* <input type="submit" value="Doneer!" /> */}
-            </>
-          )}
-        </form>
-        {currentIndex == 2 && (
-          <>
-            <div
-              className={`${styles.form_card} ${style.form_card__crowdfunding}`}
-            >
-              <p>Bedankt voor het doneren, {user.first_name}</p>
-              <button onClick={handleStart}>Meer doneren?</button>
+              )}
+              {currentIndex == 1 && (
+                <>
+                  <div
+                    className={`${styles.form_card} ${style.form_card__crowdfunding}`}
+                  >
+                    {typeAmount == 1 && (
+                      <>
+                        <p
+                          className={`${style.form_option__text__crowdfunding}`}
+                        >
+                          <span className={style.crowdfunding_number}>1.</span>{' '}
+                          {props.projects[0].reward_one}
+                        </p>
+
+                        <input
+                          type="number"
+                          required
+                          min="5"
+                          max="20"
+                          value={amount}
+                          className={style.input}
+                          placeholder="Een bedrag tussen de 5 en 20 euro"
+                          onChange={(e) => setAmount(e.currentTarget.value)}
+                        />
+                      </>
+                    )}
+                    {typeAmount == 2 && (
+                      <>
+                        {' '}
+                        <p
+                          className={`${style.form_option__text__crowdfunding}`}
+                        >
+                          <span className={style.crowdfunding_number}>2.</span>{' '}
+                          {props.projects[0].reward_two}
+                        </p>
+                        <input
+                          type="number"
+                          required
+                          min="20"
+                          max="50"
+                          value={amount}
+                          className={style.input}
+                          placeholder="Een bedrag tussen de 20 en 50 euro"
+                          onChange={(e) => setAmount(e.currentTarget.value)}
+                        />{' '}
+                      </>
+                    )}
+                    {typeAmount == 3 && (
+                      <>
+                        {' '}
+                        <p
+                          className={`${style.form_option__text__crowdfunding}`}
+                        >
+                          <span className={style.crowdfunding_number}>3.</span>{' '}
+                          {props.projects[0].reward_three}
+                        </p>
+                        <input
+                          type="number"
+                          required
+                          min="50"
+                          max="3000"
+                          value={amount}
+                          className={style.input}
+                          placeholder="Een bedrag hoger dan 50 euro"
+                          onChange={(e) => setAmount(e.currentTarget.value)}
+                        />
+                      </>
+                    )}
+                    <div className={styles.form_buttons}>
+                      <button
+                        className={`${styles.button_back} ${style.button_back__crowdfunding} scale`}
+                        onClick={handleBack}
+                      >
+                        <img
+                          className={style.back_image}
+                          src="../assets/images/button_back__beige.svg"
+                        />
+                        <span
+                          className={`${styles.back_text} ${style.back_text__crowdfunding}`}
+                        >
+                          Terug
+                        </span>
+                      </button>
+
+                      <label className={styles.voorzien} htmlFor="verzend">
+                        <input
+                          id="verzend"
+                          className={styles.checkbox}
+                          type="submit"
+                        />
+                        <div
+                          className={`${styles.button_voorzien} ${style.button_voorzien__crowdfunding} scale`}
+                        >
+                          <p>Verzenden</p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  {/* <input type="submit" value="Doneer!" /> */}
+                </>
+              )}
+            </form>
+            {currentIndex == 2 && (
+              <>
+                <div
+                  className={`${styles.form_card} ${style.form_card__crowdfunding}`}
+                >
+                  <p>Bedankt voor het doneren, {user.first_name}</p>
+                  <button onClick={handleStart}>Meer doneren?</button>
+                </div>
+              </>
+            )}
+          </div>
+          <div>
+            <p>Totaal gedoneerd: €{props.projects[0].donated}</p>
+          </div>
+        </>
+      )}
+      {props.projects[0].phase.phase == 'Realisatie' && (
+        <>
+          <div
+            className={`${style.header} donations`}
+            data-scroll
+            data-scroll-repeat
+          >
+            <div className={style.part_title}>
+              <p className={style.title}>
+                durf.
+                <span className={style.title_outline}>doneren.</span>
+              </p>
+              <p className={style.title_description}>
+                Bedankt voor alle donaties!
+              </p>
+              <span className={style.title_outline}>
+                Totaal gedoneerd: €{props.projects[0].donated}
+              </span>
             </div>
-          </>
-        )}
-      </div>
-      {/* <div>
-        <p>Totaal gedoneerd: €{props.projects[0].donated}</p>
-      </div> */}
+          </div>
+        </>
+      )}
       <div className={style.crowdfunding_timeline}>
         {props.projects[0].donations.map((donation) => (
           <Donation donation={donation}></Donation>

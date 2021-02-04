@@ -83,7 +83,7 @@ const Creatie = ({ props, user }) => {
   };
   return (
     <div className={style.timeline}>
-      {props.projects[0].phase.phase != 'Crowdfunding' && (
+      {props.projects[0].phase.phase == 'Co-creatie' && (
         <form className={style.form_feedback} onSubmit={handleSubmit}>
           <div className={style.feedback}>
             {currentIndex == 0 && (
@@ -231,6 +231,9 @@ const Creatie = ({ props, user }) => {
         </form>
       )}
       <div className={style.feedback_timeline}>
+        {props.projects[0].phase.phase != 'Co-creatie' && (
+          <p>HIER MOET DE START!</p> // START VAN FEEDBACK
+        )}
         {props.feedbacks.length > 0 && (
           <>
             {props.feedbacks.map((feedback) => (
@@ -238,7 +241,15 @@ const Creatie = ({ props, user }) => {
             ))}
           </>
         )}
-        {props.feedbacks.length == 0 && <p>Test</p>}
+        {
+          props.projects[0].phase.phase == 'Co-creatie' && (
+            <p>CROWDFUNDFASE LOCKED </p>
+          ) //CROWDFUNDFASE GELOCKED
+        }
+        {
+          props.projects[0].phase.phase == 'Crowdfunding' &&
+            !props.projects[0].reward_one && <p>WACHTEN OP GEGEVENS </p> //CROWDFUNDFASE GELOCKED - WACHTEN OP GEGEVENS
+        }
       </div>
       <div className={style.timeline_line}></div>
     </div>
