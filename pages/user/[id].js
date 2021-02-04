@@ -154,6 +154,7 @@ const GET_USER_DATA = gql`
 
 const User = ({ props }) => {
   const [content, setContent] = useState(0);
+  const { user, loading } = useFetchUser();
 
   console.log(props);
   const router = useRouter();
@@ -161,7 +162,7 @@ const User = ({ props }) => {
   return (
     <>
       <Mouse></Mouse>
-      <Nav user={props.users[0]}></Nav>
+      <Nav user={user}></Nav>
       <article className={style.part}>
         <Info props={props.users[0]}></Info>
         <div className={style.tabs}>
@@ -234,7 +235,7 @@ const getUser = ({}) => {
     return <></>;
   }
   if (!data.users[0].first_name && !loading) {
-    router.push('/register');
+    router.push('/');
     return <></>;
   }
   if (data.users[0].first_name && !loading) {
