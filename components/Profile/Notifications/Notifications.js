@@ -387,9 +387,10 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                 Projectupdates
               </p>
               <div className={`${styles.project_update}`}>
-                <p className={styles.grid_bold}>Gefeliciteerd!</p>
+                <p className={styles.grid_item__title}>{project.title}</p>
                 <p className={styles.grid_text}>
-                  Je kan van start met de crowdfunding van je project{" "}
+                  <span className={styles.grid_bold}>Gefeliciteerd!</span>
+                  <br /> Je kan van start met de crowdfunding van je project{" "}
                   <span className={styles.grid_bold}>“{project.title}”</span>!
                   Om deze fase te starten moet je de donatierewards invullen .
                 </p>
@@ -520,7 +521,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               <div
                 className={`${styles.grid_items} ${styles.grid_notifications__items}`}
               >
-                <div className={styles.flex_mobile}>
+                <div>
                   <p
                     className={`${styles.grid_bold} ${styles.grid_bold__title} ${styles.grid_item__title}`}
                   >
@@ -648,7 +649,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               <div
                 className={`${styles.grid_items} ${styles.grid_notifications__items}`}
               >
-                <div className={styles.flex_mobile}>
+                <div>
                   <p
                     className={`${styles.grid_bold} ${styles.grid_bold__title} ${styles.grid_item__title}`}
                   >
@@ -680,7 +681,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                 >
                   {feedback.otheruser.first_name} {feedback.otheruser.last_name}
                 </p>
-                <div className={styles.flex_mobile}>
+                <div>
                   <p
                     className={`${styles.grid_text} ${styles.grid_item__hidden} ${styles.grid_item__name__hidden}`}
                   >

@@ -250,7 +250,7 @@ const Requests = ({ props, user, feedbacks }) => {
                     className={styles.grid_image__pending}
                     src="../../../assets/images/pending_state.svg"
                   />
-                  <p className={styles.grid_image_pending__text}>
+                  <p className={style.grid_image_pending__text}>
                     In afwachting
                   </p>
                 </div>
@@ -340,7 +340,7 @@ const Requests = ({ props, user, feedbacks }) => {
                     className={styles.grid_image__pending}
                     src="../../../assets/images/pending_state.svg"
                   />
-                  <p className={styles.grid_image_pending__text}>
+                  <p className={style.grid_image_pending__text}>
                     In afwachting
                   </p>
                 </div>
