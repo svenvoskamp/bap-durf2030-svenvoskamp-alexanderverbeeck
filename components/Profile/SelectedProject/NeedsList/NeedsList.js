@@ -47,6 +47,8 @@ const GET_USER_DATA = gql`
         reward_three
         create_finished
         donated
+        crowdfunding_finished
+        speech
         phase_id
         phase {
           phase

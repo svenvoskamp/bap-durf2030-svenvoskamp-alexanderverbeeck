@@ -59,6 +59,8 @@ const GET_USER_DATA = gql`
         reward_three
         create_finished
         donated
+        crowdfunding_finished
+        speech
         phase_id
         phase {
           phase
@@ -132,6 +134,7 @@ const GET_CURRENT_USER = gql`
 `;
 
 const Profile = ({ props }) => {
+  console.log(props);
   const [content, setContent] = useState(0);
   const [selectedProject, setSelectedProject] = useState('');
   let incoming = [];
@@ -153,6 +156,9 @@ const Profile = ({ props }) => {
   props.users[0].projects.map((project) => {
     if (project.phase_id == 3) {
       if (!project.reward_one) {
+        incoming.push(project);
+      }
+      if (project.donated > 1500 && project.crowdfunding_finished == false) {
         incoming.push(project);
       }
     }
