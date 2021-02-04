@@ -274,7 +274,7 @@ a {
 }
 
 .form_card__two__toevoeging:before {
-  content: url('../public/assets/creatie/creatie_toevoeging_form_extra.svg');
+  content: url("../public/assets/creatie/creatie_toevoeging_form_extra.svg");
   position: absolute;
   display: block;
   right: -12%;
@@ -284,7 +284,7 @@ a {
 }
 
 .form_card__two__aanpassing:before {
-  content: url('../public/assets/creatie/creatie_aanpassing_form_extra.svg');
+  content: url("../public/assets/creatie/creatie_aanpassing_form_extra.svg");
   position: absolute;
   display: block;
   right: -12%;
@@ -294,7 +294,7 @@ a {
 }
 
 .form_card__two__overig:before {
-  content: url('../public/assets/creatie/creatie_overig_form_extra.svg');
+  content: url("../public/assets/creatie/creatie_overig_form_extra.svg");
   position: absolute;
   display: block;
   right: -12%;
@@ -392,5 +392,11 @@ a {
 
   .item-nieuw {
     display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .navigation-header--mobile--logo {
+    margin: 0.5rem 0 0 1rem;
   }
 }

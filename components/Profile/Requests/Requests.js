@@ -225,25 +225,55 @@ const Requests = ({ props, user, feedbacks }) => {
       {requests.length > 0 && (
         <>
           <div className={`${styles.subdivision} `}>
-            <p className={styles.subtitle}>Feedback</p>
+            <p
+              className={`${styles.subtitle} ${styles.subtitle_notifications}`}
+            >
+              Benodigdheden
+            </p>
             <div className={`${styles.grid_requests} ${styles.grid_titles}`}>
               <p className={`${styles.grid_title} ${styles.grid_title__start}`}>
-                Projectnaam
+                Project
               </p>
-              <p className={styles.grid_title}>Type</p>
+              <p className={`${styles.grid_title} ${styles.grid_title__type}`}>
+                Type
+              </p>
               <p className={styles.grid_title}>Motivatie</p>
             </div>
             {requests.map((need) => (
               <div
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
-                <img
-                  class
-                  className={styles.grid_image}
-                  src="../../../assets/images/pending_state.svg"
-                />
-                <p className={styles.grid_bold}>{need.project.title}</p>
-                <div className={styles.grid_item}>
+                <div className={styles.pending}>
+                  {" "}
+                  <img
+                    class
+                    className={styles.grid_image__pending}
+                    src="../../../assets/images/pending_state.svg"
+                  />
+                  <p className={styles.grid_image_pending__text}>
+                    In afwachting
+                  </p>
+                </div>
+                <div className={styles.flex_mobile}>
+                  <p
+                    className={`${styles.grid_bold}  ${styles.grid_item__title}`}
+                  >
+                    {need.project.title}
+                  </p>
+                  <div
+                    className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden__requests}`}
+                  >
+                    <img
+                      src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                      alt={need.type}
+                      className={styles.grid_item__image}
+                    />
+                    <p className={styles.grid_text}>{need.need}</p>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.grid_item} ${styles.grid_item__mobile}`}
+                >
                   <img
                     src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
                     alt={need.type}
@@ -256,7 +286,9 @@ const Requests = ({ props, user, feedbacks }) => {
                 >
                   "{need.motivation}"
                 </p>
-                <div className={styles.buttons}>
+                <div
+                  className={`${styles.buttons} ${styles.grid_item__buttons}`}
+                >
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
@@ -283,25 +315,60 @@ const Requests = ({ props, user, feedbacks }) => {
       {feedbackRequests.length > 0 && (
         <>
           <div className={`${styles.subdivision} `}>
-            <p className={styles.subtitle}>Benodigdheden</p>
+            <p
+              className={`${styles.subtitle} ${styles.subtitle_notifications}`}
+            >
+              Feedback
+            </p>
             <div className={`${styles.grid_requests} ${styles.grid_titles}`}>
               <p className={`${styles.grid_title} ${styles.grid_title__start}`}>
                 Projectnaam
               </p>
-              <p className={styles.grid_title}>Type</p>
+              <p className={`${styles.grid_title} ${styles.grid_title__type}`}>
+                Type
+              </p>
               <p className={styles.grid_title}>Motivatie</p>
             </div>
             {feedbackRequests.map((feedback) => (
               <div
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
-                <img
-                  class
-                  className={styles.grid_image}
-                  src="../../../assets/images/pending_state.svg"
-                />
-                <p className={styles.grid_bold}>{feedback.project.title}</p>
-                <div className={styles.grid_item}>
+                <div className={styles.pending}>
+                  {" "}
+                  <img
+                    class
+                    className={styles.grid_image__pending}
+                    src="../../../assets/images/pending_state.svg"
+                  />
+                  <p className={styles.grid_image_pending__text}>
+                    In afwachting
+                  </p>
+                </div>
+                <div className={styles.flex_mobile}>
+                  <p
+                    className={`${styles.grid_bold}  ${styles.grid_item__title}`}
+                  >
+                    {feedback.project.title}
+                  </p>
+                  <div
+                    className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden} ${styles.grid_item__type__hidden__requests}`}
+                  >
+                    <img
+                      src={`../../../../assets/images/type_${feedback.type.toLowerCase()}.svg`}
+                      alt={feedback.type}
+                      className={styles.grid_item__image}
+                    />
+                    <p className={styles.grid_text}>{feedback.type}</p>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.grid_item} ${styles.grid_item__mobile}`}
+                >
+                  <img
+                    src={`../../../../assets/images/type_${feedback.type.toLowerCase()}.svg`}
+                    alt={feedback.type}
+                    className={styles.grid_item__image}
+                  />
                   <p className={styles.grid_text}>{feedback.type}</p>
                 </div>
                 <p
@@ -309,7 +376,9 @@ const Requests = ({ props, user, feedbacks }) => {
                 >
                   "{feedback.motivation}"
                 </p>
-                <div className={styles.buttons}>
+                <div
+                  className={`${styles.buttons} ${styles.grid_item__buttons}`}
+                >
                   <div className={styles.feedback_button}>
                     <button
                       className={styles.input_submit}

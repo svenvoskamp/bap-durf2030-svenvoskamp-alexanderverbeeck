@@ -658,7 +658,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                     className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden}`}
                   >
                     <img
-                      src={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}.svg`}
+                      src={`../../../../assets/images/type_${feedback.type.toLowerCase()}.svg`}
                       alt={feedback.type}
                       className={styles.grid_item__image}
                     />
@@ -669,7 +669,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   className={`${styles.grid_item} ${styles.grid_item__mobile}`}
                 >
                   <img
-                    src={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}.svg`}
+                    src={`../../../../assets/images/type_${feedback.type.toLowerCase()}.svg`}
                     alt={feedback.type}
                     className={styles.grid_item__image}
                   />
