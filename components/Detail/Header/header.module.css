@@ -5,7 +5,7 @@
 
 .project_tags {
   display: flex;
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
   color: beigeColor;
   margin-bottom: 1rem;
 }
@@ -23,12 +23,12 @@
 /* Info Project */
 
 .title {
-  composes: title from '../../../css/typo.module.css';
+  composes: title from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: titleOutline from '../../../css/typo.module.css';
+  composes: titleOutline from "../../../css/typo.module.css";
 }
 
 /* Project Subtitles */
@@ -76,22 +76,85 @@
 }
 
 .info_light {
-  composes: smallCapsLight from '../../../css/typo.module.css';
+  composes: smallCapsLight from "../../../css/typo.module.css";
 }
 
 .info_bold {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
 }
 
 /* Project Description */
 
 .description_bold {
-  composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
   color: #3b4045;
   margin-bottom: 2rem;
 }
 
 .description_light {
-  composes: text from '../../../css/typo.module.css';
+  composes: text from "../../../css/typo.module.css";
   color: #3b4045;
+}
+
+.extra_mobile {
+  display: none;
+}
+
+@media screen and (max-width: 850px) {
+  .project {
+    margin-bottom: 5rem;
+  }
+
+  .extra_mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Extra Tagline */
+
+  .extra_tagline {
+    position: relative;
+  }
+
+  .tagline_text {
+    composes: mediumTitle from "../../../css/typo.module.css";
+    position: relative;
+    margin: 7.5rem 0 3rem 0;
+  }
+
+  .tagline_image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .extra_image {
+    border: 0.3rem solid blueColor;
+    position: relative;
+    width: 70%;
+    height: 30vh;
+    margin: 0 auto;
+  }
+
+  .extra_image:after {
+    content: "";
+    position: absolute;
+    display: block;
+    background: beigeColor;
+    border-radius: inherit;
+    border: inherit;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .project_image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
 }

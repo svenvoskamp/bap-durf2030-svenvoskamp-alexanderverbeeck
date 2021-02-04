@@ -9,26 +9,50 @@
 }
 
 .needs_title {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
   margin-bottom: 3rem;
 }
 
 .needs_provided {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
 }
 
 .needs_provided__light {
-  composes: smallCapsLight from '../../../css/typo.module.css';
+  composes: smallCapsLight from "../../../css/typo.module.css";
   padding-right: 0.5rem;
 }
 
 .needs_list {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  overflow-y: visible;
+  height: 17.5rem;
+  cursor: grabbing;
+  scroll-snap-type: x mandatory;
+}
+.needs_list::-webkit-scrollbar {
+  width: 50%;
+  height: 0.3rem;
+}
+
+.needs_list::-webkit-scrollbar-track {
+  background-color: #e5d6c0;
+}
+
+.needs_list::-webkit-scrollbar-thumb {
+  background-color: blueColor;
+}
+
+.needs_list::-webkit-scrollbar:vertical {
+  display: none;
 }
 
 .need {
   position: relative;
+  width: 30rem;
+  scroll-snap-align: start;
 }
 
 .needs_text {
@@ -40,13 +64,14 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-right: 7rem;
+  /* margin-right: 7rem; */
   position: relative;
   align-items: center;
+  width: 18rem;
 }
 
 .need_item__text {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
@@ -68,7 +93,7 @@
 }
 
 .needs_item__image:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -84,17 +109,17 @@
 
 .need_button {
   position: absolute;
-  right: -2rem;
+  right: 0;
   z-index: 3;
-  bottom: -2rem;
+  bottom: -2.5rem;
 }
 
 .button {
-  composes: smallButton from '../../../css/buttons.module.css';
+  composes: smallButton from "../../../css/buttons.module.css";
 }
 
 .circle_button {
-  composes: smallCircleButton from '../../../css/buttons.module.css';
+  composes: smallCircleButton from "../../../css/buttons.module.css";
   transition: none;
 }
 
@@ -107,7 +132,7 @@
 }
 
 .button_image {
-  composes: smallButtonImage from '../../../css/buttons.module.css';
+  composes: smallButtonImage from "../../../css/buttons.module.css";
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -129,7 +154,7 @@
   height: 100%;
   background-color: transparent;
   border: none;
-  composes: empty from '../../../css/typo.module.css';
+  composes: empty from "../../../css/typo.module.css";
 }
 
 .motivation {
@@ -142,7 +167,7 @@
 }
 
 .motivation:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -169,11 +194,11 @@
 }
 
 .motivation_button {
-  composes: button from '../../../css/buttons.module.css';
+  composes: button from "../../../css/buttons.module.css";
 }
 
 .motivation_circle__button {
-  composes: circleButton from '../../../css/buttons.module.css';
+  composes: circleButton from "../../../css/buttons.module.css";
   transition: none;
 }
 
@@ -182,7 +207,7 @@
 }
 
 .motivation_button__image {
-  composes: buttonImage from '../../../css/buttons.module.css';
+  composes: buttonImage from "../../../css/buttons.module.css";
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -197,7 +222,7 @@
 }
 
 .button_arrow {
-  composes: buttonBack from '../../../css/buttons.module.css';
+  composes: buttonBack from "../../../css/buttons.module.css";
   cursor: pointer;
 }
 
@@ -206,5 +231,18 @@
 }
 
 .back_text {
-  composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
+}
+
+@media screen and (max-width: 850px) {
+  .needs_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow: scroll;
+    height: 100%;
+    cursor: grabbing;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 5rem;
+  }
 }

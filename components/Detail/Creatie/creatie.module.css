@@ -113,3 +113,26 @@
   z-index: -1;
   transition: all 0.2s ease-in-out;
 }
+
+@media screen and (max-width: 850px) {
+  .feedback_timeline {
+    display: flex;
+    height: unset;
+    flex-direction: column;
+    padding: 10rem 0;
+  }
+
+  .timeline {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .timeline_line {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: blueColor;
+    width: 0.3rem;
+    left: 50%;
+  }
+}

@@ -1,5 +1,5 @@
-import React from 'react';
-import style from './header.module.css';
+import React from "react";
+import style from "./header.module.css";
 
 const Header = ({ props }) => {
   return (
@@ -23,28 +23,28 @@ const Header = ({ props }) => {
           </h1>
           <div className={style.project_subtitles}>
             <div className={`${style.info_phase} ${style.info_item}`}>
-              {props.phase.phase == 'Conceptvoorstel' && (
+              {props.phase.phase == "Conceptvoorstel" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_concept}`}
                   ></div>
                 </>
               )}
-              {props.phase.phase == 'Co-creatie' && (
+              {props.phase.phase == "Co-creatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_creatie}`}
                   ></div>
                 </>
               )}
-              {props.phase.phase == 'Crowdfunding' && (
+              {props.phase.phase == "Crowdfunding" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_crowdfunding}`}
                   ></div>
                 </>
               )}
-              {props.phase.phase == 'Realisatie' && (
+              {props.phase.phase == "Realisatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_realisatie}`}
@@ -69,6 +69,24 @@ const Header = ({ props }) => {
                 </p>
               </div>
             )}
+          </div>
+        </div>
+        <div className={style.extra_mobile}>
+          <div className={style.extra_image}>
+            <img
+              className={style.project_image}
+              src={props.image}
+              alt={props.title}
+              loading="lazy"
+            />
+          </div>
+          <div classname={style.extra_tagline}>
+            <p className={style.tagline_text}>"{props.tagline}"</p>
+            <img
+              className={style.tagline_image}
+              src="../assets/images/quotes.svg"
+              alt="upload hier"
+            />
           </div>
         </div>
         <div className={style.project_description}>

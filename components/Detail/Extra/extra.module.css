@@ -69,3 +69,13 @@
 .extra_button__arrow {
   margin-left: 5rem;
 }
+
+@media screen and (max-width: 850px) {
+  .project_extra {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+  }
+}
