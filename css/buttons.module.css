@@ -125,7 +125,13 @@
   border-radius: 50%;
   display: block;
   padding: 0.6rem 0.8rem;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.miniCircleButton img {
   width: 100%;
+  height: 100%;
 }
 
 .miniCircleButton:after {
@@ -166,6 +172,25 @@
   background-color: transparent;
   border: none;
   padding: 0.5rem;
+}
+
+@media screen and (max-width: 850px) {
+  .miniButton {
+    border: none;
+    background-color: transparent;
+    display: inline-block;
+  }
+
+  .miniCircleButton {
+    background-color: yellowColor;
+    border: 0.2rem solid blueColor;
+    position: relative;
+    border-radius: 50%;
+    display: block;
+    padding: 0.6rem 0.8rem;
+    width: 4.5rem;
+    height: 4.5rem;
+  }
 }
 
 @media screen and (max-width: 550px) {

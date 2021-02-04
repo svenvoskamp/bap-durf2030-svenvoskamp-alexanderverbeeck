@@ -83,7 +83,7 @@ const Creatie = ({ props, user }) => {
   };
   return (
     <div className={style.timeline}>
-      {props.projects[0].phase.phase == "Co-creatie" && (
+      {props.projects[0].phase.phase != "Crowdfunding" && (
         <form className={style.form_feedback} onSubmit={handleSubmit}>
           <div className={style.feedback}>
             {currentIndex == 0 && (

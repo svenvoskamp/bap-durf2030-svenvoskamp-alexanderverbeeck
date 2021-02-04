@@ -1,9 +1,9 @@
-import React from 'react';
-import style from './requests.module.css';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import Empty from '../../Empty/Empty';
-import styles from '../../../css/profile.module.css';
+import React from "react";
+import style from "./requests.module.css";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import Empty from "../../Empty/Empty";
+import styles from "../../../css/profile.module.css";
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed($id: Int!, $provided: Boolean!, $pending: Boolean) {
@@ -219,108 +219,118 @@ const Requests = ({ props, user, feedbacks }) => {
   return (
     <>
       {requests.length < 1 && feedbackRequests.length < 1 && (
-        <Empty props={'inafwachting'} />
+        <Empty props={"inafwachting"} />
       )}
 
       {requests.length > 0 && (
         <>
-          <div className={`${styles.grid_requests} ${styles.grid_titles}`}>
-            <p className={`${styles.grid_title} ${styles.grid_title__start}`}>
-              Projectnaam
-            </p>
-            <p className={styles.grid_title}>Type</p>
-            <p className={styles.grid_title}>Motivatie</p>
-          </div>
-          {requests.map((need) => (
-            <div
-              className={`${styles.grid_items} ${styles.grid_requests__items}`}
-            >
-              <img
-                class
-                className={styles.grid_image}
-                src="../../../assets/images/pending_state.svg"
-              />
-              <p className={styles.grid_bold}>{need.project.title}</p>
-              <div className={styles.grid_item}>
-                <img
-                  src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
-                  alt={need.type}
-                  className={styles.grid_item__image}
-                />
-                <p className={styles.grid_text}>{need.need}</p>
-              </div>
-              <p className={`${styles.grid_text} ${styles.grid_text__italic}`}>
-                "{need.motivation}"
+          <div className={`${styles.subdivision} `}>
+            <p className={styles.subtitle}>Feedback</p>
+            <div className={`${styles.grid_requests} ${styles.grid_titles}`}>
+              <p className={`${styles.grid_title} ${styles.grid_title__start}`}>
+                Projectnaam
               </p>
-              <div className={styles.buttons}>
-                <div className={styles.need_button}>
-                  <button
-                    className={styles.input_submit}
-                    onClick={(e) => handleClick(e, need)}
-                  >
-                    <div className={styles.button}>
-                      <div
-                        className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
-                      >
-                        <img
-                          className={styles.button_image}
-                          src="../../../assets/buttons/decline_icon.svg"
-                        />
+              <p className={styles.grid_title}>Type</p>
+              <p className={styles.grid_title}>Motivatie</p>
+            </div>
+            {requests.map((need) => (
+              <div
+                className={`${styles.grid_items} ${styles.grid_requests__items}`}
+              >
+                <img
+                  class
+                  className={styles.grid_image}
+                  src="../../../assets/images/pending_state.svg"
+                />
+                <p className={styles.grid_bold}>{need.project.title}</p>
+                <div className={styles.grid_item}>
+                  <img
+                    src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                    alt={need.type}
+                    className={styles.grid_item__image}
+                  />
+                  <p className={styles.grid_text}>{need.need}</p>
+                </div>
+                <p
+                  className={`${styles.grid_text} ${styles.grid_text__italic}`}
+                >
+                  "{need.motivation}"
+                </p>
+                <div className={styles.buttons}>
+                  <div className={styles.need_button}>
+                    <button
+                      className={styles.input_submit}
+                      onClick={(e) => handleClick(e, need)}
+                    >
+                      <div className={styles.button}>
+                        <div
+                          className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
+                        >
+                          <img
+                            className={styles.button_image}
+                            src="../../../assets/buttons/decline_icon.svg"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </button>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </>
       )}
       {feedbackRequests.length > 0 && (
         <>
-          <div className={`${styles.grid_requests} ${styles.grid_titles}`}>
-            <p className={`${styles.grid_title} ${styles.grid_title__start}`}>
-              Projectnaam
-            </p>
-            <p className={styles.grid_title}>Type</p>
-            <p className={styles.grid_title}>Motivatie</p>
-          </div>
-          {feedbackRequests.map((feedback) => (
-            <div
-              className={`${styles.grid_items} ${styles.grid_requests__items}`}
-            >
-              <img
-                class
-                className={styles.grid_image}
-                src="../../../assets/images/pending_state.svg"
-              />
-              <p className={styles.grid_bold}>{feedback.project.title}</p>
-              <div className={styles.grid_item}>
-                <p className={styles.grid_text}>{feedback.type}</p>
-              </div>
-              <p className={`${styles.grid_text} ${styles.grid_text__italic}`}>
-                "{feedback.motivation}"
+          <div className={`${styles.subdivision} `}>
+            <p className={styles.subtitle}>Benodigdheden</p>
+            <div className={`${styles.grid_requests} ${styles.grid_titles}`}>
+              <p className={`${styles.grid_title} ${styles.grid_title__start}`}>
+                Projectnaam
               </p>
-              <div className={styles.buttons}>
-                <div className={styles.feedback_button}>
-                  <button
-                    className={styles.input_submit}
-                    onClick={(e) => handleFeedback(e, feedback)}
-                  >
-                    <div className={styles.button}>
-                      <div
-                        className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
-                      >
-                        <img
-                          className={styles.button_image}
-                          src="../../../assets/buttons/decline_icon.svg"
-                        />
+              <p className={styles.grid_title}>Type</p>
+              <p className={styles.grid_title}>Motivatie</p>
+            </div>
+            {feedbackRequests.map((feedback) => (
+              <div
+                className={`${styles.grid_items} ${styles.grid_requests__items}`}
+              >
+                <img
+                  class
+                  className={styles.grid_image}
+                  src="../../../assets/images/pending_state.svg"
+                />
+                <p className={styles.grid_bold}>{feedback.project.title}</p>
+                <div className={styles.grid_item}>
+                  <p className={styles.grid_text}>{feedback.type}</p>
+                </div>
+                <p
+                  className={`${styles.grid_text} ${styles.grid_text__italic}`}
+                >
+                  "{feedback.motivation}"
+                </p>
+                <div className={styles.buttons}>
+                  <div className={styles.feedback_button}>
+                    <button
+                      className={styles.input_submit}
+                      onClick={(e) => handleFeedback(e, feedback)}
+                    >
+                      <div className={styles.button}>
+                        <div
+                          className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
+                        >
+                          <img
+                            className={styles.button_image}
+                            src="../../../assets/buttons/decline_icon.svg"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </button>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </>
       )}
     </>

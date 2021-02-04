@@ -6,12 +6,12 @@
 }
 
 .title {
-  composes: largeTitleOutline from '../../../css/typo.module.css';
+  composes: largeTitleOutline from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from '../../../css/typo.module.css';
+  composes: largeTitle from "../../../css/typo.module.css";
 }
 
 .description {
@@ -20,11 +20,11 @@
 }
 
 .description_text {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
 }
 
 .description_text__outline {
-  composes: mediumTitleOutline from '../../../css/typo.module.css';
+  composes: mediumTitleOutline from "../../../css/typo.module.css";
 }
 
 .description_div {
@@ -33,4 +33,10 @@
   background-color: blueColor;
   border-radius: 50%;
   margin: 0 2rem;
+}
+
+@media screen and (max-width: 850px) {
+  .part_header {
+    padding: 0 2rem;
+  }
 }

@@ -378,26 +378,28 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
           )}
 
           {projectNotifications.map((project) => (
-            <div className={`${styles.subdivision} `}>
+            <div className={`${styles.subdivision}`}>
               <p className={styles.subtitle}>Projectupdates</p>
-              <p className={styles.grid_bold}>Gefeliciteerd!</p>
-              <p className={styles.grid_text}>
-                Je hebt de crowdfundingsfase behaald! Om deze fase te starten
-                moet je de donatierewards invullen voor{" "}
-                <span className={styles.grid_bold}>“{project.title}”</span>.
-              </p>
-              {currentProject == "" && (
-                <div className={style.project_buttons}>
-                  <div className={style.project_button}>
-                    <button
-                      onClick={(e) => setCurrentProject(project)}
-                      className={`${style.button} scale`}
-                    >
-                      Invullen
-                    </button>
+              <div className={`${styles.project_update}`}>
+                <p className={styles.grid_bold}>Gefeliciteerd!</p>
+                <p className={styles.grid_text}>
+                  Je kan van start met de crowdfunding van je project{" "}
+                  <span className={styles.grid_bold}>“{project.title}”</span>!
+                  Om deze fase te starten moet je de donatierewards invullen .
+                </p>
+                {currentProject == "" && (
+                  <div className={style.project_buttons}>
+                    <div className={style.project_button}>
+                      <button
+                        onClick={(e) => setCurrentProject(project)}
+                        className={`${style.button} scale`}
+                      >
+                        Invullen
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -487,11 +489,17 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               className={`${styles.grid_notifications} ${styles.grid_titles}`}
             >
               <p className={`${styles.grid_title} ${styles.grid_title__left}`}>
-                Projectnaam
+                Project
               </p>
-              <p className={styles.grid_title}>Type</p>
-              <p className={styles.grid_title}>Durver</p>
-              <p className={styles.grid_title}>Motivatie</p>
+              <p className={`${styles.grid_title} ${styles.grid_title__type}`}>
+                Type
+              </p>
+              <p
+                className={`${styles.grid_title} ${styles.grid_title__durver}`}
+              >
+                Durver
+              </p>
+              <p className={`${styles.grid_title}`}>Motivatie</p>
               <p className={`${styles.grid_title} ${styles.grid_title__end}`}>
                 Akkoord
               </p>
@@ -500,10 +508,26 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               <div
                 className={`${styles.grid_items} ${styles.grid_notifications__items}`}
               >
-                <p className={`${styles.grid_bold} ${styles.grid_bold__title}`}>
-                  {need.project.title}
-                </p>
-                <div className={styles.grid_item}>
+                <div className={styles.flex_mobile}>
+                  <p
+                    className={`${styles.grid_bold} ${styles.grid_bold__title} ${styles.grid_item__title}`}
+                  >
+                    {need.project.title}
+                  </p>
+                  <div
+                    className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden}`}
+                  >
+                    <img
+                      src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                      alt={need.type}
+                      className={styles.grid_item__image}
+                    />
+                    <p className={styles.grid_text}>{need.need}</p>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.grid_item} ${styles.grid_item__mobile}`}
+                >
                   <img
                     src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
                     alt={need.type}
@@ -511,15 +535,26 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   />
                   <p className={styles.grid_text}>{need.need}</p>
                 </div>
-                <p className={styles.grid_text}>
+                <p
+                  className={`${styles.grid_text} ${styles.grid_item__mobile}`}
+                >
                   {need.otheruser.first_name} {need.otheruser.last_name}
                 </p>
-                <p
-                  className={`${styles.grid_text} ${styles.grid_text__italic}`}
+                <div className={styles.flex_mobile}>
+                  <p
+                    className={`${styles.grid_text} ${styles.grid_item__hidden} ${styles.grid_item__name__hidden}`}
+                  >
+                    {need.otheruser.first_name} {need.otheruser.last_name}
+                  </p>
+                  <p
+                    className={`${styles.grid_text} ${styles.grid_text__italic}`}
+                  >
+                    "{need.motivation}"
+                  </p>
+                </div>
+                <div
+                  className={`${styles.buttons} ${styles.grid_item__buttons}`}
                 >
-                  "{need.motivation}"
-                </p>
-                <div className={styles.buttons}>
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
@@ -575,10 +610,18 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             <div
               className={`${styles.grid_notifications} ${styles.grid_titles}`}
             >
-              <p className={styles.grid_title}>Projectnaam</p>
-              <p className={styles.grid_title}>Type</p>
-              <p className={styles.grid_title}>Durver</p>
-              <p className={styles.grid_title}>Motivatie</p>
+              <p className={`${styles.grid_title} ${styles.grid_title__left}`}>
+                Project
+              </p>
+              <p className={`${styles.grid_title} ${styles.grid_title__type}`}>
+                Type
+              </p>
+              <p
+                className={`${styles.grid_title} ${styles.grid_title__durver}`}
+              >
+                Durver
+              </p>
+              <p className={`${styles.grid_title}`}>Motivatie</p>
               <p className={`${styles.grid_title} ${styles.grid_title__end}`}>
                 Akkoord
               </p>
@@ -587,19 +630,54 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               <div
                 className={`${styles.grid_items} ${styles.grid_notifications__items}`}
               >
-                <p className={styles.grid_bold}>{feedback.project.title}</p>
-                <div className={styles.grid_item}>
+                <div className={styles.flex_mobile}>
+                  <p
+                    className={`${styles.grid_bold} ${styles.grid_bold__title} ${styles.grid_item__title}`}
+                  >
+                    {feedback.project.title}
+                  </p>
+                  <div
+                    className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden}`}
+                  >
+                    <img
+                      src={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}.svg`}
+                      alt={feedback.type}
+                      className={styles.grid_item__image}
+                    />
+                    <p className={styles.grid_text}>{feedback.type}</p>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.grid_item} ${styles.grid_item__mobile}`}
+                >
+                  <img
+                    src={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}.svg`}
+                    alt={feedback.type}
+                    className={styles.grid_item__image}
+                  />
                   <p className={styles.grid_text}>{feedback.type}</p>
                 </div>
-                <p className={styles.grid_text}>
+                <p
+                  className={`${styles.grid_text} ${styles.grid_item__mobile}`}
+                >
                   {feedback.otheruser.first_name} {feedback.otheruser.last_name}
                 </p>
-                <p
-                  className={`${styles.grid_text} ${styles.grid_text__italic}`}
+                <div className={styles.flex_mobile}>
+                  <p
+                    className={`${styles.grid_text} ${styles.grid_item__hidden} ${styles.grid_item__name__hidden}`}
+                  >
+                    {feedback.otheruser.first_name}{" "}
+                    {feedback.otheruser.last_name}
+                  </p>
+                  <p
+                    className={`${styles.grid_text} ${styles.grid_text__italic}`}
+                  >
+                    "{feedback.motivation}"
+                  </p>
+                </div>
+                <div
+                  className={`${styles.buttons} ${styles.grid_item__buttons}`}
                 >
-                  "{feedback.motivation}"
-                </p>
-                <div className={styles.buttons}>
                   {/* <button onClick={(e) => handleClick(e, 'v', need)}>V</button> */}
 
                   <div className={styles.need_button}>
