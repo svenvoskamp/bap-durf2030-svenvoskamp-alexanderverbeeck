@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./creatie.module.css";
 import styles from "../../../css/detail.module.css";
 import gql from "graphql-tag";
-import crowdfundingstyle from "./feedback/feedback.module.css";
+// import crowdfundingstyle from "./feedback/feedback.module.css";
 import { useMutation } from "@apollo/react-hooks";
 import Feedback from "./Feedback/Feedback";
 
