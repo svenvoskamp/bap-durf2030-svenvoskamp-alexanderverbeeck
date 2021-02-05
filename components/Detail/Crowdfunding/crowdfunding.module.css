@@ -14,12 +14,16 @@
   display: flex;
 }
 
+.error {
+  color: redColor;
+}
+
 .part_title {
   margin-right: 10rem;
 }
 
 .title {
-  composes: largeTitleOutline from "../../../css/typo.module.css";
+  composes: largeTitleOutline from '../../../css/typo.module.css';
   margin-bottom: 1rem;
   -webkit-text-stroke: 0.3rem beigeColor;
   text-stroke: 0.3rem beigeColor;
@@ -28,7 +32,7 @@
 }
 
 .title_outline {
-  composes: largeTitle from "../../../css/typo.module.css";
+  composes: largeTitle from '../../../css/typo.module.css';
   -webkit-text-stroke: 0.3rem beigeColor;
   text-stroke: 0.3rem beigeColor;
   -webkit-text-fill-color: transparent;
@@ -36,7 +40,7 @@
 }
 
 .title_description {
-  composes: semiBold from "../../../css/typo.module.css";
+  composes: semiBold from '../../../css/typo.module.css';
   color: beigeColor;
 }
 
@@ -82,7 +86,7 @@
 }
 
 .crowdfunding_number {
-  composes: number from "../../../css/typo.module.css";
+  composes: number from '../../../css/typo.module.css';
   -webkit-text-stroke: 0.25rem beigeColor;
   text-stroke: 0.25rem beigeColor;
   -webkit-text-fill-color: transparent;
@@ -107,7 +111,7 @@
 }
 
 .crowdfunding_value {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
   background-color: greenColor;
   border: 0.2rem solid blueColor;
   position: relative;
@@ -118,7 +122,7 @@
 }
 
 .crowdfunding_value:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -142,7 +146,7 @@
 }
 
 .button_back__crowdfunding {
-  composes: buttonBack from "../../../css/buttons.module.css";
+  composes: buttonBack from '../../../css/buttons.module.css';
 }
 
 .form_card__crowdfunding__input {
@@ -151,7 +155,7 @@
 }
 
 .form_option__text__crowdfunding {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
 }
 
 .input {
@@ -160,7 +164,7 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   padding: 0.2rem 0.5rem;
   color: beigeColor;
   width: 25rem;
@@ -168,7 +172,7 @@
   text-align: center;
 }
 
-.input[type="number"]::-webkit-inner-spin-button {
+.input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
@@ -178,7 +182,7 @@
   position: relative;
   background-color: blueColor;
   color: beigeColor;
-  composes: text from "../../../css/typo.module.css";
+  composes: text from '../../../css/typo.module.css';
 }
 
 .crowdfunding_timeline {

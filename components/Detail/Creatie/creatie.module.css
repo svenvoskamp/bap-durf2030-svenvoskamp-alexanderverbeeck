@@ -8,6 +8,10 @@
   padding: 10rem 0;
 }
 
+.error {
+  color: redColor;
+}
+
 .timeline {
   position: relative;
   display: flex;
@@ -44,7 +48,7 @@
 }
 
 .form_card:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -59,12 +63,12 @@
 }
 
 .form_title {
-  composes: bold from "../../../css/typo.module.css";
+  composes: bold from '../../../css/typo.module.css';
   margin-bottom: 1rem;
 }
 
 .form_number {
-  composes: number from "../../../css/typo.module.css";
+  composes: number from '../../../css/typo.module.css';
 }
 
 .form_card__one {
@@ -93,7 +97,7 @@
 .form_input {
   border: none;
   background-color: transparent;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   height: 15.5rem;
   width: 45rem;
   resize: none;
@@ -107,7 +111,7 @@
 }
 
 .button_voorzien:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -193,7 +197,7 @@
 }
 
 .locked_card:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -212,22 +216,22 @@
 }
 
 .locked_text {
-  composes: mediumTitle from "../../../css/typo.module.css";
+  composes: mediumTitle from '../../../css/typo.module.css';
 }
 
 .locked_date {
-  composes: smallText from "../../../css/typo.module.css";
+  composes: smallText from '../../../css/typo.module.css';
   text-align: center;
   margin-top: 0.5rem;
 }
 
 .locked_type {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
   text-align: center;
 }
 
 .timeline_title {
-  composes: mediumTitleOutline from "../../../css/typo.module.css";
+  composes: mediumTitleOutline from '../../../css/typo.module.css';
   display: none;
 }
 
@@ -297,7 +301,7 @@
   }
 
   .timeline_title {
-    composes: mediumTitleOutline from "../../../css/typo.module.css";
+    composes: mediumTitleOutline from '../../../css/typo.module.css';
     display: flex;
     padding: 0 1rem;
     margin-top: 2rem;

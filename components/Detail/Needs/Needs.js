@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import style from './needs.module.css';
 import { useFetchUser } from '../../../lib/user';
 import { useQuery, useMutation } from '@apollo/react-hooks';
@@ -130,10 +130,19 @@ const Needs = ({ needs, user, props }) => {
   const [needsForm, setNeedsForm] = useState(false);
   const [selectedNeed, setSelectedNeed] = useState('');
   const [motivation, setMotivation] = useState('');
+  const refNeed = useRef();
   const router = useRouter();
 
   const goBack = () => {
     setNeedsForm(false);
+  };
+
+  const handleValidation = () => {
+    if (motivation == '') {
+      refNeed.current.innerHTML = `Gelieve een motivatie in te vullen`;
+    } else {
+      refNeed.current.innerHTML = ``;
+    }
   };
 
   const handleClick = (need) => {
@@ -321,6 +330,7 @@ const Needs = ({ needs, user, props }) => {
                     Leg de projecteigenaar uit hoe je {selectedNeed.need} wilt
                     voorzien{' '}
                   </p>
+                  <p className={style.error} ref={refNeed}></p>
                   <div className={style.button_back}>
                     <button
                       className={`${style.button_arrow} scale`}
@@ -356,6 +366,7 @@ const Needs = ({ needs, user, props }) => {
                     type="submit"
                     value="submit"
                     id="button"
+                    onClick={handleValidation}
                   />
                   <div className={style.motivation_button}>
                     <div className={style.motivation_circle__button}>
