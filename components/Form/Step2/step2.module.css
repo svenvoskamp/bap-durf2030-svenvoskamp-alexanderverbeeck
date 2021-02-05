@@ -1,11 +1,15 @@
 @value tokens: "../../../css/tokens.module.css";
-@value blueColor, yellowColor from tokens;
+@value blueColor, yellowColor, redColor from tokens;
 
 .part {
   composes: view from '../../../css/layout.module.css';
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.error {
+  color: redColor;
 }
 
 .title {

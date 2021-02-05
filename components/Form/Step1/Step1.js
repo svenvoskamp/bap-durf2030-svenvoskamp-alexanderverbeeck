@@ -17,8 +17,37 @@ const Step1 = ({
   setDepartment,
   setCurrentIndex,
 }) => {
+  const refWho = useRef();
+  const refFirstName = useRef();
+  const refLastName = useRef();
+  const refSectorOne = useRef();
+  const refCompanyName = useRef();
+  const refDepartment = useRef();
+  const refSectorTwo = useRef();
+
   const handleIndividuClick = (e) => {
+    console.log(sector);
     e.preventDefault();
+    if (company == 'not') {
+      refWho.current.innerHTML = `Gelieve een keus te maken`;
+    } else {
+      refWho.current.innerHTML = ``;
+    }
+    if (firstName == '') {
+      refFirstName.current.innerHTML = `Gelieve een voornaam in te vullen`;
+    } else {
+      refFirstName.current.innerHTML = ``;
+    }
+    if (lastName == '') {
+      refLastName.current.innerHTML = `Gelieve een achternaam in te vullen`;
+    } else {
+      refLastName.current.innerHTML = ``;
+    }
+    if (sector == '') {
+      refSectorOne.current.innerHTML = `Gelieve een sector in te vullen`;
+    } else {
+      refSectorOne.current.innerHTML = ``;
+    }
     if (firstName !== '' && lastName !== '' && sector !== '') {
       setCurrentIndex(1);
     }
@@ -26,6 +55,26 @@ const Step1 = ({
 
   const handleCompanyClick = (e) => {
     e.preventDefault();
+    if (company == 'not') {
+      refWho.current.innerHTML = `Gelieve een keus te maken`;
+    } else {
+      refWho.current.innerHTML = ``;
+    }
+    if (companyName == '') {
+      refCompanyName.current.innerHTML = `Gelieve een bedrijfsnaam in te vullen`;
+    } else {
+      refCompanyName.current.innerHTML = ``;
+    }
+    if (department == '') {
+      refDepartment.current.innerHTML = `Gelieve een afdeling in te vullen`;
+    } else {
+      refDepartment.current.innerHTML = ``;
+    }
+    if (sector == '') {
+      refSectorTwo.current.innerHTML = `Gelieve een sector in te vullen`;
+    } else {
+      refSectorTwo.current.innerHTML = ``;
+    }
     if (companyName !== '' && department !== '' && sector !== '') {
       setCurrentIndex(1);
     }
@@ -42,6 +91,7 @@ const Step1 = ({
           <p className={style.title_description}>
             Kies hoe je je wilt registreren als durver.
           </p>
+          <p className={style.error} ref={refWho}></p>
         </div>
         <div className={style.part_content}>
           <div className={style.individu}>
@@ -102,6 +152,13 @@ const Step1 = ({
               <p className={style.checkbox_text}>Bedrijf/Organisatie</p>
             </label>
           </div>
+          {company == 'not' && (
+            <>
+              <div>
+                <p>Selecteer een optie</p>
+              </div>
+            </>
+          )}
           {company == false && (
             <>
               <div className={style.form}>
@@ -110,6 +167,7 @@ const Step1 = ({
                   <label htmlFor="firstName" className={style.label}>
                     Voornaam
                   </label>
+                  <p className={style.error} ref={refFirstName}></p>
                   <input
                     required
                     id="firstName"
@@ -126,6 +184,7 @@ const Step1 = ({
                   <label htmlFor="lastName" className={style.label}>
                     Achternaam
                   </label>
+                  <p className={style.error} ref={refLastName}></p>
                   <input
                     required
                     id="lastName"
@@ -142,6 +201,7 @@ const Step1 = ({
                   <label for="sectors" className={style.label}>
                     U bent werkzaam in de sector:{' '}
                   </label>
+                  <p className={style.error} ref={refSectorOne}></p>
                   <select
                     name="sectors"
                     id="sectors"
@@ -149,6 +209,7 @@ const Step1 = ({
                     className={style.input}
                     required
                   >
+                    <option value="">Seleteer een sector</option>
                     <option value="Niet werkzaam">Niet werkzaam</option>
                     <option value="Ambachten">Ambachten</option>
                     <option value="Dans">Dans</option>
@@ -178,6 +239,7 @@ const Step1 = ({
                   <label htmlFor="companyName" className={style.label}>
                     Bedrijfsnaam:
                   </label>
+                  <p className={style.error} ref={refCompanyName}></p>
                   <input
                     required
                     id="companyName"
@@ -194,6 +256,7 @@ const Step1 = ({
                   <label htmlFor="department" className={style.label}>
                     Bedrijfsafdeling:
                   </label>
+                  <p className={style.error} ref={refDepartment}></p>
                   <input
                     required
                     id="department"
@@ -210,6 +273,7 @@ const Step1 = ({
                   <label for="sectors" className={style.label}>
                     Bedrijfssector{' '}
                   </label>
+                  <p className={style.error} ref={refSectorTwo}></p>
                   <select
                     name="sectors"
                     id="sectors"
@@ -217,6 +281,7 @@ const Step1 = ({
                     onChange={(e) => setSector(e.currentTarget.value)}
                     className={style.input}
                   >
+                    <option value="">Seleteer een sector</option>
                     <option value="Ambachten">Ambachten</option>
                     <option value="Dans">Dans</option>
                     <option value="Design">Design</option>

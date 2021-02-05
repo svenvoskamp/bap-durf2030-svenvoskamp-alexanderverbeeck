@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import style from "./needs.module.css";
-import { useFetchUser } from "../../../lib/user";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { useRouter } from "next/router";
-import gql from "graphql-tag";
-import Loading from "../../Loading/Loading";
-import Mouse from "../../Mouse";
+import React, { useState } from 'react';
+import style from './needs.module.css';
+import { useFetchUser } from '../../../lib/user';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useRouter } from 'next/router';
+import gql from 'graphql-tag';
+import Loading from '../../Loading/Loading';
+import Mouse from '../../Mouse';
 
 const UPDATE_NEED = gql`
   mutation update_need(
@@ -128,8 +128,8 @@ const GET_PROJECT_BY_ID = gql`
 const Needs = ({ needs, user, props }) => {
   const [updateNeed] = useMutation(UPDATE_NEED);
   const [needsForm, setNeedsForm] = useState(false);
-  const [selectedNeed, setSelectedNeed] = useState("");
-  const [motivation, setMotivation] = useState("");
+  const [selectedNeed, setSelectedNeed] = useState('');
+  const [motivation, setMotivation] = useState('');
   const router = useRouter();
 
   const goBack = () => {
@@ -139,7 +139,7 @@ const Needs = ({ needs, user, props }) => {
   const handleClick = (need) => {
     console.log(need);
     if (!user) {
-      router.push("/api/login");
+      router.push('/api/login');
     }
     if (user && !user.first_name) {
       router.push(`/register`);
@@ -152,7 +152,7 @@ const Needs = ({ needs, user, props }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (motivation != "") {
+    if (motivation != '') {
       updateNeed({
         variables: {
           id: selectedNeed.id,
@@ -202,7 +202,6 @@ const Needs = ({ needs, user, props }) => {
   const providedNeeds = needs.filter((need) => need.provided);
   return (
     <>
-      <Mouse></Mouse>
       <div className={style.project_needs}>
         <div className={style.needs_header}>
           <p className={style.needs_title}>Durf mee te helpen</p>
@@ -320,7 +319,7 @@ const Needs = ({ needs, user, props }) => {
                 <div className={style.motivation_text}>
                   <p className={style.need_item__text}>
                     Leg de projecteigenaar uit hoe je {selectedNeed.need} wilt
-                    voorzien{" "}
+                    voorzien{' '}
                   </p>
                   <div className={style.button_back}>
                     <button

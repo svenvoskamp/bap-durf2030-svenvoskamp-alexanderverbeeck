@@ -49,4 +49,14 @@ html.has-scroll-init {
     height: unset;
     display: inline-block;
   }
+
+  .has-scroll-smooth .data-scroll-container-detail {
+    min-height: unset;
+  }
+
+  [data-scroll-direction='vertical'] .data-scroll-container-detail {
+    /* white-space: nowrap; */
+    height: unset;
+    z-index: 11;
+  }
 }

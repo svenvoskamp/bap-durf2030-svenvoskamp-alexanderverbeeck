@@ -66,7 +66,7 @@ const Register = ({ props }) => {
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [company, setCompany] = useState('');
+  const [company, setCompany] = useState('not');
   const [companyName, setCompanyName] = useState('');
   const [department, setDepartment] = useState('');
   const [sector, setSector] = useState('');
@@ -76,9 +76,11 @@ const Register = ({ props }) => {
   const [city, setCity] = useState('');
   const [zip, setZip] = useState('');
   const [telephone, setTelephone] = useState('');
+  const streetRef = useRef();
 
   const [updateUser] = useMutation(UPDATE_USER);
   const router = useRouter();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (company == false) {
@@ -153,7 +155,7 @@ const Register = ({ props }) => {
       <Nav user={props}></Nav>
       {!props.first_name && (
         <>
-          <form className={`form`} onSubmit={handleSubmit}>
+          <form className={`form form__register`} onSubmit={handleSubmit}>
             {currentIndex === 0 && (
               <Step1
                 firstName={firstName}
@@ -191,6 +193,7 @@ const Register = ({ props }) => {
                 telephone={telephone}
                 setTelephone={setTelephone}
                 setCurrentIndex={setCurrentIndex}
+                streetRef={streetRef}
               />
             )}
           </form>

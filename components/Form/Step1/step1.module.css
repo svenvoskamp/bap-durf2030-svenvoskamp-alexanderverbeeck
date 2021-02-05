@@ -1,5 +1,5 @@
 @value tokens: "../../../css/tokens.module.css";
-@value blueColor, yellowColor, beigeColor from tokens;
+@value blueColor, yellowColor, beigeColor, redColor from tokens;
 
 .part {
   composes: view from '../../../css/layout.module.css';
@@ -80,6 +80,10 @@
   position: relative;
   background-color: beigeColor;
   cursor: pointer;
+}
+
+.error {
+  color: redColor;
 }
 
 .company_image:after,
