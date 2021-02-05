@@ -80,7 +80,7 @@ const Header = ({ props }) => {
               loading="lazy"
             />
           </div>
-          <div classname={style.extra_tagline}>
+          <div className={style.extra_tagline}>
             <p className={style.tagline_text}>"{props.tagline}"</p>
             <svg
               className={`${

@@ -15,10 +15,15 @@ const Donation = ({ donation }) => {
       <div className={style.donation}>
         <div className={style.donation_icon}>
           <div className={style.icon_circle}>
-            <img
-              className={style.icon_circle__image}
-              src={`../../../../assets/crowdfunding/crowdfunding_icon.svg`}
-            />
+            <picture>
+              <source
+                media="(max-width: 550px)"
+                srcset={`../../../../assets/crowdfunding/crowdfunding_donatie_mobile.svg`}
+              />
+              <img
+                src={`../../../../assets/crowdfunding/crowdfunding_donatie.svg`}
+              />
+            </picture>
           </div>
         </div>
         <li className={style.donation_content}>

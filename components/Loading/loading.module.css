@@ -10,7 +10,16 @@
 }
 
 .loading_text {
-  composes: largeTitleOutline from "../../css/typo.module.css";
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  font-size: 12rem;
+  text-transform: uppercase;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+  letter-spacing: 0.2rem;
   -webkit-text-stroke: 0.4rem #e5d6c0;
   text-stroke: 0.4rem #e5d6c0;
   display: flex;
@@ -44,4 +53,26 @@
 
 .loading_text span:nth-child(3) {
   animation-delay: 0.4s;
+}
+
+@media screen and (max-width: 850px) {
+  .loading_text {
+    font-weight: 900;
+    font-size: 6rem;
+    line-height: 0.9;
+    letter-spacing: 0.2rem;
+    -webkit-text-stroke: 0.3rem #e5d6c0;
+    text-stroke: 0.3rem #e5d6c0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .loading_text {
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 0.9;
+    letter-spacing: 0.2rem;
+    -webkit-text-stroke: 0.2rem #e5d6c0;
+    text-stroke: 0.2rem #e5d6c0;
+  }
 }

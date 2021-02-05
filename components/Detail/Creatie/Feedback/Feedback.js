@@ -18,10 +18,15 @@ const Feedback = ({ feedback }) => {
             style.icon_circle
           } icon-circle--${feedback.type.toLowerCase()} `}
         >
-          <img
-            className={style.icon_circle__image}
-            src={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}.svg`}
-          />
+          <picture>
+            <source
+              media="(max-width: 550px)"
+              srcset={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}_mobile.svg`}
+            />
+            <img
+              src={`../../../../assets/creatie/creatie_${feedback.type.toLowerCase()}.svg`}
+            />
+          </picture>
         </div>
       </div>
       <li className={style.feedback_content}>

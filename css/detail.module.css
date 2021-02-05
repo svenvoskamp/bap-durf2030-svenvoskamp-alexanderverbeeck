@@ -155,9 +155,23 @@
 
   .form_card {
     height: auto;
-    width: 100%;
+    width: auto;
     padding: 0;
     position: relative;
-    margin: 4rem 2rem 4rem 8rem;
+    margin: 4rem 2rem 4rem 7rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .part_project {
+    margin: 0.5rem;
+  }
+
+  .form_card {
+    height: auto;
+    width: auto;
+    padding: 0;
+    position: relative;
+    margin: 4rem 1rem 4rem 5rem;
   }
 }

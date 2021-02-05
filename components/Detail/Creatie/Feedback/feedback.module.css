@@ -42,8 +42,8 @@
   background: inherit;
   border-radius: inherit;
   border: inherit;
-  top: 5%;
-  left: 4%;
+  top: 1rem;
+  left: 1rem;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -190,7 +190,13 @@
   .feedback_card {
     padding: 2rem;
     width: 100%;
-    height: 25vh;
+    height: auto;
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .feedback_content {
+    margin-left: 1rem;
   }
 }

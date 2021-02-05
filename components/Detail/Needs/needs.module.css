@@ -245,4 +245,27 @@
     scroll-snap-type: x mandatory;
     padding-bottom: 5rem;
   }
+
+  .need {
+    position: relative;
+    width: 18rem;
+    scroll-snap-align: start;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .need {
+    width: 16rem;
+  }
+
+  .needs_item__image {
+    border: 0.3rem solid blueColor;
+    width: 8rem;
+    height: 8rem;
+    background-color: beigeColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
 }

@@ -189,4 +189,15 @@
     top: unset;
     left: unset;
   }
+
+  .icon_circle {
+    text-align: center;
+    padding: 1.3rem 1rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .donation_content {
+    margin-left: 1rem;
+  }
 }

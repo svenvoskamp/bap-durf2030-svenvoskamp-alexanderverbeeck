@@ -31,6 +31,7 @@
 
 .extra_image {
   border: 0.3rem solid blueColor;
+  background: beigeColor;
   position: relative;
   width: 100%;
   height: 50vh;
@@ -40,7 +41,7 @@
   content: "";
   position: absolute;
   display: block;
-  background: beigeColor;
+  background: inherit;
   border-radius: inherit;
   border: inherit;
   top: 1.5rem;

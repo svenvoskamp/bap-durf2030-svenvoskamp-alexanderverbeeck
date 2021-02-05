@@ -206,6 +206,7 @@
   .timeline {
     padding: 0;
     margin-right: 0;
+    margin-bottom: 15rem;
   }
 
   .crowdfunding_timeline {
@@ -238,12 +239,12 @@
 @media screen and (max-width: 550px) {
   .timeline_line {
     width: 0.3rem;
-    left: 3rem;
+    left: 2.5rem;
   }
 
   .part_title {
     margin-right: 0;
-    margin-left: 8rem;
+    margin-left: 7rem;
     width: unset;
   }
 
@@ -278,5 +279,11 @@
 
   .crowdfunding_value {
     margin-left: 4.8rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .part_title {
+    margin-left: 5rem;
   }
 }

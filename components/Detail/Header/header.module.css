@@ -118,14 +118,13 @@
 
   .tagline_text {
     composes: mediumTitle from "../../../css/typo.module.css";
-    position: relative;
-    margin: 7.5rem 0 3rem 0;
+    margin-bottom: 3rem;
   }
 
   .tagline_image {
     position: absolute;
-    top: -2rem;
-    left: -2rem;
+    top: -1rem;
+    left: -1rem;
     z-index: -1;
   }
 
@@ -135,6 +134,7 @@
     width: 70%;
     height: 30vh;
     margin: 0 auto;
+    margin-bottom: 5rem;
   }
 
   .extra_image:after {

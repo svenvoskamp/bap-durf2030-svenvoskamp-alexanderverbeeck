@@ -60,6 +60,7 @@
 
 .form_title {
   composes: bold from "../../../css/typo.module.css";
+  margin-bottom: 1rem;
 }
 
 .form_number {
@@ -122,7 +123,8 @@
 
 /* Locked State */
 
-.locked {
+.locked,
+.start {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -224,11 +226,17 @@
   text-align: center;
 }
 
+.timeline_title {
+  composes: mediumTitleOutline from "../../../css/typo.module.css";
+  display: none;
+}
+
 @media screen and (max-width: 850px) {
   .timeline {
-    flex-direction: column-reverse;
+    flex-direction: column;
     padding: 0;
-    margin-top: 10rem;
+    margin: 0;
+    margin-top: 5rem;
   }
 
   .feedback_timeline {
@@ -236,6 +244,7 @@
     height: unset;
     flex-direction: column;
     padding: 0;
+    margin: 0;
   }
 
   .timeline_line {
@@ -245,15 +254,26 @@
     background-color: blueColor;
     width: 0.3rem;
     left: 50%;
+    margin-top: 5rem;
+    margin-bottom: 25rem;
+  }
+
+  .start {
+    margin: 0;
+    flex-direction: column-reverse;
+    padding: 0;
+    z-index: 2;
+    width: 100%;
   }
 
   .locked {
     width: unset;
-    flex-direction: column-reverse;
-    margin-top: -5rem;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 5rem;
+    flex-direction: column;
+    margin: 0;
+    z-index: 2;
+    margin-top: 10rem;
+    padding-bottom: 20rem;
+    background-color: beigeColor;
   }
 
   .locked_icon {
@@ -266,18 +286,46 @@
     margin-top: auto;
     margin-bottom: 0;
   }
+
+  .form_card {
+    margin: 0;
+  }
+
+  .form_feedback {
+    margin: 0 auto;
+    margin-bottom: 10rem;
+  }
+
+  .timeline_title {
+    composes: mediumTitleOutline from "../../../css/typo.module.css";
+    display: flex;
+    padding: 0 1rem;
+    margin-top: 2rem;
+  }
 }
 
 @media screen and (max-width: 550px) {
   .timeline {
     padding-right: 2rem;
   }
+
   .timeline_line {
     width: 0.3rem;
-    left: 3rem;
+    left: 2.5rem;
   }
 
   .locked {
+    flex-direction: row;
+    position: relative;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    margin: 5rem 0;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .start {
     flex-direction: row;
     position: relative;
     align-items: flex-start;
@@ -295,6 +343,7 @@
     top: unset;
     left: unset;
   }
+
   .locked_type {
     text-align: left;
   }
@@ -308,5 +357,43 @@
     align-items: flex-start;
     margin: 0;
     margin-left: 2rem;
+  }
+
+  .locked_date {
+    text-align: left;
+  }
+
+  .form_card {
+    height: 25rem;
+    width: 100%;
+    border: 0.3rem solid blueColor;
+    background-color: beigeColor;
+    padding: 2rem;
+    position: relative;
+    margin: 0;
+  }
+
+  .form_feedback {
+    margin: 0;
+  }
+
+  .icon_circle {
+    text-align: center;
+    object-fit: cover;
+    border-radius: 50%;
+    display: inline-block;
+    border: 0.3rem solid blueColor;
+    background-color: blueColor;
+    width: 4.8rem;
+    height: 4.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .locked_content {
+    margin-left: 1rem;
   }
 }
