@@ -283,7 +283,10 @@ export async function getServerSideProps() {
   var xhr = new XMLHttpRequest();
   const GET_PROJECTS = gql`
     query getProjects {
-      projects(where: { phase: { id: { _neq: 1 } } }) {
+      projects(
+        where: { phase: { id: { _neq: 1 } } }
+        order_by: { updated_at: desc }
+      ) {
         image
         title
         id

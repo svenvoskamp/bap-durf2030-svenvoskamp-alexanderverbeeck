@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import style from '../../../Create/Step3/step3.module.css';
@@ -155,6 +155,15 @@ const AddNeed = ({ project, user }) => {
   const [need, setNeed] = useState('');
   const [gotNeed, setGotNeed] = useState(false);
   const [addNeed] = useMutation(ADD_NEED);
+  const refNeed = useRef();
+
+  const handleValidation = () => {
+    if (need == '') {
+      refNeed.current.innerHTML = `Vul de benodigheid in`;
+    } else {
+      refNeed.current.innerHTML = ``;
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (typeNeed !== '' && need !== '') {
@@ -358,6 +367,7 @@ const AddNeed = ({ project, user }) => {
                         (max 20 karakters)
                       </span>
                     </label>
+                    <p className={style.error} ref={refNeed}></p>
                     <input
                       required
                       id="need"
@@ -414,6 +424,7 @@ const AddNeed = ({ project, user }) => {
                           id="voegtoe"
                           className={`${style.checkbox} scale`}
                           type="submit"
+                          onClick={handleValidation}
                         />
                         <div className={style.button_voorzien}>
                           <p>Toevoegen</p>

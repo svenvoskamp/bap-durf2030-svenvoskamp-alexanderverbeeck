@@ -1,8 +1,12 @@
 @value tokens: "../../../css/tokens.module.css";
-@value blueColor, yellowColor, beigeColor from tokens;
+@value blueColor, yellowColor, beigeColor, redColor from tokens;
 
 .part {
   composes: view from '../../../css/layout.module.css';
+}
+
+.error {
+  color: redColor;
 }
 
 .part_header {
