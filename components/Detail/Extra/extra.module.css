@@ -24,8 +24,9 @@
 
 .tagline_image {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: -2rem;
+  left: -2rem;
+  z-index: -1;
 }
 
 .extra_image {

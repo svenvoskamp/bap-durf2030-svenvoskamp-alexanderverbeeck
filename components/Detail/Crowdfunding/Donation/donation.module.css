@@ -23,7 +23,6 @@
   position: absolute;
   -webkit-transform: translate(0%, -50%);
   transform: translate(0%, -50%);
-  position: absolute;
   top: 50%;
   display: flex;
   align-items: center;
@@ -99,4 +98,95 @@
   composes: smallCaps from "../../../../css/typo.module.css";
   text-align: center;
   color: beigeColor;
+}
+
+@media screen and (max-width: 850px) {
+  .donation {
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 18rem;
+    margin: 0;
+    padding: 0 2rem;
+  }
+
+  .donation:nth-child(even) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .donation_content {
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    align-self: flex-end;
+    margin: 0;
+  }
+
+  .donation:nth-child(even) .donation_content {
+    align-self: flex-start;
+    flex-direction: column;
+  }
+
+  .donation_icon {
+    margin: auto 1rem;
+    position: relative;
+  }
+
+  .donation_info {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .donation_card {
+    position: relative;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .donation {
+    flex-direction: row;
+    position: relative;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    margin: 5rem 0;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .donation:nth-child(even) {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .donation_content {
+    flex-direction: column;
+    position: relative;
+    bottom: unset;
+    align-self: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    margin-left: 2rem;
+  }
+
+  .donation_date {
+    text-align: left;
+  }
+
+  .donation:nth-child(even) .donation_content {
+    align-self: flex-start;
+    flex-direction: column;
+  }
+
+  .donation_icon {
+    margin: auto 0;
+    position: relative;
+    align-self: unset;
+    top: unset;
+    left: unset;
+  }
 }

@@ -95,10 +95,12 @@ a {
 
 .navigation-header--mobile {
   display: none;
+  z-index: 10;
 }
 
 .navigation-header--mobile--fixed {
   position: fixed;
+  z-index: 10;
 }
 
 .nav-logo {
@@ -301,6 +303,30 @@ a {
   top: -28%;
   z-index: -1;
   transition: all 0.2s ease-in-out;
+}
+
+.tagline-image--crowdfunding path {
+  fill: rgb(254, 79, 81);
+}
+
+.tagline-image--co-creatie path {
+  fill: rgb(245, 224, 39);
+}
+
+.tagline-image--realisatie path {
+  fill: rgb(79, 200, 177);
+}
+
+.circle-button--crowdfunding {
+  background-color: rgb(254, 79, 81) !important;
+}
+
+.circle-button--co-creatie {
+  background-color: rgb(245, 224, 39) !important;
+}
+
+.circle-button--realisatie {
+  background-color: rgb(79, 200, 177) !important;
 }
 
 @media screen and (max-width: 850px) {

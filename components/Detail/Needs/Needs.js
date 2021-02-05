@@ -238,7 +238,11 @@ const Needs = ({ needs, user, props }) => {
                                 className={style.button}
                               >
                                 <div
-                                  className={`${style.circle_button} ${style.circle_button__help} scale`}
+                                  className={`${
+                                    style.circle_button
+                                  } circle-button--${props.phase.phase.toLowerCase()} ${
+                                    style.circle_button__help
+                                  } scale`}
                                 >
                                   <img
                                     className={style.button_image}
@@ -267,7 +271,7 @@ const Needs = ({ needs, user, props }) => {
                             <div className={style.need_button}>
                               <a className={style.button}>
                                 <div
-                                  className={`${style.circle_button}  ${style.circle_button_provided}`}
+                                  className={`${style.circle_button} ${style.circle_button_provided}`}
                                 >
                                   <img src="../../../../assets/needs/needs_pending.svg" />
                                 </div>

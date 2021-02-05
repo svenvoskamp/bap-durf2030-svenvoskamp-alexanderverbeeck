@@ -273,6 +273,16 @@
     -webkit-text-stroke: 0.25rem blueColor;
     text-stroke: 0.25rem blueColor;
   }
+
+  .title {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+
+  .titleOutline {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -296,6 +306,23 @@
   .mediumTitleOutline {
     font-size: 2.6rem;
     line-height: 3.2rem;
+  }
+
+  .title {
+    font-size: 3rem;
+    color: blueColor;
+    letter-spacing: 0.01rem;
+    line-height: 3rem;
+  }
+
+  .titleOutline {
+    font-size: 3rem;
+    -webkit-text-stroke: 0.12rem blueColor;
+    text-stroke: 0.12rem blueColor;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    letter-spacing: 0.05rem;
+    line-height: 3rem;
   }
 
   .text {

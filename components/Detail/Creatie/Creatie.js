@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import style from './creatie.module.css';
-import styles from '../../../css/detail.module.css';
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
-import Feedback from './Feedback/Feedback';
+import React, { useState } from "react";
+import style from "./creatie.module.css";
+import styles from "../../../css/detail.module.css";
+import gql from "graphql-tag";
+import crowdfundingstyle from "./feedback/feedback.module.css";
+import { useMutation } from "@apollo/react-hooks";
+import Feedback from "./Feedback/Feedback";
 
 const ADD_FEEDBACK = gql`
   mutation addFeedback(
@@ -41,14 +42,14 @@ const ADD_FEEDBACK = gql`
 
 const Creatie = ({ props, user }) => {
   console.log(props.feedbacks.length);
-  const [typeFeedback, setTypeFeedback] = useState('');
+  const [typeFeedback, setTypeFeedback] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [motivation, setMotivation] = useState('');
+  const [motivation, setMotivation] = useState("");
   const [addFeedback] = useMutation(ADD_FEEDBACK);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (typeFeedback != '' && motivation != '') {
+    if (typeFeedback != "" && motivation != "") {
       addFeedback({
         variables: {
           type: typeFeedback,
@@ -64,7 +65,7 @@ const Creatie = ({ props, user }) => {
 
   const checkUser = (typeFeedback) => {
     if (!user) {
-      router.push('/api/login');
+      router.push("/api/login");
     }
     if (user && !user.first_name) {
       router.push(`/register`);
@@ -77,13 +78,13 @@ const Creatie = ({ props, user }) => {
 
   const handleBack = (e) => {
     e.preventDefault();
-    setMotivation('');
-    setTypeFeedback('');
+    setMotivation("");
+    setTypeFeedback("");
     setCurrentIndex(0);
   };
   return (
     <div className={style.timeline}>
-      {props.projects[0].phase.phase == 'Co-creatie' && (
+      {props.projects[0].phase.phase == "Co-creatie" && (
         <form className={style.form_feedback} onSubmit={handleSubmit}>
           <div className={style.feedback}>
             {currentIndex == 0 && (
@@ -105,7 +106,7 @@ const Creatie = ({ props, user }) => {
                       name="feedback"
                       className={styles.form_radio}
                       onClick={(e) => {
-                        checkUser('Aanpassing');
+                        checkUser("Aanpassing");
                       }}
                     />
                     <img
@@ -124,7 +125,7 @@ const Creatie = ({ props, user }) => {
                       name="feedback"
                       className={styles.form_radio}
                       onClick={(e) => {
-                        checkUser('Toevoeging');
+                        checkUser("Toevoeging");
                       }}
                     />
                     <img
@@ -143,7 +144,7 @@ const Creatie = ({ props, user }) => {
                       name="feedback"
                       className={styles.form_radio}
                       onClick={(e) => {
-                        checkUser('Overig');
+                        checkUser("Overig");
                       }}
                     />
                     <img
@@ -151,7 +152,6 @@ const Creatie = ({ props, user }) => {
                       src="../../../../assets/creatie/creatie_overig_form.svg"
                     />
                     <p className={styles.form_option__text}>Overig</p>
-                    <div></div>
                   </label>
                 </div>
               </>
@@ -159,11 +159,11 @@ const Creatie = ({ props, user }) => {
             {currentIndex == 1 && (
               <>
                 <p className={style.form_title}>
-                  <span className={style.form_number}>2.</span> Leg jouw{' '}
-                  {typeFeedback == 'Overig' && <span>overige feedback</span>}{' '}
-                  {typeFeedback != 'Overig' && (
+                  <span className={style.form_number}>2.</span> Leg jouw{" "}
+                  {typeFeedback == "Overig" && <span>overige feedback</span>}{" "}
+                  {typeFeedback != "Overig" && (
                     <span>{typeFeedback.toLowerCase()}</span>
-                  )}{' '}
+                  )}{" "}
                   verder uit!
                 </p>
                 <div
@@ -231,8 +231,25 @@ const Creatie = ({ props, user }) => {
         </form>
       )}
       <div className={style.feedback_timeline}>
-        {props.projects[0].phase.phase != 'Co-creatie' && (
-          <p>HIER MOET DE START!</p> // START VAN FEEDBACK
+        {props.projects[0].phase.phase != "Co-creatie" && (
+          <div className={style.locked}>
+            <div className={style.locked_icon}>
+              <div className={style.icon_circle}>
+                <img
+                  className={style.icon_circle__image}
+                  src={`../../../../assets/creatie/creatie_start.svg`}
+                />
+              </div>
+            </div>
+            <li className={style.locked_content}>
+              <div className={style.locked_info}>
+                <p className={style.locked_type}>Start Co-creatie</p>
+                <p className={style.locked_date}>
+                  Zoeme is op 23/02/2020 van start gegaan.
+                </p>
+              </div>
+            </li>
+          </div>
         )}
         {props.feedbacks.length > 0 && (
           <>
@@ -241,15 +258,47 @@ const Creatie = ({ props, user }) => {
             ))}
           </>
         )}
-        {
-          props.projects[0].phase.phase == 'Co-creatie' && (
-            <p>CROWDFUNDFASE LOCKED </p>
-          ) //CROWDFUNDFASE GELOCKED
-        }
-        {
-          props.projects[0].phase.phase == 'Crowdfunding' &&
-            !props.projects[0].reward_one && <p>WACHTEN OP GEGEVENS </p> //CROWDFUNDFASE GELOCKED - WACHTEN OP GEGEVENS
-        }
+        {props.projects[0].phase.phase == "Co-creatie" && (
+          <div className={style.locked}>
+            <div className={style.locked_icon}>
+              <div className={style.icon_circle}>
+                <img
+                  className={style.icon_circle__image}
+                  src={`../../../../assets/crowdfunding/crowdfunding_locked.svg`}
+                />
+              </div>
+            </div>
+            <li className={style.locked_content}>
+              <div className={style.locked_info}>
+                <p className={style.locked_type}>Crowdfunding</p>
+                <p className={style.locked_date}>
+                  Help het project om in deze fase te komen.
+                </p>
+              </div>
+            </li>
+          </div>
+        )}
+        {props.projects[0].phase.phase == "Crowdfunding" &&
+          !props.projects[0].reward_one && (
+            <div className={style.locked}>
+              <div className={style.locked_icon}>
+                <div className={style.icon_circle}>
+                  <img
+                    className={style.icon_circle__image}
+                    src={`../../../../assets/crowdfunding/crowdfunding_waiting.svg`}
+                  />
+                </div>
+              </div>
+              <li className={style.locked_content}>
+                <div className={style.locked_info}>
+                  <p className={style.locked_type}>Crowdfunding</p>
+                  <p className={style.locked_date}>
+                    We wachten nog op gegevens voor de Crowdfunding te starten
+                  </p>
+                </div>
+              </li>
+            </div>
+          )}
       </div>
       <div className={style.timeline_line}></div>
     </div>

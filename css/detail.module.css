@@ -128,13 +128,36 @@
     margin: 2rem;
     min-height: unset;
   }
+
   .part_info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    margin-right: 10rem;
-    padding: 0;
+    margin-right: 0;
+    padding: 0 1rem;
     margin-bottom: 5rem;
+  }
+
+  .form_card {
+    height: 25rem;
+    width: 50rem;
+    padding: 2rem;
+    position: relative;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .part_project {
+    margin: 1rem;
+  }
+
+  .form_card {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    margin: 4rem 2rem 4rem 8rem;
   }
 }

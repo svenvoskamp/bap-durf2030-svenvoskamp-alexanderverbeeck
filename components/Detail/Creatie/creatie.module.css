@@ -67,8 +67,9 @@
 }
 
 .form_card__one {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 5rem;
   align-items: center;
 }
 
@@ -79,7 +80,12 @@
   cursor: pointer;
 }
 
-.form_option img {
+.form_option:nth-child(1) img {
+  margin-left: 1rem;
+}
+
+.form_option:nth-child(2) img,
+.form_option:nth-child(3) img {
   margin-right: 1rem;
 }
 
@@ -114,15 +120,120 @@
   transition: all 0.2s ease-in-out;
 }
 
+/* Locked State */
+
+.locked {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  width: 35rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.locked_icon {
+  z-index: 1;
+  justify-self: center;
+  align-self: center;
+  position: absolute;
+  -webkit-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.icon_circle {
+  text-align: center;
+  object-fit: cover;
+  border-radius: 50%;
+  display: inline-block;
+  border: 0.3rem solid blueColor;
+  background-color: blueColor;
+  width: 5.5rem;
+  height: 5.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_circle__image {
+  object-fit: cover;
+}
+
+.locked_content {
+  z-index: 2;
+  list-style-type: none;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 27vh;
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.locked_card {
+  border: 0.3rem solid beigeColor;
+  position: relative;
+  background-color: blueColor;
+  width: 12rem;
+  height: 5vh;
+  /* margin: 1.5rem 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.locked_card:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 1rem;
+  left: 0.5rem;
+  width: 105%;
+  height: 105%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.locked_info {
+  margin-bottom: 2rem;
+}
+
+.locked_text {
+  composes: mediumTitle from "../../../css/typo.module.css";
+}
+
+.locked_date {
+  composes: smallText from "../../../css/typo.module.css";
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.locked_type {
+  composes: smallCaps from "../../../css/typo.module.css";
+  text-align: center;
+}
+
 @media screen and (max-width: 850px) {
+  .timeline {
+    flex-direction: column-reverse;
+    padding: 0;
+    margin-top: 10rem;
+  }
+
   .feedback_timeline {
     display: flex;
     height: unset;
-    flex-direction: column;
-    padding: 10rem 0;
-  }
-
-  .timeline {
     flex-direction: column;
     padding: 0;
   }
@@ -134,5 +245,68 @@
     background-color: blueColor;
     width: 0.3rem;
     left: 50%;
+  }
+
+  .locked {
+    width: unset;
+    flex-direction: column-reverse;
+    margin-top: -5rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 5rem;
+  }
+
+  .locked_icon {
+    position: unset;
+    top: 50%;
+    margin-top: 2rem;
+  }
+
+  .locked_content {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .timeline {
+    padding-right: 2rem;
+  }
+  .timeline_line {
+    width: 0.3rem;
+    left: 3rem;
+  }
+
+  .locked {
+    flex-direction: row;
+    position: relative;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    margin: 5rem 0;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .locked_icon {
+    margin: auto 0;
+    position: relative;
+    align-self: unset;
+    top: unset;
+    left: unset;
+  }
+  .locked_type {
+    text-align: left;
+  }
+
+  .locked_content {
+    flex-direction: column;
+    position: relative;
+    bottom: unset;
+    align-self: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    margin-left: 2rem;
   }
 }

@@ -60,13 +60,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: blueColor;
   z-index: 1;
   margin-right: 15rem;
-}
-
-.form_crowdfunding {
-  background-color: blueColor;
 }
 
 .form_card__crowdfunding {
@@ -192,15 +187,96 @@
 }
 
 @media screen and (max-width: 850px) {
-  .timeline {
-    padding: 10rem 20rem;
-    margin-right: 10rem;
+  .part_title {
+    margin-right: 0;
+    width: 50%;
   }
 
-  .donations_timeline {
-    display: flex;
+  .title {
+    margin-bottom: 1rem;
+    text-fill-color: beigeColor;
+    font-size: 4.2rem;
+  }
+  .title_outline {
+    font-size: 4.2rem;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+  }
+
+  .timeline {
+    padding: 0;
+    margin-right: 0;
+  }
+
+  .crowdfunding_timeline {
+    flex-direction: column;
+    margin-top: auto;
+  }
+
+  .timeline_line {
+    top: 0;
     height: 100%;
-    flex-direction: row;
-    align-items: center;
+    background-color: beigeColor;
+    width: 0.3rem;
+    left: 50%;
+  }
+
+  .header {
+    flex-direction: column;
+    margin-top: 10rem;
+  }
+
+  .form_crowdfunding {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    margin: 5rem auto;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .timeline_line {
+    width: 0.3rem;
+    left: 3rem;
+  }
+
+  .part_title {
+    margin-right: 0;
+    margin-left: 8rem;
+    width: unset;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+    text-fill-color: beigeColor;
+    font-size: 5rem;
+  }
+  .title_outline {
+    font-size: 5rem;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+  }
+
+  .form_crowdfunding {
+    padding: unset;
+    margin: unset;
+  }
+
+  .form_card__crowdfunding {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .crowdfunding_reward {
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+
+  .crowdfunding_value {
+    margin-left: 4.8rem;
   }
 }
