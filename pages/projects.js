@@ -256,12 +256,14 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
                 projecten gevonden
               </p>
               <div className={style.empty_state__buttons}>
-                <button
-                  className={`${style.empty_state__button} scale`}
-                  onClick={reset}
-                >
-                  Verwijder filter
-                </button>
+                <div className={style.empty_button}>
+                  <button
+                    className={`${style.empty_state__button} scale`}
+                    onClick={reset}
+                  >
+                    Verwijder filter
+                  </button>
+                </div>
                 <button
                   className={`${style.empty_state__button__extra} scale`}
                   onClick={reset}

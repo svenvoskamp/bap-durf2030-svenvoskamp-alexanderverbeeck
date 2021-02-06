@@ -220,7 +220,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.empty_state__button:hover .empty_state__button:after {
+.empty_button:hover .empty_state__button:after {
   top: 0;
   left: 0;
 }

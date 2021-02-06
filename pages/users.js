@@ -250,13 +250,15 @@ const Projects = ({ users }) => {
                 <span className={style.empty_state__text__outline}>geen</span>{" "}
                 gebruikers gevonden
               </p>
-              <div className={style.empty_state__buttons}>
-                <button
-                  className={`${style.empty_state__button} scale`}
-                  onClick={reset}
-                >
-                  Verwijder filter
-                </button>
+              <div className={style.empty_button}>
+                <div className={style.empty_state__buttons}>
+                  <button
+                    className={`${style.empty_state__button} scale`}
+                    onClick={reset}
+                  >
+                    Verwijder filter
+                  </button>
+                </div>
               </div>
             </div>
           )}
