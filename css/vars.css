@@ -1,0 +1,13 @@
+html.has-scroll-init {
+  --colorBackground: #e6ddd8;
+  --colorLightBackground: #f8ebe2;
+  --colorMain: red;
+  --colorDark: red;
+}
+
+html.dark-mode {
+  --colorBackground: #e6ddd8;
+  --colorLightBackground: #f8ebe2;
+  --colorMain: green;
+  --colorDark: green;
+}

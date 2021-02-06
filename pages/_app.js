@@ -1,7 +1,8 @@
-import '../css/reset.css';
-import '../css/styles.css';
-import '../css/home.css';
-import '../css/scroll.css';
+import "../css/reset.css";
+import "../css/styles.css";
+import "../css/home.css";
+import "../css/scroll.css";
+import "../css/vars.css";
 
 // Add the Firebase services that you want to use
 

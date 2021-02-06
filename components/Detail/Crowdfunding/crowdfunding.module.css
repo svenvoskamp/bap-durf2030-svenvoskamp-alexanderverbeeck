@@ -1,6 +1,8 @@
 @value tokens: "../../../css/tokens.module.css";
 @value beigeColor, yellowColor, blueColor, blueColor, greenColor, lightColor from tokens;
 
+@import "../../../css/vars.css";
+
 .timeline {
   position: relative;
   display: flex;
@@ -25,10 +27,10 @@
 .title {
   composes: largeTitleOutline from "../../../css/typo.module.css";
   margin-bottom: 1rem;
-  -webkit-text-stroke: 0.3rem blueColor;
-  text-stroke: 0.3rem blueColor;
-  -webkit-text-fill-color: blueColor;
-  text-fill-color: blueColor;
+  -webkit-text-stroke: 0.3rem var(--colorMain);
+  text-stroke: 0.3rem var(--colorMain);
+  -webkit-text-fill-color: var(--colorMain);
+  text-fill-color: var(--colorMain);
 }
 
 .title_outline {
