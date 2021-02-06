@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import { useFetchUser } from "../lib/user";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import { withApollo } from "../lib/withApollo";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useFetchUser } from '../lib/user';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { withApollo } from '../lib/withApollo';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -128,7 +128,7 @@ const GET_CURRENT_USER = gql`
 const Nots = ({ props }) => {
   console.log(props);
   const [content, setContent] = useState(0);
-  const [selectedProject, setSelectedProject] = useState("");
+  const [selectedProject, setSelectedProject] = useState('');
   const { user, loading } = useFetchUser();
   let incoming = [];
   let outgoing = [];
@@ -174,7 +174,7 @@ const Nots = ({ props }) => {
 
   return (
     <>
-      <p>{incoming.length}</p>
+      <p style={{ color: 'white' }}>{incoming.length}</p>
     </>
   );
 };

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // import NeedsList from "../../NeedsList/NeedsList";
-import style from "../profile/SelectedProject/selectedproject.module.css";
-import styles from "../../css/profile.module.css";
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import style from '../Profile/SelectedProject/selected.project.module.css';
+
+import styles from '../../css/profile.module.css';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 const GET_DATA = gql`
   query MyQuery {
@@ -97,7 +98,7 @@ const Project = ({ project, setCurrentProject }) => {
 
   const handleClick = (e, choose, project) => {
     e.preventDefault();
-    if (choose == "x" && project.phase_id == 1) {
+    if (choose == 'x' && project.phase_id == 1) {
       removeProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -126,7 +127,7 @@ const Project = ({ project, setCurrentProject }) => {
         },
       });
     }
-    if (choose == "v" && project.phase_id == 1) {
+    if (choose == 'v' && project.phase_id == 1) {
       coCreateProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -158,7 +159,7 @@ const Project = ({ project, setCurrentProject }) => {
         },
       });
     }
-    if (choose == "x" && project.phase_id == 2) {
+    if (choose == 'x' && project.phase_id == 2) {
       setBackProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -190,7 +191,7 @@ const Project = ({ project, setCurrentProject }) => {
         },
       });
     }
-    if (choose == "v" && project.phase_id == 2) {
+    if (choose == 'v' && project.phase_id == 2) {
       fundProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -222,7 +223,7 @@ const Project = ({ project, setCurrentProject }) => {
         },
       });
     }
-    setCurrentProject("");
+    setCurrentProject('');
   };
 
   return (
@@ -230,7 +231,7 @@ const Project = ({ project, setCurrentProject }) => {
       <div className={`${styles.grid_selectedproject} ${styles.grid_titles}`}>
         <button
           className={`${style.button_back} scale`}
-          onClick={(e) => setCurrentProject("")}
+          onClick={(e) => setCurrentProject('')}
         >
           <img
             className={style.back_image}
@@ -245,7 +246,7 @@ const Project = ({ project, setCurrentProject }) => {
           <div className={style.header_buttons}>
             <button
               className={`${style.header_button} scale`}
-              onClick={(e) => handleClick(e, "v", project)}
+              onClick={(e) => handleClick(e, 'v', project)}
             >
               <img
                 className={style.back_image}
@@ -255,7 +256,7 @@ const Project = ({ project, setCurrentProject }) => {
             </button>
             <button
               className={`${style.header_button} scale`}
-              onClick={(e) => handleClick(e, "x", project)}
+              onClick={(e) => handleClick(e, 'x', project)}
             >
               <img
                 className={style.back_image}
@@ -290,28 +291,28 @@ const Project = ({ project, setCurrentProject }) => {
           </p> */}
           <div className={style.info_items}>
             <div className={`${style.info_fase} ${style.info_item}`}>
-              {project.phase.phase == "Conceptvoorstel" && (
+              {project.phase.phase == 'Conceptvoorstel' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_concept}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Co-creatie" && (
+              {project.phase.phase == 'Co-creatie' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_creatie}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Crowdfunding" && (
+              {project.phase.phase == 'Crowdfunding' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_crowdfunding}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Realisatie" && (
+              {project.phase.phase == 'Realisatie' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_realisatie}`}
