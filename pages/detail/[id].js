@@ -154,6 +154,7 @@ const Detail = ({ props, user, navUser }) => {
     ) {
       const div = document.getElementsByTagName("html");
       const el = document.querySelector(`.donations`);
+      console.log(el);
 
       if (el.classList.contains(`is-inview`)) {
         if (div[0].classList.contains(`dark-mode`)) {

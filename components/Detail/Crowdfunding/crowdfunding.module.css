@@ -1,7 +1,5 @@
-@value tokens: "../../../css/tokens.module.css";
-@value beigeColor, yellowColor, blueColor, blueColor, greenColor, lightColor from tokens;
-
-@import "../../../css/vars.css";
+/* @value tokens: "../../../css/tokens.module.css";
+@value var(--colorBeige), yellowColor, var(--colorBlue), var(--colorBlue), greenColor, lightColor from tokens; */
 
 .timeline {
   position: relative;
@@ -17,7 +15,7 @@
 }
 
 .error {
-  color: blueColor;
+  color: var(--colorBlue);
 }
 
 .part_title {
@@ -27,32 +25,35 @@
 .title {
   composes: largeTitleOutline from "../../../css/typo.module.css";
   margin-bottom: 1rem;
-  -webkit-text-stroke: 0.3rem var(--colorMain);
-  text-stroke: 0.3rem var(--colorMain);
-  -webkit-text-fill-color: var(--colorMain);
-  text-fill-color: var(--colorMain);
+  -webkit-text-stroke: 0.3rem var(--colorBlue);
+  text-stroke: 0.3rem var(--colorBlue);
+  -webkit-text-fill-color: var(--colorBlue);
+  text-fill-color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .title_outline {
   composes: largeTitle from "../../../css/typo.module.css";
-  -webkit-text-stroke: 0.3rem blueColor;
-  text-stroke: 0.3rem blueColor;
+  -webkit-text-stroke: 0.3rem var(--colorBlue);
+  text-stroke: 0.3rem var(--colorBlue);
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .title_description {
   composes: semiBold from "../../../css/typo.module.css";
-  color: blueColor;
+  color: var(--colorBlue);
 }
 
 .timeline_line {
   position: absolute;
   top: 50%;
   height: 0.3rem;
-  background-color: blueColor;
+  background-color: var(--colorBlue);
   width: 100%;
   left: 0;
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .donations_timeline {
@@ -71,15 +72,15 @@
 }
 
 .form_card__crowdfunding {
-  border: 0.3rem solid blueColor;
-  background-color: beigeColor;
+  border: 0.3rem solid var(--colorBlue);
+  background-color: var(--colorBeige);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .form_option__text__crowdfunding {
-  color: blueColor;
+  color: var(--colorBlue);
   display: grid;
   grid-template-columns: 3.8rem auto;
   align-items: center;
@@ -89,8 +90,8 @@
 
 .crowdfunding_number {
   composes: number from "../../../css/typo.module.css";
-  -webkit-text-stroke: 0.25rem blueColor;
-  text-stroke: 0.25rem blueColor;
+  -webkit-text-stroke: 0.25rem var(--colorBlue);
+  text-stroke: 0.25rem var(--colorBlue);
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
 }
@@ -115,7 +116,7 @@
 .crowdfunding_value {
   composes: smallCaps from "../../../css/typo.module.css";
   background-color: greenColor;
-  border: 0.2rem solid beigeColor;
+  border: 0.2rem solid var(--colorBeige);
   position: relative;
   width: 12rem;
   text-align: center;
@@ -144,7 +145,7 @@
 }
 
 .back_text__crowdfunding {
-  color: blueColor;
+  color: var(--colorBlue);
 }
 
 .button_back__crowdfunding {
@@ -161,14 +162,14 @@
 }
 
 .input {
-  border-bottom: 0.2rem solid blueColor;
+  border-bottom: 0.2rem solid var(--colorBlue);
   background-color: transparent;
   border-top: none;
   border-right: none;
   border-left: none;
   composes: empty from "../../../css/typo.module.css";
   padding: 0.2rem 0.5rem;
-  color: blueColor;
+  color: var(--colorBlue);
   width: 25rem;
   margin: 0 auto;
   text-align: center;
@@ -179,11 +180,11 @@
 }
 
 .button_voorzien__crowdfunding {
-  border: 0.2rem solid blueColor;
+  border: 0.2rem solid var(--colorBlue);
   padding: 0.6rem 0.8rem;
   position: relative;
-  background-color: beigeColor;
-  color: blueColor;
+  background-color: var(--colorBeige);
+  color: var(--colorBlue);
   composes: text from "../../../css/typo.module.css";
 }
 
@@ -200,7 +201,7 @@
 
   .title {
     margin-bottom: 1rem;
-    text-fill-color: blueColor;
+    text-fill-color: var(--colorBlue);
     font-size: 4.2rem;
   }
   .title_outline {
@@ -223,7 +224,7 @@
   .timeline_line {
     top: 0;
     height: 100%;
-    background-color: blueColor;
+    background-color: var(--colorBlue);
     width: 0.3rem;
     left: 50%;
   }
@@ -256,7 +257,7 @@
 
   .title {
     margin-bottom: 1rem;
-    text-fill-color: blueColor;
+    text-fill-color: var(--colorBlue);
     font-size: 5rem;
   }
   .title_outline {
@@ -292,13 +293,4 @@
   .part_title {
     margin-left: 5rem;
   }
-}
-
-html.dark-mode .timeline_line {
-  position: absolute;
-  top: 50%;
-  height: 0.3rem;
-  background-color: beigeColor;
-  width: 100%;
-  left: 0;
 }

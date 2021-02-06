@@ -1,5 +1,5 @@
-@value tokens: "../../../../css/tokens.module.css";
-@value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
+/* @value tokens: "../../../../css/tokens.module.css";
+@value var(--colorBlue), yellowColor, var(--colorBeige), redColor, greenColor, lightColor from tokens; */
 
 /* .donation_wrapper {
   position: relative;
@@ -34,8 +34,8 @@
   object-fit: cover;
   border-radius: 50%;
   display: inline-block;
-  border: 0.3rem solid beige;
-  background-color: blueColor;
+  border: 0.3rem solid var(--colorBeige);
+  background-color: var(--colorBlue);
 }
 
 .donation_content {
@@ -51,9 +51,9 @@
 }
 
 .donation_card {
-  border: 0.3rem solid beigeColor;
+  border: 0.3rem solid var(--colorBeige);
   position: relative;
-  background-color: blueColor;
+  background-color: var(--colorBlue);
   width: 12rem;
   height: 5vh;
   /* margin: 1.5rem 0; */
@@ -83,7 +83,7 @@
 }
 
 .donation_text {
-  color: beigeColor;
+  color: var(--colorBeige);
   composes: mediumTitle from "../../../../css/typo.module.css";
 }
 
@@ -91,13 +91,13 @@
   composes: smallText from "../../../../css/typo.module.css";
   text-align: center;
   margin-top: 0.5rem;
-  color: beigeColor;
+  color: var(--colorBeige);
 }
 
 .donation_type {
   composes: smallCaps from "../../../../css/typo.module.css";
   text-align: center;
-  color: beigeColor;
+  color: var(--colorBeige);
 }
 
 @media screen and (max-width: 850px) {

@@ -1,13 +1,10 @@
 html.has-scroll-init {
-  --colorBackground: #e6ddd8;
-  --colorLightBackground: #f8ebe2;
-  --colorMain: red;
-  --colorDark: red;
+  --colorBlue: rgb(9, 20, 34);
+  --colorBeige: rgb(253, 236, 210);
 }
 
 html.dark-mode {
-  --colorBackground: #e6ddd8;
-  --colorLightBackground: #f8ebe2;
-  --colorMain: green;
-  --colorDark: green;
+  --colorBeige: rgb(9, 20, 34);
+  --colorBlue: rgb(253, 236, 210);
+  transition: var(--colorBeige) var(--colorBlue) 2s ease-in-out;
 }

@@ -1,5 +1,5 @@
-@value tokens: "../../../../css/tokens.module.css";
-@value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
+/* @value tokens: "../../../../css/tokens.module.css";
+@value var(--colorBlue), yellowColor, var(--colorBeige), redColor, greenColor, lightColor from tokens; */
 
 .feedback {
   display: flex;
@@ -26,10 +26,10 @@
 }
 
 .feedback_card {
-  border: 0.3rem solid blueColor;
+  border: 0.3rem solid var(--colorBlue);
   padding: 3rem;
   position: relative;
-  background-color: beigeColor;
+  background-color: var(--colorBeige);
   width: 35rem;
   height: 25vh;
   margin: 1.5rem 0;
@@ -52,6 +52,7 @@
 
 .feedback_name {
   composes: smallCaps from "../../../../css/typo.module.css";
+  color: var(--colorBlue);
   margin-bottom: 2rem;
 }
 
@@ -61,17 +62,20 @@
 
 .feedback_date {
   composes: smallText from "../../../../css/typo.module.css";
+  color: var(--colorBlue);
   text-align: center;
   margin: 0.2rem 0;
 }
 
 .feedback_type {
   composes: smallCaps from "../../../../css/typo.module.css";
+  color: var(--colorBlue);
   text-align: center;
 }
 
 .feedback_text {
   composes: feedback from "../../../../css/typo.module.css";
+  color: var(--colorBlue);
   font-style: italic;
 }
 
@@ -87,7 +91,7 @@
   padding: 1rem;
   border-radius: 50%;
   display: inline-block;
-  border: 0.3rem solid blueColor;
+  border: 0.3rem solid var(--colorBlue);
 }
 
 @media screen and (max-width: 850px) {
@@ -131,10 +135,10 @@
   }
 
   .feedback_card {
-    border: 0.3rem solid blueColor;
+    border: 0.3rem solid var(--colorBlue);
     padding: 3rem;
     position: relative;
-    background-color: beigeColor;
+    background-color: var(--colorBeige);
     width: 40vw;
     height: 25vh;
     margin: 0;

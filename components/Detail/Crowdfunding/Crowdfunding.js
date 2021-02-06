@@ -266,14 +266,14 @@ const Crowdfunding = ({ props, user }) => {
   };
 
   return (
-    <div className={style.timeline}>
+    <div
+      className={`${style.timeline}  donations`}
+      data-scroll
+      data-scroll-repeat
+    >
       {props.projects[0].phase.phase == "Crowdfunding" && (
         <>
-          <div
-            className={`${style.header} donations`}
-            data-scroll
-            data-scroll-repeat
-          >
+          <div className={`${style.header} `}>
             <div className={style.part_title}>
               <p className={style.title}>
                 durf.

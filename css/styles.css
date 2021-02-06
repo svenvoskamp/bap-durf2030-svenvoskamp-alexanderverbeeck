@@ -9,6 +9,7 @@ html {
 #__next {
   min-height: 100vh;
   background-color: #fdecd2;
+  transition: background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 /* #__next:after {
@@ -28,6 +29,10 @@ body {
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark-mode #__next {
+  background-color: #091422;
 }
 
 /* body {
@@ -91,6 +96,7 @@ a {
   flex-direction: column;
   z-index: 10;
   transition: 0.5s ease-in-out;
+  border-right: 0.3rem solid #fdecd2;
 }
 
 .navigation-header--mobile {

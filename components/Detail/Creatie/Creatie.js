@@ -261,7 +261,7 @@ const Creatie = ({ props, user }) => {
               <div className={style.start}>
                 <div className={style.locked_icon}>
                   <div className={style.icon_circle}>
-                    <picture>
+                    <picture className={style.start_icon}>
                       <source
                         media="(max-width: 550px)"
                         srcset={`../../../../assets/creatie/creatie_start_mobile.svg`}
