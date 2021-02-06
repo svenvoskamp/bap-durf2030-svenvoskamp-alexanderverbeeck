@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import NeedsList from "../../NeedsList/NeedsList";
-import style from '../Profile/SelectedProject/selected.project.module.css';
+import style from './Profile/SelectedProject/selected.project.module.css';
 
 import styles from '../../css/profile.module.css';
 import { useMutation } from '@apollo/react-hooks';
