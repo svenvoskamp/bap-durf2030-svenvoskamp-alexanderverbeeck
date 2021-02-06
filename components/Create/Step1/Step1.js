@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import style from './step1.module.css';
-import Mouse from '../../../components/Mouse';
+import React, { useRef, useEffect } from "react";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import style from "./step1.module.css";
+import Mouse from "../../../components/Mouse";
 
 const GET_THEMES_AND_CATEGORIES = gql`
   query getThemesAndCategories {
@@ -32,17 +32,17 @@ const Step1 = ({ theme, category, setCategory, setTheme, setCurrentIndex }) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (theme == '') {
+    if (theme == "") {
       themeRef.current.innerHTML = `Kies een thema voor het project`;
     } else {
       themeRef.current.innerHTML = ``;
     }
-    if (category == '') {
+    if (category == "") {
       categoryRef.current.innerHTML = `Kies een categorie voor het project`;
     } else {
       categoryRef.current.innerHTML = ``;
     }
-    if (theme != '' && category != '') {
+    if (theme != "" && category != "") {
       setCurrentIndex(1);
     }
   };

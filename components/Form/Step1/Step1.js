@@ -1,6 +1,7 @@
-import React, { useRef, useEffect } from 'react';
-import style from './step1.module.css';
-import Mouse from '../../../components/Mouse';
+import React, { useRef, useEffect } from "react";
+import style from "./step1.module.css";
+import Mouse from "../../../components/Mouse";
+import Empty from "../../Empty/Empty";
 
 const Step1 = ({
   company,
@@ -28,54 +29,54 @@ const Step1 = ({
   const handleIndividuClick = (e) => {
     console.log(sector);
     e.preventDefault();
-    if (company == 'not') {
+    if (company == "not") {
       refWho.current.innerHTML = `Gelieve een keus te maken`;
     } else {
       refWho.current.innerHTML = ``;
     }
-    if (firstName == '') {
+    if (firstName == "") {
       refFirstName.current.innerHTML = `Gelieve een voornaam in te vullen`;
     } else {
       refFirstName.current.innerHTML = ``;
     }
-    if (lastName == '') {
+    if (lastName == "") {
       refLastName.current.innerHTML = `Gelieve een achternaam in te vullen`;
     } else {
       refLastName.current.innerHTML = ``;
     }
-    if (sector == '') {
-      refSectorOne.current.innerHTML = `Gelieve een sector in te vullen`;
+    if (sector == "") {
+      refSectorOne.current.innerHTML = `Gelieve een sector te selecteren`;
     } else {
       refSectorOne.current.innerHTML = ``;
     }
-    if (firstName !== '' && lastName !== '' && sector !== '') {
+    if (firstName !== "" && lastName !== "" && sector !== "") {
       setCurrentIndex(1);
     }
   };
 
   const handleCompanyClick = (e) => {
     e.preventDefault();
-    if (company == 'not') {
+    if (company == "not") {
       refWho.current.innerHTML = `Gelieve een keus te maken`;
     } else {
       refWho.current.innerHTML = ``;
     }
-    if (companyName == '') {
+    if (companyName == "") {
       refCompanyName.current.innerHTML = `Gelieve een bedrijfsnaam in te vullen`;
     } else {
       refCompanyName.current.innerHTML = ``;
     }
-    if (department == '') {
+    if (department == "") {
       refDepartment.current.innerHTML = `Gelieve een afdeling in te vullen`;
     } else {
       refDepartment.current.innerHTML = ``;
     }
-    if (sector == '') {
-      refSectorTwo.current.innerHTML = `Gelieve een sector in te vullen`;
+    if (sector == "") {
+      refSectorTwo.current.innerHTML = `Gelieve een sector te selecteren`;
     } else {
       refSectorTwo.current.innerHTML = ``;
     }
-    if (companyName !== '' && department !== '' && sector !== '') {
+    if (companyName !== "" && department !== "" && sector !== "") {
       setCurrentIndex(1);
     }
   };
@@ -152,10 +153,10 @@ const Step1 = ({
               <p className={style.checkbox_text}>Bedrijf/Organisatie</p>
             </label>
           </div>
-          {company == 'not' && (
+          {company == "not" && (
             <>
               <div>
-                <p>Selecteer een optie</p>
+                <Empty props={"emptyoption"} />
               </div>
             </>
           )}
@@ -164,10 +165,12 @@ const Step1 = ({
               <div className={style.form}>
                 <h2 className={style.subtitle}>Accountgegevens</h2>
                 <div className={style.input_container}>
-                  <label htmlFor="firstName" className={style.label}>
-                    Voornaam
-                  </label>
-                  <p className={style.error} ref={refFirstName}></p>
+                  <div className={style.input_label}>
+                    <label htmlFor="firstName" className={style.label}>
+                      Voornaam
+                    </label>
+                    <p className={style.error} ref={refFirstName}></p>
+                  </div>
                   <input
                     required
                     id="firstName"
@@ -181,10 +184,12 @@ const Step1 = ({
                   />
                 </div>
                 <div className={style.input_container}>
-                  <label htmlFor="lastName" className={style.label}>
-                    Achternaam
-                  </label>
-                  <p className={style.error} ref={refLastName}></p>
+                  <div className={style.input_label}>
+                    <label htmlFor="lastName" className={style.label}>
+                      Achternaam
+                    </label>
+                    <p className={style.error} ref={refLastName}></p>
+                  </div>
                   <input
                     required
                     id="lastName"
@@ -198,10 +203,12 @@ const Step1 = ({
                   />
                 </div>
                 <div className={style.input_container}>
-                  <label for="sectors" className={style.label}>
-                    U bent werkzaam in de sector:{' '}
-                  </label>
-                  <p className={style.error} ref={refSectorOne}></p>
+                  <div className={style.input_label}>
+                    <label for="sectors" className={style.label}>
+                      U bent werkzaam in de sector:{" "}
+                    </label>
+                    <p className={style.error} ref={refSectorOne}></p>
+                  </div>
                   <select
                     name="sectors"
                     id="sectors"
@@ -236,10 +243,12 @@ const Step1 = ({
               <div className={style.form}>
                 <h2 className={style.subtitle}>Bedrijfsgegevens</h2>
                 <div className={style.input_container}>
-                  <label htmlFor="companyName" className={style.label}>
-                    Bedrijfsnaam:
-                  </label>
-                  <p className={style.error} ref={refCompanyName}></p>
+                  <div className={style.input_label}>
+                    <label htmlFor="companyName" className={style.label}>
+                      Bedrijfsnaam:
+                    </label>
+                    <p className={style.error} ref={refCompanyName}></p>
+                  </div>
                   <input
                     required
                     id="companyName"
@@ -253,10 +262,12 @@ const Step1 = ({
                   />
                 </div>
                 <div className={style.input_container}>
-                  <label htmlFor="department" className={style.label}>
-                    Bedrijfsafdeling:
-                  </label>
-                  <p className={style.error} ref={refDepartment}></p>
+                  <div className={style.input_label}>
+                    <label htmlFor="department" className={style.label}>
+                      Bedrijfsafdeling:
+                    </label>
+                    <p className={style.error} ref={refDepartment}></p>
+                  </div>
                   <input
                     required
                     id="department"
@@ -270,10 +281,12 @@ const Step1 = ({
                   />
                 </div>
                 <div className={style.input_container}>
-                  <label for="sectors" className={style.label}>
-                    Bedrijfssector{' '}
-                  </label>
-                  <p className={style.error} ref={refSectorTwo}></p>
+                  <div className={style.input_label}>
+                    <label for="sectors" className={style.label}>
+                      Bedrijfssector{" "}
+                    </label>
+                    <p className={style.error} ref={refSectorTwo}></p>
+                  </div>
                   <select
                     name="sectors"
                     id="sectors"
@@ -332,6 +345,14 @@ const Step1 = ({
                   </div>
                 </button>
               </div>
+            </div>
+          </>
+        )}
+
+        {company == "not" && (
+          <>
+            <div className={style.part_end}>
+              <div className={style.button_next}></div>
             </div>
           </>
         )}

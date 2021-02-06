@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import style from './step2.module.css';
-import Mouse from '../../../components/Mouse';
+import React, { useRef, useEffect } from "react";
+import style from "./step2.module.css";
+import Mouse from "../../../components/Mouse";
 
 const Step2 = ({
   firstName,
@@ -36,54 +36,54 @@ const Step2 = ({
 
   const handleValidation = () => {
     if (company == true) {
-      if (firstName == '') {
+      if (firstName == "") {
         refFirstName.current.innerHTML = `Gelieve een voornaam in te vullen`;
       } else {
         refFirstName.current.innerHTML = ``;
       }
-      if (lastName == '') {
+      if (lastName == "") {
         refLastName.current.innerHTML = `Gelieve een achternaam in te vullen`;
       } else {
         refLastName.current.innerHTML = ``;
       }
-      if (streetName == '') {
+      if (streetName == "") {
         refStreetName.current.innerHTML = `Gelieve een straatnaam in te vullen`;
       } else {
         refStreetName.current.innerHTML = ``;
       }
-      if (houseNumber == '') {
+      if (houseNumber == "") {
         refHouseNumber.current.innerHTML = `Gelieve een huisnummer in te vullen`;
       } else {
         refHouseNumber.current.innerHTML = ``;
       }
-      if (city == '') {
+      if (city == "") {
         refCity.current.innerHTML = `Gelieve een woonplaats in te vullen`;
       } else {
         refCity.current.innerHTML = ``;
       }
-      if (zip == '') {
+      if (zip == "") {
         refZip.current.innerHTML = `Gelieve een postcode in te vullen`;
       } else {
         refZip.current.innerHTML = ``;
       }
     }
     if (company == false) {
-      if (streetName == '') {
+      if (streetName == "") {
         refStreetName.current.innerHTML = `Gelieve een straatnaam in te vullen`;
       } else {
         refStreetName.current.innerHTML = ``;
       }
-      if (houseNumber == '') {
+      if (houseNumber == "") {
         refHouseNumber.current.innerHTML = `Gelieve een huisnummer in te vullen`;
       } else {
         refHouseNumber.current.innerHTML = ``;
       }
-      if (city == '') {
+      if (city == "") {
         refCity.current.innerHTML = `Gelieve een woonplaats in te vullen`;
       } else {
         refCity.current.innerHTML = ``;
       }
-      if (zip == '') {
+      if (zip == "") {
         refZip.current.innerHTML = `Gelieve een postcode in te vullen`;
       } else {
         refZip.current.innerHTML = ``;
@@ -113,10 +113,12 @@ const Step2 = ({
                   <div
                     className={`${style.input_container} ${style.input_firstname}`}
                   >
-                    <label htmlFor="firstName" className={style.label}>
-                      Voornaam
-                    </label>
-                    <p className={style.error} ref={refFirstName}></p>
+                    <div className={style.input_label}>
+                      <label htmlFor="firstName" className={style.label}>
+                        Voornaam
+                      </label>
+                      <p className={style.error} ref={refFirstName}></p>
+                    </div>
                     <input
                       required
                       id="firstName"
@@ -132,10 +134,12 @@ const Step2 = ({
                   <div
                     className={`${style.input_container} ${style.input_lastname}`}
                   >
-                    <label htmlFor="firstName" className={style.label}>
-                      Achternaam
-                    </label>
-                    <p className={style.error} ref={refLastName}></p>
+                    <div className={style.input_label}>
+                      <label htmlFor="firstName" className={style.label}>
+                        Achternaam
+                      </label>
+                      <p className={style.error} ref={refLastName}></p>
+                    </div>
                     <input
                       required
                       id="lastName"
@@ -155,10 +159,12 @@ const Step2 = ({
                 <div
                   className={`${style.input_container} ${style.input_streetname}`}
                 >
-                  <label htmlFor="streetName" className={style.label}>
-                    Straatnaam
-                  </label>
-                  <p className={style.error} ref={refStreetName}></p>
+                  <div className={style.input_label}>
+                    <label htmlFor="streetName" className={style.label}>
+                      Straatnaam
+                    </label>
+                    <p className={style.error} ref={refStreetName}></p>
+                  </div>
                   <input
                     required
                     id="streetName"
@@ -174,10 +180,12 @@ const Step2 = ({
                 <div
                   className={`${style.input_container} ${style.input_housenumber}`}
                 >
-                  <label htmlFor="houseNumber" className={style.label}>
-                    Huisnumer
-                  </label>
-                  <p className={style.error} ref={refHouseNumber}></p>
+                  <div className={style.input_label}>
+                    <label htmlFor="houseNumber" className={style.label}>
+                      Huisnumer
+                    </label>
+                    <p className={style.error} ref={refHouseNumber}></p>
+                  </div>
                   <input
                     required
                     id="houseNumber"
@@ -204,10 +212,12 @@ const Step2 = ({
                   />
                 </div>
                 <div className={`${style.input_container} ${style.input_city}`}>
-                  <label htmlFor="city" className={style.label}>
-                    Woonplaats:
-                  </label>
-                  <p className={style.error} ref={refCity}></p>
+                  <div className={style.input_label}>
+                    <label htmlFor="city" className={style.label}>
+                      Woonplaats:
+                    </label>
+                    <p className={style.error} ref={refCity}></p>
+                  </div>
                   <input
                     required
                     id="city"
@@ -221,10 +231,12 @@ const Step2 = ({
                   />
                 </div>
                 <div className={`${style.input_container} ${style.input_zip}`}>
-                  <label htmlFor="zip" className={style.label}>
-                    Postcode
-                  </label>
-                  <p className={style.error} ref={refZip}></p>
+                  <div className={style.input_label}>
+                    <label htmlFor="zip" className={style.label}>
+                      Postcode
+                    </label>
+                    <p className={style.error} ref={refZip}></p>
+                  </div>
                   <input
                     required
                     id="zip"
@@ -242,7 +254,7 @@ const Step2 = ({
                   className={`${style.input_container} ${style.input_telephone}`}
                 >
                   <label htmlFor="telephone" className={style.label}>
-                    Telefoonnnummer{' '}
+                    Telefoonnnummer{" "}
                     <span className={style.label_extra}>(Optioneel)</span>
                   </label>
                   <input

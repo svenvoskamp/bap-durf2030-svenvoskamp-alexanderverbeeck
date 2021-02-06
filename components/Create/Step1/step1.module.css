@@ -2,7 +2,7 @@
 @value blueColor, greenColor, yellowColor, beigeColor, redColor from tokens;
 
 .part {
-  composes: view from '../../../css/layout.module.css';
+  composes: view from "../../../css/layout.module.css";
 }
 
 .error {
@@ -13,21 +13,28 @@
 }
 
 .title {
-  composes: largeTitleOutline from '../../../css/typo.module.css';
+  composes: largeTitleOutline from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from '../../../css/typo.module.css';
+  composes: largeTitle from "../../../css/typo.module.css";
 }
 
 .title_description {
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
 }
 
 .subtitle {
-  composes: smallCaps from '../../../css/typo.module.css';
-  margin-bottom: 2rem;
+  composes: smallCaps from "../../../css/typo.module.css";
+  margin-bottom: 0.5rem;
+}
+
+.error {
+  color: redColor;
+  composes: smallText from "../../../css/typo.module.css";
+  margin-left: 1rem;
+  font-style: italic;
 }
 
 .part_content {
@@ -56,6 +63,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 .content_option {
@@ -68,22 +76,22 @@
   display: none;
 }
 
-.checkbox[type='radio']:hover + .checkbox_text:after {
+.checkbox[type="radio"]:hover + .checkbox_text:after {
   top: 0;
   left: 0;
 }
 
-.checkbox[type='radio']:checked + .checkbox_text {
+.checkbox[type="radio"]:checked + .checkbox_text {
   background-color: greenColor;
 }
 
-.checkbox[type='radio']:checked + .checkbox_text:after {
+.checkbox[type="radio"]:checked + .checkbox_text:after {
   left: 0;
   top: 0;
 }
 
 .checkbox_text {
-  composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
   text-align: center;
   border: 0.2rem solid blueColor;
   padding: 0.8rem 2rem;
@@ -92,7 +100,7 @@
 }
 
 .checkbox_text:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -120,15 +128,15 @@
 }
 
 .button {
-  composes: button from '../../../css/buttons.module.css';
+  composes: button from "../../../css/buttons.module.css";
 }
 
 .circle_button {
-  composes: circleButton from '../../../css/buttons.module.css';
+  composes: circleButton from "../../../css/buttons.module.css";
 }
 
 .button_image {
-  composes: buttonImage from '../../../css/buttons.module.css';
+  composes: buttonImage from "../../../css/buttons.module.css";
 }
 
 @keyframes rotation {
@@ -160,7 +168,7 @@
   }
 
   .checkbox_text {
-    composes: bold from '../../../css/typo.module.css';
+    composes: bold from "../../../css/typo.module.css";
     padding: 0.8rem 1.5rem;
   }
 }

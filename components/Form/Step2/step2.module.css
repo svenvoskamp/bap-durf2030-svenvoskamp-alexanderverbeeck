@@ -2,7 +2,7 @@
 @value blueColor, yellowColor, redColor from tokens;
 
 .part {
-  composes: view from '../../../css/layout.module.css';
+  composes: view from "../../../css/layout.module.css";
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -13,20 +13,20 @@
 }
 
 .title {
-  composes: largeTitleOutline from '../../../css/typo.module.css';
+  composes: largeTitleOutline from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from '../../../css/typo.module.css';
+  composes: largeTitle from "../../../css/typo.module.css";
 }
 
 .title_description {
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
 }
 
 .subtitle {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
   grid-column: 1/5;
 }
 
@@ -38,17 +38,30 @@
   margin-bottom: 2rem;
 }
 
+.input_label {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.error {
+  color: redColor;
+  composes: smallText from "../../../css/typo.module.css";
+  font-style: italic;
+}
+
 .label {
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
   margin-bottom: 0.5rem;
+  margin-right: 1rem;
 }
 
 .label_extra {
-  composes: smallText from '../../../css/typo.module.css';
+  composes: smallText from "../../../css/typo.module.css";
 }
 
 .option {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
 }
 
 .form {
@@ -90,7 +103,7 @@
 }
 
 .telephone_extra {
-  composes: smallText from '../../../css/typo.module.css';
+  composes: smallText from "../../../css/typo.module.css";
   grid-column: 1/5;
 }
 
@@ -100,7 +113,7 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from '../../../css/typo.module.css';
+  composes: empty from "../../../css/typo.module.css";
   padding: 0.2rem 0.5rem;
 }
 
@@ -121,15 +134,15 @@
 }
 
 .button {
-  composes: button from '../../../css/buttons.module.css';
+  composes: button from "../../../css/buttons.module.css";
 }
 
 .circle_button {
-  composes: circleButton from '../../../css/buttons.module.css';
+  composes: circleButton from "../../../css/buttons.module.css";
 }
 
 .button_image {
-  composes: buttonImage from '../../../css/buttons.module.css';
+  composes: buttonImage from "../../../css/buttons.module.css";
 }
 
 @keyframes rotation {
@@ -142,7 +155,7 @@
 }
 
 .button_back {
-  composes: buttonBack from '../../../css/buttons.module.css';
+  composes: buttonBack from "../../../css/buttons.module.css";
 }
 
 .back_image {
@@ -150,7 +163,7 @@
 }
 
 .back_text {
-  composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
 }
 
 @media screen and (max-width: 1150px) {

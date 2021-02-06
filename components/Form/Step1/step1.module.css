@@ -2,24 +2,24 @@
 @value blueColor, yellowColor, beigeColor, redColor from tokens;
 
 .part {
-  composes: view from '../../../css/layout.module.css';
+  composes: view from "../../../css/layout.module.css";
 }
 
 .title {
-  composes: largeTitleOutline from '../../../css/typo.module.css';
+  composes: largeTitleOutline from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from '../../../css/typo.module.css';
+  composes: largeTitle from "../../../css/typo.module.css";
 }
 
 .title_description {
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
 }
 
 .subtitle {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
 }
 
 .checkbox {
@@ -27,17 +27,31 @@
 }
 
 .checkbox_text {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
   text-align: center;
   margin-top: 2rem;
 }
 
+.input_label {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.error {
+  color: redColor;
+  composes: smallText from "../../../css/typo.module.css";
+  margin-left: 1rem;
+  font-style: italic;
+}
+
 .label {
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
+  margin-right: 1rem;
 }
 
 .option {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
 }
 
 .part_header {
@@ -88,7 +102,7 @@
 
 .company_image:after,
 .individu_image::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -108,23 +122,23 @@
   left: 0;
 }
 
-.checkbox[type='radio']:checked ~ .company_image:after {
+.checkbox[type="radio"]:checked ~ .company_image:after {
   top: 0;
   left: 0;
 }
 
-.checkbox[type='radio']:checked ~ .individu_image::after {
+.checkbox[type="radio"]:checked ~ .individu_image::after {
   top: 0;
   left: 0;
 }
 
-.checkbox[type='radio']:checked ~ .individu_image,
-.checkbox[type='radio']:checked ~ .company_image {
+.checkbox[type="radio"]:checked ~ .individu_image,
+.checkbox[type="radio"]:checked ~ .company_image {
   background-color: blueColor;
 }
 
-.checkbox[type='radio']:checked ~ .individu_image svg path,
-.checkbox[type='radio']:checked ~ .company_image svg path {
+.checkbox[type="radio"]:checked ~ .individu_image svg path,
+.checkbox[type="radio"]:checked ~ .company_image svg path {
   fill: beigeColor;
   stroke: blueColor;
 }
@@ -141,7 +155,7 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from '../../../css/typo.module.css';
+  composes: empty from "../../../css/typo.module.css";
   padding: 0.2rem 0.5rem;
 }
 
@@ -159,15 +173,15 @@
 }
 
 .button {
-  composes: button from '../../../css/buttons.module.css';
+  composes: button from "../../../css/buttons.module.css";
 }
 
 .circle_button {
-  composes: circleButton from '../../../css/buttons.module.css';
+  composes: circleButton from "../../../css/buttons.module.css";
 }
 
 .button_image {
-  composes: buttonImage from '../../../css/buttons.module.css';
+  composes: buttonImage from "../../../css/buttons.module.css";
 }
 
 @media screen and (max-width: 1150px) {

@@ -4,7 +4,7 @@
 /* Header */
 
 .part {
-  composes: view from '../../../css/layout.module.css';
+  composes: view from "../../../css/layout.module.css";
 }
 
 .error {
@@ -16,20 +16,20 @@
 }
 
 .title {
-  composes: largeTitleOutline from '../../../css/typo.module.css';
+  composes: largeTitleOutline from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from '../../../css/typo.module.css';
+  composes: largeTitle from "../../../css/typo.module.css";
 }
 
 .title_description {
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
 }
 
 .subtitle {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
 }
 
 .subtitle_needs {
@@ -68,7 +68,7 @@
 }
 
 .checkbox_text {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .checkbox_image:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -97,21 +97,21 @@
   transition: all 0.2s ease-in-out;
 }
 
-.checkbox[type='radio']:hover ~ .checkbox_image:after {
+.checkbox[type="radio"]:hover ~ .checkbox_image:after {
   top: 0;
   left: 0;
 }
 
-.checkbox[type='radio']:checked ~ .checkbox_image:after {
+.checkbox[type="radio"]:checked ~ .checkbox_image:after {
   left: 0;
   top: 0;
 }
 
-.checkbox[type='radio']:checked ~ .checkbox_image {
+.checkbox[type="radio"]:checked ~ .checkbox_image {
   background-color: blueColor;
 }
 
-.checkbox[type='radio']:checked ~ .checkbox_image svg path {
+.checkbox[type="radio"]:checked ~ .checkbox_image svg path {
   fill: beigeColor;
   stroke: blueColor;
 }
@@ -128,14 +128,14 @@
 
 .empty_add {
   margin-top: 3rem;
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
   grid-column: span 2;
 }
 
 .input_container {
   display: flex;
   flex-direction: column;
-  padding: 1.2rem 0;
+  padding-top: 1.2rem;
 }
 
 .input {
@@ -144,7 +144,7 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from '../../../css/typo.module.css';
+  composes: empty from "../../../css/typo.module.css";
   padding: 0.2rem 0.5rem;
 }
 
@@ -158,23 +158,31 @@
   width: 100%;
   grid-column-gap: 2rem;
   margin-top: 3rem;
+  align-items: baseline;
 }
 
 .label {
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
   margin-bottom: 0.5rem;
 }
 
 .label_extra {
-  composes: smallText from '../../../css/typo.module.css';
+  composes: smallText from "../../../css/typo.module.css";
 }
 
 .input_voorzien {
-  padding: 1.5rem 0;
+  margin-top: auto;
 }
 
 .voorzien {
   display: flex;
+}
+
+.error {
+  color: redColor;
+  composes: smallText from "../../../css/typo.module.css";
+  font-style: italic;
+  margin-top: 1rem;
 }
 
 /* Toggles */
@@ -205,11 +213,11 @@
   cursor: pointer;
 }
 
-.checkbox_voorzien[type='radio']:checked ~ .checkbox_true {
+.checkbox_voorzien[type="radio"]:checked ~ .checkbox_true {
   background-color: greenColor;
 }
 
-.checkbox_voorzien[type='radio']:checked ~ .checkbox_false {
+.checkbox_voorzien[type="radio"]:checked ~ .checkbox_false {
   background-color: redColor;
 }
 
@@ -228,11 +236,11 @@
   padding: 0.6rem 0.8rem;
   position: relative;
   background-color: beigeColor;
-  composes: text from '../../../css/typo.module.css';
+  composes: text from "../../../css/typo.module.css";
 }
 
 .button_voorzien:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -271,7 +279,7 @@
 }
 
 .form_my__needs:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -309,7 +317,7 @@
 }
 
 .need_type__text {
-  composes: semiBold from '../../../css/typo.module.css';
+  composes: semiBold from "../../../css/typo.module.css";
 }
 
 .need_type__text::first-letter {
@@ -330,13 +338,13 @@
 }
 
 .need_empty {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
   color: #e5d6c0;
   text-align: center;
 }
 
 .need_empty__outline {
-  composes: mediumTitleOutline from '../../../css/typo.module.css';
+  composes: mediumTitleOutline from "../../../css/typo.module.css";
   -webkit-text-stroke: 0.1rem #e5d6c0;
   text-stroke: 0.1rem #e5d6c0;
 }
@@ -355,16 +363,16 @@
 }
 
 .button {
-  composes: button from '../../../css/buttons.module.css';
+  composes: button from "../../../css/buttons.module.css";
   padding: 0;
 }
 
 .circle_button {
-  composes: circleButton from '../../../css/buttons.module.css';
+  composes: circleButton from "../../../css/buttons.module.css";
 }
 
 .button_image {
-  composes: buttonImage from '../../../css/buttons.module.css';
+  composes: buttonImage from "../../../css/buttons.module.css";
 }
 
 @media screen and (max-width: 1350px) {

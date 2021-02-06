@@ -39,6 +39,15 @@ const Empty = ({ props }) => {
           </p>
         </div>
       )}
+
+      {props == "emptyoption" && (
+        <div className={style.empty_state}>
+          <p className={style.empty_state__text}>
+            Selecteer een{" "}
+            <span className={style.empty_state__text__outline}> Optie </span>{" "}
+          </p>
+        </div>
+      )}
       {props == "noneedsnofeedback" && (
         <div className={style.empty_state}>
           <p className={style.empty_state__text}>
