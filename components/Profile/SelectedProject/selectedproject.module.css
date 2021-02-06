@@ -38,9 +38,21 @@
   composes: mediumTitleOutline from "../../../css/typo.module.css";
 }
 
+.header_buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .header_button {
   display: flex;
   align-items: center;
+  border: none;
+  background-color: transparent;
+}
+
+.header_button:first-of-type {
+  margin-right: 1rem;
 }
 
 .header_button__text {

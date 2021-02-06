@@ -155,7 +155,7 @@ const Step1 = ({
           </div>
           {company == "not" && (
             <>
-              <div>
+              <div className={style.empty}>
                 <Empty props={"emptyoption"} />
               </div>
             </>
@@ -219,19 +219,29 @@ const Step1 = ({
                     <option value="">Seleteer een sector</option>
                     <option value="Niet werkzaam">Niet werkzaam</option>
                     <option value="Ambachten">Ambachten</option>
+                    <option value="Bouw">Bouw</option>
                     <option value="Dans">Dans</option>
                     <option value="Design">Design</option>
+                    <option value="Farmaceutica">Farmaceutica</option>
                     <option value="Film en Video">Film en video</option>
+                    <option value="Financiën">Financiën</option>
                     <option value="Fotografie">Fotografie</option>
+                    <option value="Horeca">Horeca</option>
                     <option value="Games">Games</option>
                     <option value="Journalistiek">Journalistiek</option>
                     <option value="Kunst">Kunst</option>
-                    <option value="Mode">Mode</option>
+                    <option value="Kleding">Kleding</option>
+                    <option value="Landbouw">Landbouw</option>
                     <option value="Muziek">Muziek</option>
+                    <option value="Onderwijs">Onderwijs</option>
                     <option value="Publicatie">Publicatie</option>
+                    <option value="Sociaal-Cultureel">Sociaal-Cultureel</option>
+                    <option value="Sport">Sport</option>
                     <option value="Technologie">Technologie</option>
                     <option value="Theater">Theater</option>
+                    <option value="Verzekering">Verzekering</option>
                     <option value="Voeding">Voeding</option>
+                    <option value="Zorg">Zorg</option>
                     <option value="Overig">Overig</option>
                   </select>
                 </div>
@@ -296,19 +306,29 @@ const Step1 = ({
                   >
                     <option value="">Seleteer een sector</option>
                     <option value="Ambachten">Ambachten</option>
+                    <option value="Bouw">Bouw</option>
                     <option value="Dans">Dans</option>
                     <option value="Design">Design</option>
+                    <option value="Farmaceutica">Farmaceutica</option>
                     <option value="Film en Video">Film en video</option>
+                    <option value="Financiën">Financiën</option>
                     <option value="Fotografie">Fotografie</option>
+                    <option value="Horeca">Horeca</option>
                     <option value="Games">Games</option>
                     <option value="Journalistiek">Journalistiek</option>
                     <option value="Kunst">Kunst</option>
-                    <option value="Mode">Mode</option>
+                    <option value="Kleding">Kleding</option>
+                    <option value="Landbouw">Landbouw</option>
                     <option value="Muziek">Muziek</option>
+                    <option value="Onderwijs">Onderwijs</option>
                     <option value="Publicatie">Publicatie</option>
+                    <option value="Sociaal-Cultureel">Sociaal-Cultureel</option>
+                    <option value="Sport">Sport</option>
                     <option value="Technologie">Technologie</option>
                     <option value="Theater">Theater</option>
+                    <option value="Verzekering">Verzekering</option>
                     <option value="Voeding">Voeding</option>
+                    <option value="Zorg">Zorg</option>
                     <option value="Overig">Overig</option>
                   </select>
                 </div>

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import NeedsList from './NeedsList/NeedsList';
-import AddNeed from './AddNeed/AddNeed';
-import style from './selectedproject.module.css';
-import Empty from '../../Empty/Empty';
-import styles from '../../../css/profile.module.css';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import React, { useState } from "react";
+import NeedsList from "./NeedsList/NeedsList";
+import AddNeed from "./AddNeed/AddNeed";
+import style from "./selectedproject.module.css";
+import styles from "../../../css/profile.module.css";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -20,6 +19,8 @@ const GET_USER_DATA = gql`
       sector
       picture
       department
+      name
+      nickname
       donations(order_by: { created_at: asc }) {
         id
         created_at
@@ -99,6 +100,7 @@ const GET_USER_DATA = gql`
       other_user_id
       accepted
       pending
+      project_id
       otheruser {
         id
         first_name
@@ -131,7 +133,7 @@ const SelectedProject = ({
 }) => {
   let projectNeeds = [];
   const [toggleProject] = useMutation(TOGGLE_PROJECT);
-  const [update, setUpdate] = useState('');
+  const [update, setUpdate] = useState("");
 
   needs.map((need) => {
     if (need.user_id == project.user.id) {
@@ -184,7 +186,7 @@ const SelectedProject = ({
       <div className={`${styles.grid_selectedproject} ${styles.grid_titles}`}>
         <button
           className={style.button_back}
-          onClick={(e) => setSelectedProject('')}
+          onClick={(e) => setSelectedProject("")}
         >
           <img
             className={style.back_image}
@@ -196,33 +198,35 @@ const SelectedProject = ({
           <p className={`${styles.grid_title} ${style.title_outline} `}>
             {project.title}
           </p>
-          {project.phase_id != 1 && (
-            <a
-              className={`${style.header_button} scale`}
-              href={`/detail/${project.id}`}
-            >
-              <img
-                className={style.back_image}
-                src="./assets/profiel/profiel_bekijken.svg"
-              />
-              <p className={style.header_button__text}>Naar detail</p>
-            </a>
-          )}
-          {project.phase_id == 2 && project.create_finished == false && (
-            <button
-              className={`${style.header_button} scale`}
-              onClick={handleClick}
-            >
-              <img
-                className={style.back_image}
-                src="./assets/profiel/profiel_doorsturen.svg"
-              />
-              <p className={style.header_button__text}>inzenden voor jury</p>
-            </button>
-          )}
-          {update == 1 && (
-            <p>We nemen zo spoedig mogelijk contact op voor de jury!</p>
-          )}
+          <div className={style.header_buttons}>
+            {project.phase_id != 1 && (
+              <a
+                className={`${style.header_button} scale`}
+                href={`/detail/${project.id}`}
+              >
+                <img
+                  className={style.back_image}
+                  src="./assets/profiel/profiel_bekijken.svg"
+                />
+                <p className={style.header_button__text}>Naar detail</p>
+              </a>
+            )}
+            {project.phase_id == 2 && project.create_finished == false && (
+              <button
+                className={`${style.header_button} scale`}
+                onClick={handleClick}
+              >
+                <img
+                  className={style.back_image}
+                  src="./assets/profiel/profiel_doorsturen.svg"
+                />
+                <p className={style.header_button__text}>inzenden voor jury</p>
+              </button>
+            )}
+            {update == 1 && (
+              <p>We nemen zo spoedig mogelijk contact op voor de jury!</p>
+            )}
+          </div>
         </div>
       </div>
 
@@ -243,34 +247,30 @@ const SelectedProject = ({
 
         <div classname={style.grid_item__info}>
           <p className={style.grid_tagline}>"{project.tagline}"</p>
-          {/* <p className={style.title}>{project.title}</p>
-          <p className={style.title_outline}>
-            {project.user.first_name} {project.user.last_name}
-          </p> */}
           <div className={style.info_items}>
             <div className={`${style.info_fase} ${style.info_item}`}>
-              {project.phase.phase == 'Conceptvoorstel' && (
+              {project.phase.phase == "Conceptvoorstel" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_concept}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Co-creatie' && (
+              {project.phase.phase == "Co-creatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_creatie}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Crowdfunding' && (
+              {project.phase.phase == "Crowdfunding" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_crowdfunding}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Realisatie' && (
+              {project.phase.phase == "Realisatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_realisatie}`}
@@ -282,7 +282,7 @@ const SelectedProject = ({
               </p>
             </div>
             <div className={`${style.info_location} ${style.info_item}`}>
-              <img src="./assets/images/project_location_icon.svg" />
+              <img src="./assets/card/card_locatie.svg" />
               <p className={`${style.info_text} ${style.info_light}`}>
                 {project.district.district}
               </p>

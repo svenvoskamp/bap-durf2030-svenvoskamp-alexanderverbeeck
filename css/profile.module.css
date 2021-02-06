@@ -131,6 +131,7 @@
 
 .grid_bold {
   composes: bold from "./typo.module.css";
+  cursor: pointer;
 }
 
 .grid_text__italic {
@@ -149,6 +150,7 @@
 .input_submit {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .button {

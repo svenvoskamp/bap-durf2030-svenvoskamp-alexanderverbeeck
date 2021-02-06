@@ -1,8 +1,8 @@
-import React from 'react';
-import style from '../../../Create/Step3/step3.module.css';
-import styles from '../../../../css/profile.module.css';
-import gql from 'graphql-tag';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import React from "react";
+import style from "../../../Create/Step3/step3.module.css";
+import styles from "../../../../css/profile.module.css";
+import gql from "graphql-tag";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -17,6 +17,8 @@ const GET_USER_DATA = gql`
       sector
       picture
       department
+      name
+      nickname
       donations(order_by: { created_at: asc }) {
         id
         created_at
@@ -186,7 +188,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
   };
 
   const toNotifications = () => {
-    setSelectedProject('');
+    setSelectedProject("");
     setContent(2);
   };
   return (
@@ -212,7 +214,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                     {need.provided && (
                       <>
                         <p>
-                          Door: {need.otheruser.first_name}{' '}
+                          Door: {need.otheruser.first_name}{" "}
                           {need.otheruser.last_name}
                         </p>
                       </>
@@ -220,7 +222,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                     {!need.provided && (
                       <>
                         <p>
-                          Door: {need.otheruser.first_name}{' '}
+                          Door: {need.otheruser.first_name}{" "}
                           {need.otheruser.last_name}
                         </p>
                       </>

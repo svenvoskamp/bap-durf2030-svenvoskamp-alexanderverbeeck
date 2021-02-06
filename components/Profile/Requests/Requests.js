@@ -1,9 +1,9 @@
-import React from 'react';
-import style from './requests.module.css';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import Empty from '../../Empty/Empty';
-import styles from '../../../css/profile.module.css';
+import React from "react";
+import style from "./requests.module.css";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import Empty from "../../Empty/Empty";
+import styles from "../../../css/profile.module.css";
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed($id: Int!, $provided: Boolean!, $pending: Boolean) {
@@ -37,6 +37,8 @@ const GET_USER_DATA = gql`
       sector
       picture
       department
+      name
+      nickname
       donations(order_by: { created_at: asc }) {
         id
         created_at
@@ -116,6 +118,7 @@ const GET_USER_DATA = gql`
       other_user_id
       accepted
       pending
+      project_id
       otheruser {
         id
         first_name
@@ -221,7 +224,7 @@ const Requests = ({ props, user, feedbacks }) => {
   return (
     <>
       {requests.length < 1 && feedbackRequests.length < 1 && (
-        <Empty props={'inafwachting'} />
+        <Empty props={"inafwachting"} />
       )}
 
       {requests.length > 0 && (
@@ -246,7 +249,7 @@ const Requests = ({ props, user, feedbacks }) => {
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
                 <div className={styles.pending}>
-                  {' '}
+                  {" "}
                   <img
                     class
                     className={styles.grid_image__pending}
@@ -257,11 +260,12 @@ const Requests = ({ props, user, feedbacks }) => {
                   </p>
                 </div>
                 <div className={styles.flex_mobile}>
-                  <p
+                  <a
+                    href={`detail/${need.project_id}`}
                     className={`${styles.grid_bold}  ${styles.grid_item__title}`}
                   >
                     {need.project.title}
-                  </p>
+                  </a>
                   <div
                     className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden__requests}`}
                   >
@@ -336,7 +340,7 @@ const Requests = ({ props, user, feedbacks }) => {
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
                 <div className={styles.pending}>
-                  {' '}
+                  {" "}
                   <img
                     class
                     className={styles.grid_image__pending}
@@ -347,11 +351,12 @@ const Requests = ({ props, user, feedbacks }) => {
                   </p>
                 </div>
                 <div className={styles.flex_mobile}>
-                  <p
+                  <a
+                    href={`/detail/${feedback.project_id}`}
                     className={`${styles.grid_bold}  ${styles.grid_item__title}`}
                   >
                     {feedback.project.title}
-                  </p>
+                  </a>
                   <div
                     className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden} ${styles.grid_item__type__hidden__requests}`}
                   >

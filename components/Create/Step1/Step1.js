@@ -11,7 +11,7 @@ const GET_THEMES_AND_CATEGORIES = gql`
       theme
       theme_durf
     }
-    categories {
+    categories(order_by: { category: asc }) {
       category
       id
     }

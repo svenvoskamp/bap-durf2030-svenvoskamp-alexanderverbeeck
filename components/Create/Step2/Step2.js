@@ -208,7 +208,7 @@ const Step2 = ({
                 />
               </div>
 
-              <label htmlFor="img" className={style.input_image}>
+              <label htmlFor="img" className={`${style.input_image} scale`}>
                 <div className={style.image}>
                   <img
                     id="id_img"

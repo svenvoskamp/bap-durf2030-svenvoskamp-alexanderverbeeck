@@ -1,7 +1,18 @@
-import React from 'react';
-import style from './info.module.css';
+import React from "react";
+import style from "./info.module.css";
 
 const Info = ({ props }) => {
+  let email;
+  console.log(props.id);
+  if (props.id.includes("goog")) {
+    console.log("dit is google");
+    email = `${props.nickname}@gmail.com`;
+    console.log(email);
+  } else {
+    console.log("dit is auth0");
+    email = props.name;
+    console.log(email);
+  }
   return (
     <>
       <div className={style.part_header}>
@@ -24,12 +35,12 @@ const Info = ({ props }) => {
               <p className={style.description_text}>{props.sector}</p>
             </>
           )}
+          <div className={style.description_div}></div>
+          <p className={style.description_text__outline}>{email}</p>
           {props.phone_number && (
             <>
               <div className={style.description_div}></div>
-              <p className={style.description_text__outline}>
-                {props.phone_number}
-              </p>
+              <p className={style.description_text}>{props.phone_number}</p>
             </>
           )}
         </div>

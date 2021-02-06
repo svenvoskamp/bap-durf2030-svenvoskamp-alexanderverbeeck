@@ -1,18 +1,130 @@
-import React, { useRef, useEffect } from 'react';
-import Login from './Auth/Login';
-import Logout from './Auth/Logout';
-import { useRouter } from 'next/router';
+import React, { useRef, useEffect } from "react";
+import Login from "./Auth/Login";
+import Logout from "./Auth/Logout";
+import { useRouter } from "next/router";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import Notifications from "./Notifications";
+
+const GET_USER_DATA = gql`
+  query getUser($id: String!) {
+    users(where: { id: { _eq: $id } }) {
+      company
+      company_name
+      first_name
+      last_name
+      id
+      last_name
+      phone_number
+      sector
+      picture
+      department
+      name
+      nickname
+      donations(order_by: { created_at: asc }) {
+        id
+        created_at
+        amount
+        reward
+        updated_at
+        user {
+          first_name
+          last_name
+        }
+        project_id
+        user_id
+      }
+      projects {
+        id
+        category {
+          category
+        }
+        district {
+          district
+        }
+        image
+        impact
+        tagline
+        description
+        reward_one
+        reward_two
+        reward_three
+        create_finished
+        donated
+        crowdfunding_finished
+        speech
+        phase_id
+        phase {
+          phase
+        }
+        theme {
+          theme
+        }
+        user {
+          id
+          first_name
+          last_name
+        }
+        needs {
+          id
+          type
+          need
+        }
+        title
+      }
+    }
+    needs(order_by: { pending: desc, provided: asc }) {
+      id
+      type
+      motivation
+      need
+      user_id
+      provided
+      other_user_id
+      project_id
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+      pending
+      project {
+        title
+      }
+    }
+    feedbacks {
+      id
+      type
+      motivation
+      user_id
+      other_user_id
+      accepted
+      pending
+      project_id
+      otheruser {
+        id
+        first_name
+        last_name
+      }
+
+      project {
+        title
+      }
+    }
+  }
+`;
 
 const Nav = ({ user }) => {
   console.log(user);
   const navRef = useRef(null);
   const router = useRouter();
   const path = router.pathname;
+
   return (
     <>
-      {path == '/' && (
+      {path == "/" && (
         <div className="navigation-header--mobile navigation-header--mobile--fixed">
-          <a href={'/'}>
+          <a href={"/"}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -67,7 +179,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={'/create-project'}>
+          <a href={"/create-project"}>
             <div>
               <svg
                 width="70"
@@ -99,9 +211,9 @@ const Nav = ({ user }) => {
           </a>
         </div>
       )}
-      {path != '/' && (
+      {path != "/" && (
         <div className="navigation-header--mobile">
-          <a href={'/'}>
+          <a href={"/"}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -156,7 +268,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={'/create-project'}>
+          <a href={"/create-project"}>
             <div>
               <svg
                 width="70"
@@ -189,7 +301,7 @@ const Nav = ({ user }) => {
         </div>
       )}
       <nav className="navigation">
-        <a href={'/'} className="nav-logo">
+        <a href={"/"} className="nav-logo">
           <svg
             className="nav-logo--image scale"
             width="40"
@@ -245,7 +357,7 @@ const Nav = ({ user }) => {
           </svg>
         </a>
         <div className="nav-items">
-          <a href={'/'} className="scale item">
+          <a href={"/"} className="scale item">
             <div className=" nav-item">
               <svg
                 width="27"
@@ -290,7 +402,7 @@ const Nav = ({ user }) => {
               Ontdekken
             </p>
           </a>
-          <a href={'/projects'} className="scale item">
+          <a href={"/projects"} className="scale item">
             <div className=" nav-item">
               <svg
                 width="30"
@@ -346,7 +458,7 @@ const Nav = ({ user }) => {
             <p className=" nav-item--title">Projecten</p>
           </a>
 
-          <a href={'/create-project'} className="scale item item-nieuw">
+          <a href={"/create-project"} className="scale item item-nieuw">
             <div className=" nav-item">
               <svg
                 className="nav-item--image"
@@ -382,7 +494,7 @@ const Nav = ({ user }) => {
             </div>
             <p className="nav-item--title">Nieuw project</p>
           </a>
-          <a href={'/users'} className="scale item">
+          <a href={"/users"} className="scale item">
             <div className="nav-item">
               <svg
                 width="33"
@@ -437,7 +549,7 @@ const Nav = ({ user }) => {
 
           {!user && (
             <>
-              <a href={'/'} className="scale item">
+              <a href={"/"} className="scale item">
                 <div className="nav-item">
                   <svg
                     width="26"
@@ -476,8 +588,8 @@ const Nav = ({ user }) => {
 
           {user && (
             <>
-              {user.sub != 'auth0|6019996f27e50e006cb10777' && (
-                <a href={'/'} className="scale item">
+              {user.sub != "auth0|601eb3abfb308d0069b819cb" && (
+                <a href={"/"} className="scale item">
                   <div className="nav-item">
                     <svg
                       width="26"
@@ -516,8 +628,8 @@ const Nav = ({ user }) => {
           )}
           {user && (
             <>
-              {user.sub == 'auth0|6019996f27e50e006cb10777' && (
-                <a href={'/admin'} className="scale item">
+              {user.sub == "auth0|601eb3abfb308d0069b819cb" && (
+                <a href={"/admin"} className="scale item">
                   <div className="nav-item">
                     <svg
                       width="26"
@@ -548,7 +660,7 @@ const Nav = ({ user }) => {
           )}
           <div className="nav-profile--mobile">
             {user && (
-              <a href={'/profile'} className="scale profile">
+              <a href={"/profile"} className="scale profile">
                 <div className="nav-item nav-profile--image">
                   <img className="" src={user.picture} alt={user.name} />
                 </div>
@@ -570,10 +682,13 @@ const Nav = ({ user }) => {
         </div>
         <div className="nav-profile">
           {user && (
-            <a href={'/profile'} className="scale profile">
+            <a href={"/profile"} className="scale profile">
               <div className="nav-item nav-profile--image">
-                <img className="" src={user.picture} alt={user.name} />
+                {user.picture && (
+                  <img className="" src={user.picture} alt={user.name} />
+                )}
               </div>
+              <Notifications id={user.sub}></Notifications>
               <p className="nav-item--title">Mijn profiel</p>
             </a>
           )}

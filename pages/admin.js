@@ -11,6 +11,8 @@ import Loading from "../components/Loading/Loading";
 import Mouse from "../components/Mouse";
 import style from "../css/admin.module.css";
 import styles from "../css/profile.module.css";
+import Project from "../components/Admin/project";
+import Empty from "../components/Empty/Empty";
 
 const GET_DATA = gql`
   query MyQuery {
@@ -39,6 +41,7 @@ const GET_DATA = gql`
           id
         }
         user {
+          id
           first_name
           last_name
         }
@@ -246,15 +249,15 @@ const Admin = ({ props, user }) => {
     <>
       <Mouse></Mouse>
       <Nav user={user}></Nav>
-      {currentProject == "" && (
-        <>
-          <article className={styles.part}>
-            <div className={style.part_header}>
-              <h1 className={style.title}>
-                Durf2030.
-                {/* <span className={style.title_outline}>{props.last_name}.</span> */}
-              </h1>
-            </div>
+      <article className={styles.part}>
+        <div className={style.part_header}>
+          <h1 className={style.title}>
+            Durf2030.
+            {/* <span className={style.title_outline}>{props.last_name}.</span> */}
+          </h1>
+        </div>
+        {currentProject == "" && (
+          <>
             <>
               <div className={`${style.grid_admin} ${styles.grid_titles}`}>
                 <p
@@ -268,79 +271,87 @@ const Admin = ({ props, user }) => {
                   Akkoord
                 </p>
               </div>
-              {projects.map((project) => (
+              {projects.length > 0 && (
                 <>
-                  <div
-                    className={`${styles.grid_items} ${style.grid_admin__items}`}
-                  >
-                    <p
-                      className={`${styles.grid_bold} ${styles.grid_bold__title}`}
-                      onClick={(e) => setCurrentProject(project)}
-                    >
-                      {project.title}
-                    </p>
-                    <p className={styles.grid_text}>
-                      {project.user.first_name} {project.user.last_name}
-                    </p>
-                    {project.phase_id == 1 && (
-                      <p className={styles.grid_text}>Co-Creatie aanvraag</p>
-                    )}
-                    {project.phase_id == 2 && (
-                      <p className={styles.grid_text}>Crowdfunding aanvraag</p>
-                    )}
-                    {/* <div>
-                      <button onClick={(e) => handleClick(e, "x", project)}>
-                        X
-                      </button>
-                      <button onClick={(e) => handleClick(e, "v", project)}>
-                        V
-                      </button>
-                    </div> */}
+                  {projects.map((project) => (
+                    <div>
+                      <div
+                        className={`${styles.grid_items} ${style.grid_admin__items}`}
+                      >
+                        <p
+                          className={`${styles.grid_bold} ${styles.grid_bold__title} scale`}
+                          onClick={(e) => setCurrentProject(project)}
+                        >
+                          {project.title}
+                        </p>
+                        <a className="scale" href={`/user/${project.user.id}`}>
+                          <p className={styles.grid_text}>
+                            {project.user.first_name} {project.user.last_name}
+                          </p>
+                        </a>
+                        {project.phase_id == 1 && (
+                          <p className={styles.grid_text}>
+                            Co-Creatie aanvraag
+                          </p>
+                        )}
+                        {project.phase_id == 2 && (
+                          <p className={styles.grid_text}>
+                            Crowdfunding aanvraag
+                          </p>
+                        )}
 
-                    <div className={styles.buttons}>
-                      <div className={styles.need_button}>
-                        <button
-                          className={styles.input_submit}
-                          onClick={(e) => handleClick(e, "v", project)}
-                        >
-                          <div className={styles.button}>
-                            <div
-                              className={`${styles.circle_button} ${styles.circle_button__accept} scale `}
+                        <div className={styles.buttons}>
+                          <div className={styles.need_button}>
+                            <button
+                              className={styles.input_submit}
+                              onClick={(e) => handleClick(e, "v", project)}
                             >
-                              <img
-                                className={styles.button_image}
-                                src="../../../assets/buttons/accept_icon.svg"
-                              />
-                            </div>
+                              <div className={styles.button}>
+                                <div
+                                  className={`${styles.circle_button} ${styles.circle_button__accept} scale `}
+                                >
+                                  <img
+                                    className={styles.button_image}
+                                    src="../../../assets/buttons/accept_icon.svg"
+                                  />
+                                </div>
+                              </div>
+                            </button>
                           </div>
-                        </button>
-                      </div>
-                      <div className={styles.need_button}>
-                        <button
-                          className={styles.input_submit}
-                          onClick={(e) => handleClick(e, "x", project)}
-                        >
-                          <div className={styles.button}>
-                            <div
-                              className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
+                          <div className={styles.need_button}>
+                            <button
+                              className={styles.input_submit}
+                              onClick={(e) => handleClick(e, "x", project)}
                             >
-                              <img
-                                className={styles.button_image}
-                                src="../../../assets/buttons/decline_icon.svg"
-                              />
-                            </div>
+                              <div className={styles.button}>
+                                <div
+                                  className={`${styles.circle_button} ${styles.circle_button__decline} scale `}
+                                >
+                                  <img
+                                    className={styles.button_image}
+                                    src="../../../assets/buttons/decline_icon.svg"
+                                  />
+                                </div>
+                              </div>
+                            </button>
                           </div>
-                        </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </>
-              ))}
+              )}
+              {projects.length == 0 && <Empty props={"noadmin"} />}
             </>
-          </article>
-        </>
-      )}
-      {currentProject != "" && <Project project={currentProject}></Project>}
+          </>
+        )}
+        {currentProject != "" && (
+          <Project
+            project={currentProject}
+            setCurrentProject={setCurrentProject}
+          ></Project>
+        )}
+      </article>
     </>
   );
 };
@@ -371,11 +382,11 @@ const getUser = () => {
     return <></>;
   }
   if (user && !loading) {
-    if (!loading && user.sub != "auth0|6019996f27e50e006cb10777") {
+    if (!loading && user.sub != "auth0|601eb3abfb308d0069b819cb") {
       router.push("/");
       return <></>;
     }
-    if (!loading && user.sub == "auth0|6019996f27e50e006cb10777")
+    if (!loading && user.sub == "auth0|601eb3abfb308d0069b819cb")
       return <GetAdminData user={user}></GetAdminData>;
   }
   router.push("/");

@@ -21,7 +21,7 @@
 }
 
 .card:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -35,7 +35,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.card:hover .card:after {
+.project:hover .card:after {
   top: 0;
   right: 0;
 }
@@ -48,7 +48,7 @@
 }
 
 .card_user {
-  composes: mediumTitle from '../css/typo.module.css';
+  composes: mediumTitle from "../css/typo.module.css";
 }
 
 .card_titles {
@@ -57,13 +57,13 @@
 }
 
 .card_title {
-  composes: mediumTitleOutline from '../css/typo.module.css';
+  composes: mediumTitleOutline from "../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .card_tags {
   display: flex;
-  composes: smallCaps from '../css/typo.module.css';
+  composes: smallCaps from "../css/typo.module.css";
   color: beigeColor;
 }
 
@@ -83,9 +83,9 @@
 }
 
 .fase_color {
-  height: 1.5rem;
+  height: 2rem;
   border-radius: 50%;
-  width: 1.5rem;
+  width: 2rem;
 }
 
 .fase_concept {
@@ -133,16 +133,16 @@
 }
 
 .info_light {
-  composes: smallCapsLight from '../css/typo.module.css';
+  composes: smallCapsLight from "../css/typo.module.css";
 }
 
 .info_bold {
-  composes: smallCaps from '../css/typo.module.css';
+  composes: smallCaps from "../css/typo.module.css";
 }
 
 .need {
   display: flex;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
   align-items: center;
 }
 

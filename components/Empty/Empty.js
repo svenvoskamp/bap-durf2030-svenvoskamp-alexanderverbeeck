@@ -21,6 +21,16 @@ const Empty = ({ props }) => {
           </div>
         </div>
       )}
+
+      {props == "andereprojecten" && (
+        <div className={style.empty_state}>
+          <p className={style.empty_state__text}>
+            Er zijn nog{" "}
+            <span className={style.empty_state__text__outline}>geen</span>{" "}
+            projecten beschikbaar.
+          </p>
+        </div>
+      )}
       {props == "needsincoming" && (
         <div className={style.empty_state}>
           <p className={style.empty_state__text}>
@@ -39,7 +49,24 @@ const Empty = ({ props }) => {
           </p>
         </div>
       )}
-
+      {props == "projectincoming" && (
+        <div className={style.empty_state}>
+          <p className={style.empty_state__text}>
+            je hebt{" "}
+            <span className={style.empty_state__text__outline}> geen </span>{" "}
+            inkomende projectupdates.
+          </p>
+        </div>
+      )}
+      {props == "noadmin" && (
+        <div className={style.empty_state}>
+          <p className={style.empty_state__text}>
+            Er zijn{" "}
+            <span className={style.empty_state__text__outline}> geen </span>{" "}
+            inkomende notificaties.
+          </p>
+        </div>
+      )}
       {props == "emptyoption" && (
         <div className={style.empty_state}>
           <p className={style.empty_state__text}>
@@ -53,7 +80,7 @@ const Empty = ({ props }) => {
           <p className={style.empty_state__text}>
             je hebt{" "}
             <span className={style.empty_state__text__outline}> geen </span>{" "}
-            inkomende feedback of benodigdheden.
+            inkomende berichten.
           </p>
         </div>
       )}
