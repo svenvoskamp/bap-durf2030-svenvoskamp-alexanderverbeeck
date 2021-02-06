@@ -295,6 +295,7 @@ export async function getServerSideProps() {
         phase_id
         theme_id
         district_id
+        donated
         category_id
         user {
           first_name

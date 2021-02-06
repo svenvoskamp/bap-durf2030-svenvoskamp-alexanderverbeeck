@@ -125,9 +125,9 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
               <div className={`${style.info_crowdfunding} ${style.info_item}`}>
                 <img src="./assets/card/card_crowdfunding.svg" />
                 <p className={`${style.info_text} ${style.info_light}`}>
-                  €{project.donated}/
-                  <span className={`${style.info_text} ${style.info_light}`}>
-                    1500
+                  €{project.donated} /
+                  <span className={`${style.info_text} ${style.info_bold}`}>
+                    1500,00
                   </span>
                 </p>
               </div>

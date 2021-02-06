@@ -542,11 +542,16 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                 onSubmit={(e) => handlePhase(e, currentProject)}
               >
                 <div className={style.donation_option}>
-                  <label htmlFor={currentProject.title} className={style.label}>
-                    Donatiereward 1{" "}
-                    <span className={styles.grid_text}>(€5 - €20):</span>
-                  </label>
-                  <p className={style.error} ref={refRewardOne}></p>
+                  <div className={style.input_label}>
+                    <label
+                      htmlFor={currentProject.title}
+                      className={style.label}
+                    >
+                      Donatiereward 1{" "}
+                      <span className={styles.grid_text}>(€5 - €20):</span>
+                    </label>
+                    <p className={style.error} ref={refRewardOne}></p>
+                  </div>
                   <input
                     required
                     id={currentProject.title}
@@ -560,11 +565,16 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   />
                 </div>
                 <div className={style.donation_option}>
-                  <label htmlFor={currentProject.title} className={style.label}>
-                    Donatiereward 2{" "}
-                    <span className={styles.grid_text}>(€20 - €50):</span>
-                  </label>
-                  <p className={style.error} ref={refRewardTwo}></p>
+                  <div className={style.input_label}>
+                    <label
+                      htmlFor={currentProject.title}
+                      className={style.label}
+                    >
+                      Donatiereward 2{" "}
+                      <span className={styles.grid_text}>(€20 - €50):</span>
+                    </label>
+                    <p className={style.error} ref={refRewardTwo}></p>
+                  </div>
                   <input
                     required
                     id={currentProject.title}
@@ -578,11 +588,16 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   />
                 </div>
                 <div className={style.donation_option}>
-                  <label htmlFor={currentProject.title} className={style.label}>
-                    Donatiereward 3{" "}
-                    <span className={styles.grid_text}>(€50+):</span>
-                  </label>
-                  <p className={style.error} ref={refRewardThree}></p>
+                  <div className={style.input_label}>
+                    <label
+                      htmlFor={currentProject.title}
+                      className={style.label}
+                    >
+                      Donatiereward 3{" "}
+                      <span className={styles.grid_text}>(€50+):</span>
+                    </label>
+                    <p className={style.error} ref={refRewardThree}></p>
+                  </div>
                   <input
                     required
                     id={currentProject.title}

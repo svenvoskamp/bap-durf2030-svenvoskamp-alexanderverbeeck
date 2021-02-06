@@ -220,11 +220,13 @@ const SelectedProject = ({
                   className={style.back_image}
                   src="./assets/profiel/profiel_doorsturen.svg"
                 />
-                <p className={style.header_button__text}>inzenden voor jury</p>
+                <p className={style.header_button__text}>Inzenden voor jury</p>
               </button>
             )}
             {update == 1 && (
-              <p>We nemen zo spoedig mogelijk contact op voor de jury!</p>
+              <p className={`${style.info_text} ${style.info_light}`}>
+                Verzonden!
+              </p>
             )}
           </div>
         </div>

@@ -11,7 +11,7 @@
 }
 
 .button {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
   border: 0.2rem solid blueColor;
   padding: 0.8rem 1rem;
   position: relative;
@@ -22,7 +22,7 @@
 }
 
 .button:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -57,8 +57,8 @@
 }
 
 .label {
-  composes: smallCaps from '../../../css/typo.module.css';
-  margin-bottom: 1rem;
+  composes: smallCaps from "../../../css/typo.module.css";
+  margin-right: 1rem;
 }
 
 .input {
@@ -67,12 +67,25 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from '../../../css/typo.module.css';
+  composes: empty from "../../../css/typo.module.css";
   padding: 0.2rem 0.5rem;
+  margin-top: 1rem;
 }
 
 .checkbox {
   display: none;
+}
+
+.input_label {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.error {
+  color: redColor;
+  composes: smallText from "../../../css/typo.module.css";
+  font-style: italic;
 }
 
 @media screen and (max-width: 1150px) {
@@ -99,7 +112,7 @@
     flex-direction: column;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 1rem;
-    padding: 3rem 1rem 3rem 1rem;
+    padding: 3rem 2rem 3rem 2rem;
     background-color: #f3e3cb;
     margin-bottom: 8rem;
   }

@@ -685,10 +685,12 @@ const Nav = ({ user }) => {
             <a href={"/profile"} className="scale profile">
               <div className="nav-item nav-profile--image">
                 {user.picture && (
-                  <img className="" src={user.picture} alt={user.name} />
+                  <div className="profile-image">
+                    <img className="" src={user.picture} alt={user.name} />
+                    <Notifications id={user.sub}></Notifications>
+                  </div>
                 )}
               </div>
-              <Notifications id={user.sub}></Notifications>
               <p className="nav-item--title">Mijn profiel</p>
             </a>
           )}

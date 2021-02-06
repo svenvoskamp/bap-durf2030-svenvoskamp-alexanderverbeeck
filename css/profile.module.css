@@ -397,6 +397,10 @@
   .subdivision_progress {
     padding: 0 2rem;
   }
+
+  .tabs_title__hidden {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 450px) {

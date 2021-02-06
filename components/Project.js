@@ -120,9 +120,9 @@ const Project = ({ project, key }) => {
                 >
                   <img src="./assets/images/project_crowdfunding_icon.svg" />
                   <p className={`${style.info_text} ${style.info_light}`}>
-                    €{project.donated}/
-                    <span className={`${style.info_text} ${style.info_light}`}>
-                      1500
+                    €{project.donated} /
+                    <span className={`${style.info_text} ${style.info_bold}`}>
+                      1500,00
                     </span>
                   </p>
                 </div>

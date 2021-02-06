@@ -17,14 +17,30 @@
 .description {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.description_info {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.description_text:first-of-type {
+  margin-left: 0;
 }
 
 .description_text {
   composes: mediumTitle from "../../../css/typo.module.css";
+  margin-right: 2rem;
+  line-height: 3rem;
 }
 
 .description_text__outline {
   composes: mediumTitleOutline from "../../../css/typo.module.css";
+  margin-right: 2rem;
+  line-height: 3rem;
 }
 
 .description_div {
@@ -32,12 +48,24 @@
   height: 1rem;
   background-color: blueColor;
   border-radius: 50%;
-  margin: 0 2rem;
+  margin-right: 2rem;
 }
 
 @media screen and (max-width: 850px) {
   .part_header {
     padding: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .description_text,
+  .description_text__outline {
+    font-size: 1.6rem;
+  }
+
+  .description_text__outline {
+    -webkit-text-stroke: 0.1rem blueColor;
+    text-stroke: 0.1rem blueColor;
   }
 }
 

@@ -27,6 +27,7 @@ const GET_USER_DATA = gql`
       sector
       picture
       department
+
       donations(order_by: { created_at: asc }) {
         id
         created_at
@@ -56,6 +57,7 @@ const GET_USER_DATA = gql`
         reward_two
         reward_three
         create_finished
+
         donated
         phase_id
         phase {

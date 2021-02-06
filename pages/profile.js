@@ -196,13 +196,13 @@ const Profile = ({ props }) => {
                 className={`${style.tabs_title} ${style.tabs_title__active} scale`}
                 onClick={(e) => setContent(0)}
               >
-                Mijn Projecten
+                <span className={style.tabs_title__hidden}>Mijn</span> Projecten
               </button>
               <button
                 className={`${style.tabs_title} scale`}
                 onClick={(e) => setContent(1)}
               >
-                Mijn Bijdragen
+                <span className={style.tabs_title__hidden}>Mijn</span> Bijdragen
               </button>
               <button
                 className={`${style.tabs_title} scale`}
@@ -224,13 +224,13 @@ const Profile = ({ props }) => {
                 className={`${style.tabs_title}  scale`}
                 onClick={(e) => setContent(0)}
               >
-                Mijn Projecten
+                <span className={style.tabs_title__hidden}>Mijn</span> Projecten
               </button>
               <button
                 className={`${style.tabs_title} ${style.tabs_title__active} scale`}
                 onClick={(e) => setContent(1)}
               >
-                Mijn Bijdragen
+                <span className={style.tabs_title__hidden}>Mijn</span> Bijdragen
               </button>
               <button
                 className={`${style.tabs_title} scale`}
@@ -252,13 +252,13 @@ const Profile = ({ props }) => {
                 className={`${style.tabs_title}  scale`}
                 onClick={(e) => setContent(0)}
               >
-                Mijn Projecten
+                <span className={style.tabs_title__hidden}>Mijn</span> Projecten
               </button>
               <button
                 className={`${style.tabs_title} scale`}
                 onClick={(e) => setContent(1)}
               >
-                Mijn Bijdragen
+                <span className={style.tabs_title__hidden}>Mijn</span> Bijdragen
               </button>
               <button
                 className={`${style.tabs_title}  ${style.tabs_title__active} scale`}
@@ -280,13 +280,13 @@ const Profile = ({ props }) => {
                 className={`${style.tabs_title}  scale`}
                 onClick={(e) => setContent(0)}
               >
-                Mijn Projecten
+                <span className={style.tabs_title__hidden}>Mijn</span> Projecten
               </button>
               <button
                 className={`${style.tabs_title} scale`}
                 onClick={(e) => setContent(1)}
               >
-                Mijn Bijdragen
+                <span className={style.tabs_title__hidden}>Mijn</span> Bijdragen
               </button>
               <button
                 className={`${style.tabs_title}   scale`}

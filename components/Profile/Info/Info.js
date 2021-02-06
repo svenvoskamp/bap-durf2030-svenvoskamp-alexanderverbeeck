@@ -26,8 +26,10 @@ const Info = ({ props }) => {
               <p className={style.description_text__outline}>
                 {props.company_name}
               </p>
-              <div className={style.description_div}></div>
-              <p className={style.description_text}>{props.department}</p>
+              <div className={style.description_info}>
+                <div className={style.description_div}></div>
+                <p className={style.description_text}>{props.department}</p>
+              </div>
             </>
           )}
           {!props.company && (
@@ -35,13 +37,15 @@ const Info = ({ props }) => {
               <p className={style.description_text}>{props.sector}</p>
             </>
           )}
-          <div className={style.description_div}></div>
-          <p className={style.description_text__outline}>{email}</p>
+          <div className={style.description_info}>
+            <div className={style.description_div}></div>
+            <p className={style.description_text__outline}>{email}</p>
+          </div>
           {props.phone_number && (
-            <>
+            <div className={style.description_info}>
               <div className={style.description_div}></div>
               <p className={style.description_text}>{props.phone_number}</p>
-            </>
+            </div>
           )}
         </div>
       </div>

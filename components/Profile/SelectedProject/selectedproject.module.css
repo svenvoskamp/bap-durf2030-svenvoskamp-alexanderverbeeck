@@ -49,6 +49,7 @@
   align-items: center;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .header_button:first-of-type {
