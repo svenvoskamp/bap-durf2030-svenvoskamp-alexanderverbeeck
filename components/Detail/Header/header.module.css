@@ -159,3 +159,9 @@
     object-fit: cover;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .project_subtitles {
+    margin-bottom: 3rem;
+  }
+}

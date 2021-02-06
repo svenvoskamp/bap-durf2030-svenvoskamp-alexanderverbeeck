@@ -1,0 +1,464 @@
+@value tokens: "../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, greenColor from tokens;
+
+.part {
+  composes: view from "../css/layout.module.css";
+}
+
+.part_header {
+  width: 100%;
+}
+
+.title {
+  composes: largeTitleOutline from "../css/typo.module.css";
+  margin-bottom: 1rem;
+}
+
+.title_outline {
+  composes: largeTitle from "../css/typo.module.css";
+}
+
+.part_filter {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* Filter Search */
+
+.filter_search {
+  display: flex;
+  align-items: center;
+  border-bottom: 0.2rem solid blueColor;
+  margin-right: 5vw;
+}
+
+.input_search {
+  background-color: transparent;
+  border: none;
+  composes: empty from "../css/typo.module.css";
+  width: 100%;
+  overflow: hidden;
+  padding: 0.95rem 0.5rem;
+}
+
+.filter_radio {
+  composes: smallCaps from "../css/typo.module.css";
+  color: #e5d6c0;
+  margin-right: 2rem;
+  border-bottom: 1rem solid beigeColor;
+  cursor: pointer;
+  padding: 0.75rem 0;
+}
+
+.filter_radio__last {
+  margin-right: 0;
+}
+
+/* Filter Selects */
+
+.filter_selects {
+  margin-left: auto;
+}
+
+.filter_select {
+  border: 0.2rem solid blueColor;
+  background-color: transparent;
+  composes: smallCaps from "../css/typo.module.css";
+  padding: 0.75rem 2rem 0.75rem 0.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent url("../public/assets/images/select_arrow.svg")
+    no-repeat 98% center;
+}
+
+.filter_select:first-of-type {
+  margin-left: auto;
+}
+
+.filter_select:last-of-type {
+  margin-right: 0;
+}
+
+.filter_delete {
+  display: flex;
+}
+
+.delete_filter__small {
+  display: none;
+  composes: smallText from "../css/typo.module.css";
+  text-decoration: underline;
+}
+/* Filter Fase's */
+
+.filter_fase {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input_radio {
+  cursor: pointer;
+}
+
+.input_radio[type="radio"]:hover ~ .input_text:after {
+  top: 0;
+  left: 0;
+}
+
+.input_radio[type="radio"]:checked + .filter_radio {
+  color: blueColor;
+  border-bottom: 0.2rem solid blueColor;
+}
+
+.input_radio[type="radio"]:checked ~ .input_text:after {
+  left: 0;
+  top: 0;
+}
+
+.input_none {
+  display: none;
+}
+
+/* Content */
+
+.part_content {
+  margin-bottom: 2rem;
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Projecten Grid */
+
+.users {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 4rem;
+  margin-top: 5rem;
+}
+
+.projecten:empty {
+  display: none;
+}
+
+/* Empty State */
+
+.empty_button,
+.delete_button {
+  border: none;
+  background-color: transparent;
+  margin-left: 1rem;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+}
+
+.empty_state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column: span 3;
+  z-index: 2;
+}
+
+.empty_state__text {
+  composes: mediumTitle from "./typo.module.css";
+  color: #e5d6c0;
+  text-align: center;
+  font-size: 4rem;
+  line-height: 5rem;
+}
+
+.empty_state__text__outline {
+  composes: mediumTitleOutline from "./typo.module.css";
+  -webkit-text-stroke: 0.1rem #e5d6c0;
+  text-stroke: 0.1rem #e5d6c0;
+  display: inline-block;
+  font-size: 4rem;
+  line-height: 5rem;
+}
+
+.empty_state__buttons {
+  margin-top: 3rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.empty_state__button {
+  composes: smallCaps from "./typo.module.css";
+  border: 0.2rem solid blueColor;
+  padding: 0.8rem 1rem;
+  position: relative;
+  background-color: beigeColor;
+  cursor: pointer;
+  margin: 0 2rem;
+}
+
+.empty_state__button:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  top: 0.7rem;
+  left: 0.7rem;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.empty_state__button:hover .empty_state__button:after {
+  top: 0;
+  left: 0;
+}
+
+.empty_state__button__extra {
+  composes: smallCapsLight from "./typo.module.css";
+  border-bottom: 0.1rem solid #091422;
+  display: inline-block;
+  padding: 0.5rem 0;
+  color: #091422;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: transparent;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+  list-style-type: none;
+  height: 100%;
+  cursor: pointer;
+}
+
+.card_info {
+  background-color: blueColor;
+  padding: 3rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card_info__individu {
+  border: 0.3rem solid blueColor;
+  background-color: beigeColor;
+}
+
+.card_info__company {
+  background-color: blueColor;
+  border: 0.3rem solid beigeColor;
+}
+
+.card:hover .card_info:after {
+  bottom: 0;
+  right: 0;
+}
+.card_info:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-radius: inherit;
+  border: inherit;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.2s ease-in-out;
+}
+
+.individu_title {
+  composes: title from "../css/typo.module.css";
+}
+
+.individu_title__outline {
+  composes: titleOutline from "../css/typo.module.css";
+}
+
+.company_title {
+  composes: title from "../css/typo.module.css";
+  -webkit-text-stroke: 0.2rem beigeColor;
+  text-stroke: 0.2rem beigeColor;
+  color: beigeColor;
+}
+
+.company_title__outline {
+  composes: titleOutline from "../css/typo.module.css";
+  text-stroke: 0.2rem beigeColor;
+  -webkit-text-stroke: 0.2rem beigeColor;
+}
+
+.company_subtitle {
+  composes: smallCaps from "../css/typo.module.css";
+  color: beigeColor;
+  margin-top: 2rem;
+}
+
+.individu_subtitle {
+  composes: smallCaps from "../css/typo.module.css";
+  margin-top: 2rem;
+}
+@media screen and (min-width: 2000px) {
+  .users {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .users {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .search_image {
+    margin-right: 0.5rem;
+  }
+
+  .users {
+    grid-gap: 3rem;
+  }
+  .part_filter {
+    display: grid;
+    grid-template-areas:
+      "search selectone delete"
+      "fase fase fase";
+    grid-template-columns: 1fr 1fr auto;
+    width: 100%;
+    grid-gap: 1rem;
+  }
+
+  .filter_search {
+    padding: 0.5rem 0;
+    align-self: flex-end;
+  }
+
+  .input_search {
+    display: flex;
+    padding: 0.1rem 0.5rem;
+  }
+
+  .filter_select {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .filter_select:first-of-type {
+    grid-area: selectone;
+  }
+
+  .filter_select:nth-of-type(2) {
+    grid-area: selecttwo;
+  }
+
+  .filter_select:last-of-type {
+    grid-area: selectthree;
+  }
+
+  .filter_fase {
+    grid-area: fase;
+    margin-top: 2rem;
+    margin-left: auto;
+    justify-content: center;
+  }
+
+  .filter_delete {
+    grid-area: delete;
+  }
+
+  .filter_search {
+    grid-area: search;
+  }
+
+  .delete_button {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .users {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .part_filter {
+    display: grid;
+    grid-template-areas:
+      "search selectone delete"
+      "fase fase fase ";
+    grid-template-columns: 1fr 1fr auto;
+    width: 100%;
+    grid-column-gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .part_filter {
+    display: grid;
+    grid-template-areas:
+      "search selectone"
+      "delete delete"
+      "fase fase ";
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    grid-column-gap: 1rem;
+  }
+
+  .delete_filter {
+    display: none;
+  }
+
+  .delete_button {
+    display: inline-block;
+    justify-content: center;
+  }
+
+  .filter_delete {
+    justify-content: center;
+  }
+
+  .delete_filter__small {
+    display: flex;
+  }
+
+  .filter_fase {
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+  }
+
+  .filter_radio {
+    white-space: nowrap;
+  }
+
+  .company_title {
+    composes: title from "../css/typo.module.css";
+    -webkit-text-stroke: 0.12rem beigeColor;
+    text-stroke: 0.12rem beigeColor;
+    color: beigeColor;
+  }
+
+  .company_title__outline {
+    composes: titleOutline from "../css/typo.module.css";
+    text-stroke: 0.12rem beigeColor;
+    -webkit-text-stroke: 0.12rem beigeColor;
+  }
+}

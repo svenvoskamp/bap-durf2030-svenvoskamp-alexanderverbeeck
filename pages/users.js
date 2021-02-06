@@ -1,22 +1,22 @@
-import React, { useRef, useState, useEffect } from 'react';
-import Mouse from '../components/Mouse';
-import Project from '../components/Project';
-import gql from 'graphql-tag';
-import { withApollo } from '../lib/withApollo';
-import { ApolloClient } from 'apollo-client';
-import { useQuery } from '@apollo/react-hooks';
-import Nav from '../components/Nav';
-import { set } from 'mobx';
-import style from '../css/projects.module.css';
-import Loading from '../components/Loading/Loading';
-import { useFetchUser } from '../lib/user';
+import React, { useRef, useState, useEffect } from "react";
+import Mouse from "../components/Mouse";
+import Project from "../components/Project";
+import gql from "graphql-tag";
+import { withApollo } from "../lib/withApollo";
+import { ApolloClient } from "apollo-client";
+import { useQuery } from "@apollo/react-hooks";
+import Nav from "../components/Nav";
+import { set } from "mobx";
+import style from "../css/users.module.css";
+import Loading from "../components/Loading/Loading";
+import { useFetchUser } from "../lib/user";
 
 const Projects = ({ users }) => {
   const { user, loading } = useFetchUser();
   const [newUsers, setNewUsers] = useState(users);
-  const [type, setType] = useState('alles');
+  const [type, setType] = useState("alles");
   const [sector, setSector] = useState(0);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   let sectorlist = [];
   users.map((user) => {
@@ -49,13 +49,13 @@ const Projects = ({ users }) => {
   };
 
   const reset = () => {
-    const types = document.querySelectorAll('.type');
+    const types = document.querySelectorAll(".type");
     types.forEach((type) => {
       if (type.checked) {
         type.checked = false;
       }
     });
-    const sectors = document.querySelectorAll('.sector');
+    const sectors = document.querySelectorAll(".sector");
     sectors.forEach((sector) => {
       if (sector.selected) {
         sector.selected = false;
@@ -63,17 +63,17 @@ const Projects = ({ users }) => {
     });
 
     setSector(0);
-    setType('alles');
-    setSearch('');
+    setType("alles");
+    setSearch("");
   };
 
   const filter = () => {
     console.log(type);
-    if (sector == 0 && type != false && type != true && search == '') {
+    if (sector == 0 && type != false && type != true && search == "") {
       setNewUsers(users);
     } else {
       let filter = users;
-      if (search != '') {
+      if (search != "") {
         const keyword = search.toLowerCase();
         filter = filter.filter(function (x) {
           if (x.first_name) {
@@ -90,7 +90,7 @@ const Projects = ({ users }) => {
           }
         });
       }
-      if (type != 'alles') {
+      if (type != "alles") {
         filter = filter.filter((x) => x.company == type);
       }
       if (sector != 0) {
@@ -102,97 +102,156 @@ const Projects = ({ users }) => {
   return (
     <>
       <Mouse></Mouse>
-      {/* <Nav user={user}></Nav> */}
-      <div>
-        <label htmlFor="alles">
-          <input
-            id="alles"
-            type="radio"
-            name="type"
-            defaultChecked
-            onClick={(e) => handleType('alles')}
-          />
-          <p>Alle fase's</p>
-        </label>
-        <label htmlFor="individu">
-          <input
-            id="individu"
-            type="radio"
-            name="type"
-            className="type"
-            onClick={(e) => handleType(false)}
-          />
-          <p>individu</p>
-        </label>
-        <label htmlFor="bedrijven">
-          <input
-            id="bedrijven"
-            type="radio"
-            name="type"
-            className="type"
-            onClick={(e) => handleType(true)}
-          />
-          <p>bedrijf</p>
-        </label>
-      </div>
-      <div>
-        <select
-          name="sector"
-          id="sector"
-          className="type"
-          onChange={(e) => handleSector(e.currentTarget.value)}
-        >
-          <option value="">Sector</option>
-          {sectors.map((sector) => (
-            <option className="sector" value={sector}>
-              {sector}
-            </option>
-          ))}
-        </select>
-      </div>
-      <input
-        required
-        id="search"
-        min="0"
-        max="100"
-        value={search}
-        type="text"
-        placeholder="Zoek gebruiker"
-        onChange={(e) => setSearch(e.currentTarget.value)}
-      />
-      <button onClick={reset}>Reset</button>
-      <ul>
-        {newUsers.map((user) => (
-          <>
-            {user.first_name && user.first_name != 'Admin' && (
-              <a href={`/user/${user.id}`}>
-                <li key={user.id}>
-                  {user.company && (
-                    <>
-                      <p>{user.company_name}</p>
-                      <p>{user.department}</p>
-                    </>
-                  )}
-                  {!user.company && (
-                    <>
-                      <p>{user.first_name}</p>
-                      <p>{user.last_name}</p>
-                    </>
-                  )}
-                  <p>{user.sector}</p>
-                </li>
-              </a>
-            )}
-          </>
-        ))}
-      </ul>
+      <Nav user={user}></Nav>
+      <article className={style.part}>
+        <div className={style.part_header}>
+          <h1 className={style.title}>
+            durf 2030.
+            <span className={style.title_outline}>community.</span>
+          </h1>
+
+          <div className={style.part_filter}>
+            <div class={style.filter_search}>
+              <label htmlFor="search">
+                <img
+                  className={style.search_image}
+                  src="./assets/images/search_icon.svg"
+                />
+              </label>
+              <input
+                required
+                id="search"
+                min="0"
+                max="100"
+                value={search}
+                type="text"
+                placeholder="Zoek gebruiker"
+                className={`${style.input_search} scale`}
+                onChange={(e) => setSearch(e.currentTarget.value)}
+              />
+            </div>
+            <div className={style.filter_fase}>
+              <label htmlFor="alles">
+                <input
+                  id="alles"
+                  type="radio"
+                  name="type"
+                  defaultChecked
+                  className={`${style.input_none} ${style.input_radio}`}
+                  onClick={(e) => handleType("alles")}
+                />
+                <p className={`${style.filter_radio} scale`}>Iedereen</p>
+              </label>
+              <label htmlFor="bedrijven">
+                <input
+                  id="bedrijven"
+                  type="radio"
+                  name="type"
+                  className={`${style.input_none} ${style.input_radio}`}
+                  onClick={(e) => handleType(true)}
+                />
+                <p className={`${style.filter_radio} scale`}>Bedrijven</p>
+              </label>
+              <label htmlFor="individu">
+                <input
+                  id="individu"
+                  type="radio"
+                  name="type"
+                  className={`${style.input_none} ${style.input_radio}`}
+                  onClick={(e) => handleType(false)}
+                />
+                <p
+                  className={`${style.filter_radio} ${style.filter_radio__last} scale`}
+                >
+                  Individuen
+                </p>
+              </label>
+            </div>
+            <div className={style.filter_selects}>
+              <select
+                name="sector"
+                id="sector"
+                className={`${style.filter_select} scale`}
+                onChange={(e) => handleSector(e.currentTarget.value)}
+              >
+                <option value="">Sector</option>
+                {sectors.map((sector) => (
+                  <option className="sector" value={sector}>
+                    {sector}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className={style.filter_delete}>
+              <button
+                className={`${style.delete_button} scale`}
+                onClick={reset}
+              >
+                <img
+                  className={style.delete_filter}
+                  src="./assets/images/delete_filter.svg"
+                />
+                <p className={style.delete_filter__small}>Verwijder filter</p>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className={style.part_content}>
+          <ul className={style.users}>
+            {newUsers.map((user) => (
+              <>
+                {user.first_name && user.first_name != "Admin" && (
+                  <a href={`/user/${user.id}`}>
+                    <li className={`${style.card} scale`} key={user.id}>
+                      {user.company && (
+                        <div
+                          className={`${style.card_info} ${style.card_info__company}`}
+                        >
+                          <div className={style.info_titles}>
+                            <p className={style.company_title}>
+                              {user.company_name}
+                            </p>
+                            <p className={style.company_title__outline}>
+                              {user.department}
+                            </p>
+                          </div>
+                          <p className={style.company_subtitle}>
+                            {user.sector}
+                          </p>
+                        </div>
+                      )}
+                      {!user.company && (
+                        <div
+                          className={`${style.card_info} ${style.card_info__individu}`}
+                        >
+                          <div className={style.info_titles}>
+                            <p className={style.individu_title}>
+                              {user.first_name}
+                            </p>
+                            <p className={style.individu_title__outline}>
+                              {user.last_name}
+                            </p>
+                          </div>
+                          <p className={style.individu_subtitle}>
+                            {user.sector}
+                          </p>
+                        </div>
+                      )}
+                    </li>
+                  </a>
+                )}
+              </>
+            ))}
+          </ul>
+        </div>
+      </article>
     </>
   );
 };
 
 export async function getServerSideProps() {
-  const apollo = require('../lib/apolloClient'); // import client
-  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+  const apollo = require("../lib/apolloClient"); // import client
+  var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   var xhr = new XMLHttpRequest();
   const GET_USERS = gql`
     query MyQuery {
