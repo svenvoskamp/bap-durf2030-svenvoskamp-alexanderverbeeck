@@ -1,8 +1,17 @@
-import React, { useRef, useState } from "react";
-import style from "./realisation.module.css";
+import React, { useRef, useState } from 'react';
+import style from './realisation.module.css';
 
 const Realisation = ({ props, user }) => {
-  if (props.projects[0].user.id) {
+  let email;
+  console.log(props.projects[0].user.id);
+  if (props.projects[0].user.id.includes('goog')) {
+    console.log('dit is google');
+    email = `${props.projects[0].user.nickname}@gmail.com`;
+    console.log(email);
+  } else {
+    console.log('dit is auth0');
+    email = props.projects[0].user.name;
+    console.log(email);
   }
   return (
     <>
@@ -24,7 +33,10 @@ const Realisation = ({ props, user }) => {
           <p>{props.projects[0].speech}</p>
         </div>
         <div>
-          <p>{props.projects[0].user.nickname}</p>
+          <p>{email}</p>
+          {props.projects[0].user.phone_number && (
+            <p>{props.projects[0].user.phone_number}</p>
+          )}
         </div>
       </div>
     </>
