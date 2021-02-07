@@ -64,6 +64,7 @@ const GET_PROJECT_BY_ID = gql`
       reward_three
       created_at
       donated
+      speech
       phase {
         phase
       }
@@ -87,10 +88,14 @@ const GET_PROJECT_BY_ID = gql`
         user_id
       }
       user {
+        id
         first_name
         last_name
         company
         company_name
+        name
+        nickname
+        phone_number
       }
     }
     needs(
@@ -144,7 +149,6 @@ const GET_PROJECT_BY_ID = gql`
     }
   }
 `;
-
 const Crowdfunding = ({ props, user }) => {
   const [typeAmount, setTypeAmount] = useState("");
   const [amount, setAmount] = useState("");
@@ -270,7 +274,7 @@ const Crowdfunding = ({ props, user }) => {
       {/* <div className="donations" data-scroll data-scroll-repeat> */}
       {props.projects[0].phase.phase == "Crowdfunding" && (
         <>
-          <div className={`${style.header} `}>
+          <div className={`${style.header}`} id="donations">
             <div className={style.part_title}>
               <p className={style.title}>
                 durf.
@@ -500,26 +504,48 @@ const Crowdfunding = ({ props, user }) => {
                 </>
               )}
             </div>
-            {/* <div>
-            <p>Totaal gedoneerd: €{props.projects[0].donated}</p>
-          </div> */}
+            <div className={style.donation_progress}>
+              <div>
+                <p className={style.progress_caps}>Reeds opgehaald</p>
+                <div className={style.progress_donated}>
+                  <div className={style.progress_donated__circle}></div>
+                  <p className={style.progress_donated__text}>
+                    €{props.projects[0].donated}
+                  </p>
+                </div>
+              </div>
+              <progress
+                className={style.progressbar}
+                value={props.projects[0].donated}
+                max="1500"
+              ></progress>{" "}
+              <div className={style.progress_points}>
+                <p className={style.progress_caps}>€0,-</p>
+                <p className={style.progress_caps}>€1500,-</p>
+              </div>
+            </div>
           </div>
         </>
       )}
       {props.projects[0].phase.phase == "Realisatie" && (
         <>
-          <div className={`${style.header}`} data-scroll data-scroll-repeat>
+          <div
+            className={`${style.header} donations`}
+            data-scroll
+            data-scroll-repeat
+          >
             <div className={style.part_title}>
-              <p className={style.title}>
+              {/* <p className={style.title}>
                 durf.
                 <span className={style.title_outline}>doneren.</span>
-              </p>
+              </p> */}
+              <span className={style.title}>
+                €{props.projects[0].donated},-
+              </span>
+              <span className={style.title_outline}>ingezameld</span>
               <p className={style.title_description}>
                 Bedankt voor alle donaties!
               </p>
-              <span className={style.title_outline}>
-                Totaal gedoneerd: €{props.projects[0].donated}
-              </span>
             </div>
           </div>
         </>
@@ -531,6 +557,11 @@ const Crowdfunding = ({ props, user }) => {
       </div>
       <div className={style.timeline_line}></div>
       {/* </div> */}
+      {props.projects[0].phase.phase != "Realisatie" && (
+        <p className={style.endcrowdfunding}>
+          ueaguhisuihguihseruguihtgusguyhsguhysuhygsuhyuhsughruhuhu
+        </p>
+      )}
     </div>
   );
 };

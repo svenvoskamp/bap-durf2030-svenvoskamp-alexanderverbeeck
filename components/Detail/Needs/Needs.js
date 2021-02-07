@@ -68,10 +68,14 @@ const GET_PROJECT_BY_ID = gql`
         user_id
       }
       user {
+        id
         first_name
         last_name
         company
         company_name
+        name
+        nickname
+        phone_number
       }
     }
     needs(

@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import Empty from "../../Empty/Empty";
 import styles from "../../../css/profile.module.css";
+import Mouse from "../../Mouse";
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
@@ -633,7 +634,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                     <p className={styles.grid_item__title}>{project.title}</p>
                     <p className={styles.grid_text}>
                       <span className={styles.grid_bold}>Gefeliciteerd!</span>
-                      <br /> Je kan nu van start met de realisatiefase{" "}
+                      <br /> Je kan nu van start met de realisatiefase van{" "}
                       <span className={styles.grid_bold}>
                         “{project.title}”
                       </span>
@@ -642,7 +643,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                     </p>
                     {currentSelected == "" && (
                       <div className={style.project_buttons}>
-                        <div className={style.project_button}>
+                        <div className={`${style.project_button} scale`}>
                           <button
                             onClick={(e) => setCurrentSelected(project)}
                             className={`${style.button} scale`}
@@ -664,31 +665,39 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                 className={style.donation_form}
                 onSubmit={(e) => handleReal(e, currentSelected)}
               >
-                <div className={style.donation_option}>
-                  <label
-                    htmlFor={currentSelected.title}
-                    className={style.label}
-                  >
-                    Dankwoord <span className={styles.grid_text}></span>
-                  </label>
-                  <p className={style.error} ref={refSpeech}></p>
-                  <input
+                <div
+                  className={`${style.donation_option} ${style.donation_option__form} `}
+                >
+                  <div className={style.input_label}>
+                    <label
+                      htmlFor={currentSelected.title}
+                      className={style.label}
+                    >
+                      Dankwoord <span className={styles.grid_text}></span>
+                    </label>
+                    <p className={style.error} ref={refSpeech}></p>
+                  </div>
+                  <textarea
                     required
                     id={currentSelected.title}
                     min="0"
                     max="100"
+                    rows="8"
                     value={speech}
                     type="text"
                     placeholder="Ik wil jullie bedanken.."
-                    className={style.input}
+                    className={style.input_text}
                     onChange={(e) => setSpeech(e.currentTarget.value)}
                   />
                 </div>
 
-                <label className={style.project_button} htmlFor="button">
+                <label
+                  className={`${style.project_button} scale`}
+                  htmlFor="button"
+                >
                   <input
                     id="button"
-                    className={`${style.checkbox} scale`}
+                    className={`${style.checkbox}`}
                     type="submit"
                     onClick={handleValidationSpeech}
                   />

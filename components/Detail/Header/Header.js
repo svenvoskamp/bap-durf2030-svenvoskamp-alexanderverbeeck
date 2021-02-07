@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./header.module.css";
 
-const Header = ({ props }) => {
+const Header = ({ props, scrollRef }) => {
   return (
     <>
       <div className={style.project}>
@@ -51,9 +51,9 @@ const Header = ({ props }) => {
                   ></div>
                 </>
               )}
-              <p className={`${style.info_text} ${style.info_light}`}>
+              <a className={`${style.info_text} ${style.info_light}`}>
                 {props.phase.phase}
-              </p>
+              </a>
             </div>
             <div className={`${style.info_location} ${style.info_item}`}>
               <img src="../assets/images/project_location_icon.svg" />

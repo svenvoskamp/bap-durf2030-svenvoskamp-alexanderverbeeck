@@ -177,6 +177,10 @@
   composes: miniButtonImage from "./buttons.module.css";
 }
 
+.button_notification {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1350px) {
   .grid_notifications,
   .grid_notifications__items {

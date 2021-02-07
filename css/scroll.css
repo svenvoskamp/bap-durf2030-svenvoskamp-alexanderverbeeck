@@ -19,7 +19,7 @@ html.has-scroll-init {
   min-height: 100vh;
 }
 
-[data-scroll-direction='horizontal'] .data-scroll-container-home {
+[data-scroll-direction="horizontal"] .data-scroll-container-home {
   /* white-space: nowrap; */
   height: 100vh;
   display: inline-block;
@@ -34,7 +34,7 @@ html.has-scroll-init {
   min-height: 100vh;
 }
 
-[data-scroll-direction='horizontal'] .data-scroll-container-detail {
+[data-scroll-direction="horizontal"] .data-scroll-container-detail {
   /* white-space: nowrap; */
   height: 100vh;
   display: inline-block;
@@ -45,7 +45,7 @@ html.has-scroll-init {
     min-height: unset;
   }
 
-  [data-scroll-direction='horizontal'] .data-scroll-container-home {
+  [data-scroll-direction="horizontal"] .data-scroll-container-home {
     height: unset;
     display: inline-block;
   }
@@ -54,9 +54,29 @@ html.has-scroll-init {
     min-height: unset;
   }
 
-  [data-scroll-direction='vertical'] .data-scroll-container-detail {
+  [data-scroll-direction="vertical"] .data-scroll-container-detail {
     /* white-space: nowrap; */
     height: unset;
     z-index: 11;
+  }
+
+  .has-scroll-smooth body {
+    overflow: visible;
+    scroll-behavior: smooth;
+  }
+
+  .has-scroll-init body {
+    overflow: visible;
+    scroll-behavior: smooth;
+  }
+
+  html.has-scroll-smooth {
+    overflow: visible;
+    scroll-behavior: smooth;
+  }
+
+  html.has-scroll-init {
+    overflow: visible;
+    scroll-behavior: smooth;
   }
 }

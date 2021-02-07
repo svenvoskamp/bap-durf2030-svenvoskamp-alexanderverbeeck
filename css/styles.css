@@ -35,18 +35,6 @@ html.dark-mode #__next {
   background-color: #091422;
 }
 
-/* body {
-  background-color: #fdecd2;
-  transition-delay: 0.5s;
-  transition: background-color 1s ease-in-out;
-} */
-
-/* body.dark-mode {
-  background-color: #091422;
-  transition-delay: 0.5s;
-  transition: background-color 1s ease-in-out;
-} */
-
 a {
   text-decoration: none;
 }

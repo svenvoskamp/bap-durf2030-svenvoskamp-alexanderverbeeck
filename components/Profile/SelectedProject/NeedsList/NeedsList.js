@@ -292,6 +292,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                   <>
                     <div>
                       <img
+                        className={`${styles.button_notification} scale `}
                         onClick={toNotifications}
                         src="./assets/needs/needs_message.svg"
                       />

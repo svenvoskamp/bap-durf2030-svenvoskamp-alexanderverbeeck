@@ -8,6 +8,7 @@ import Extra from "../../components/Detail/Extra/Extra";
 import Needs from "../../components/Detail/Needs/Needs";
 import Creatie from "../../components/Detail/Creatie/Creatie";
 import Crowdfunding from "../../components/Detail/Crowdfunding/Crowdfunding";
+import Realisation from "../../components/Detail/Realisation/Realisation";
 import { useFetchUser } from "../../lib/user";
 import gsap from "gsap";
 
@@ -33,6 +34,7 @@ const GET_PROJECT_BY_ID = gql`
       reward_three
       created_at
       donated
+      speech
       phase {
         phase
       }
@@ -56,10 +58,14 @@ const GET_PROJECT_BY_ID = gql`
         user_id
       }
       user {
+        id
         first_name
         last_name
         company
         company_name
+        name
+        nickname
+        phone_number
       }
     }
     needs(
@@ -128,6 +134,7 @@ const GET_PROJECT_BY_ID = gql`
 
 const Detail = ({ props, user, navUser }) => {
   const scrollRef = useRef(null);
+  const [scroll, setScroll] = useState(false);
   console.log(user);
 
   import("locomotive-scroll").then((locomotiveModule) => {
@@ -185,7 +192,7 @@ const Detail = ({ props, user, navUser }) => {
       >
         <article className={style.part_project}>
           <div className={style.part_info}>
-            <Header props={props.projects[0]}></Header>
+            <Header scrollRef={scrollRef} props={props.projects[0]}></Header>
             <Needs
               user={user}
               needs={props.needs}
@@ -197,76 +204,18 @@ const Detail = ({ props, user, navUser }) => {
           {props.projects[0].reward_one && (
             <Crowdfunding props={props} user={user}></Crowdfunding>
           )}
+          {props.projects[0].phase.phase == "Realisatie" && (
+            <Realisation
+              className={style.part_info}
+              props={props}
+              user={user}
+            ></Realisation>
+          )}
         </article>
       </main>
     </>
   );
 };
-
-// export async function getStaticPaths() {
-//   const apollo = require('../../lib/apolloClient'); // import client
-//   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-//   var xhr = new XMLHttpRequest();
-//   const GET_ID = gql`
-//     query MyQuery {
-//       projects {
-//         id
-//       }
-//     }
-//   `;
-//   const client = apollo.default(); //initialize client
-
-//   const { data, error } = await client.query({
-//     query: GET_ID,
-//   });
-//   console.log(data);
-
-//   const paths = data.projects.map((project) => ({
-//     params: { id: '' + project.id },
-//   }));
-
-//   return { paths, fallback: false };
-// }
-
-// export async function getServerSideProps(context) {
-//   const apollo = require('../../lib/apolloClient'); // import client
-//   var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-//   var xhr = new XMLHttpRequest();
-
-//
-//   const client = apollo.default(); //initialize client
-
-//   const { data, error } = await client.query({
-//     query: GET_PROJECT_BY_ID,
-//     variables: { id: context.params.id },
-//   });
-
-//   if (!data || error) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-//   return { props: { props: data.projects[0] } };
-// }
-
-// const LoadDetail = ({ user }) => {
-//   const router = useRouter();
-//   const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
-//     variables: { id: router.query.id },
-//   });
-//   if (loading) {
-//     return <Loading props={'detail'} />;
-//   }
-//   if (error) {
-//     console.log(error);
-//   }
-//   if (!loading && data) {
-//     return <Detail props={data} user={user} />;
-//   }
-//   if (!loading && !data) {
-//     return <>Error</>;
-//   }
-// };
 
 const LoadUser = ({ user }) => {
   console.log(user);
