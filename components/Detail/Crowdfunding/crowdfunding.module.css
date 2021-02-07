@@ -1,5 +1,5 @@
-/* @value tokens: "../../../css/tokens.module.css";
-@value var(--colorBeige), yellowColor, var(--colorBlue), var(--colorBlue), greenColor, lightColor from tokens; */
+@value tokens: "../../../css/tokens.module.css";
+@value yellowColor, greenColor, lightColor, redColor from tokens;
 
 .timeline {
   position: relative;
@@ -15,7 +15,8 @@
 }
 
 .error {
-  color: var(--colorBlue);
+  color: redColor;
+  margin-top: 1rem;
 }
 
 .part_title {
@@ -44,6 +45,7 @@
 .title_description {
   composes: semiBold from "../../../css/typo.module.css";
   color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .timeline_line {
@@ -51,6 +53,7 @@
   top: 50%;
   height: 0.3rem;
   background-color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   width: 100%;
   left: 0;
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
@@ -63,10 +66,17 @@
   align-items: center;
 }
 
+.crowdfunding_scroll {
+  width: 100%;
+  justify-content: flex-start;
+}
+
 .form_crowdfunding {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-self: flex-start;
+  justify-self: flex-start;
   z-index: 1;
   margin-right: 15rem;
 }
@@ -74,6 +84,7 @@
 .form_card__crowdfunding {
   border: 0.3rem solid var(--colorBlue);
   background-color: var(--colorBeige);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -81,6 +92,7 @@
 
 .form_option__text__crowdfunding {
   color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   display: grid;
   grid-template-columns: 3.8rem auto;
   align-items: center;
@@ -92,6 +104,7 @@
   composes: number from "../../../css/typo.module.css";
   -webkit-text-stroke: 0.25rem var(--colorBlue);
   text-stroke: 0.25rem var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
 }
@@ -117,6 +130,7 @@
   composes: smallCaps from "../../../css/typo.module.css";
   background-color: greenColor;
   border: 0.2rem solid var(--colorBeige);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   position: relative;
   width: 12rem;
   text-align: center;
@@ -146,6 +160,7 @@
 
 .back_text__crowdfunding {
   color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .button_back__crowdfunding {
@@ -173,6 +188,26 @@
   width: 25rem;
   margin: 0 auto;
   text-align: center;
+}
+
+.input_label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.form_title {
+  composes: bold from "../../../css/typo.module.css";
+  margin-bottom: 1rem;
+  color: var(--colorBlue);
+}
+
+.voorzien_three__button {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
 }
 
 .input[type="number"]::-webkit-inner-spin-button {

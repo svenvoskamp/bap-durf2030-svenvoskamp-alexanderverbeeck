@@ -33,10 +33,27 @@ const Extra = ({ props }) => {
         </div>
         <div className={style.extra_button}>
           <p className={style.extra_button__text}>Denk mee met dit project</p>
-          <img
+          <svg
             className={style.extra_button__arrow}
-            src="../assets/images/arrow_large.svg"
-          />
+            width="284"
+            height="51"
+            viewBox="0 0 284 51"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 25.3951H280"
+              stroke="#091422"
+              stroke-width="4"
+              stroke-miterlimit="10"
+            />
+            <path
+              d="M251.426 2L280 25.556L251.309 49.2086"
+              stroke="#091422"
+              stroke-width="4"
+              stroke-miterlimit="10"
+            />
+          </svg>
         </div>
       </div>
     </>

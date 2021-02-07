@@ -1,5 +1,5 @@
 @value tokens: "../../../css/tokens.module.css";
-@value blueColor, yellowColor, beigeColor, redColor, greenColor from tokens;
+@value yellowColor, redColor, greenColor from tokens;
 
 /* Extra */
 
@@ -19,7 +19,9 @@
 
 .tagline_text {
   composes: mediumTitle from "../../../css/typo.module.css";
+  color: var(--colorBlue);
   position: relative;
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .tagline_image {
@@ -30,11 +32,12 @@
 }
 
 .extra_image {
-  border: 0.3rem solid blueColor;
-  background: beigeColor;
+  border: 0.3rem solid var(--colorBlue);
+  background: var(--colorBeige);
   position: relative;
   width: 100%;
   height: 50vh;
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .extra_image:after {
@@ -49,7 +52,6 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  transition: all 0.2s ease-in-out;
 }
 
 .project_image {
@@ -66,10 +68,16 @@
 
 .extra_button__text {
   composes: smallCaps from "../../../css/typo.module.css";
+  color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .extra_button__arrow {
   margin-left: 5rem;
+}
+.extra_button__arrow path {
+  stroke: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 @media screen and (max-width: 850px) {

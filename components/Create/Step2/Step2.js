@@ -199,7 +199,7 @@ const Step2 = ({
                   type="file"
                   id="img"
                   name="filename"
-                  accept="image/*"
+                  accept="image/x-png,image/jpeg"
                   className={style.input_none}
                   onChange={(e) => {
                     setImage(e.target.files[0]);

@@ -1,5 +1,5 @@
-/* @value tokens: "../../../css/tokens.module.css";
-@value var(--colorBlue), yellowColor, var(--colorBeige), redColor, greenColor, lightColor from tokens; */
+@value tokens: "../../../css/tokens.module.css";
+@value yellowColor, redColor, greenColor, lightColor from tokens;
 
 .feedback_timeline {
   display: flex;
@@ -24,6 +24,7 @@
   top: 50%;
   height: 0.3rem;
   background-color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   width: 100%;
   left: 0;
 }
@@ -33,6 +34,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: var(--colorBeige);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   z-index: 1;
   margin-right: 15rem;
 }
@@ -45,6 +47,7 @@
   padding: 2rem;
   position: relative;
   margin: 2rem 0;
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .form_card:after {
@@ -172,6 +175,7 @@
   display: inline-block;
   border: 0.3rem solid var(--colorBlue);
   background-color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   width: 5.5rem;
   height: 5.5rem;
   display: flex;
@@ -199,6 +203,7 @@
   border: 0.3rem solid var(--colorBeige);
   position: relative;
   background-color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   width: 12rem;
   height: 5vh;
   /* margin: 1.5rem 0; */
@@ -229,10 +234,14 @@
 
 .locked_text {
   composes: mediumTitle from "../../../css/typo.module.css";
+  color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .locked_date {
   composes: smallText from "../../../css/typo.module.css";
+  color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   text-align: center;
   margin-top: 0.5rem;
 }
@@ -240,6 +249,8 @@
 .locked_type {
   composes: smallCaps from "../../../css/typo.module.css";
   text-align: center;
+  color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .timeline_title {
@@ -249,6 +260,15 @@
 
 .start_icon svg path {
   fill: red;
+}
+
+.icon_circle__svg__mobile {
+  display: none;
+}
+
+.icon_circle__svg path {
+  fill: var(--colorBeige);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 @media screen and (max-width: 850px) {
@@ -322,12 +342,25 @@
     padding: 0 1rem;
     margin-top: 2rem;
   }
+
+  .icon_circle__svg {
+    display: none;
+  }
+
+  .icon_circle__svg__mobile {
+    display: flex;
+  }
+
+  .icon_circle__svg__mobile path {
+    fill: var(--colorBeige);
+    transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+  }
 }
 
 @media screen and (max-width: 550px) {
   .timeline {
     padding-right: 2rem;
-    margin-bottom: 15rem;
+    /* margin-bottom: 15rem; */
   }
 
   .timeline_line {

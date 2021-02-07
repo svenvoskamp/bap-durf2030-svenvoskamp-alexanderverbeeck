@@ -1,5 +1,5 @@
-/* @value tokens: "../../../../css/tokens.module.css";
-@value var(--colorBlue), yellowColor, var(--colorBeige), redColor, greenColor, lightColor from tokens; */
+@value tokens: "../../../../css/tokens.module.css";
+@value yellowColor, redColor, greenColor, lightColor from tokens;
 
 /* .donation_wrapper {
   position: relative;
@@ -36,6 +36,7 @@
   display: inline-block;
   border: 0.3rem solid var(--colorBeige);
   background-color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .donation_content {
@@ -54,6 +55,7 @@
   border: 0.3rem solid var(--colorBeige);
   position: relative;
   background-color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   width: 12rem;
   height: 5vh;
   /* margin: 1.5rem 0; */
@@ -75,7 +77,6 @@
   width: 105%;
   height: 105%;
   z-index: -1;
-  transition: all 0.2s ease-in-out;
 }
 
 .donation_info {
@@ -84,6 +85,7 @@
 
 .donation_text {
   color: var(--colorBeige);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   composes: mediumTitle from "../../../../css/typo.module.css";
 }
 
@@ -91,13 +93,24 @@
   composes: smallText from "../../../../css/typo.module.css";
   text-align: center;
   margin-top: 0.5rem;
-  color: var(--colorBeige);
+  color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .donation_type {
   composes: smallCaps from "../../../../css/typo.module.css";
   text-align: center;
-  color: var(--colorBeige);
+  color: var(--colorBlue);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+}
+
+.icon_circle__svg__mobile {
+  display: none;
+}
+
+.icon_circle__svg path {
+  fill: var(--colorBeige);
+  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 @media screen and (max-width: 850px) {
@@ -193,6 +206,16 @@
   .icon_circle {
     text-align: center;
     padding: 1.3rem 1rem;
+  }
+
+  .icon_circle__svg {
+    display: unset;
+  }
+
+  .icon_circle__svg__mobile path {
+    display: flex;
+    fill: var(--colorBeige);
+    transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   }
 }
 
