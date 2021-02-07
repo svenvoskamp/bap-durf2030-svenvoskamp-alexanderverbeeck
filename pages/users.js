@@ -1,22 +1,22 @@
-import React, { useRef, useState, useEffect } from "react";
-import Mouse from "../components/Mouse";
-import Project from "../components/Project";
-import gql from "graphql-tag";
-import { withApollo } from "../lib/withApollo";
-import { ApolloClient } from "apollo-client";
-import { useQuery } from "@apollo/react-hooks";
-import Nav from "../components/Nav";
-import { set } from "mobx";
-import style from "../css/users.module.css";
-import Loading from "../components/Loading/Loading";
-import { useFetchUser } from "../lib/user";
+import React, { useRef, useState, useEffect } from 'react';
+import Mouse from '../components/Mouse';
+import Project from '../components/Project';
+import gql from 'graphql-tag';
+import { withApollo } from '../lib/withApollo';
+import { ApolloClient } from 'apollo-client';
+import { useQuery } from '@apollo/react-hooks';
+import Nav from '../components/Nav';
+import { set } from 'mobx';
+import style from '../css/users.module.css';
+import Loading from '../components/Loading/Loading';
+import { useFetchUser } from '../lib/user';
 
 const Users = ({ users }) => {
   const { user, loading } = useFetchUser();
   const [newUsers, setNewUsers] = useState(users);
-  const [type, setType] = useState("alles");
+  const [type, setType] = useState('alles');
   const [sector, setSector] = useState(0);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   let sectorlist = [];
   users.map((user) => {
@@ -49,13 +49,13 @@ const Users = ({ users }) => {
   };
 
   const reset = () => {
-    const types = document.querySelectorAll(".type");
+    const types = document.querySelectorAll('.type');
     types.forEach((type) => {
       if (type.checked) {
         type.checked = false;
       }
     });
-    const sectors = document.querySelectorAll(".sector");
+    const sectors = document.querySelectorAll('.sector');
     sectors.forEach((sector) => {
       if (sector.selected) {
         sector.selected = false;
@@ -63,17 +63,17 @@ const Users = ({ users }) => {
     });
 
     setSector(0);
-    setType("alles");
-    setSearch("");
+    setType('alles');
+    setSearch('');
   };
 
   const filter = () => {
     console.log(type);
-    if (sector == 0 && type != false && type != true && search == "") {
+    if (sector == 0 && type != false && type != true && search == '') {
       setNewUsers(users);
     } else {
       let filter = users;
-      if (search != "") {
+      if (search != '') {
         const keyword = search.toLowerCase();
         filter = filter.filter(function (x) {
           if (x.first_name) {
@@ -90,7 +90,7 @@ const Users = ({ users }) => {
           }
         });
       }
-      if (type != "alles") {
+      if (type != 'alles') {
         filter = filter.filter((x) => x.company == type);
       }
       if (sector != 0) {
@@ -138,7 +138,7 @@ const Users = ({ users }) => {
                   name="type"
                   defaultChecked
                   className={`${style.input_none} ${style.input_radio}`}
-                  onClick={(e) => handleType("alles")}
+                  onClick={(e) => handleType('alles')}
                 />
                 <p className={`${style.filter_radio} scale`}>Iedereen</p>
               </label>
@@ -200,7 +200,7 @@ const Users = ({ users }) => {
           <ul className={style.users}>
             {newUsers.map((user) => (
               <>
-                {user.first_name && user.first_name != "Admin" && (
+                {user.first_name && user.first_name != 'Admin' && (
                   <a href={`/user/${user.id}`}>
                     <li className={`${style.card} scale`} key={user.id}>
                       {user.company && (
@@ -217,6 +217,9 @@ const Users = ({ users }) => {
                           </div>
                           <p className={style.company_subtitle}>
                             {user.sector}
+                          </p>
+                          <p>
+                            {user.first_name} {user.last_name}
                           </p>
                         </div>
                       )}
@@ -246,8 +249,8 @@ const Users = ({ users }) => {
           {newUsers.length < 1 && (
             <div className={style.empty_state}>
               <p className={style.empty_state__text}>
-                Er zijn{" "}
-                <span className={style.empty_state__text__outline}>geen</span>{" "}
+                Er zijn{' '}
+                <span className={style.empty_state__text__outline}>geen</span>{' '}
                 gebruikers gevonden
               </p>
               <div className={style.empty_button}>
@@ -269,8 +272,8 @@ const Users = ({ users }) => {
 };
 
 export async function getServerSideProps() {
-  const apollo = require("../lib/apolloClient"); // import client
-  var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+  const apollo = require('../lib/apolloClient'); // import client
+  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
   var xhr = new XMLHttpRequest();
   const GET_USERS = gql`
     query MyQuery {
