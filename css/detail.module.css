@@ -137,7 +137,14 @@
   background-color: var(--colorBlue);
   transition: background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   padding-right: 40rem;
-  width: 70%;
+  width: calc(100% - 40rem);
+}
+
+.timeline_line__waiting {
+  background-color: var(--colorBlue);
+  transition: background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+  width: calc(100% - 80rem);
+  margin-left: 40rem;
 }
 
 .timeline_line__crowdfunding {

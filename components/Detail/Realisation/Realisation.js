@@ -64,7 +64,7 @@ const Realisation = ({ props, user }) => {
           <li className={style.donation_content}>
             <div className={style.donation_info}>
               <p className={style.donation_type}>
-                Donatie {props.projects[0].user.first_name}
+                Dankwoord {props.projects[0].user.first_name}
               </p>
               <p className={style.donation_date}></p>
             </div>

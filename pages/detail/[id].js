@@ -207,6 +207,12 @@ const Detail = ({ props, user, navUser }) => {
                 className={`${style.timeline_line} ${style.timeline_line__cocreatie}`}
               ></div>
             )}
+            {!props.projects[0].reward_one &&
+              props.projects[0].phase.phase == "Crowdfunding" && (
+                <div
+                  className={`${style.timeline_line} ${style.timeline_line__waiting}`}
+                ></div>
+              )}
             {props.projects[0].reward_one &&
               props.projects[0].phase.phase != "Realisatie" && (
                 <div
