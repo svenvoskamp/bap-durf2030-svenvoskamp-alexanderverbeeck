@@ -761,7 +761,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                     className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden}`}
                   >
                     <img
-                      src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                      src={`../../../../assets/profiel/profiel_${need.type.toLowerCase()}.svg`}
                       alt={need.type}
                       className={styles.grid_item__image}
                     />
@@ -772,25 +772,32 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   className={`${styles.grid_item} ${styles.grid_item__mobile}`}
                 >
                   <img
-                    src={`../../../../assets/images/${need.type.toLowerCase()}_icon__small.svg`}
+                    src={`../../../../assets/profiel/profiel_${need.type.toLowerCase()}.svg`}
                     alt={need.type}
                     className={styles.grid_item__image}
                   />
                   <p className={styles.grid_text}>{need.need}</p>
                 </div>
-                <a
-                  href={`/user/${need.otheruser.id}`}
-                  className={`${styles.grid_text} ${styles.grid_item__mobile} scale`}
-                >
-                  {need.otheruser.first_name} {need.otheruser.last_name}
-                </a>
-                <div className={styles.flex_mobile}>
+                <div className={styles.grid_item__mobile}>
+                  {" "}
                   <a
                     href={`/user/${need.otheruser.id}`}
-                    className={`${styles.grid_text} ${styles.grid_item__hidden} ${styles.grid_item__name__hidden}`}
+                    className={`${styles.grid_text} ${styles.grid_text__user} scale`}
                   >
                     {need.otheruser.first_name} {need.otheruser.last_name}
                   </a>
+                </div>
+                <div className={styles.flex_mobile}>
+                  <div className={styles.grid_item__hidden}>
+                    {" "}
+                    <a
+                      href={`/user/${need.otheruser.id}`}
+                      className={`${styles.grid_text} ${styles.grid_text__user}  ${styles.grid_item__name__hidden}`}
+                    >
+                      {need.otheruser.first_name} {need.otheruser.last_name}
+                    </a>
+                  </div>
+
                   <p
                     className={`${styles.grid_text} ${styles.grid_text__italic}`}
                   >
@@ -892,7 +899,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                     className={`${styles.grid_item__hidden} ${styles.grid_item__type__hidden}`}
                   >
                     <img
-                      src={`../../../../assets/images/type_${feedback.type.toLowerCase()}.svg`}
+                      src={`../../../../assets/profiel/profiel_${feedback.type.toLowerCase()}.svg`}
                       alt={feedback.type}
                       className={styles.grid_item__image}
                     />
@@ -903,26 +910,33 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   className={`${styles.grid_item} ${styles.grid_item__mobile}`}
                 >
                   <img
-                    src={`../../../../assets/images/type_${feedback.type.toLowerCase()}.svg`}
+                    src={`../../../../assets/profiel/profiel_${feedback.type.toLowerCase()}.svg`}
                     alt={feedback.type}
                     className={styles.grid_item__image}
                   />
                   <p className={styles.grid_text}>{feedback.type}</p>
                 </div>
-                <a
-                  href={`/user/${feedback.otheruser.id}`}
-                  className={`${styles.grid_text} ${styles.grid_item__mobile} scale`}
-                >
-                  {feedback.otheruser.first_name} {feedback.otheruser.last_name}
-                </a>
-                <div>
+                <div className={styles.grid_item__mobile}>
+                  {" "}
                   <a
                     href={`/user/${feedback.otheruser.id}`}
-                    className={`${styles.grid_text} ${styles.grid_item__hidden} ${styles.grid_item__name__hidden}`}
+                    className={`${styles.grid_text} ${styles.grid_text__user} scale`}
                   >
                     {feedback.otheruser.first_name}{" "}
                     {feedback.otheruser.last_name}
                   </a>
+                </div>
+                <div>
+                  <div className={styles.grid_item__hidden}>
+                    {" "}
+                    <a
+                      href={`/user/${feedback.otheruser.id}`}
+                      className={`${styles.grid_text} ${styles.grid_text__user}  ${styles.grid_item__name__hidden}`}
+                    >
+                      {feedback.otheruser.first_name}{" "}
+                      {feedback.otheruser.last_name}
+                    </a>
+                  </div>
                   <p
                     className={`${styles.grid_text} ${styles.grid_text__italic}`}
                   >

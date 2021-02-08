@@ -63,6 +63,7 @@
 .grid_image {
   width: 100%;
   border: 0.4rem solid blueColor;
+  height: 25vh;
 }
 
 .grid_tags {

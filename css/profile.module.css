@@ -53,6 +53,7 @@
   grid-template-columns: 1.2fr 1fr 1fr 1.5fr 0.5fr;
   padding-right: 10rem;
   grid-column-gap: 1rem;
+  padding: 1.5rem 10rem 1.5rem 2rem;
 }
 
 .grid_requests,
@@ -62,6 +63,7 @@
   grid-template-columns: 5rem 1.2fr 1fr 2fr 0.5fr;
   padding-right: 10rem;
   grid-column-gap: 1rem;
+  padding: 1.5rem 10rem 1.5rem 2rem;
 }
 
 .grid_selectedproject,
@@ -80,7 +82,6 @@
 
 .grid_items,
 .grid_items {
-  padding: 1.5rem 10rem 1.5rem 2rem;
   background-color: #f3e3cb;
   align-items: flex-start;
 }
@@ -123,10 +124,15 @@
 .grid_item__title {
   composes: smallCaps from "./typo.module.css";
   margin-top: 0.5rem;
+  border-bottom: 0.2rem solid blueColor;
 }
 
 .grid_text {
   composes: text from "./typo.module.css";
+}
+
+.grid_text__user {
+  border-bottom: 0.2rem solid blueColor;
 }
 
 .grid_bold {
@@ -200,7 +206,7 @@
   }
 
   .grid_item__type__hidden {
-    padding-left: 1.5rem;
+    padding-top: 1rem;
   }
 
   .grid_item__name__hidden {
