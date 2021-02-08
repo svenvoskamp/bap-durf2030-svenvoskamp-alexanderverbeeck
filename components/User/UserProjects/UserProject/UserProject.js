@@ -20,10 +20,11 @@ const UserProject = ({ props, project, needs }) => {
             // loading={lazy}
           ></img>
           <div className={style.card_titles}>
-            <p className={style.card_user}>
+            <p className={style.card_user}>{project.title}</p>
+            <p className={style.card_title}>
+              {' '}
               {props.first_name} {props.last_name}
             </p>
-            <p className={style.card_title}>{project.title}</p>
           </div>
         </div>
         <div className={style.project_end}>

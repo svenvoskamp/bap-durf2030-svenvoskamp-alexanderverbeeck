@@ -1,0 +1,30 @@
+.need_button {
+  position: absolute;
+  right: -2rem;
+  z-index: 3;
+  top: -2.5rem;
+}
+
+.button {
+  composes: button from '../../../../css/buttons.module.css';
+}
+
+.circle_button {
+  composes: circleButton from '../../../../css/buttons.module.css';
+  transition: none;
+}
+
+.circle_button_provided {
+  background-color: beigeColor;
+}
+
+.circle_button_provided:after {
+  display: none;
+}
+
+.button_image {
+  composes: buttonImage from '../../../../css/buttons.module.css';
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

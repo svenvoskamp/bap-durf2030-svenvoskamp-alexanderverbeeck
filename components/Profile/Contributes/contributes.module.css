@@ -1,6 +1,36 @@
 @value tokens: "../../../css/tokens.module.css";
 @value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
 
+.need_button {
+  position: absolute;
+  left: -2rem;
+  z-index: 3;
+  bottom: -2.5rem;
+}
+
+.button {
+  composes: smallButton from '../../../css/buttons.module.css';
+}
+
+.circle_button {
+  composes: smallCircleButton from '../../../css/buttons.module.css';
+  transition: none;
+}
+
+.circle_button_provided {
+  background-color: beigeColor;
+}
+
+.circle_button_provided:after {
+  display: none;
+}
+
+.button_image {
+  composes: smallButtonImage from '../../../css/buttons.module.css';
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -14,7 +44,7 @@
 }
 
 .level_text__outline {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
   -webkit-text-fill-color: blueColor;
   text-fill-color: blueColor;
   color: blueColor;
@@ -23,7 +53,7 @@
 }
 
 .level_text {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
   -webkit-text-stroke: 0.08rem blueColor;
   text-stroke: 0.08rem blueColor;
   -webkit-text-fill-color: transparent;
@@ -62,7 +92,7 @@
   background-color: greenColor;
 }
 .progress_text {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
 }
 
 .grid_info {
@@ -78,6 +108,7 @@
 
 .info_image {
   z-index: 2;
+  position: relative;
 }
 
 .image {
@@ -93,7 +124,7 @@
 }
 
 .image:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;

@@ -42,7 +42,7 @@ const Contributes = ({ props, user, feedbacks }) => {
       <div className={style.grid}>
         <div>
           <div
-            className={`${styles.subdivision} ${styles.subdivision_progress}`}
+            className={`${styles.subdivision} ${styles.subdivision_progress} `}
           >
             <p className={styles.subtitle}>Afgeronde projecten</p>
             <div className={style.grid_info}>
@@ -62,7 +62,19 @@ const Contributes = ({ props, user, feedbacks }) => {
                     />
                   </svg>
                 </div>
+                {realizedProjects.length >= 5 && (
+                  <div className={style.need_button}>
+                    <a className={style.button}>
+                      <div
+                        className={`${style.circle_button} ${style.circle_button_provided}`}
+                      >
+                        <img src="../../../../assets/needs/needs_provided.svg" />
+                      </div>
+                    </a>
+                  </div>
+                )}
               </div>
+
               <div className={style.info_text}>
                 <h1 className={style.level_text}>
                   Level 1{' '}
@@ -82,6 +94,7 @@ const Contributes = ({ props, user, feedbacks }) => {
             </div>
           </div>
         </div>
+
         <div className={`${styles.subdivision} ${styles.subdivision_progress}`}>
           <p className={styles.subtitle}>Ondersteunende feedback</p>
           <div className={style.grid_info}>
@@ -101,6 +114,17 @@ const Contributes = ({ props, user, feedbacks }) => {
                   />
                 </svg>
               </div>
+              {acceptedFeedback.length >= 10 && (
+                <div className={style.need_button}>
+                  <a className={style.button}>
+                    <div
+                      className={`${style.circle_button} ${style.circle_button_provided}`}
+                    >
+                      <img src="../../../../assets/needs/needs_provided.svg" />
+                    </div>
+                  </a>
+                </div>
+              )}
             </div>
             <div className={style.info_text}>
               <h1 className={style.level_text}>
@@ -143,6 +167,17 @@ const Contributes = ({ props, user, feedbacks }) => {
                   />
                 </svg>
               </div>
+              {acceptedRequest.length >= 10 && (
+                <div className={style.need_button}>
+                  <a className={style.button}>
+                    <div
+                      className={`${style.circle_button} ${style.circle_button_provided}`}
+                    >
+                      <img src="../../../../assets/needs/needs_provided.svg" />
+                    </div>
+                  </a>
+                </div>
+              )}
             </div>
             <div className={style.info_text}>
               <h1 className={style.level_text}>
@@ -181,6 +216,17 @@ const Contributes = ({ props, user, feedbacks }) => {
                   />
                 </svg>
               </div>
+              {donatedMoney >= 100 && (
+                <div className={style.need_button}>
+                  <a className={style.button}>
+                    <div
+                      className={`${style.circle_button} ${style.circle_button_provided}`}
+                    >
+                      <img src="../../../../assets/needs/needs_provided.svg" />
+                    </div>
+                  </a>
+                </div>
+              )}
             </div>
             <div className={style.info_text}>
               <h1 className={style.level_text}>

@@ -1,13 +1,13 @@
-import React, { lazy, useRef, useState } from "react";
+import React, { lazy, useRef, useState } from 'react';
 
-import style from "../css/project.module.css";
-import Loading from "../components/Loading/Loading";
+import style from '../css/project.module.css';
+import Loading from '../components/Loading/Loading';
 
 const Project = ({ project, key }) => {
   return (
     <>
       <section className={style.project} key={key}>
-        <a href={"/detail/" + project.id} className={`${style.card} scale`}>
+        <a href={'/detail/' + project.id} className={`${style.card} scale`}>
           <div Classname={style.project_top}>
             <img
               className={style.card_image}
@@ -16,10 +16,10 @@ const Project = ({ project, key }) => {
               loading={lazy}
             ></img>
             <div className={style.card_titles}>
-              <p className={style.card_user}>
+              <p className={style.card_user}>{project.title}</p>
+              <p className={style.card_title}>
                 {project.user.first_name} {project.user.last_name}
               </p>
-              <p className={style.card_title}>{project.title}</p>
             </div>
           </div>
           <div className={style.project_end}>
@@ -29,28 +29,28 @@ const Project = ({ project, key }) => {
             </div>
             <div className={style.card_info}>
               <div className={`${style.info_fase} ${style.info_item}`}>
-                {project.phase.phase == "Conceptvoorstel" && (
+                {project.phase.phase == 'Conceptvoorstel' && (
                   <>
                     <div
                       className={`${style.fase_color} ${style.fase_concept}`}
                     ></div>
                   </>
                 )}
-                {project.phase.phase == "Co-creatie" && (
+                {project.phase.phase == 'Co-creatie' && (
                   <>
                     <div
                       className={`${style.fase_color} ${style.fase_creatie}`}
                     ></div>
                   </>
                 )}
-                {project.phase.phase == "Crowdfunding" && (
+                {project.phase.phase == 'Crowdfunding' && (
                   <>
                     <div
                       className={`${style.fase_color} ${style.fase_crowdfunding}`}
                     ></div>
                   </>
                 )}
-                {project.phase.phase == "Realisatie" && (
+                {project.phase.phase == 'Realisatie' && (
                   <>
                     <div
                       className={`${style.fase_color} ${style.fase_realisatie}`}
@@ -114,7 +114,7 @@ const Project = ({ project, key }) => {
                   )}
                 </div>
               )}
-              {project.phase.phase == "Crowdfunding" && (
+              {project.phase.phase == 'Crowdfunding' && (
                 <div
                   className={`${style.info_crowdfunding} ${style.info_item}`}
                 >
