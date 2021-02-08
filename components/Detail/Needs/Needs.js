@@ -216,6 +216,7 @@ const Needs = ({ needs, user, props }) => {
   const providedNeeds = needs.filter((need) => need.provided);
   return (
     <>
+      <Mouse></Mouse>
       <div className={style.project_needs}>
         <div className={style.needs_header}>
           <p className={style.needs_title}>Durf mee te helpen</p>
@@ -367,14 +368,19 @@ const Needs = ({ needs, user, props }) => {
                   htmlFor="button"
                 >
                   <input
-                    className={style.input_submit}
+                    className={`${style.input_submit} `}
                     type="submit"
                     value="submit"
                     id="button"
                     onClick={handleValidation}
                   />
                   <div className={style.motivation_button}>
-                    <div className={style.motivation_circle__button}>
+                    <div
+                      className={` ${style.motivation_circle__button}
+                        } circle-button--${props.phase.phase.toLowerCase()} ${
+                        style.circle_button__help
+                      } scale`}
+                    >
                       <img
                         className={style.motivation_button__image}
                         src="../../../../assets/buttons/bevestig_item_button.svg"

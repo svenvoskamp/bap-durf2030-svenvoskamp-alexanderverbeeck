@@ -373,6 +373,8 @@ a {
     justify-content: space-between;
     flex-direction: row;
     bottom: 0;
+    border-right: none;
+    border-top: 0.3rem solid #fdecd2;
   }
 
   .navigation-header--mobile {
@@ -442,5 +444,31 @@ a {
 @media screen and (max-width: 450px) {
   .navigation-header--mobile--logo {
     margin: 0.5rem 0 0 1rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  @media (any-pointer: fine) {
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: block;
+      pointer-events: visible;
+      cursor: unset;
+    }
+  }
+
+  .cursor {
+    display: none;
+    cursor: auto;
+  }
+
+  .cursor__ball circle {
+    display: none;
+  }
+
+  html {
+    cursor: unset;
   }
 }

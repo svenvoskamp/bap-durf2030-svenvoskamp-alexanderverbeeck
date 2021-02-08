@@ -86,7 +86,7 @@ const Step1 = ({
       <article className={style.part}>
         <div className={style.part_header}>
           <h1 className={style.title}>
-            Registreer
+            Registreer.
             <span className={style.title_outline}>Wie?</span>
           </h1>
           <p className={style.title_description}>

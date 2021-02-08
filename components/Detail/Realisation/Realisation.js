@@ -24,8 +24,8 @@ const Realisation = ({ props, user }) => {
               <span className={style.title_outline}>Dankwoord.</span>
             </p>
             <p className={style.title_description}>
-              Welkom bij de crowdfunding! Help dit project om het te laten
-              realiseren.
+              Het is gelukt! We zijn "{props.projects[0].title}" aan het
+              realiseren!
             </p>
           </div>
         </div>

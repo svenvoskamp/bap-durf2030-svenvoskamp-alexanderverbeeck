@@ -8,6 +8,7 @@ const Step2 = ({
   lastName,
   setLastName,
   company,
+  companyName,
   streetName,
   setStreetName,
   houseNumber,
@@ -97,8 +98,13 @@ const Step2 = ({
       <article className={style.part}>
         <div className={style.part_header}>
           <h1 className={style.title}>
-            Registreer
-            <span className={style.title_outline}>Wie?</span>
+            Registreer.
+            {company && (
+              <span className={style.title_outline}>{companyName}.</span>
+            )}
+            {!company && (
+              <span className={style.title_outline}>{firstName}.</span>
+            )}
           </h1>
           <p className={style.title_description}>
             Kies hoe je je wilt registreren als durver.
@@ -268,7 +274,8 @@ const Step2 = ({
                 </div>
                 <p className={style.telephone_extra}>
                   Als je wilt dat andere leden snel contact met jou kunnen
-                  opnemen kan je je telefoon-gegevens achterlaten.
+                  opnemen kan je je telefoon-gegevens achterlaten. (Je nummer
+                  zal openbaar te zien zijn.)
                 </p>
               </div>
             </div>
