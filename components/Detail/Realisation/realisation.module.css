@@ -102,8 +102,7 @@
   border: 0.3rem solid var(--colorBlue);
   position: relative;
   background-color: var(--colorBeige);
-  transition: color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1),
-    background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+  transition: all 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   width: 50vh;
   height: 20vh;
   /* margin: 1.5rem 0; */

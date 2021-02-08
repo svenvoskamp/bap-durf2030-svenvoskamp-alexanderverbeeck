@@ -33,7 +33,6 @@
   overflow-x: scroll;
   overflow-y: visible;
   height: 17.5rem;
-  cursor: grabbing;
   scroll-snap-type: x mandatory;
 }
 .needs_list::-webkit-scrollbar {
