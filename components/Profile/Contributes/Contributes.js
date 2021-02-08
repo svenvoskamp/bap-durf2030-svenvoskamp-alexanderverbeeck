@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "../../../css/profile.module.css";
-import style from "./contributes.module.css";
+import React from 'react';
+import styles from '../../../css/profile.module.css';
+import style from './contributes.module.css';
 
 const Contributes = ({ props, user, feedbacks }) => {
   let acceptedRequest = [];
@@ -24,7 +24,7 @@ const Contributes = ({ props, user, feedbacks }) => {
   });
 
   user.projects.map((project) => {
-    if (project.phase.phase == "Realisatie") {
+    if (project.phase.phase == 'Realisatie') {
       realizedProjects.push(project);
     }
   });
@@ -32,10 +32,10 @@ const Contributes = ({ props, user, feedbacks }) => {
   user.donations.map((donation) => {
     donatedMoney = donatedMoney + donation.amount;
   });
-  console.log("projecten:", realizedProjects.length);
-  console.log("feedback:", acceptedFeedback.length);
-  console.log("benodigdheden:", acceptedRequest.length);
-  console.log("gedoneerd:", donatedMoney);
+  console.log('projecten:', realizedProjects.length);
+  console.log('feedback:', acceptedFeedback.length);
+  console.log('benodigdheden:', acceptedRequest.length);
+  console.log('gedoneerd:', donatedMoney);
 
   return (
     <>
@@ -65,7 +65,7 @@ const Contributes = ({ props, user, feedbacks }) => {
               </div>
               <div className={style.info_text}>
                 <h1 className={style.level_text}>
-                  Level 1{" "}
+                  Level 1{' '}
                   <span className={style.level_text__outline}>"Doener"</span>
                 </h1>
                 <div className={style.progress}>
@@ -104,7 +104,7 @@ const Contributes = ({ props, user, feedbacks }) => {
             </div>
             <div className={style.info_text}>
               <h1 className={style.level_text}>
-                Level 1{" "}
+                Level 1{' '}
                 <span className={style.level_text__outline}>
                   "Ondersteuner"
                 </span>
@@ -146,7 +146,7 @@ const Contributes = ({ props, user, feedbacks }) => {
             </div>
             <div className={style.info_text}>
               <h1 className={style.level_text}>
-                Level 1{" "}
+                Level 1{' '}
                 <span className={style.level_text__outline}> "Helper"</span>
               </h1>
               <div className={style.progress}>
@@ -184,7 +184,7 @@ const Contributes = ({ props, user, feedbacks }) => {
             </div>
             <div className={style.info_text}>
               <h1 className={style.level_text}>
-                Level 1{" "}
+                Level 1{' '}
                 <span className={style.level_text__outline}>"Gever"</span>
               </h1>
               <div className={style.progress}>
