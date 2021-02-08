@@ -1,5 +1,5 @@
 @value tokens: "../../../../css/tokens.module.css";
-@value yellowColor,  redColor, greenColor, lightColor from tokens;
+@value yellowColor,  redColor, greenColor, lightColor, blueColor from tokens;
 
 .feedback {
   display: flex;
@@ -95,7 +95,7 @@
   padding: 1rem;
   border-radius: 50%;
   display: inline-block;
-  border: 0.3rem solid var(--colorBlue);
+  border: 0.3rem solid blueColor;
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 

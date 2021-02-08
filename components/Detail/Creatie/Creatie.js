@@ -255,10 +255,19 @@ const Creatie = ({ props, user }) => {
             </div>
           </form>
         )}
-        <div className={style.feedback_timeline}>
+        <div className={style.feedback_timeline__start}>
           {props.projects[0].phase.phase != "Co-creatie" && (
             <>
               <div className={style.start}>
+                <li className={style.locked_content}>
+                  <div className={style.locked_info}>
+                    <p className={style.locked_type}>Start Co-creatie</p>
+                    <p className={style.locked_date}>
+                      {props.projects[0].title} is op {finalDate} van start
+                      gegaan.
+                    </p>
+                  </div>
+                </li>
                 <div className={style.locked_icon}>
                   <div className={style.icon_circle}>
                     <svg
@@ -274,7 +283,6 @@ const Creatie = ({ props, user }) => {
                         fill="#FDECD2"
                       />
                     </svg>
-
                     <svg
                       className={style.icon_circle__svg__mobile}
                       width="20"
@@ -290,15 +298,6 @@ const Creatie = ({ props, user }) => {
                     </svg>
                   </div>
                 </div>
-                <li className={style.locked_content}>
-                  <div className={style.locked_info}>
-                    <p className={style.locked_type}>Start Co-creatie</p>
-                    <p className={style.locked_date}>
-                      {props.projects[0].title} is op {finalDate} van start
-                      gegaan.
-                    </p>
-                  </div>
-                </li>
               </div>
             </>
           )}
@@ -311,35 +310,15 @@ const Creatie = ({ props, user }) => {
             </>
           )}
         </div>
-        <div className={style.timeline_line}></div>
+        {/* <div className={style.timeline_line}></div> */}
         {props.projects[0].phase.phase == "Co-creatie" && (
-          <div className={style.locked}>
-            <div className={style.locked_icon}>
-              <div className={style.icon_circle}>
-                <img
-                  className={style.icon_circle__image}
-                  src={`../../../../assets/crowdfunding/crowdfunding_locked.svg`}
-                />
-              </div>
-            </div>
-            <li className={style.locked_content}>
-              <div className={style.locked_info}>
-                <p className={style.locked_type}>Crowdfunding</p>
-                <p className={style.locked_date}>
-                  Help het project om in deze fase te komen.
-                </p>
-              </div>
-            </li>
-          </div>
-        )}
-        {props.projects[0].phase.phase == "Crowdfunding" &&
-          !props.projects[0].reward_one && (
+          <div className={style.feedback_timeline__start}>
             <div className={style.locked}>
               <div className={style.locked_icon}>
                 <div className={style.icon_circle}>
                   <img
                     className={style.icon_circle__image}
-                    src={`../../../../assets/crowdfunding/crowdfunding_waiting.svg`}
+                    src={`../../../../assets/crowdfunding/crowdfunding_locked.svg`}
                   />
                 </div>
               </div>
@@ -347,10 +326,34 @@ const Creatie = ({ props, user }) => {
                 <div className={style.locked_info}>
                   <p className={style.locked_type}>Crowdfunding</p>
                   <p className={style.locked_date}>
-                    We wachten nog op gegevens voor de Crowdfunding te starten
+                    Help het project om in deze fase te komen.
                   </p>
                 </div>
               </li>
+            </div>
+          </div>
+        )}
+        {props.projects[0].phase.phase == "Crowdfunding" &&
+          !props.projects[0].reward_one && (
+            <div className={style.feedback_timeline__start}>
+              <div className={style.locked}>
+                <div className={style.locked_icon}>
+                  <div className={style.icon_circle}>
+                    <img
+                      className={style.icon_circle__image}
+                      src={`../../../../assets/crowdfunding/crowdfunding_waiting.svg`}
+                    />
+                  </div>
+                </div>
+                <li className={style.locked_content}>
+                  <div className={style.locked_info}>
+                    <p className={style.locked_type}>Crowdfunding</p>
+                    <p className={style.locked_date}>
+                      We wachten nog op gegevens voor de Crowdfunding te starten
+                    </p>
+                  </div>
+                </li>
+              </div>
             </div>
           )}
       </div>

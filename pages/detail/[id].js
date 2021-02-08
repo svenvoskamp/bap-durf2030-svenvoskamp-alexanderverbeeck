@@ -200,17 +200,35 @@ const Detail = ({ props, user, navUser }) => {
             ></Needs>
           </div>
           <Extra className={style.part_extra} props={props.projects[0]}></Extra>
-          <Creatie props={props} user={user}></Creatie>
-          {props.projects[0].reward_one && (
-            <Crowdfunding props={props} user={user}></Crowdfunding>
-          )}
-          {props.projects[0].phase.phase == "Realisatie" && (
-            <Realisation
-              className={style.part_info}
-              props={props}
-              user={user}
-            ></Realisation>
-          )}
+          <div className={style.timeline}>
+            {" "}
+            {props.projects[0].phase.phase == "Co-creatie" && (
+              <div
+                className={`${style.timeline_line} ${style.timeline_line__cocreatie}`}
+              ></div>
+            )}
+            {/* {props.projects[0].reward_one && (
+              <div
+                className={`${style.timeline_line} ${style.timeline_line__crowdfunding}`}
+              ></div>
+            )} */}
+            {props.projects[0].phase.phase == "Realisatie" && (
+              <div
+                className={`${style.timeline_line} ${style.timeline_line__realisatie}`}
+              ></div>
+            )}
+            <Creatie props={props} user={user}></Creatie>
+            {props.projects[0].reward_one && (
+              <Crowdfunding props={props} user={user}></Crowdfunding>
+            )}
+            {props.projects[0].phase.phase == "Realisatie" && (
+              <Realisation
+                className={style.part_info}
+                props={props}
+                user={user}
+              ></Realisation>
+            )}
+          </div>
         </article>
       </main>
     </>

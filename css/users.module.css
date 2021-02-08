@@ -1,5 +1,5 @@
 @value tokens: "../css/tokens.module.css";
-@value blueColor, yellowColor, beigeColor, greenColor from tokens;
+@value blueColor, yellowColor, beigeColor, greenColor, redColor from tokens;
 
 .part {
   composes: view from "../css/layout.module.css";
@@ -129,8 +129,6 @@
 .part_content {
   margin-bottom: 2rem;
   height: 100%;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 /* Projecten Grid */
@@ -244,6 +242,7 @@
   list-style-type: none;
   height: 100%;
   cursor: pointer;
+  z-index: 2;
 }
 
 .card_info {
@@ -253,6 +252,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .card_info__individu {
@@ -292,6 +292,27 @@
   composes: titleOutline from "../css/typo.module.css";
 }
 
+.company_extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.company_circle {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: redColor;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.company_left,
+.individu_left {
+  display: flex;
+  align-items: center;
+}
+
 .company_title {
   composes: title from "../css/typo.module.css";
   -webkit-text-stroke: 0.2rem beigeColor;
@@ -308,12 +329,27 @@
 .company_subtitle {
   composes: smallCaps from "../css/typo.module.css";
   color: beigeColor;
-  margin-top: 2rem;
+}
+
+.company_subtitle__light {
+  composes: smallCapsLight from "../css/typo.module.css";
+  color: beigeColor;
 }
 
 .individu_subtitle {
   composes: smallCaps from "../css/typo.module.css";
+}
+
+.individu_left {
   margin-top: 2rem;
+}
+
+.individu_circle {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: yellowColor;
+  border-radius: 50%;
+  margin-right: 1rem;
 }
 @media screen and (min-width: 2000px) {
   .users {

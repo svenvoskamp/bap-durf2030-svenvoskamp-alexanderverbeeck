@@ -30,8 +30,8 @@
   object-fit: cover;
   border-radius: 50%;
   display: inline-block;
-  border: 0.3rem solid var(--colorBeige);
-  background-color: var(--colorBlue);
+  border: 0.3rem solid var(--colorBlue);
+  background-color: var(--colorBeige);
   transition: border 1.5s cubic-bezier(0.025, 0.9, 0.45, 1),
     background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
@@ -107,7 +107,7 @@
 }
 
 .icon_circle__svg path {
-  fill: var(--colorBeige);
+  fill: var(--colorBlue);
   transition: color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
