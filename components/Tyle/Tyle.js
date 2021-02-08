@@ -49,7 +49,7 @@ const Tyle = ({ color, direction, button, project }) => {
         <div className={style.circle_button}>
           <img
             className={style.button_image}
-            src="./assets/images/account_aanmaken.svg"
+            src="./assets/buttons/project_bekijken_button.svg"
           />
         </div>
       </div>
