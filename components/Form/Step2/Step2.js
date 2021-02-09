@@ -293,7 +293,7 @@ const Step2 = ({
           </button>
           <label className={style.button_next} htmlFor="button">
             <input
-              className={`${style.input_submit} scale`}
+              className={`${style.input_submit} scale `}
               onClick={handleValidation}
               type="submit"
               value="Verzend"
