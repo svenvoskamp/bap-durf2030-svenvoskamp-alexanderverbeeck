@@ -347,6 +347,14 @@ a {
   right: -0.7rem;
 }
 
+.card-realisatie {
+  opacity: 0.2;
+}
+
+.card-realisatie::after {
+  opacity: 0.99;
+}
+
 @media screen and (max-width: 850px) {
   /* .content {
     height: unset;

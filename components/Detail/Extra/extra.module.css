@@ -37,7 +37,8 @@
   position: relative;
   width: 100%;
   height: 50vh;
-  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+  transition: border-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1),
+    background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .extra_image:after {

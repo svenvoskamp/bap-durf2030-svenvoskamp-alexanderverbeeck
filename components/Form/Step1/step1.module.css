@@ -217,6 +217,12 @@
   }
 }
 
+@media screen and (max-width: 850px) {
+  .part {
+    margin-top: 2rem;
+  }
+}
+
 @media screen and (max-width: 550px) {
   .part_content {
     grid-column-gap: 2rem;

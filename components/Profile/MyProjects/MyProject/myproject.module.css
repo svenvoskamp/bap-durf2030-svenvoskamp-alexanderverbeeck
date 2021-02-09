@@ -1,3 +1,6 @@
+@value tokens: "../../../../css/tokens.module.css";
+@value beigeColor from tokens;
+
 .need_button {
   position: absolute;
   right: -2rem;
@@ -6,12 +9,14 @@
 }
 
 .button {
-  composes: button from '../../../../css/buttons.module.css';
+  composes: smallButton from "../../../../css/buttons.module.css";
 }
 
 .circle_button {
-  composes: circleButton from '../../../../css/buttons.module.css';
+  composes: smallCircleButton from "../../../../css/buttons.module.css";
   transition: none;
+  padding: 1.2rem;
+  background-color: beigeColor;
 }
 
 .circle_button_provided {
@@ -23,8 +28,7 @@
 }
 
 .button_image {
-  composes: buttonImage from '../../../../css/buttons.module.css';
-  object-fit: cover;
+  composes: smallButtonImage from "../../../../css/buttons.module.css";
   width: 100%;
   height: 100%;
 }

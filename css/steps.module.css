@@ -1,0 +1,72 @@
+@value tokens: "../css/tokens.module.css";
+@value blueColor, yellowColor, beigeColor, greenColor, lightColor from tokens;
+
+.progressbar {
+  /* composes: view from "../css/layout.module.css";
+  width: 100%; */
+  position: absolute;
+  padding: 2rem 14rem 0 14rem;
+  display: grid;
+  grid-gap: 2rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.progressbar_register {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.progressbar_project {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.progress_item {
+  composes: smallCaps from "../css/typo.module.css";
+  font-size: 1.2rem;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+.progress_item__active {
+  border-top: 0.3rem solid blueColor;
+  color: blueColor;
+}
+
+.progress_item__inactive {
+  border-top: 0.3rem solid lightColor;
+  color: lightColor;
+}
+
+@media screen and (max-width: 1500px) {
+  .progressbar {
+    padding: 1rem 4rem 0 10rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .progressbar {
+    padding: 1rem 2rem 0 8rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .progressbar {
+    padding: 0.5rem 1rem 5rem 1rem;
+    margin-top: 1rem;
+  }
+  .progress_item {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .progressbar {
+    padding: 0.5rem 1.5rem 5rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .progressbar {
+    padding: 0.5rem 0.5rem 5rem 0.5rem;
+  }
+}

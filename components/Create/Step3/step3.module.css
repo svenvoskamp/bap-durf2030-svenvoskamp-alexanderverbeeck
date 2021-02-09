@@ -478,8 +478,10 @@
     padding: 1.2rem 0;
     margin-right: 2rem;
   }
+  .part {
+    margin-top: 2rem;
+  }
 }
-
 @media screen and (max-width: 750px) {
   .checkbox_image {
     padding: 1.2rem 1.6rem;

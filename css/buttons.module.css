@@ -1,5 +1,5 @@
 @value tokens: "../css/tokens.module.css";
-@value blueColor, yellowColor from tokens;
+@value blueColor,beigeColor yellowColor from tokens;
 
 .button {
   border: none;
@@ -8,14 +8,14 @@
 }
 
 .circleButton {
-  background-color: yellowColor;
+  background-color: beigeColor;
   border: 0.2rem solid blueColor;
   position: relative;
   border-radius: 50%;
   display: block;
   padding: 0.5rem;
-  width: 10rem;
-  height: 10rem;
+  width: 9rem;
+  height: 9rem;
 }
 
 .circleButton:after {
@@ -45,7 +45,6 @@
   animation: rotation 4s infinite linear;
   animation-play-state: paused;
   webkit-animation-play-state: paused;
-  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -65,15 +64,15 @@
 
 .smallCircleButton {
   background-color: yellowColor;
-  border: 0.28rem solid blueColor;
+  border: 0.3rem solid blueColor;
   position: relative;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.2rem;
-  width: 6rem;
-  height: 6rem;
+  width: 7rem;
+  height: 7rem;
 }
 
 .smallCircleButton:after {
