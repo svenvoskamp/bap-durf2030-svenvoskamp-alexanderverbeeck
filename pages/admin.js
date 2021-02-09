@@ -1,18 +1,18 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useFetchUser } from "../lib/user";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import { withApollo } from "../lib/withApollo";
-import { useStores } from "../hooks/index";
-import { useRouter } from "next/router";
-import { useMutation } from "@apollo/react-hooks";
-import Nav from "../components/Nav";
-import Loading from "../components/Loading/Loading";
-import Mouse from "../components/Mouse";
-import style from "../css/admin.module.css";
-import styles from "../css/profile.module.css";
-import Project from "../components/Admin/project";
-import Empty from "../components/Empty/Empty";
+import React, { useRef, useEffect, useState } from 'react';
+import { useFetchUser } from '../lib/user';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { withApollo } from '../lib/withApollo';
+import { useStores } from '../hooks/index';
+import { useRouter } from 'next/router';
+import { useMutation } from '@apollo/react-hooks';
+import Nav from '../components/Nav';
+import Loading from '../components/Loading/Loading';
+import Mouse from '../components/Mouse';
+import style from '../css/admin.module.css';
+import styles from '../css/profile.module.css';
+import Project from '../components/Admin/project';
+import Empty from '../components/Empty/Empty';
 
 const GET_DATA = gql`
   query MyQuery {
@@ -49,6 +49,9 @@ const GET_DATA = gql`
           id
           need
           type
+          pending
+          provided
+          other_user_id
         }
         tagline
         theme {
@@ -98,7 +101,7 @@ const FUND_PROJECT = gql`
 `;
 
 const Admin = ({ props, user }) => {
-  const [currentProject, setCurrentProject] = useState("");
+  const [currentProject, setCurrentProject] = useState('');
   const [removeProject] = useMutation(REMOVE_PROJECT);
   const [coCreateProject] = useMutation(CREATE_PROJECT);
   const [setBackProject] = useMutation(SET_PROJECT_BACK);
@@ -119,7 +122,7 @@ const Admin = ({ props, user }) => {
 
   const handleClick = (e, choose, project) => {
     e.preventDefault();
-    if (choose == "x" && project.phase_id == 1) {
+    if (choose == 'x' && project.phase_id == 1) {
       removeProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -148,7 +151,7 @@ const Admin = ({ props, user }) => {
         },
       });
     }
-    if (choose == "v" && project.phase_id == 1) {
+    if (choose == 'v' && project.phase_id == 1) {
       coCreateProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -180,7 +183,7 @@ const Admin = ({ props, user }) => {
         },
       });
     }
-    if (choose == "x" && project.phase_id == 2) {
+    if (choose == 'x' && project.phase_id == 2) {
       setBackProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -212,7 +215,7 @@ const Admin = ({ props, user }) => {
         },
       });
     }
-    if (choose == "v" && project.phase_id == 2) {
+    if (choose == 'v' && project.phase_id == 2) {
       fundProject({
         variables: { id: project.id },
         optimisticResponse: true,
@@ -256,7 +259,7 @@ const Admin = ({ props, user }) => {
             {/* <span className={style.title_outline}>{props.last_name}.</span> */}
           </h1>
         </div>
-        {currentProject == "" && (
+        {currentProject == '' && (
           <>
             <>
               <div className={`${style.grid_admin} ${styles.grid_titles}`}>
@@ -304,7 +307,7 @@ const Admin = ({ props, user }) => {
                           <div className={styles.need_button}>
                             <button
                               className={styles.input_submit}
-                              onClick={(e) => handleClick(e, "v", project)}
+                              onClick={(e) => handleClick(e, 'v', project)}
                             >
                               <div className={styles.button}>
                                 <div
@@ -321,7 +324,7 @@ const Admin = ({ props, user }) => {
                           <div className={styles.need_button}>
                             <button
                               className={styles.input_submit}
-                              onClick={(e) => handleClick(e, "x", project)}
+                              onClick={(e) => handleClick(e, 'x', project)}
                             >
                               <div className={styles.button}>
                                 <div
@@ -341,11 +344,11 @@ const Admin = ({ props, user }) => {
                   ))}
                 </>
               )}
-              {projects.length == 0 && <Empty props={"noadmin"} />}
+              {projects.length == 0 && <Empty props={'noadmin'} />}
             </>
           </>
         )}
-        {currentProject != "" && (
+        {currentProject != '' && (
           <Project
             project={currentProject}
             setCurrentProject={setCurrentProject}
@@ -359,7 +362,7 @@ const Admin = ({ props, user }) => {
 const GetAdminData = ({ user }) => {
   const { loading, error, data } = useQuery(GET_DATA);
   if (loading) {
-    return <Loading props={"gebruiker"} />;
+    return <Loading props={'gebruiker'} />;
   }
   if (error) {
     console.log(error);
@@ -371,25 +374,25 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
   const router = useRouter();
   if (loading) {
-    return <Loading props={"gebruiker"} />;
+    return <Loading props={'gebruiker'} />;
   }
   if (!loading && !user) {
-    router.push("/");
+    router.push('/');
     return <></>;
   }
   if (!user) {
-    router.push("/");
+    router.push('/');
     return <></>;
   }
   if (user && !loading) {
-    if (!loading && user.sub != "auth0|601eb3abfb308d0069b819cb") {
-      router.push("/");
+    if (!loading && user.sub != 'auth0|601eb3abfb308d0069b819cb') {
+      router.push('/');
       return <></>;
     }
-    if (!loading && user.sub == "auth0|601eb3abfb308d0069b819cb")
+    if (!loading && user.sub == 'auth0|601eb3abfb308d0069b819cb')
       return <GetAdminData user={user}></GetAdminData>;
   }
-  router.push("/");
+  router.push('/');
 };
 
 export default withApollo({ ssr: true })(getUser);

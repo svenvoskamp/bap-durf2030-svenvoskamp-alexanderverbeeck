@@ -5,6 +5,7 @@ import style from '../Profile/SelectedProject/selectedproject.module.css';
 import styles from '../../css/profile.module.css';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import NeedsList from './NeedsList/NeedsList';
 
 const GET_DATA = gql`
   query MyQuery {
@@ -334,15 +335,10 @@ const Project = ({ project, setCurrentProject }) => {
           <p className={style.description_light}>{project.description}</p>
         </div>
 
-        {/* {projectNeeds.length > 0 && (
-        //   <NeedsList
-        //     needs={projectNeeds}
-        //     user={user}
-        //     setSelectedProject={setSelectedProject}
-        //     setContent={setContent}
-        //   ></NeedsList>
+        {project.needs.length > 0 && (
+          <NeedsList needs={project.needs}></NeedsList>
         )}
-        {projectNeeds.length == 0 && <div></div>} */}
+        {projectNeeds.length == 0 && <div></div>}
       </div>
     </div>
   );
