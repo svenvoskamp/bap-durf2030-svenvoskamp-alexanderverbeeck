@@ -341,7 +341,10 @@ const Step1 = ({
           <>
             <div className={style.part_end}>
               <div className={style.button_next}>
-                <button onClick={handleCompanyClick} className={style.button}>
+                <button
+                  onClick={handleCompanyClick}
+                  className={`${style.button} scale`}
+                >
                   <div className={style.circle_button}>
                     <img
                       className={style.button_image}
@@ -357,7 +360,10 @@ const Step1 = ({
           <>
             <div className={style.part_end}>
               <div className={style.button_next}>
-                <button onClick={handleIndividuClick} className={style.button}>
+                <button
+                  onClick={handleIndividuClick}
+                  className={`${style.button} scale`}
+                >
                   <div className={style.circle_button}>
                     <img
                       className={style.button_image}
