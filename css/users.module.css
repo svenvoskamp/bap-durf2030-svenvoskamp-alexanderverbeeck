@@ -447,6 +447,9 @@
 }
 
 @media screen and (max-width: 550px) {
+  .card {
+    margin-bottom: 1rem;
+  }
   .part_filter {
     display: grid;
     grid-template-areas:
