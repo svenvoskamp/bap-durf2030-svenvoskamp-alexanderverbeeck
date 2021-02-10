@@ -7,6 +7,8 @@ const User = ({ user, key }) => {
   console.log(user);
   let companyName;
   let department;
+  let firstName;
+  let lastName;
   if (user.company) {
     if (user.company_name.length > 12) {
       companyName = user.company_name.substring(0, maxLength) + '...';
@@ -17,6 +19,18 @@ const User = ({ user, key }) => {
       department = user.department.substring(0, maxLength) + '...';
     } else {
       department = user.department;
+    }
+  }
+  if (!user.company) {
+    if (user.first_name.length > 12) {
+      firstName = user.first_name.substring(0, maxLength) + '...';
+    } else {
+      firstName = user.first_name;
+    }
+    if (user.last_name.length > 12) {
+      lastName = user.last_name.substring(0, maxLength) + '...';
+    } else {
+      lastName = user.last_name;
     }
   }
   //   var result = yourString.substring(0, maxLength) + '...';
@@ -43,8 +57,8 @@ const User = ({ user, key }) => {
         {!user.company && (
           <div className={`${style.card_info} ${style.card_info__individu}`}>
             <div className={style.info_titles}>
-              <p className={style.individu_title}>{user.first_name}</p>
-              <p className={style.individu_title__outline}>{user.last_name}</p>
+              <p className={style.individu_title}>{firstName}</p>
+              <p className={style.individu_title__outline}>{lastName}</p>
             </div>
             <div className={style.individu_left}>
               <div className={style.individu_circle}></div>
