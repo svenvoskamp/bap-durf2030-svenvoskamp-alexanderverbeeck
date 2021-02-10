@@ -161,7 +161,7 @@ const Create = ({ props }) => {
           </div>
         </div>
       )}
-      {currentIndex === 2 && (
+      {currentIndex === 3 && (
         <div className={`${style.progressbar} ${style.progressbar_project} `}>
           <div
             className={`${style.progress_item} ${style.progress_item__active}`}

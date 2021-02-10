@@ -362,6 +362,20 @@ a {
   opacity: 1 !important;
 }
 
+.line_value {
+  width: 50vw;
+  height: 0.3rem;
+  background-color: green;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.line_value_crowdfund {
+  background-color: red;
+}
+
 .progressbar_line__realisation {
   width: 25vw;
 }
