@@ -243,6 +243,10 @@
     grid-column-gap: 3rem;
     grid-row-gap: 3rem;
   }
+
+  .grid_item__buttons__mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1250px) {
@@ -251,6 +255,10 @@
     padding-right: 4rem;
     grid-column-gap: 2rem;
     grid-row-gap: 2rem;
+  }
+
+  .grid_item__buttons__mobile {
+    display: none;
   }
 }
 
@@ -291,6 +299,10 @@
     grid-column: span 2;
     margin-top: 5rem;
   }
+
+  .grid_item__buttons__mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -304,6 +316,14 @@
   .grid_selectedproject,
   .grid_selectedproject__items {
     padding-right: 2rem;
+  }
+
+  .grid_item__title {
+    font-size: 1.8rem;
+  }
+
+  .grid_item__buttons__mobile {
+    display: none;
   }
 }
 
@@ -378,6 +398,7 @@
   .grid_item__type__hidden,
   .grid_item__type__hidden__requests {
     margin-bottom: 2rem;
+    padding-top: 2rem;
   }
   .grid_item__buttons {
     flex-direction: row;
@@ -395,6 +416,61 @@
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
+  }
+
+  .grid_item__title {
+    composes: mediumTitle from "./typo.module.css";
+    font-size: 2.8rem;
+    font-weight: 800;
+  }
+
+  .grid_item__buttons {
+    display: none;
+  }
+
+  .grid_item__buttons__mobile {
+    display: flex;
+  }
+
+  .need_button {
+    z-index: 2;
+    margin-top: 3rem;
+  }
+
+  .input_submit {
+    z-index: 2;
+  }
+
+  .mobile_button {
+    padding: 1rem 2rem;
+    border: 0.2rem solid blueColor;
+    composes: smallCaps from "./typo.module.css";
+    position: relative;
+  }
+
+  .mobile_button:first-of-type {
+    margin-right: 1rem;
+  }
+
+  .mobile_button:after {
+    content: "";
+    position: absolute;
+    display: block;
+    background: inherit;
+    border-radius: inherit;
+    border: inherit;
+    top: 0.7rem;
+    left: 0.7rem;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+  }
+  .mobile_button__accept {
+    background-color: greenColor;
+  }
+
+  .mobile_button__decline {
+    background-color: redColor;
   }
 }
 
@@ -418,9 +494,9 @@
     padding-left: 1rem;
   }
 
-  .subtitle_notifications,
+  /* .subtitle_notifications,
   .project_update,
   .subdivision_progress {
     padding: 0 1rem;
-  }
+  } */
 }

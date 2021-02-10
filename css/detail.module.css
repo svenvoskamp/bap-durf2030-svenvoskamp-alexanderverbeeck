@@ -161,12 +161,16 @@
   width: 100%;
 }
 
+.lines {
+  position: relative;
+}
+
 .line {
   width: 50vw;
   height: 0.3rem;
   background-color: var(--colorBlue);
+  opacity: 0.2;
   margin: 0 auto;
-  position: relative;
 }
 
 .progress {

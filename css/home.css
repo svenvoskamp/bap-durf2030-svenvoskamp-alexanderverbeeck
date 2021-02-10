@@ -78,7 +78,7 @@
 }
 
 .circle_button:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -251,7 +251,7 @@
 }
 
 .card_info:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -307,7 +307,7 @@
 }
 
 .home_button__start:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;

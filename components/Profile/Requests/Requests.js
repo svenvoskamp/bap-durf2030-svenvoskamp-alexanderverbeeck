@@ -1,9 +1,9 @@
-import React from 'react';
-import style from './requests.module.css';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import Empty from '../../Empty/Empty';
-import styles from '../../../css/profile.module.css';
+import React from "react";
+import style from "./requests.module.css";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import Empty from "../../Empty/Empty";
+import styles from "../../../css/profile.module.css";
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed($id: Int!, $provided: Boolean!, $pending: Boolean) {
@@ -223,7 +223,7 @@ const Requests = ({ props, user, feedbacks }) => {
   return (
     <>
       {requests.length < 1 && feedbackRequests.length < 1 && (
-        <Empty props={'inafwachting'} />
+        <Empty props={"inafwachting"} />
       )}
 
       {requests.length > 0 && (
@@ -248,7 +248,7 @@ const Requests = ({ props, user, feedbacks }) => {
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
                 <div className={styles.pending}>
-                  {' '}
+                  {" "}
                   <img
                     class
                     className={styles.grid_image__pending}
@@ -312,6 +312,22 @@ const Requests = ({ props, user, feedbacks }) => {
                     </button>
                   </div>
                 </div>
+                <div
+                  className={`${styles.buttons} ${styles.grid_item__buttons__mobile}`}
+                >
+                  <div className={styles.need_button}>
+                    <button
+                      className={styles.input_submit}
+                      onClick={(e) => handleClick(e, need)}
+                    >
+                      <p
+                        className={`${styles.mobile_button} ${styles.mobile_button__decline} `}
+                      >
+                        Annuleren
+                      </p>
+                    </button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -339,7 +355,7 @@ const Requests = ({ props, user, feedbacks }) => {
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
                 <div className={styles.pending}>
-                  {' '}
+                  {" "}
                   <img
                     class
                     className={styles.grid_image__pending}
@@ -401,6 +417,22 @@ const Requests = ({ props, user, feedbacks }) => {
                         </div>
                       </div>
                     </button>
+                  </div>
+                  <div
+                    className={`${styles.buttons} ${styles.grid_item__buttons__mobile}`}
+                  >
+                    <div className={styles.need_button}>
+                      <button
+                        className={styles.input_submit}
+                        onClick={(e) => handleClick(e, feedback)}
+                      >
+                        <p
+                          className={`${styles.mobile_button} ${styles.mobile_button__decline} `}
+                        >
+                          Annuleren
+                        </p>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

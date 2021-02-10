@@ -280,7 +280,7 @@ a {
 }
 
 .form_card__two__toevoeging:before {
-  content: url('../public/assets/creatie/creatie_toevoeging_form_extra.svg');
+  content: url("../public/assets/creatie/creatie_toevoeging_form_extra.svg");
   position: absolute;
   display: block;
   right: -12%;
@@ -290,7 +290,7 @@ a {
 }
 
 .form_card__two__aanpassing:before {
-  content: url('../public/assets/creatie/creatie_aanpassing_form_extra.svg');
+  content: url("../public/assets/creatie/creatie_aanpassing_form_extra.svg");
   position: absolute;
   display: block;
   right: -12%;
@@ -300,7 +300,7 @@ a {
 }
 
 .form_card__two__overig:before {
-  content: url('../public/assets/creatie/creatie_overig_form_extra.svg');
+  content: url("../public/assets/creatie/creatie_overig_form_extra.svg");
   position: absolute;
   display: block;
   right: -12%;
@@ -366,24 +366,66 @@ a {
 .progress_active_crowdfund,
 .progress_active_concept {
   opacity: 1 !important;
+  transition: 1s ease-in-out;
 }
 
 .line_value {
   width: 50vw;
   height: 0.3rem;
-  background-color: green;
   margin: 0 auto;
   position: absolute;
   left: 0;
-  top: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.line_value_crowdfund {
-  background-color: red;
+/* .line_value .line_color {
+  width: 5vw;
+  height: 0.3rem;
+  background-color: var(--colorBlue);
+} */
+
+.line_color {
+  width: auto;
+  transition: 1s ease-in-out;
+}
+
+.line_value.progress_active_realisation .line_color {
+  width: 50vw;
+  height: 0.3rem;
+  background-color: var(--colorBlue);
+}
+
+.line_value.progress_active_creation .line_color {
+  width: 20vw;
+  height: 0.3rem;
+  background-color: var(--colorBlue);
+}
+
+.line_value.progress_active_crowdfund .line_color {
+  width: 35vw;
+  height: 0.3rem;
+  background-color: var(--colorBlue);
+}
+
+.line_value.progress_active_concept .line_color {
+  width: 5vw;
+  height: 0.3rem;
+  background-color: var(--colorBlue);
 }
 
 .progressbar_line__realisation {
   width: 25vw;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 @media screen and (max-width: 850px) {

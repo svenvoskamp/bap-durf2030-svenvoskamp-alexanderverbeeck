@@ -6,7 +6,6 @@
 
 @media screen and (max-width: 550px) {
   .grid_image_pending__text {
-    display: flex;
     margin-left: 1rem;
   }
 }
