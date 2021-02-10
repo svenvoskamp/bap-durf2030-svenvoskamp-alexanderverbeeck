@@ -1,7 +1,7 @@
 {
     "build": {
       "env": {
-        "DOMAIN": "durf2030.vercel.app",
+        "DOMAIN": "https://durf2030.vercel.app",
         "AUTH0_DOMAIN": "dev-x93xw74j.eu.auth0.com",
         "AUTH0_AUDIENCE": "https://dev-x93xw74j.eu.auth0.com/api/v2/",
         "AUTH0_CLIENT_ID": "MlqPoCvFU7jZ1mMVupA8WrN5vHMzH1rG",
