@@ -1,17 +1,13 @@
-import React from "react";
-import style from "./info.module.css";
+import React from 'react';
+import style from './info.module.css';
 
 const Info = ({ props }) => {
   let email;
-  console.log(props.id);
-  if (props.id.includes("goog")) {
-    console.log("dit is google");
+
+  if (props.id.includes('goog')) {
     email = `${props.nickname}@gmail.com`;
-    console.log(email);
   } else {
-    console.log("dit is auth0");
     email = props.name;
-    console.log(email);
   }
   return (
     <>

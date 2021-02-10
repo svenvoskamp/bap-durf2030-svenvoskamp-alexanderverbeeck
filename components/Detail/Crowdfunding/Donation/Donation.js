@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./donation.module.css";
 
 const Donation = ({ donation }) => {
-  console.log(donation);
+
   const date = new Date(donation.created_at.replace(" ", "T"));
 
   const day = String(date.getDate()).padStart(2, "0");

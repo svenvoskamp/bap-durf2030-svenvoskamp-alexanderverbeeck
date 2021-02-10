@@ -1,9 +1,9 @@
-import React from "react";
-import style from "./requests.module.css";
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import Empty from "../../Empty/Empty";
-import styles from "../../../css/profile.module.css";
+import React from 'react';
+import style from './requests.module.css';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import Empty from '../../Empty/Empty';
+import styles from '../../../css/profile.module.css';
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed($id: Int!, $provided: Boolean!, $pending: Boolean) {
@@ -152,7 +152,6 @@ const Requests = ({ props, user, feedbacks }) => {
       }
     }
   });
-  console.log(feedbackRequests);
 
   const handleClick = (e, need) => {
     e.preventDefault();
@@ -197,7 +196,7 @@ const Requests = ({ props, user, feedbacks }) => {
 
   const handleFeedback = (e, feedback) => {
     e.preventDefault();
-    console.log(feedback);
+
     removeFeedback({
       variables: { id: feedback.id },
       optimisticResponse: true,
@@ -224,7 +223,7 @@ const Requests = ({ props, user, feedbacks }) => {
   return (
     <>
       {requests.length < 1 && feedbackRequests.length < 1 && (
-        <Empty props={"inafwachting"} />
+        <Empty props={'inafwachting'} />
       )}
 
       {requests.length > 0 && (
@@ -249,7 +248,7 @@ const Requests = ({ props, user, feedbacks }) => {
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
                 <div className={styles.pending}>
-                  {" "}
+                  {' '}
                   <img
                     class
                     className={styles.grid_image__pending}
@@ -340,7 +339,7 @@ const Requests = ({ props, user, feedbacks }) => {
                 className={`${styles.grid_items} ${styles.grid_requests__items}`}
               >
                 <div className={styles.pending}>
-                  {" "}
+                  {' '}
                   <img
                     class
                     className={styles.grid_image__pending}

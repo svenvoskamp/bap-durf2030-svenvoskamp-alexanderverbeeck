@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
-import style from "./notifications.module.css";
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import Empty from "../../Empty/Empty";
-import styles from "../../../css/profile.module.css";
-import Mouse from "../../Mouse";
+import React, { useRef, useState } from 'react';
+import style from './notifications.module.css';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import Empty from '../../Empty/Empty';
+import styles from '../../../css/profile.module.css';
+import Mouse from '../../Mouse';
 
 const TOGGLE_NEED = gql`
   mutation toggleNeed(
@@ -180,12 +180,12 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
   const [toggleFeedback] = useMutation(TOGGLE_FEEDBACK);
   const [updateProject] = useMutation(UPDATE_PROJECT);
   const [updateReal] = useMutation(UPDATE_REAL);
-  const [one, setOne] = useState("");
-  const [two, setTwo] = useState("");
-  const [three, setThree] = useState("");
-  const [speech, setSpeech] = useState("");
-  const [currentProject, setCurrentProject] = useState("");
-  const [currentSelected, setCurrentSelected] = useState("");
+  const [one, setOne] = useState('');
+  const [two, setTwo] = useState('');
+  const [three, setThree] = useState('');
+  const [speech, setSpeech] = useState('');
+  const [currentProject, setCurrentProject] = useState('');
+  const [currentSelected, setCurrentSelected] = useState('');
   const refRewardOne = useRef();
   const refRewardTwo = useRef();
   const refRewardThree = useRef();
@@ -222,7 +222,6 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
       }
     }
   });
-  console.log(projectNotifications);
 
   let showProjectNots = false;
   let showNeedNots = false;
@@ -257,17 +256,17 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
   }
 
   const handleValidationCrowd = () => {
-    if (one == "") {
+    if (one == '') {
       refRewardOne.current.innerHTML = `Gelieve een reward in te vullen`;
     } else {
       refRewardOne.current.innerHTML = ``;
     }
-    if (two == "") {
+    if (two == '') {
       refRewardTwo.current.innerHTML = `Gelieve een reward in te vullen`;
     } else {
       refRewardTwo.current.innerHTML = ``;
     }
-    if (three == "") {
+    if (three == '') {
       refRewardThree.current.innerHTML = `Gelieve een reward in te vullen`;
     } else {
       refRewardThree.current.innerHTML = ``;
@@ -275,7 +274,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
   };
 
   const handleValidationSpeech = () => {
-    if (speech == "") {
+    if (speech == '') {
       refSpeech.current.innerHTML = `Gelieve een dankwoord in te vullen`;
     } else {
       refSpeech.current.innerHTML = ``;
@@ -284,9 +283,8 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
 
   const handlePhase = (e, project) => {
     e.preventDefault();
-    console.log(project);
 
-    if ((one != "", two != "", three != "")) {
+    if ((one != '', two != '', three != '')) {
       updateProject({
         variables: {
           id: project.id,
@@ -300,7 +298,6 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             query: GET_USER_DATA,
             variables: { id: user.id },
           });
-          console.log(cachedData);
 
           const newUser = cachedData.users.map((u) => {
             const length = u.projects.length;
@@ -329,13 +326,13 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         },
       });
     }
-    setCurrentProject("");
+    setCurrentProject('');
   };
 
   const handleReal = (e, project) => {
     e.preventDefault();
 
-    if (speech != "") {
+    if (speech != '') {
       updateReal({
         variables: {
           id: project.id,
@@ -347,7 +344,6 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             query: GET_USER_DATA,
             variables: { id: user.id },
           });
-          console.log(cachedData);
 
           const newUser = cachedData.users.map((u) => {
             const length = u.projects.length;
@@ -356,7 +352,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                 p.crowdfunding_finished = true;
                 p.speech = speech;
                 p.phase_id = 4;
-                p.phase.phase = "Realisatie";
+                p.phase.phase = 'Realisatie';
                 u.projects.push(p);
               } else {
                 u.projects.push(p);
@@ -365,7 +361,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             u.projects.splice(0, length);
             return u;
           });
-          console.log(newUser);
+
           cache.writeQuery({
             query: GET_USER_DATA,
             variables: { id: user.id },
@@ -378,7 +374,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         },
       });
     }
-    setCurrentSelected("");
+    setCurrentSelected('');
   };
 
   const handleClick = (e, choose, need) => {
@@ -386,7 +382,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     let pending = false;
     let state;
     let other_user_id;
-    if (choose == "x") {
+    if (choose == 'x') {
       other_user_id = null;
       state = false;
     } else {
@@ -419,7 +415,6 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             return n;
           }
         });
-        console.log(newNeeds);
 
         cache.writeQuery({
           query: GET_USER_DATA,
@@ -439,7 +434,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
     let pending = false;
     let accepted;
 
-    if (choose == "x") {
+    if (choose == 'x') {
       accepted = false;
     } else {
       accepted = true;
@@ -484,7 +479,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
         {feedbackNotifications.length < 1 &&
           needNotifications.length < 1 &&
           projectNotifications.length < 1 &&
-          projectReal.length < 1 && <Empty props={"noneedsnofeedback"} />}
+          projectReal.length < 1 && <Empty props={'noneedsnofeedback'} />}
         <div>
           {/* {showProjectNots && (
             <>
@@ -516,11 +511,11 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <p className={styles.grid_item__title}>{project.title}</p>
                   <p className={styles.grid_text}>
                     <span className={styles.grid_bold}>Gefeliciteerd!</span>
-                    <br /> Je kan van start met de crowdfunding van je project{" "}
+                    <br /> Je kan van start met de crowdfunding van je project{' '}
                     <span className={styles.grid_bold}>“{project.title}”</span>!
                     Om deze fase te starten moet je de donatierewards invullen .
                   </p>
-                  {currentProject == "" && (
+                  {currentProject == '' && (
                     <div className={style.project_buttons}>
                       <div className={style.project_button}>
                         <button
@@ -536,7 +531,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
               </div>
             </>
           ))}
-          {currentProject != "" && (
+          {currentProject != '' && (
             <>
               <form
                 className={style.donation_form}
@@ -548,7 +543,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                       htmlFor={currentProject.title}
                       className={style.label}
                     >
-                      Donatiereward 1{" "}
+                      Donatiereward 1{' '}
                       <span className={styles.grid_text}>(€5 - €20):</span>
                     </label>
                     <p className={style.error} ref={refRewardOne}></p>
@@ -571,7 +566,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                       htmlFor={currentProject.title}
                       className={style.label}
                     >
-                      Donatiereward 2{" "}
+                      Donatiereward 2{' '}
                       <span className={styles.grid_text}>(€20 - €50):</span>
                     </label>
                     <p className={style.error} ref={refRewardTwo}></p>
@@ -594,7 +589,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                       htmlFor={currentProject.title}
                       className={style.label}
                     >
-                      Donatiereward 3{" "}
+                      Donatiereward 3{' '}
                       <span className={styles.grid_text}>(€50+):</span>
                     </label>
                     <p className={style.error} ref={refRewardThree}></p>
@@ -634,14 +629,14 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                     <p className={styles.grid_item__title}>{project.title}</p>
                     <p className={styles.grid_text}>
                       <span className={styles.grid_bold}>Gefeliciteerd!</span>
-                      <br /> Je kan nu van start met de realisatiefase van{" "}
+                      <br /> Je kan nu van start met de realisatiefase van{' '}
                       <span className={styles.grid_bold}>
                         “{project.title}”
                       </span>
                       ! Geef een dankwoord aan de doneerders en een update over
                       jouw project!
                     </p>
-                    {currentSelected == "" && (
+                    {currentSelected == '' && (
                       <div className={style.project_buttons}>
                         <div className={`${style.project_button} scale`}>
                           <button
@@ -659,7 +654,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
             </>
           ))}
 
-          {currentSelected != "" && (
+          {currentSelected != '' && (
             <>
               <form
                 className={style.donation_form}
@@ -779,7 +774,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <p className={styles.grid_text}>{need.need}</p>
                 </div>
                 <div className={styles.grid_item__mobile}>
-                  {" "}
+                  {' '}
                   <a
                     href={`/user/${need.otheruser.id}`}
                     className={`${styles.grid_text} ${styles.grid_text__user} scale`}
@@ -789,7 +784,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                 </div>
                 <div className={styles.flex_mobile}>
                   <div className={styles.grid_item__hidden}>
-                    {" "}
+                    {' '}
                     <a
                       href={`/user/${need.otheruser.id}`}
                       className={`${styles.grid_text} ${styles.grid_text__user}  ${styles.grid_item__name__hidden}`}
@@ -810,7 +805,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, "v", need)}
+                      onClick={(e) => handleClick(e, 'v', need)}
                     >
                       <div className={styles.button}>
                         <div
@@ -827,7 +822,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, "x", need)}
+                      onClick={(e) => handleClick(e, 'x', need)}
                     >
                       <div className={styles.button}>
                         <div
@@ -917,23 +912,23 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <p className={styles.grid_text}>{feedback.type}</p>
                 </div>
                 <div className={styles.grid_item__mobile}>
-                  {" "}
+                  {' '}
                   <a
                     href={`/user/${feedback.otheruser.id}`}
                     className={`${styles.grid_text} ${styles.grid_text__user} scale`}
                   >
-                    {feedback.otheruser.first_name}{" "}
+                    {feedback.otheruser.first_name}{' '}
                     {feedback.otheruser.last_name}
                   </a>
                 </div>
                 <div>
                   <div className={styles.grid_item__hidden}>
-                    {" "}
+                    {' '}
                     <a
                       href={`/user/${feedback.otheruser.id}`}
                       className={`${styles.grid_text} ${styles.grid_text__user}  ${styles.grid_item__name__hidden}`}
                     >
-                      {feedback.otheruser.first_name}{" "}
+                      {feedback.otheruser.first_name}{' '}
                       {feedback.otheruser.last_name}
                     </a>
                   </div>
@@ -949,7 +944,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleFeedback(e, "v", feedback)}
+                      onClick={(e) => handleFeedback(e, 'v', feedback)}
                     >
                       <div className={styles.button}>
                         <div
@@ -966,7 +961,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleFeedback(e, "x", feedback)}
+                      onClick={(e) => handleFeedback(e, 'x', feedback)}
                     >
                       <div className={styles.button}>
                         <div

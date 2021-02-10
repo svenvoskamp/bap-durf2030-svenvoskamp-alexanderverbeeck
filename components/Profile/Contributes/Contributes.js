@@ -32,10 +32,6 @@ const Contributes = ({ props, user, feedbacks }) => {
   user.donations.map((donation) => {
     donatedMoney = donatedMoney + donation.amount;
   });
-  console.log('projecten:', realizedProjects.length);
-  console.log('feedback:', acceptedFeedback.length);
-  console.log('benodigdheden:', acceptedRequest.length);
-  console.log('gedoneerd:', donatedMoney);
 
   return (
     <>

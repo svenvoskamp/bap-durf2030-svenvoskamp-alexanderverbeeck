@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import style from "../../../Create/Step3/step3.module.css";
-import styles from "../../../../css/profile.module.css";
+import React, { useState, useRef } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import style from '../../../Create/Step3/step3.module.css';
+import styles from '../../../../css/profile.module.css';
 
 const ADD_NEED = gql`
   mutation addNeed(
@@ -153,14 +153,14 @@ const GET_USER_DATA = gql`
 `;
 
 const AddNeed = ({ project, user }) => {
-  const [typeNeed, setTypeNeed] = useState("");
-  const [need, setNeed] = useState("");
+  const [typeNeed, setTypeNeed] = useState('');
+  const [need, setNeed] = useState('');
   const [gotNeed, setGotNeed] = useState(false);
   const [addNeed] = useMutation(ADD_NEED);
   const refNeed = useRef();
 
   const handleValidation = () => {
-    if (need == "") {
+    if (need == '') {
       refNeed.current.innerHTML = `Vul de benodigheid in`;
     } else {
       refNeed.current.innerHTML = ``;
@@ -168,7 +168,7 @@ const AddNeed = ({ project, user }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (typeNeed !== "" && need !== "") {
+    if (typeNeed !== '' && need !== '') {
       addNeed({
         variables: {
           project_id: project.id,
@@ -182,9 +182,9 @@ const AddNeed = ({ project, user }) => {
             query: GET_USER_DATA,
             variables: { id: user.id },
           });
-          console.log(cachedData);
-          const newNeeds = data["insert_needs"].returning[0];
-          console.log(newNeeds);
+
+          const newNeeds = data['insert_needs'].returning[0];
+
           cache.writeQuery({
             query: GET_USER_DATA,
             variables: { id: user.id },
@@ -198,8 +198,8 @@ const AddNeed = ({ project, user }) => {
         },
       });
       setGotNeed(false);
-      setNeed("");
-      setTypeNeed("");
+      setNeed('');
+      setTypeNeed('');
     }
   };
   return (
@@ -219,7 +219,7 @@ const AddNeed = ({ project, user }) => {
                   type="radio"
                   name="needs"
                   className={style.checkbox}
-                  onClick={(e) => setTypeNeed("Eten")}
+                  onClick={(e) => setTypeNeed('Eten')}
                 />
                 <p className={style.checkbox_text}>Eten</p>
                 <div className={`${style.checkbox_image} scale`}>
@@ -248,7 +248,7 @@ const AddNeed = ({ project, user }) => {
                   type="radio"
                   name="needs"
                   className={style.checkbox}
-                  onClick={(e) => setTypeNeed("Persoon")}
+                  onClick={(e) => setTypeNeed('Persoon')}
                 />
                 <p className={style.checkbox_text}>Persoon</p>
                 <div className={`${style.checkbox_image} scale`}>
@@ -277,7 +277,7 @@ const AddNeed = ({ project, user }) => {
                   type="radio"
                   name="needs"
                   className={style.checkbox}
-                  onClick={(e) => setTypeNeed("Item")}
+                  onClick={(e) => setTypeNeed('Item')}
                 />
                 <p className={style.checkbox_text}>Item</p>
                 <div className={`${style.checkbox_image} scale`}>
@@ -306,7 +306,7 @@ const AddNeed = ({ project, user }) => {
                   type="radio"
                   name="needs"
                   className={style.checkbox}
-                  onClick={(e) => setTypeNeed("Drank")}
+                  onClick={(e) => setTypeNeed('Drank')}
                 />
                 <p className={style.checkbox_text}>Drank</p>
                 <div className={`${style.checkbox_image} scale`}>
@@ -335,7 +335,7 @@ const AddNeed = ({ project, user }) => {
                   type="radio"
                   name="needs"
                   className={style.checkbox}
-                  onClick={(e) => setTypeNeed("Gebouw")}
+                  onClick={(e) => setTypeNeed('Gebouw')}
                 />
                 <p className={style.checkbox_text}>Gebouw</p>
                 <div className={`${style.checkbox_image} scale`}>
@@ -357,7 +357,7 @@ const AddNeed = ({ project, user }) => {
                 </div>
               </label>
             </div>
-            {!typeNeed == "" && (
+            {!typeNeed == '' && (
               <>
                 <div className={style.input_item}>
                   <div

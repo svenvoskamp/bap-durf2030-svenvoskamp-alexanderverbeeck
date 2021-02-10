@@ -3,7 +3,6 @@ import style from '../../../../css/project.module.css';
 import styles from './myproject.module.css';
 
 const MyProject = ({ props, project, setSelectedProject, needs }) => {
-  console.log(project);
   let projectNeeds = [];
   needs.map((need) => {
     if (need.user_id == props.id) {
@@ -144,18 +143,22 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
         </div>
       </a>
 
-      <div className={styles.need_button}>
-        <a className={styles.button}>
-          <div
-            className={`${styles.circle_button} ${styles.circle_button_provided}`}
-          >
-            <img
-              className={styles.button_image}
-              src="../../../../assets/profiel/profiel_conceptvoorstel.svg"
-            />
+      {project.phase.phase == 'Conceptvoorstel' && (
+        <>
+          <div className={styles.need_button}>
+            <a className={styles.button}>
+              <div
+                className={`${styles.circle_button} ${styles.circle_button_provided}`}
+              >
+                <img
+                  className={styles.button_image}
+                  src="../../../../assets/profiel/profiel_conceptvoorstel.svg"
+                />
+              </div>
+            </a>
           </div>
-        </a>
-      </div>
+        </>
+      )}
     </div>
   );
 };

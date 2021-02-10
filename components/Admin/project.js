@@ -118,7 +118,7 @@ const Project = ({ project, setCurrentProject }) => {
             u.projects.splice(0, length);
             return u;
           });
-          console.log(newUser);
+
           cache.writeQuery({
             query: GET_DATA,
             data: {
@@ -150,7 +150,7 @@ const Project = ({ project, setCurrentProject }) => {
             u.projects.splice(0, length);
             return u;
           });
-          console.log(newUser);
+
           cache.writeQuery({
             query: GET_DATA,
             data: {
@@ -182,7 +182,7 @@ const Project = ({ project, setCurrentProject }) => {
             u.projects.splice(0, length);
             return u;
           });
-          console.log(newUser);
+
           cache.writeQuery({
             query: GET_DATA,
             data: {
@@ -214,7 +214,7 @@ const Project = ({ project, setCurrentProject }) => {
             u.projects.splice(0, length);
             return u;
           });
-          console.log(newUser);
+
           cache.writeQuery({
             query: GET_DATA,
             data: {

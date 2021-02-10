@@ -1,11 +1,11 @@
-import React, { useRef, useState } from "react";
-import style from "./creatie.module.css";
-import styles from "../../../css/detail.module.css";
-import gql from "graphql-tag";
+import React, { useRef, useState } from 'react';
+import style from './creatie.module.css';
+import styles from '../../../css/detail.module.css';
+import gql from 'graphql-tag';
 // import crowdfundingstyle from "./feedback/feedback.module.css";
-import { useMutation } from "@apollo/react-hooks";
-import Feedback from "./Feedback/Feedback";
-import { useRouter } from "next/router";
+import { useMutation } from '@apollo/react-hooks';
+import Feedback from './Feedback/Feedback';
+import { useRouter } from 'next/router';
 const ADD_FEEDBACK = gql`
   mutation addFeedback(
     $type: String!
@@ -41,22 +41,21 @@ const ADD_FEEDBACK = gql`
 `;
 
 const Creatie = ({ props, user }) => {
-  console.log(props.feedbacks.length);
-  const [typeFeedback, setTypeFeedback] = useState("");
+  const [typeFeedback, setTypeFeedback] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [motivation, setMotivation] = useState("");
+  const [motivation, setMotivation] = useState('');
   const [addFeedback] = useMutation(ADD_FEEDBACK);
   const refMotivation = useRef();
   const router = useRouter();
 
-  const date = new Date(props.projects[0].created_at.replace(" ", "T"));
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const date = new Date(props.projects[0].created_at.replace(' ', 'T'));
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
   const year = date.getFullYear();
   const finalDate = `${day}/${month}/${year}`;
 
   const handleMotivation = () => {
-    if (motivation == "") {
+    if (motivation == '') {
       refMotivation.current.innerHTML = `Gelieve een motivatie in te vullen`;
     } else {
       refMotivation.current.innerHTML = ``;
@@ -65,7 +64,7 @@ const Creatie = ({ props, user }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (typeFeedback != "" && motivation != "") {
+    if (typeFeedback != '' && motivation != '') {
       addFeedback({
         variables: {
           type: typeFeedback,
@@ -81,7 +80,7 @@ const Creatie = ({ props, user }) => {
 
   const checkUser = (typeFeedback) => {
     if (!user) {
-      router.push("/api/login");
+      router.push('/api/login');
     }
     if (user && !user.first_name) {
       router.push(`/register`);
@@ -94,15 +93,15 @@ const Creatie = ({ props, user }) => {
 
   const handleBack = (e) => {
     e.preventDefault();
-    setMotivation("");
-    setTypeFeedback("");
+    setMotivation('');
+    setTypeFeedback('');
     setCurrentIndex(0);
   };
   return (
     <>
       <p className={style.timeline_title}>Projectevolutie</p>
       <div className={style.timeline}>
-        {props.projects[0].phase.phase == "Co-creatie" && (
+        {props.projects[0].phase.phase == 'Co-creatie' && (
           <form className={style.form_feedback} onSubmit={handleSubmit}>
             <div className={style.feedback}>
               {currentIndex == 0 && (
@@ -124,7 +123,7 @@ const Creatie = ({ props, user }) => {
                         name="feedback"
                         className={styles.form_radio}
                         onClick={(e) => {
-                          checkUser("Aanpassing");
+                          checkUser('Aanpassing');
                         }}
                       />
                       <img
@@ -143,7 +142,7 @@ const Creatie = ({ props, user }) => {
                         name="feedback"
                         className={styles.form_radio}
                         onClick={(e) => {
-                          checkUser("Toevoeging");
+                          checkUser('Toevoeging');
                         }}
                       />
                       <img
@@ -162,7 +161,7 @@ const Creatie = ({ props, user }) => {
                         name="feedback"
                         className={styles.form_radio}
                         onClick={(e) => {
-                          checkUser("Overig");
+                          checkUser('Overig');
                         }}
                       />
                       <img
@@ -177,11 +176,11 @@ const Creatie = ({ props, user }) => {
               {currentIndex == 1 && (
                 <>
                   <p className={style.form_title}>
-                    <span className={style.form_number}>2.</span> Leg jouw{" "}
-                    {typeFeedback == "Overig" && <span>overige feedback</span>}{" "}
-                    {typeFeedback != "Overig" && (
+                    <span className={style.form_number}>2.</span> Leg jouw{' '}
+                    {typeFeedback == 'Overig' && <span>overige feedback</span>}{' '}
+                    {typeFeedback != 'Overig' && (
                       <span>{typeFeedback.toLowerCase()}</span>
-                    )}{" "}
+                    )}{' '}
                     verder uit!
                   </p>
                   <p className={style.error} ref={refMotivation}></p>
@@ -256,7 +255,7 @@ const Creatie = ({ props, user }) => {
           </form>
         )}
         <div className={style.feedback_timeline__start}>
-          {props.projects[0].phase.phase != "Co-creatie" && (
+          {props.projects[0].phase.phase != 'Co-creatie' && (
             <>
               <div className={style.start}>
                 <li className={style.locked_content}>
@@ -311,7 +310,7 @@ const Creatie = ({ props, user }) => {
           )}
         </div>
         {/* <div className={style.timeline_line}></div> */}
-        {props.projects[0].phase.phase == "Co-creatie" && (
+        {props.projects[0].phase.phase == 'Co-creatie' && (
           <div className={style.feedback_timeline__start}>
             <div className={style.locked}>
               <div className={style.locked_icon}>
@@ -333,7 +332,7 @@ const Creatie = ({ props, user }) => {
             </div>
           </div>
         )}
-        {props.projects[0].phase.phase == "Crowdfunding" &&
+        {props.projects[0].phase.phase == 'Crowdfunding' &&
           !props.projects[0].reward_one && (
             <div className={style.feedback_timeline__start}>
               <div className={style.locked}>

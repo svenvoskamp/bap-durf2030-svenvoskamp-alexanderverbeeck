@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import { useFetchUser } from "../../lib/user";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import { withApollo } from "../../lib/withApollo";
-import Loading from "../../components/Loading/Loading";
-import Mouse from "../../components/Mouse";
-import style from "../../css/profile.module.css";
-import Info from "../../components/User/Info/Info";
-import UserProjects from "../../components/User/UserProjects/UserProjects";
-import Nav from "../../components/Nav";
-import Contributes from "../../components/User/Contributes/Contributes";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useFetchUser } from '../../lib/user';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { withApollo } from '../../lib/withApollo';
+import Loading from '../../components/Loading/Loading';
+import Mouse from '../../components/Mouse';
+import style from '../../css/profile.module.css';
+import Info from '../../components/User/Info/Info';
+import UserProjects from '../../components/User/UserProjects/UserProjects';
+import Nav from '../../components/Nav';
+import Contributes from '../../components/User/Contributes/Contributes';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -160,9 +160,8 @@ const User = ({ props }) => {
   const [content, setContent] = useState(0);
   const { user, loading } = useFetchUser();
 
-  console.log(props);
   const router = useRouter();
-  console.log(router.query.id);
+
   return (
     <>
       <Mouse></Mouse>
@@ -228,18 +227,18 @@ const getUser = ({}) => {
     variables: { id: router.query.id },
   });
   if (loading) {
-    return <Loading props={"profiel"} />;
+    return <Loading props={'profiel'} />;
   }
   if (error) {
     console.log(error);
   }
-  console.log(data);
+
   if (!data.users[0] && !loading) {
-    router.push("/");
+    router.push('/');
     return <></>;
   }
   if (!data.users[0].first_name && !loading) {
-    router.push("/");
+    router.push('/');
     return <></>;
   }
   if (data.users[0].first_name && !loading) {

@@ -115,7 +115,6 @@ const GET_USER_DATA = gql`
 `;
 
 const Nav = ({ user }) => {
-  console.log(user);
   const navRef = useRef(null);
   const router = useRouter();
   const path = router.pathname;

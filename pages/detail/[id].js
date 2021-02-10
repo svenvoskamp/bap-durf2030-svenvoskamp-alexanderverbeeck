@@ -135,8 +135,6 @@ const GET_PROJECT_BY_ID = gql`
 const Detail = ({ props, user, navUser }) => {
   const scrollRef = useRef(null);
 
-  console.log(user);
-
   import('locomotive-scroll').then((locomotiveModule) => {
     const lscroll = new locomotiveModule.default({
       el: scrollRef.current,
@@ -161,7 +159,6 @@ const Detail = ({ props, user, navUser }) => {
     ) {
       const div = document.getElementsByTagName('html');
       const el = document.querySelector(`.donations`);
-      console.log(el);
 
       if (el.classList.contains(`is-inview`)) {
         if (div[0].classList.contains(`dark-mode`)) {
@@ -243,7 +240,6 @@ const Detail = ({ props, user, navUser }) => {
 };
 
 const LoadUser = ({ user }) => {
-  console.log(user);
   const router = useRouter();
   if (user) {
     const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {

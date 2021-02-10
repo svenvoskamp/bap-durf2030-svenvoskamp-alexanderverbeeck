@@ -12,7 +12,6 @@ import Loading from '../components/Loading/Loading';
 import { useFetchUser } from '../lib/user';
 
 const Projects = ({ projects, categories, themes, phases, districts }) => {
-  console.log(phases);
   const { user, loading } = useFetchUser();
   const [search, setSearch] = useState('');
   const [newProjects, setNewProjects] = useState(projects);

@@ -1,17 +1,13 @@
-import React, { useRef, useState } from "react";
-import style from "./realisation.module.css";
+import React, { useRef, useState } from 'react';
+import style from './realisation.module.css';
 
 const Realisation = ({ props, user }) => {
   let email;
-  console.log(props.projects[0].user.id);
-  if (props.projects[0].user.id.includes("goog")) {
-    console.log("dit is google");
+
+  if (props.projects[0].user.id.includes('goog')) {
     email = `${props.projects[0].user.nickname}@gmail.com`;
-    console.log(email);
   } else {
-    console.log("dit is auth0");
     email = props.projects[0].user.name;
-    console.log(email);
   }
   return (
     <>
@@ -83,13 +79,13 @@ const Realisation = ({ props, user }) => {
         <div className={style.contact}>
           <div>
             <p className={style.contact_title}>
-              Contactgegevens {props.projects[0].user.first_name}{" "}
-              {props.projects[0].user.last_name}{" "}
+              Contactgegevens {props.projects[0].user.first_name}{' '}
+              {props.projects[0].user.last_name}{' '}
             </p>
           </div>
           <div>
             <div className={style.contact_info}>
-              {" "}
+              {' '}
               <div className={style.info_circle}></div>
               <a
                 href={`mailto:${email}`}
@@ -100,7 +96,7 @@ const Realisation = ({ props, user }) => {
             </div>
             {props.projects[0].user.phone_number && (
               <div className={style.contact_info}>
-                {" "}
+                {' '}
                 <div className={style.info_circle}></div>
                 <a
                   href={`tel:${props.projects[0].user.phone_number}`}

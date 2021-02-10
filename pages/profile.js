@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
-import { useFetchUser } from "../lib/user";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import { withApollo } from "../lib/withApollo";
-import Loading from "../components/Loading/Loading";
-import Info from "../components/Profile/Info/Info";
-import Mouse from "../components/Mouse";
-import Nav from "../components/Nav";
-import MyProjects from "../components/Profile/MyProjects/MyProjects";
-import style from "../css/profile.module.css";
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useFetchUser } from '../lib/user';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { withApollo } from '../lib/withApollo';
+import Loading from '../components/Loading/Loading';
+import Info from '../components/Profile/Info/Info';
+import Mouse from '../components/Mouse';
+import Nav from '../components/Nav';
+import MyProjects from '../components/Profile/MyProjects/MyProjects';
+import style from '../css/profile.module.css';
 
-import Notifications from "../components/Profile/Notifications/Notifications";
-import Requests from "../components/Profile/Requests/Requests";
-import Contributes from "../components/Profile/Contributes/Contributes";
-import SelectedProject from "../components/Profile/SelectedProject/SelectedProject";
+import Notifications from '../components/Profile/Notifications/Notifications';
+import Requests from '../components/Profile/Requests/Requests';
+import Contributes from '../components/Profile/Contributes/Contributes';
+import SelectedProject from '../components/Profile/SelectedProject/SelectedProject';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -138,7 +138,7 @@ const GET_CURRENT_USER = gql`
 
 const Profile = ({ props }) => {
   const [content, setContent] = useState(0);
-  const [selectedProject, setSelectedProject] = useState("");
+  const [selectedProject, setSelectedProject] = useState('');
   const { user, loading } = useFetchUser();
   let incoming = [];
   let outgoing = [];
@@ -302,7 +302,7 @@ const Profile = ({ props }) => {
             </>
           )}
         </div>
-        {content == 0 && selectedProject == "" && (
+        {content == 0 && selectedProject == '' && (
           <MyProjects
             props={props.users[0]}
             setSelectedProject={setSelectedProject}
@@ -310,7 +310,7 @@ const Profile = ({ props }) => {
             needs={props.needs}
           ></MyProjects>
         )}
-        {content == 0 && selectedProject != "" && (
+        {content == 0 && selectedProject != '' && (
           <>
             <SelectedProject
               project={selectedProject}
@@ -354,14 +354,14 @@ const GetCurrentUser = ({ props }) => {
     variables: { id: props.sub },
   });
   if (loading) {
-    return <Loading props={"profiel"} />;
+    return <Loading props={'profiel'} />;
   }
   if (error) {
     console.log(error);
   }
-  console.log(data);
+
   if (!data.users[0].first_name && !loading) {
-    router.push("/register");
+    router.push('/register');
     return <></>;
   }
   if (data.users[0].first_name && !loading) {
@@ -374,13 +374,13 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
 
   if (loading) {
-    return <Loading props={"profiel"} />;
+    return <Loading props={'profiel'} />;
   }
   if (!loading && user) {
     return <GetCurrentUser props={user} />;
   }
   if (!user && !loading) {
-    router.push("/api/login");
+    router.push('/api/login');
     return <></>;
   }
 };
