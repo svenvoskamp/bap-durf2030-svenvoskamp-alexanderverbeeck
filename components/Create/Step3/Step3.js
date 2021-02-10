@@ -141,7 +141,6 @@ const Needs = ({ project_id, user }) => {
           query: GET_NEEDS_BY_PROJECT,
           variables: { id },
         });
-        console.log(existingNeeds);
         const newNeeds = existingNeeds.needs.map((n) => {
           if (n.id === need.id) {
             return { ...n, provided: !n.provided };
@@ -149,7 +148,6 @@ const Needs = ({ project_id, user }) => {
             return n;
           }
         });
-        console.log(newNeeds);
         cache.writeQuery({
           query: GET_NEEDS_BY_PROJECT,
           variables: { id },

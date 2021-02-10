@@ -3,9 +3,6 @@
 
 .part {
   composes: view from "../css/layout.module.css";
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-column-gap: 12rem;
 }
 .title {
   composes: largeTitleOutline from "../css/typo.module.css";
@@ -51,6 +48,9 @@
 }
 
 .grid__about {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-column-gap: 12rem;
 }
 
 .img__about {

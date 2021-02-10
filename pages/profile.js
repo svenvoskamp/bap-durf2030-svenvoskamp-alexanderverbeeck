@@ -137,7 +137,6 @@ const GET_CURRENT_USER = gql`
 `;
 
 const Profile = ({ props }) => {
-  console.log(props);
   const [content, setContent] = useState(0);
   const [selectedProject, setSelectedProject] = useState("");
   const { user, loading } = useFetchUser();
@@ -350,7 +349,6 @@ const Profile = ({ props }) => {
 };
 
 const GetCurrentUser = ({ props }) => {
-  console.log(props);
   const router = useRouter();
   const { loading, error, data } = useQuery(GET_USER_DATA, {
     variables: { id: props.sub },

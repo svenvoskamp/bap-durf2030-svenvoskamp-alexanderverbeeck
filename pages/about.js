@@ -76,12 +76,12 @@ const About = () => {
                 geheel. Zo maken wij het verschil.{" "}
               </p>
             </div>
+            <img
+              className={style.img__about}
+              src="./assets/about/about.svg"
+              alt="projects"
+            />
           </div>
-          <img
-            className={style.img__about}
-            src="./assets/about/about.svg"
-            alt="projects"
-          />
         </section>
         <section className={style.part}>
           <h1

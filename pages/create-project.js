@@ -98,7 +98,6 @@ const Create = ({ props }) => {
         }
       );
 
-      console.log({ response });
       const inserted_file = response.data[0];
       const url = `https://durf2030.ams3.digitaloceanspaces.com/durf2030/${inserted_file.key}`;
       const phase_id = 1;

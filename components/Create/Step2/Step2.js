@@ -46,7 +46,6 @@ const Step2 = ({
     console.log(error);
   }
   districts = data.districts;
-  console.log(district);
 
   const handleBack = (e) => {
     e.preventDefault();
@@ -88,7 +87,6 @@ const Step2 = ({
 
   const handleChange = async (e) => {
     if (e.target.files[0]) {
-      console.log(e.target.files[0]);
       const img = document.getElementById("id_img");
       img.src = URL.createObjectURL(e.target.files[0]);
       img.onload = function () {
