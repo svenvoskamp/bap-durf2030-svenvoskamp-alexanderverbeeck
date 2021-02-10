@@ -1,20 +1,20 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { gql, useQuery } from '@apollo/react-hooks';
-import { withApollo } from '../../lib/withApollo';
-import Mouse from '../../components/Mouse';
-import Header from '../../components/Detail/Header/Header';
-import Extra from '../../components/Detail/Extra/Extra';
-import Needs from '../../components/Detail/Needs/Needs';
-import Creatie from '../../components/Detail/Creatie/Creatie';
-import Crowdfunding from '../../components/Detail/Crowdfunding/Crowdfunding';
-import Realisation from '../../components/Detail/Realisation/Realisation';
-import { useFetchUser } from '../../lib/user';
-import gsap from 'gsap';
+import React, { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { gql, useQuery } from "@apollo/react-hooks";
+import { withApollo } from "../../lib/withApollo";
+import Mouse from "../../components/Mouse";
+import Header from "../../components/Detail/Header/Header";
+import Extra from "../../components/Detail/Extra/Extra";
+import Needs from "../../components/Detail/Needs/Needs";
+import Creatie from "../../components/Detail/Creatie/Creatie";
+import Crowdfunding from "../../components/Detail/Crowdfunding/Crowdfunding";
+import Realisation from "../../components/Detail/Realisation/Realisation";
+import { useFetchUser } from "../../lib/user";
+import gsap from "gsap";
 
-import Nav from '../../components/Nav';
-import style from '../../css/detail.module.css';
-import Loading from '../../components/Loading/Loading';
+import Nav from "../../components/Nav";
+import style from "../../css/detail.module.css";
+import Loading from "../../components/Loading/Loading";
 
 const GET_PROJECT_BY_ID = gql`
   query getProjectById($id: Int!, $user_id: String, $user: Boolean!) {
@@ -136,16 +136,16 @@ const Detail = ({ props, user, navUser }) => {
   const scrollRef = useRef(null);
   const [scrollNow, setScrollNow] = useState(false);
 
-  import('locomotive-scroll').then((locomotiveModule) => {
+  import("locomotive-scroll").then((locomotiveModule) => {
     let lscroll = new locomotiveModule.default({
       el: scrollRef.current,
       smooth: true,
-      direction: 'horizontal',
+      direction: "horizontal",
 
       smartphone: {
         smooth: true,
-        gestureDirection: 'vertical',
-        direction: 'vertical',
+        gestureDirection: "vertical",
+        direction: "vertical",
       },
     });
     if (scrollNow == true) {
@@ -155,11 +155,11 @@ const Detail = ({ props, user, navUser }) => {
 
   const onScroll = () => {
     if (
-      (props.projects[0].phase.phase == 'Crowdfunding' &&
+      (props.projects[0].phase.phase == "Crowdfunding" &&
         props.projects[0].reward_one) ||
-      props.projects[0].phase.phase == 'Realisatie'
+      props.projects[0].phase.phase == "Realisatie"
     ) {
-      const div = document.getElementsByTagName('html');
+      const div = document.getElementsByTagName("html");
       const el = document.querySelector(`.donations`);
 
       if (el.classList.contains(`is-inview`)) {
@@ -175,13 +175,13 @@ const Detail = ({ props, user, navUser }) => {
       }
     }
     if (
-      (props.projects[0].phase.phase == 'Crowdfunding' &&
+      (props.projects[0].phase.phase == "Crowdfunding" &&
         props.projects[0].reward_one) ||
-      props.projects[0].phase.phase == 'Realisatie'
+      props.projects[0].phase.phase == "Realisatie"
     ) {
-      console.log('ik moet nu wat doen');
+      console.log("ik moet nu wat doen");
       const crowdfundDiv = document.querySelector(`.progress_crowdfund`);
-      const el = document.querySelector('.crowdfund');
+      const el = document.querySelector(".crowdfund");
 
       if (el.classList.contains(`is-inview`)) {
         if (crowdfundDiv.classList.contains(`progress_active`)) {
@@ -197,11 +197,11 @@ const Detail = ({ props, user, navUser }) => {
     }
 
     if (
-      props.projects[0].phase.phase == 'Realisatie' &&
+      props.projects[0].phase.phase == "Realisatie" &&
       props.projects[0].speech
     ) {
       const realisationDiv = document.querySelector(`.progress_realisation`);
-      const el = document.querySelector('.realisation');
+      const el = document.querySelector(".realisation");
 
       if (el.classList.contains(`is-inview`)) {
         if (realisationDiv.classList.contains(`progress_active`)) {
@@ -216,7 +216,7 @@ const Detail = ({ props, user, navUser }) => {
       }
     }
     const creationDiv = document.querySelector(`.progress_creation`);
-    const el = document.querySelector('.feedback');
+    const el = document.querySelector(".feedback");
 
     if (el.classList.contains(`is-inview`)) {
       if (creationDiv.classList.contains(`progress_active`)) {
@@ -231,7 +231,7 @@ const Detail = ({ props, user, navUser }) => {
     }
 
     const conceptDiv = document.querySelector(`.progress_concept`);
-    const conceptEl = document.querySelector('.concept');
+    const conceptEl = document.querySelector(".concept");
 
     if (conceptEl.classList.contains(`is-inview`)) {
       if (conceptDiv.classList.contains(`progress_active`)) {
@@ -247,33 +247,37 @@ const Detail = ({ props, user, navUser }) => {
   };
 
   useEffect(() => {
-    window.addEventListener('wheel', onScroll);
-  }, [window.removeEventListener('wheel', onScroll)]);
+    window.addEventListener("wheel", onScroll);
+  }, [window.removeEventListener("wheel", onScroll)]);
 
   return (
     <>
       <Mouse></Mouse>
-      {/* <Nav className={style.navigation} user={navUser}></Nav> */}
+      <Nav user={navUser}></Nav>
       <main
         ref={scrollRef}
         data-scroll-container
         className="data-scroll-container-detail"
       >
-        <div>
-          <div className="progress_concept progress_active">
-            <p>Conceptbeschrijving</p>
-          </div>
-          <div className="progress_creation">
-            <p>Co-Creatie</p>
-          </div>
-          <div className="progress_crowdfund">
-            <p>Crowdfund</p>
+        <div className={style.progress}>
+          <div className={style.progressbar}>
+            <div
+              className={`${style.progressbar_item} progress_concept progress_active `}
+            >
+              <p>Conceptbeschrijving</p>
+            </div>
+            <div className={`${style.progressbar_item} progress_creation `}>
+              <p>Co-Creatie</p>
+            </div>
+            <div className={`${style.progressbar_item} progress_crowdfund `}>
+              <p>Crowdfund</p>
 
-            <img src="" />
-          </div>
-          <div className="progress_realisation">
-            <p>Realisatie</p>
-            <img src="" />
+              <img src="" />
+            </div>
+            <div className={`${style.progressbar_item} progress_realisation `}>
+              <p>Realisatie</p>
+              <img src="" />
+            </div>
           </div>
         </div>
         <article className={style.part_project}>
@@ -287,25 +291,25 @@ const Detail = ({ props, user, navUser }) => {
           </div>
           <Extra className={style.part_extra} props={props.projects[0]}></Extra>
           <div className={style.timeline}>
-            {' '}
-            {props.projects[0].phase.phase == 'Co-creatie' && (
+            {" "}
+            {props.projects[0].phase.phase == "Co-creatie" && (
               <div
                 className={`${style.timeline_line} ${style.timeline_line__cocreatie}`}
               ></div>
             )}
             {!props.projects[0].reward_one &&
-              props.projects[0].phase.phase == 'Crowdfunding' && (
+              props.projects[0].phase.phase == "Crowdfunding" && (
                 <div
                   className={`${style.timeline_line} ${style.timeline_line__waiting}`}
                 ></div>
               )}
             {props.projects[0].reward_one &&
-              props.projects[0].phase.phase != 'Realisatie' && (
+              props.projects[0].phase.phase != "Realisatie" && (
                 <div
                   className={`${style.timeline_line} ${style.timeline_line__crowdfunding}`}
                 ></div>
               )}
-            {props.projects[0].phase.phase == 'Realisatie' && (
+            {props.projects[0].phase.phase == "Realisatie" && (
               <div
                 className={`${style.timeline_line} ${style.timeline_line__realisatie}`}
               ></div>
@@ -314,7 +318,7 @@ const Detail = ({ props, user, navUser }) => {
             {props.projects[0].reward_one && (
               <Crowdfunding props={props} user={user}></Crowdfunding>
             )}
-            {props.projects[0].phase.phase == 'Realisatie' && (
+            {props.projects[0].phase.phase == "Realisatie" && (
               <Realisation
                 className={style.part_info}
                 props={props}
@@ -335,18 +339,18 @@ const LoadUser = ({ user }) => {
       variables: { user_id: user.sub, id: router.query.id, user: true },
     });
     if (loading) {
-      return <Loading props={'detail'} />;
+      return <Loading props={"detail"} />;
     }
     if (!data && !loading) {
-      router.push('/');
+      router.push("/");
       return <></>;
     }
     if (!data.projects[0] && !loading) {
-      router.push('/');
+      router.push("/");
       return <></>;
     }
-    if (data.projects[0].phase.phase == 'Conceptvoorstel' && !loading) {
-      router.push('/');
+    if (data.projects[0].phase.phase == "Conceptvoorstel" && !loading) {
+      router.push("/");
       return <></>;
     }
     if (data && !loading) {
@@ -355,21 +359,21 @@ const LoadUser = ({ user }) => {
   }
   if (!user) {
     const { loading, error, data } = useQuery(GET_PROJECT_BY_ID, {
-      variables: { user_id: '', id: router.query.id, user: false },
+      variables: { user_id: "", id: router.query.id, user: false },
     });
     if (loading) {
-      return <Loading props={'detail'} />;
+      return <Loading props={"detail"} />;
     }
     if (!data && !loading) {
-      router.push('/');
+      router.push("/");
       return <></>;
     }
     if (!data.projects[0] && !loading) {
-      router.push('/');
+      router.push("/");
       return <></>;
     }
-    if (data.projects[0].phase.phase == 'Conceptvoorstel' && !loading) {
-      router.push('/');
+    if (data.projects[0].phase.phase == "Conceptvoorstel" && !loading) {
+      router.push("/");
       return <></>;
     }
     if (data && !loading) {
@@ -381,7 +385,7 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
 
   if (loading) {
-    return <Loading props={'detail'} />;
+    return <Loading props={"detail"} />;
   }
   if (!loading && user) {
     return <LoadUser user={user} />;

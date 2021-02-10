@@ -224,7 +224,9 @@ const SelectedProject = ({
               </button>
             )}
             {update == 1 && (
-              <p className={`${style.info_text} ${style.info_light}`}>
+              <p
+                className={`${style.info_text} ${style.info_light} ${style.header_button}`}
+              >
                 Verzonden!
               </p>
             )}

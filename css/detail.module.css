@@ -161,6 +161,26 @@
   width: 100%;
 }
 
+.progress {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  width: 100vw;
+}
+
+.progressbar {
+  border-top: 0.3rem solid blueColor;
+  display: flex;
+  justify-content: space-between;
+  width: 50vw;
+}
+
+.progressbar_item {
+  padding: 0.5rem 0;
+  margin: 0 1rem;
+}
+
 @media screen and (max-width: 850px) {
   .navigation {
     display: none;
@@ -178,6 +198,11 @@
     left: 50%;
   }
 
+  .timeline_line__waiting {
+    transition: background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+    margin-left: 0;
+  }
+
   .timeline_line__cocreatie {
     margin-top: 30rem;
     padding-right: 0;
@@ -188,7 +213,16 @@
     margin-top: 15rem;
     margin-left: 0;
     height: 100%;
+    margin-left: 0;
   }
+
+  .timeline_line__realisatie {
+    transition: background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+    margin-left: 0;
+    height: 75%;
+    margin-top: 15rem;
+  }
+
   .part_project {
     display: flex;
     flex-direction: column;

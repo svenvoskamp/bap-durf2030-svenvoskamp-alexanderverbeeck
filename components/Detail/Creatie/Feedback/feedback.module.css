@@ -57,11 +57,15 @@
   margin-bottom: 2rem;
 }
 
+.feedback_card__profile svg path {
+  fill: var(--colorBlue);
+}
+
 .feedback_name {
   composes: smallCaps from "../../../../css/typo.module.css";
   color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
-  border-bottom: 0.2rem solid blueColor;
+  border-bottom: 0.2rem solid var(--colorBlue);
   display: inline-block;
   margin-left: 0.5rem;
 }

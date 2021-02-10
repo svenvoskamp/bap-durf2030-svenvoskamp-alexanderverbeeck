@@ -209,16 +209,18 @@
     text-fill-color: var(--colorBlue);
     font-size: 4.2rem;
   }
+
   .title_outline {
     font-size: 4.2rem;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
   }
 
-  .timeline {
+  .realisatie {
     padding: 0;
     margin-right: 0;
     margin-bottom: 15rem;
+    width: unset;
   }
 
   .crowdfunding_timeline {
@@ -239,19 +241,68 @@
     margin-top: 10rem;
   }
 
-  .form_crowdfunding {
+  .contact {
+    position: relative;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .donation_content {
+    z-index: 2;
+    list-style-type: none;
+    text-align: center;
+    margin-top: 15rem;
+    margin-bottom: 5rem;
     display: flex;
+    justify-self: center;
     flex-direction: column;
-    justify-content: center;
-    z-index: 1;
-    margin: 5rem auto;
+    align-items: center;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .timeline_line {
-    width: 0.3rem;
-    left: 2.5rem;
+  .donation {
+    flex-direction: row;
+    position: relative;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    margin: 8rem 0;
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .donation:nth-child(even) {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .donation_content {
+    flex-direction: column;
+    position: relative;
+    bottom: unset;
+    align-self: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    margin-left: 2rem;
+  }
+
+  .donation_date {
+    text-align: left;
+  }
+
+  .donation:nth-child(even) .donation_content {
+    align-self: flex-start;
+    flex-direction: column;
+  }
+
+  .donation_icon {
+    margin: auto 0;
+    position: relative;
+    align-self: unset;
+    top: unset;
+    left: unset;
   }
 
   .part_title {
@@ -269,28 +320,6 @@
     font-size: 5rem;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
-  }
-
-  .form_crowdfunding {
-    padding: unset;
-    margin: unset;
-  }
-
-  .form_card__crowdfunding {
-    border: none;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .crowdfunding_reward {
-    flex-direction: column;
-    margin: 1rem 0;
-  }
-
-  .crowdfunding_value {
-    margin-left: 4.8rem;
   }
 }
 
