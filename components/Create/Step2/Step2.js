@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from "react";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import * as firebase from "firebase/app";
-import "firebase/storage";
-import style from "./step2.module.css";
-import Mouse from "../../../components/Mouse";
-import Loading from "../../Loading/Loading";
+import React, { useRef, useEffect } from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+import style from './step2.module.css';
+import Mouse from '../../../components/Mouse';
+import Loading from '../../Loading/Loading';
 
 const GET_DISTRICTS = gql`
   query getDistricts {
@@ -40,7 +40,7 @@ const Step2 = ({
   const refImpact = useRef();
   const refDescription = useRef();
   if (loading) {
-    return <Loading props={"loading"} />;
+    return <Loading props={'loading'} />;
   }
   if (error) {
     console.log(error);
@@ -53,32 +53,32 @@ const Step2 = ({
   };
 
   const handleValidation = (e) => {
-    if (title == "") {
+    if (title == '') {
       refTitle.current.innerHTML = `Vul een titel in`;
     } else {
       refTitle.current.innerHTML = ``;
     }
-    if (district == "") {
+    if (district == '') {
       refDistrict.current.innerHTML = `Vul een locatie in`;
     } else {
       refDistrict.current.innerHTML = ``;
     }
-    if (image == "") {
+    if (image == '') {
       refImg.current.innerHTML = `Upload een foto voor het project`;
     } else {
       refImg.current.innerHTML = ``;
     }
-    if (tagline == "") {
+    if (tagline == '') {
       refTagline.current.innerHTML = `Vul een tagline in voor het project`;
     } else {
       refTagline.current.innerHTML = ``;
     }
-    if (impact == "") {
+    if (impact == '') {
       refImpact.current.innerHTML = `Vul een doel in van het project`;
     } else {
       refImpact.current.innerHTML = ``;
     }
-    if (description == "") {
+    if (description == '') {
       refDescription.current.innerHTML = `Vul een beschrijving in van het project`;
     } else {
       refDescription.current.innerHTML = ``;
@@ -87,7 +87,7 @@ const Step2 = ({
 
   const handleChange = async (e) => {
     if (e.target.files[0]) {
-      const img = document.getElementById("id_img");
+      const img = document.getElementById('id_img');
       img.src = URL.createObjectURL(e.target.files[0]);
       img.onload = function () {
         URL.revokeObjectURL(img.src);
@@ -127,8 +127,8 @@ const Step2 = ({
                 <input
                   required
                   id="title"
-                  min="0"
-                  max="100"
+                  minLength="0"
+                  maxLength="20"
                   value={title}
                   type="text"
                   placeholder="De vraagstraat"
@@ -167,7 +167,7 @@ const Step2 = ({
                   <label htmlFor="tagline" className={style.label}>
                     Tagline
                     <span className={style.label_extra}>
-                      (max 50 karakters)
+                      (max 100 karakters)
                     </span>
                   </label>
                   <p className={style.error} ref={refTagline}></p>
@@ -175,8 +175,8 @@ const Step2 = ({
                 <input
                   required
                   id="tagline"
-                  min="0"
-                  max="100"
+                  minLength="0"
+                  maxLength="100"
                   value={tagline}
                   type="text"
                   placeholder="Met dit project wil ik laten zien dat de wijk “Walle” een prachtige buurt is."
@@ -229,7 +229,7 @@ const Step2 = ({
                   <label htmlFor="impact" className={style.label}>
                     Welke positieve impact gaat jouw project teweeg brengen ?
                     <span className={style.label_extra}>
-                      (max 250 karakters)
+                      (min 50 - max 350 karakters)
                     </span>
                   </label>
                   <p className={style.error} ref={refImpact}></p>
@@ -239,7 +239,7 @@ const Step2 = ({
                   required
                   id="impact"
                   minLength="50"
-                  max="300"
+                  maxLength="350"
                   value={impact}
                   placeholder="Vertel hier wat over de impact dat uw project kan hebben.."
                   className={style.input_text}
@@ -253,7 +253,7 @@ const Step2 = ({
                   <label htmlFor="description" className={style.label}>
                     Beschrijf kort jouw project.
                     <span className={style.label_extra}>
-                      (max 500 karakters)
+                      (min 50 - max 500 karakters)
                     </span>
                   </label>
                   <p className={style.error} ref={refDescription}></p>

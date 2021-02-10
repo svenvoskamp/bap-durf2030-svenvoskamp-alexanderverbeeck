@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import { withApollo } from "../../../lib/withApollo";
-import style from "./step3.module.css";
-import Mouse from "../../../components/Mouse";
-import Loading from "../../Loading/Loading";
+import React, { useState, useRef } from 'react';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { withApollo } from '../../../lib/withApollo';
+import style from './step3.module.css';
+import Mouse from '../../../components/Mouse';
+import Loading from '../../Loading/Loading';
 
 const GET_PROJECT_BY_USER = gql`
   query getProjectByUser($id: String!) {
@@ -86,12 +86,12 @@ const Needs = ({ project_id, user }) => {
     variables: { id: project_id },
   });
 
-  const [typeNeed, setTypeNeed] = useState("");
-  const [need, setNeed] = useState("");
+  const [typeNeed, setTypeNeed] = useState('');
+  const [need, setNeed] = useState('');
   const [gotNeed, setGotNeed] = useState(false);
 
   const handleValidation = () => {
-    if (need == "") {
+    if (need == '') {
       refNeed.current.innerHTML = `Vul de benodigdheid in`;
     } else {
       refNeed.current.innerHTML = ``;
@@ -101,7 +101,7 @@ const Needs = ({ project_id, user }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (typeNeed !== "" && need !== "") {
+    if (typeNeed !== '' && need !== '') {
       addNeed({
         variables: {
           project_id: project_id,
@@ -115,7 +115,7 @@ const Needs = ({ project_id, user }) => {
             query: GET_NEEDS_BY_PROJECT,
             variables: { id },
           });
-          const newNeed = data["insert_needs"].returning[0];
+          const newNeed = data['insert_needs'].returning[0];
           cache.writeQuery({
             query: GET_NEEDS_BY_PROJECT,
             variables: { id },
@@ -127,8 +127,8 @@ const Needs = ({ project_id, user }) => {
         },
       });
       setGotNeed(false);
-      setNeed("");
-      setTypeNeed("");
+      setNeed('');
+      setTypeNeed('');
     }
   };
 
@@ -200,7 +200,7 @@ const Needs = ({ project_id, user }) => {
                       type="radio"
                       name="needs"
                       className={style.checkbox}
-                      onClick={(e) => setTypeNeed("Eten")}
+                      onClick={(e) => setTypeNeed('Eten')}
                     />
                     <p className={style.checkbox_text}>Eten</p>
                     <div className={`${style.checkbox_image} scale`}>
@@ -229,7 +229,7 @@ const Needs = ({ project_id, user }) => {
                       type="radio"
                       name="needs"
                       className={style.checkbox}
-                      onClick={(e) => setTypeNeed("Persoon")}
+                      onClick={(e) => setTypeNeed('Persoon')}
                     />
                     <p className={style.checkbox_text}>Persoon</p>
                     <div className={`${style.checkbox_image} scale`}>
@@ -257,7 +257,7 @@ const Needs = ({ project_id, user }) => {
                       type="radio"
                       name="needs"
                       className={style.checkbox}
-                      onClick={(e) => setTypeNeed("Item")}
+                      onClick={(e) => setTypeNeed('Item')}
                     />
                     <p className={style.checkbox_text}>Item</p>
                     <div className={`${style.checkbox_image} scale`}>
@@ -285,7 +285,7 @@ const Needs = ({ project_id, user }) => {
                       type="radio"
                       name="needs"
                       className={style.checkbox}
-                      onClick={(e) => setTypeNeed("Drank")}
+                      onClick={(e) => setTypeNeed('Drank')}
                     />
                     <p className={style.checkbox_text}>Drank</p>
                     <div className={`${style.checkbox_image} scale`}>
@@ -313,7 +313,7 @@ const Needs = ({ project_id, user }) => {
                       type="radio"
                       name="needs"
                       className={style.checkbox}
-                      onClick={(e) => setTypeNeed("Gebouw")}
+                      onClick={(e) => setTypeNeed('Gebouw')}
                     />
                     <p className={style.checkbox_text}>Gebouw</p>
                     <div className={`${style.checkbox_image} scale`}>
@@ -334,7 +334,7 @@ const Needs = ({ project_id, user }) => {
                     </div>
                   </label>
                 </div>
-                {!typeNeed == "" && (
+                {!typeNeed == '' && (
                   <>
                     <div className={style.input_item}>
                       <div
@@ -349,8 +349,8 @@ const Needs = ({ project_id, user }) => {
                         <input
                           required
                           id="need"
-                          min="0"
-                          max="100"
+                          minLength="0"
+                          maxLength="20"
                           value={need}
                           type="text"
                           placeholder="De vraagstraat"
@@ -516,10 +516,10 @@ const Needs = ({ project_id, user }) => {
                         {data.needs.length < 1 && (
                           <div className={style.empty}>
                             <p className={style.need_empty}>
-                              U heeft nog{" "}
+                              U heeft nog{' '}
                               <span className={style.need_empty__outline}>
                                 geen
-                              </span>{" "}
+                              </span>{' '}
                               benodigdheden
                             </p>
                           </div>
@@ -534,7 +534,7 @@ const Needs = ({ project_id, user }) => {
         </div>
         <div className={style.part_end}>
           <div className={style.button_next}>
-            <a href={"/profile"} className={style.button}>
+            <a href={'/profile'} className={style.button}>
               <div className={style.circle_button}>
                 <img
                   className={style.button_image}
@@ -555,7 +555,7 @@ const Step3 = ({ user }) => {
   });
 
   if (loading) {
-    return <Loading props={"loading"} />;
+    return <Loading props={'loading'} />;
   }
   if (data) {
     return <Needs project_id={data.users[0].projects[0].id} user={user} />;

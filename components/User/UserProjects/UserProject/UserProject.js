@@ -77,114 +77,78 @@ const UserProject = ({ props, project, needs }) => {
             </div>
             {projectNeeds.length > 0 && (
               <div className={`${style.info_needs} ${style.info_item}`}>
-                {projectNeeds.length > 2 && (
+                {projectNeeds.length >= 2 && (
                   <>
                     <div className={style.needs_text}>
                       {projectNeeds.slice(0, 2).map((need) => (
-                        <div className={style.need}>
-                          {need.type == 'Gebouw' && (
+                        <>
+                          {need.need.length < 15 && (
                             <>
-                              <img
-                                className={style.need_image}
-                                src="../assets/images/gebouw_icon__small.svg"
-                              />
+                              <div className={style.need}>
+                                <img
+                                  src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
+                                  alt={need.need}
+                                  className={style.need_image}
+                                />
+                                <p
+                                  className={`${style.info_text} ${style.info_light} `}
+                                >
+                                  {need.need}
+                                </p>
+                              </div>
                             </>
                           )}
-                          {need.type == 'Eten' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="../assets/images/eten_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Persoon' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="../assets/images/persoon_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Item' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="../assets/images/item_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          {need.type == 'Drank' && (
-                            <>
-                              <img
-                                className={style.need_image}
-                                src="../assets/images/drank_icon__small.svg"
-                              />
-                            </>
-                          )}
-                          <p
-                            className={`${style.info_text} ${style.info_light} `}
-                          >
-                            {need.need}
-                          </p>
-                        </div>
+                        </>
                       ))}
                     </div>
                     <p
                       className={`${style.info_text} ${style.info_bold} ${style.needs_number}`}
                     >
-                      + {project.needs.length - 2}
+                      {projectNeeds[0].need.length < 15 &&
+                        projectNeeds[1].need.length > 15 && (
+                          <>+ {projectNeeds.length - 1}</>
+                        )}
+                      {projectNeeds[1].need.length < 15 &&
+                        projectNeeds[0].need.length > 15 && (
+                          <>+ {projectNeeds.length - 1}</>
+                        )}
+                      {projectNeeds[1].need.length < 15 &&
+                        projectNeeds[0].need.length < 15 && (
+                          <>+ {projectNeeds.length - 2}</>
+                        )}
+                      {projectNeeds[0].need.length > 15 &&
+                        projectNeeds[1].need.length > 15 && (
+                          <>+ {projectNeeds.length}</>
+                        )}
                     </p>
                   </>
                 )}
-                {projectNeeds.length <= 2 && projectNeeds.length > 0 && (
+                {projectNeeds.length < 2 && projectNeeds.length > 0 && (
                   <>
                     {projectNeeds.map((need) => (
-                      <div className={style.need}>
-                        {need.type == 'Gebouw' && (
-                          <>
+                      <>
+                        {need.need.length < 15 && (
+                          <div className={style.need}>
                             <img
+                              src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
+                              alt={need.need}
                               className={style.need_image}
-                              src="../assets/images/gebouw_icon__small.svg"
                             />
-                          </>
+                            <p
+                              className={`${style.info_text} ${style.info_light}`}
+                            >
+                              {need.need}
+                            </p>
+                          </div>
                         )}
-                        {need.type == 'Eten' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="../assets/images/eten_icon__small.svg"
-                            />
-                          </>
+                        {need.need.length > 15 && (
+                          <p
+                            className={`${style.info_text} ${style.info_light}`}
+                          >
+                            Bekijk alle benodigheden
+                          </p>
                         )}
-                        {need.type == 'Persoon' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="../assets/images/persoon_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Item' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="../assets/images/item_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        {need.type == 'Drank' && (
-                          <>
-                            <img
-                              className={style.need_image}
-                              src="../assets/images/drank_icon__small.svg"
-                            />
-                          </>
-                        )}
-                        <p className={`${style.info_text} ${style.info_light}`}>
-                          {need.need}
-                        </p>
-                      </div>
+                      </>
                     ))}
                   </>
                 )}

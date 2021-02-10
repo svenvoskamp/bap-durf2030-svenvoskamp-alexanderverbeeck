@@ -78,42 +78,74 @@ const Project = ({ project, key }) => {
                     <>
                       <div className={style.needs_text}>
                         {project.needs.slice(0, 2).map((need) => (
-                          <div className={style.need}>
-                            <img
-                              src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
-                              alt={need.need}
-                              className={style.need_image}
-                            />
-                            <p
-                              className={`${style.info_text} ${style.info_light} `}
-                            >
-                              {need.need}
-                            </p>
-                          </div>
+                          <>
+                            {need.need.length < 15 && (
+                              <>
+                                <div className={style.need}>
+                                  <img
+                                    src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
+                                    alt={need.need}
+                                    className={style.need_image}
+                                  />
+                                  <p
+                                    className={`${style.info_text} ${style.info_light} `}
+                                  >
+                                    {need.need}
+                                  </p>
+                                </div>
+                              </>
+                            )}
+                          </>
                         ))}
                       </div>
                       <p
                         className={`${style.info_text} ${style.info_bold} ${style.needs_number}`}
                       >
-                        + {project.needs.length - 2}
+                        {project.needs[0].need.length < 15 &&
+                          project.needs[1].need.length > 15 && (
+                            <>+ {project.needs.length - 1}</>
+                          )}
+                        {project.needs[1].need.length < 15 &&
+                          project.needs[0].need.length > 15 && (
+                            <>+ {project.needs.length - 1}</>
+                          )}
+                        {project.needs[1].need.length < 15 &&
+                          project.needs[0].need.length < 15 && (
+                            <>+ {project.needs.length - 2}</>
+                          )}
+                        {project.needs[0].need.length > 15 &&
+                          project.needs[1].need.length > 15 && (
+                            <>+ {project.needs.length}</>
+                          )}
                       </p>
                     </>
                   )}
                   {project.needs.length <= 2 && project.needs.length > 0 && (
                     <>
                       {project.needs.map((need) => (
-                        <div className={style.need}>
-                          <img
-                            src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
-                            alt={need.need}
-                            className={style.need_image}
-                          />
-                          <p
-                            className={`${style.info_text} ${style.info_light}`}
-                          >
-                            {need.need}
-                          </p>
-                        </div>
+                        <>
+                          {need.need.length < 15 && (
+                            <div className={style.need}>
+                              <img
+                                src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
+                                alt={need.need}
+                                className={style.need_image}
+                              />
+                              <p
+                                className={`${style.info_text} ${style.info_light}`}
+                              >
+                                {need.need}
+                              </p>
+                            </div>
+                          )}
+                          {need.need.length > 15 && (
+                            <p
+                              className={`${style.info_text} ${style.info_light}`}
+                            >
+                              Bekijk alle benodigheden
+                            </p>
+                          )}
+                        </>
                       ))}
                     </>
                   )}

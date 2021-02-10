@@ -373,11 +373,11 @@ const AddNeed = ({ project, user }) => {
                     <input
                       required
                       id="need"
-                      min="0"
-                      max="100"
+                      minLength="0"
+                      maxLength="20"
                       value={need}
                       type="text"
-                      placeholder="De vraagstraat"
+                      placeholder="Theaterzaal"
                       className={style.input}
                       onChange={(e) => setNeed(e.currentTarget.value)}
                     />

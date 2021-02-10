@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import style from "../../../../css/project.module.css";
-import styles from "./myproject.module.css";
+import React, { useState } from 'react';
+import style from '../../../../css/project.module.css';
+import styles from './myproject.module.css';
 
 const MyProject = ({ props, project, setSelectedProject, needs }) => {
   let projectNeeds = [];
@@ -45,28 +45,28 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
           </div>
           <div className={style.card_info}>
             <div className={`${style.info_fase} ${style.info_item}`}>
-              {project.phase.phase == "Conceptvoorstel" && (
+              {project.phase.phase == 'Conceptvoorstel' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_concept}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Co-creatie" && (
+              {project.phase.phase == 'Co-creatie' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_creatie}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Crowdfunding" && (
+              {project.phase.phase == 'Crowdfunding' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_crowdfunding}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Realisatie" && (
+              {project.phase.phase == 'Realisatie' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_realisatie}`}
@@ -85,50 +85,84 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
             </div>
             {projectNeeds.length > 0 && (
               <div className={`${style.info_needs} ${style.info_item}`}>
-                {projectNeeds.length > 2 && (
+                {projectNeeds.length >= 2 && (
                   <>
                     <div className={style.needs_text}>
                       {projectNeeds.slice(0, 2).map((need) => (
-                        <div className={style.need}>
-                          <img
-                            src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
-                            alt={need.need}
-                            className={style.need_image}
-                          />
-                          <p
-                            className={`${style.info_text} ${style.info_light} `}
-                          >
-                            {need.need}
-                          </p>
-                        </div>
+                        <>
+                          {need.need.length < 15 && (
+                            <>
+                              <div className={style.need}>
+                                <img
+                                  src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
+                                  alt={need.need}
+                                  className={style.need_image}
+                                />
+                                <p
+                                  className={`${style.info_text} ${style.info_light} `}
+                                >
+                                  {need.need}
+                                </p>
+                              </div>
+                            </>
+                          )}
+                        </>
                       ))}
                     </div>
                     <p
                       className={`${style.info_text} ${style.info_bold} ${style.needs_number}`}
                     >
-                      + {project.needs.length - 2}
+                      {projectNeeds[0].need.length < 15 &&
+                        projectNeeds[1].need.length > 15 && (
+                          <>+ {projectNeeds.length - 1}</>
+                        )}
+                      {projectNeeds[1].need.length < 15 &&
+                        projectNeeds[0].need.length > 15 && (
+                          <>+ {projectNeeds.length - 1}</>
+                        )}
+                      {projectNeeds[1].need.length < 15 &&
+                        projectNeeds[0].need.length < 15 && (
+                          <>+ {projectNeeds.length - 2}</>
+                        )}
+                      {projectNeeds[0].need.length > 15 &&
+                        projectNeeds[1].need.length > 15 && (
+                          <>+ {projectNeeds.length}</>
+                        )}
                     </p>
                   </>
                 )}
-                {projectNeeds.length <= 2 && projectNeeds.length > 0 && (
+                {projectNeeds.length < 2 && projectNeeds.length > 0 && (
                   <>
                     {projectNeeds.map((need) => (
-                      <div className={style.need}>
-                        <img
-                          src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
-                          alt={need.need}
-                          className={style.need_image}
-                        />
-                        <p className={`${style.info_text} ${style.info_light}`}>
-                          {need.need}
-                        </p>
-                      </div>
+                      <>
+                        {need.need.length < 15 && (
+                          <div className={style.need}>
+                            <img
+                              src={`../../../../assets/card/card_${need.type.toLowerCase()}.svg`}
+                              alt={need.need}
+                              className={style.need_image}
+                            />
+                            <p
+                              className={`${style.info_text} ${style.info_light}`}
+                            >
+                              {need.need}
+                            </p>
+                          </div>
+                        )}
+                        {need.need.length > 15 && (
+                          <p
+                            className={`${style.info_text} ${style.info_light}`}
+                          >
+                            Bekijk alle benodigheden
+                          </p>
+                        )}
+                      </>
                     ))}
                   </>
                 )}
               </div>
             )}
-            {project.phase.phase == "Crowdfunding" && (
+            {project.phase.phase == 'Crowdfunding' && (
               <div className={`${style.info_crowdfunding} ${style.info_item}`}>
                 <img src="./assets/card/card_crowdfunding.svg" />
                 <p className={`${style.info_text} ${style.info_bold}`}>
@@ -143,7 +177,7 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
         </div>
       </a>
 
-      {project.phase.phase == "Conceptvoorstel" && (
+      {project.phase.phase == 'Conceptvoorstel' && (
         <>
           <div className={`${styles.need_button} scale`}>
             <a className={styles.button}>
