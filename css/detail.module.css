@@ -161,6 +161,13 @@
   width: 100%;
 }
 
+.line {
+  width: 50vw;
+  height: 0.3rem;
+  background-color: var(--colorBlue);
+  margin: 0 auto;
+}
+
 .progress {
   width: 100vw;
   padding-top: 2rem;
@@ -168,7 +175,7 @@
 }
 
 .progressbar {
-  border-top: 0.3rem solid blueColor;
+  /* border-top: 0.3rem solid var(--colorBlue); */
   display: flex;
   justify-content: space-between;
   margin: 0 auto;

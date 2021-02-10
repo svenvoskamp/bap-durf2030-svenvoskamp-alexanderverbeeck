@@ -362,10 +362,8 @@ a {
   opacity: 1 !important;
 }
 
-.progress_active_realisation .progress_creation,
-.progress_active_realisation .progress_crowdfund,
-.progress_active_realisation .progress_concept {
-  background-color: red;
+.progressbar_line__realisation {
+  width: 25vw;
 }
 
 @media screen and (max-width: 850px) {
