@@ -274,6 +274,10 @@
     position: relative;
     margin: 0;
   }
+
+  .progress {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 550px) {
