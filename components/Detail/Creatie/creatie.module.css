@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--colorBeige);
+
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   z-index: 1;
   margin-right: 15rem;
@@ -58,7 +58,7 @@
 }
 
 .form_card:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -73,12 +73,12 @@
 }
 
 .form_title {
-  composes: bold from "../../../css/typo.module.css";
+  composes: bold from '../../../css/typo.module.css';
   margin-bottom: 1rem;
 }
 
 .form_number {
-  composes: number from "../../../css/typo.module.css";
+  composes: number from '../../../css/typo.module.css';
 }
 
 .form_card__one {
@@ -107,7 +107,7 @@
 .form_input {
   border: none;
   background-color: transparent;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   height: 15.5rem;
   width: 45rem;
   resize: none;
@@ -133,7 +133,7 @@
 }
 
 .button_voorzien:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -221,7 +221,7 @@
 }
 
 .locked_card:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -240,13 +240,13 @@
 }
 
 .locked_text {
-  composes: mediumTitle from "../../../css/typo.module.css";
+  composes: mediumTitle from '../../../css/typo.module.css';
   color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .locked_date {
-  composes: smallText from "../../../css/typo.module.css";
+  composes: smallText from '../../../css/typo.module.css';
   color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   text-align: center;
@@ -254,14 +254,14 @@
 }
 
 .locked_type {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
   text-align: center;
   color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .timeline_title {
-  composes: mediumTitleOutline from "../../../css/typo.module.css";
+  composes: mediumTitleOutline from '../../../css/typo.module.css';
   display: none;
 }
 
@@ -341,7 +341,7 @@
   }
 
   .timeline_title {
-    composes: mediumTitleOutline from "../../../css/typo.module.css";
+    composes: mediumTitleOutline from '../../../css/typo.module.css';
     display: flex;
     padding: 0 1rem;
     margin-top: 2rem;
