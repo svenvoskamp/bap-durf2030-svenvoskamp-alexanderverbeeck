@@ -6,6 +6,15 @@ const Header = ({ props, scrollRef }) => {
     <>
       <div className={style.project}>
         <div className={style.project_header}>
+          <div className={style.button_back}>
+            <a className={style.button_arrow} href={"../projecten"}>
+              <img
+                className={style.back_image}
+                src="../../assets/images/button_back.svg"
+              />
+              <span className={style.back_text}> Terug </span>
+            </a>
+          </div>
           <div className={style.project_tags}>
             <p className={style.card_tag}>{props.theme.theme}</p>
             <p className={style.card_tag}>{props.category.category}</p>

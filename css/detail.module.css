@@ -162,6 +162,11 @@
 }
 
 @media screen and (max-width: 850px) {
+  .navigation {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
   .timeline {
     flex-direction: column;
   }
@@ -187,8 +192,8 @@
   .part_project {
     display: flex;
     flex-direction: column;
-    padding: 0;
-    margin: 2rem;
+    padding: 5rem 0;
+    margin: 0 2rem;
     min-height: unset;
   }
 
@@ -217,7 +222,7 @@
     left: 2.5rem;
   }
   .part_project {
-    margin: 1rem;
+    margin: 0 1rem;
   }
 
   .form_card {

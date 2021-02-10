@@ -20,6 +20,20 @@
   margin-right: 0;
 }
 
+.button_back {
+  composes: buttonBack from "../../../css/buttons.module.css";
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.back_image {
+  margin-right: 0.5rem;
+}
+
+.back_text {
+  composes: bold from "../../../css/typo.module.css";
+}
+
 /* Info Project */
 
 .title {
