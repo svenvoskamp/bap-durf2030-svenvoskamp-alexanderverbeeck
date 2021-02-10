@@ -2,7 +2,7 @@
 @value blueColor, yellowColor, beigeColor, greenColor, redColor from tokens;
 
 .part {
-  composes: view from "../css/layout.module.css";
+  composes: view from '../css/layout.module.css';
 }
 
 .part_header {
@@ -10,12 +10,12 @@
 }
 
 .title {
-  composes: largeTitleOutline from "../css/typo.module.css";
+  composes: largeTitleOutline from '../css/typo.module.css';
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: largeTitle from "../css/typo.module.css";
+  composes: largeTitle from '../css/typo.module.css';
 }
 
 .part_filter {
@@ -37,14 +37,14 @@
 .input_search {
   background-color: transparent;
   border: none;
-  composes: empty from "../css/typo.module.css";
+  composes: empty from '../css/typo.module.css';
   width: 100%;
   overflow: hidden;
   padding: 0.95rem 0.5rem;
 }
 
 .filter_radio {
-  composes: smallCaps from "../css/typo.module.css";
+  composes: smallCaps from '../css/typo.module.css';
   color: #e5d6c0;
   margin-right: 2rem;
   border-bottom: 1rem solid beigeColor;
@@ -65,14 +65,14 @@
 .filter_select {
   border: 0.2rem solid blueColor;
   background-color: transparent;
-  composes: smallCaps from "../css/typo.module.css";
+  composes: smallCaps from '../css/typo.module.css';
   padding: 0.75rem 2rem 0.75rem 0.5rem;
   margin-right: 1rem;
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: transparent url("../public/assets/images/select_arrow.svg")
+  background: transparent url('../public/assets/images/select_arrow.svg')
     no-repeat 98% center;
 }
 
@@ -90,7 +90,7 @@
 
 .delete_filter__small {
   display: none;
-  composes: smallText from "../css/typo.module.css";
+  composes: smallText from '../css/typo.module.css';
   text-decoration: underline;
 }
 /* Filter Fase's */
@@ -105,17 +105,17 @@
   cursor: pointer;
 }
 
-.input_radio[type="radio"]:hover ~ .input_text:after {
+.input_radio[type='radio']:hover ~ .input_text:after {
   top: 0;
   left: 0;
 }
 
-.input_radio[type="radio"]:checked + .filter_radio {
+.input_radio[type='radio']:checked + .filter_radio {
   color: blueColor;
   border-bottom: 0.2rem solid blueColor;
 }
 
-.input_radio[type="radio"]:checked ~ .input_text:after {
+.input_radio[type='radio']:checked ~ .input_text:after {
   left: 0;
   top: 0;
 }
@@ -167,7 +167,7 @@
 }
 
 .empty_state__text {
-  composes: mediumTitle from "./typo.module.css";
+  composes: mediumTitle from './typo.module.css';
   color: #e5d6c0;
   text-align: center;
   font-size: 4rem;
@@ -175,7 +175,7 @@
 }
 
 .empty_state__text__outline {
-  composes: mediumTitleOutline from "./typo.module.css";
+  composes: mediumTitleOutline from './typo.module.css';
   -webkit-text-stroke: 0.1rem #e5d6c0;
   text-stroke: 0.1rem #e5d6c0;
   display: inline-block;
@@ -194,7 +194,7 @@
 }
 
 .empty_state__button {
-  composes: smallCaps from "./typo.module.css";
+  composes: smallCaps from './typo.module.css';
   border: 0.2rem solid blueColor;
   padding: 0.8rem 1rem;
   position: relative;
@@ -204,7 +204,7 @@
 }
 
 .empty_state__button:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -224,7 +224,7 @@
 }
 
 .empty_state__button__extra {
-  composes: smallCapsLight from "./typo.module.css";
+  composes: smallCapsLight from './typo.module.css';
   border-bottom: 0.1rem solid #091422;
   display: inline-block;
   padding: 0.5rem 0;
@@ -270,7 +270,7 @@
   right: 0;
 }
 .card_info:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -285,11 +285,17 @@
 }
 
 .individu_title {
-  composes: title from "../css/typo.module.css";
+  composes: title from '../css/typo.module.css';
+  font-size: 3.8rem;
+  line-height: 4rem;
+  letter-spacing: 0.15rem;
 }
 
 .individu_title__outline {
-  composes: titleOutline from "../css/typo.module.css";
+  composes: titleOutline from '../css/typo.module.css';
+  font-size: 3.8rem;
+  line-height: 4rem;
+  letter-spacing: 0.15rem;
 }
 
 .company_extra {
@@ -314,30 +320,36 @@
 }
 
 .company_title {
-  composes: title from "../css/typo.module.css";
+  composes: title from '../css/typo.module.css';
   -webkit-text-stroke: 0.2rem beigeColor;
   text-stroke: 0.2rem beigeColor;
   color: beigeColor;
+  font-size: 3.8rem;
+  line-height: 4rem;
+  letter-spacing: 0.15rem;
 }
 
 .company_title__outline {
-  composes: titleOutline from "../css/typo.module.css";
+  composes: titleOutline from '../css/typo.module.css';
   text-stroke: 0.2rem beigeColor;
   -webkit-text-stroke: 0.2rem beigeColor;
+  font-size: 3.8rem;
+  line-height: 4rem;
+  letter-spacing: 0.15rem;
 }
 
 .company_subtitle {
-  composes: smallCaps from "../css/typo.module.css";
+  composes: smallCaps from '../css/typo.module.css';
   color: beigeColor;
 }
 
 .company_subtitle__light {
-  composes: smallCapsLight from "../css/typo.module.css";
+  composes: smallCapsLight from '../css/typo.module.css';
   color: beigeColor;
 }
 
 .individu_subtitle {
-  composes: smallCaps from "../css/typo.module.css";
+  composes: smallCaps from '../css/typo.module.css';
 }
 
 .individu_left {
@@ -374,8 +386,8 @@
   .part_filter {
     display: grid;
     grid-template-areas:
-      "search selectone delete"
-      "fase fase fase";
+      'search selectone delete'
+      'fase fase fase';
     grid-template-columns: 1fr 1fr auto;
     width: 100%;
     grid-gap: 1rem;
@@ -438,8 +450,8 @@
   .part_filter {
     display: grid;
     grid-template-areas:
-      "search selectone delete"
-      "fase fase fase ";
+      'search selectone delete'
+      'fase fase fase ';
     grid-template-columns: 1fr 1fr auto;
     width: 100%;
     grid-column-gap: 1rem;
@@ -450,9 +462,9 @@
   .part_filter {
     display: grid;
     grid-template-areas:
-      "search selectone"
-      "delete delete"
-      "fase fase ";
+      'search selectone'
+      'delete delete'
+      'fase fase ';
     grid-template-columns: 1fr 1fr;
     width: 100%;
     grid-column-gap: 1rem;
@@ -486,14 +498,14 @@
   }
 
   .company_title {
-    composes: title from "../css/typo.module.css";
+    composes: title from '../css/typo.module.css';
     -webkit-text-stroke: 0.12rem beigeColor;
     text-stroke: 0.12rem beigeColor;
     color: beigeColor;
   }
 
   .company_title__outline {
-    composes: titleOutline from "../css/typo.module.css";
+    composes: titleOutline from '../css/typo.module.css';
     text-stroke: 0.12rem beigeColor;
     -webkit-text-stroke: 0.12rem beigeColor;
   }

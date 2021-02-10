@@ -108,7 +108,7 @@ const Home = ({ projects }) => {
                     <picture>
                       <source
                         media="(max-width: 850px)"
-                        srcset="./assets/images/arrow_small.svg"
+                        srcSet="./assets/images/arrow_small.svg"
                       />
                       <img
                         className="button_arrow__image"

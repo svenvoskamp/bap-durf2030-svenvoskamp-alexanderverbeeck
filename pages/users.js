@@ -10,7 +10,7 @@ import { set } from 'mobx';
 import style from '../css/users.module.css';
 import Loading from '../components/Loading/Loading';
 import { useFetchUser } from '../lib/user';
-
+import User from '../components/Users/User/User';
 const Users = ({ users }) => {
   const { user, loading } = useFetchUser();
   const [newUsers, setNewUsers] = useState(users);
@@ -199,55 +199,7 @@ const Users = ({ users }) => {
             {newUsers.map((user) => (
               <>
                 {user.first_name && user.first_name != 'Admin' && (
-                  <a href={`/user/${user.id}`}>
-                    <li className={`${style.card} scale`} key={user.id}>
-                      {user.company && (
-                        <div
-                          className={`${style.card_info} ${style.card_info__company}`}
-                        >
-                          <div className={style.info_titles}>
-                            <p className={style.company_title}>
-                              {user.company_name}
-                            </p>
-                            <p className={style.company_title__outline}>
-                              {user.department}
-                            </p>
-                          </div>
-                          <div className={style.company_extra}>
-                            <div className={style.company_left}>
-                              <div className={style.company_circle}></div>
-                              <p className={style.company_subtitle}>
-                                {user.sector}
-                              </p>
-                            </div>
-                            <p className={style.company_subtitle__light}>
-                              {user.first_name} {user.last_name}
-                            </p>
-                          </div>
-                        </div>
-                      )}
-                      {!user.company && (
-                        <div
-                          className={`${style.card_info} ${style.card_info__individu}`}
-                        >
-                          <div className={style.info_titles}>
-                            <p className={style.individu_title}>
-                              {user.first_name}
-                            </p>
-                            <p className={style.individu_title__outline}>
-                              {user.last_name}
-                            </p>
-                          </div>
-                          <div className={style.individu_left}>
-                            <div className={style.individu_circle}></div>
-                            <p className={style.individu_subtitle}>
-                              {user.sector}
-                            </p>
-                          </div>
-                        </div>
-                      )}
-                    </li>
-                  </a>
+                  <User key={user.id} user={user}></User>
                 )}
               </>
             ))}
