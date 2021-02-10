@@ -39,11 +39,11 @@
 }
 
 .title_project {
-  composes: mediumTitle from "../../css/typo.module.css";
+  composes: mediumTitle from '../../css/typo.module.css';
 }
 
 .title_name {
-  composes: mediumTitleOutline from "../../css/typo.module.css";
+  composes: mediumTitleOutline from '../../css/typo.module.css';
 }
 
 .card_image {
@@ -58,15 +58,15 @@
   bottom: -6%;
   right: -10%;
   z-index: 2;
-  composes: button from "../../css/buttons.module.css";
+  composes: button from '../../css/buttons.module.css';
 }
 
 .circle_button {
-  composes: circleButton from "../../css/buttons.module.css";
+  composes: circleButton from '../../css/buttons.module.css';
 }
 
 .button_image {
-  composes: buttonImage from "../../css/buttons.module.css";
+  composes: buttonImage from '../../css/buttons.module.css';
 }
 
 @media screen and (max-width: 550px) {

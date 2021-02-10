@@ -78,7 +78,7 @@
 }
 
 .circle_button:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -189,6 +189,13 @@
   margin-right: 15rem;
 }
 
+/* .card:hover .button_image {
+  animation: rotation 4s infinite linear;
+  cursor: pointer;
+  animation-play-state: running;
+  webkit-animation-play-state: running;
+} */
+
 .card {
   width: 35rem;
   position: relative;
@@ -203,14 +210,6 @@
 .card:hover {
   cursor: pointer;
 }
-
-/* .card:hover .button_image {
-  animation: rotation 4s infinite linear;
-  cursor: pointer;
-  animation-play-state: running;
-  webkit-animation-play-state: running;
-} */
-
 .card:hover .card_info:after {
   top: 0%;
   left: 0%;
@@ -225,8 +224,34 @@
   padding: 1.5rem;
 }
 
+.card:nth-of-type(1) .card_info,
+.card:nth-of-type(4) .card_info {
+  background-color: #ffeb3d;
+}
+.card:nth-of-type(2) .card_info,
+.card:nth-of-type(5) .card_info {
+  background-color: #fe4f51;
+}
+.card:nth-of-type(3) .card_info,
+.card:nth-of-type(6) .card_info {
+  background-color: #4fc8b1;
+}
+
+.card:nth-of-type(1) .button-div .circle-color,
+.card:nth-of-type(4) .button-div .circle-color {
+  background-color: #4fc8b1;
+}
+.card:nth-of-type(2) .button-div .circle-color,
+.card:nth-of-type(5) .button-div .circle-color {
+  background-color: #ffeb3d;
+}
+.card:nth-of-type(3) .button-div .circle-color,
+.card:nth-of-type(6) .button-div .circle-color {
+  background-color: #fe4f51;
+}
+
 .card_info:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -238,18 +263,6 @@
   height: 100%;
   z-index: -1;
   transition: all 0.2s ease-in-out;
-}
-
-.card_info__red {
-  background-color: #fe4f51;
-}
-
-.card_info__yellow {
-  background-color: #ffeb3d;
-}
-
-.card_info__green {
-  background-color: #4fc8b1;
 }
 
 /* End Nieuw Project */
@@ -294,7 +307,7 @@
 }
 
 .home_button__start:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;

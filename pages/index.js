@@ -67,7 +67,7 @@ const Home = ({ projects }) => {
                       ONTDEK.{' '}
                     </p>
                     <a
-                      href={'/'}
+                      href={'/about'}
                       className="button scale"
                       data-scroll
                       data-scroll-speed="8"
@@ -128,7 +128,6 @@ const Home = ({ projects }) => {
                 <>
                   {key % 2 == 0 && (
                     <Tyle
-                      color="red"
                       direction="3"
                       button=".5"
                       project={project}
@@ -137,7 +136,6 @@ const Home = ({ projects }) => {
                   )}
                   {key % 2 != 0 && (
                     <Tyle
-                      color="yellow"
                       direction="-3"
                       button="-.5"
                       project={project}
@@ -201,11 +199,7 @@ export async function getStaticProps() {
   var xhr = new XMLHttpRequest();
   const GET_PROJECTS = gql`
     query getProjects {
-      projects(
-        limit: 10
-        order_by: { updated_at: asc }
-        where: { phase: { id: { _neq: 1 } } }
-      ) {
+      projects(where: { theme_id: { _eq: 1 } }, order_by: { updated_at: asc }) {
         image
         title
         id
