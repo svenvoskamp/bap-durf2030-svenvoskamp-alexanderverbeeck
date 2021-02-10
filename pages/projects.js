@@ -1,20 +1,20 @@
-import React, { useRef, useState, useEffect } from "react";
-import Mouse from "../components/Mouse";
-import Project from "../components/Project";
-import gql from "graphql-tag";
-import { withApollo } from "../lib/withApollo";
-import { ApolloClient } from "apollo-client";
-import { useQuery } from "@apollo/react-hooks";
-import Nav from "../components/Nav";
-import { set } from "mobx";
-import style from "../css/projects.module.css";
-import Loading from "../components/Loading/Loading";
-import { useFetchUser } from "../lib/user";
+import React, { useRef, useState, useEffect } from 'react';
+import Mouse from '../components/Mouse';
+import Project from '../components/Project';
+import gql from 'graphql-tag';
+import { withApollo } from '../lib/withApollo';
+import { ApolloClient } from 'apollo-client';
+import { useQuery } from '@apollo/react-hooks';
+import Nav from '../components/Nav';
+import { set } from 'mobx';
+import style from '../css/projects.module.css';
+import Loading from '../components/Loading/Loading';
+import { useFetchUser } from '../lib/user';
 
 const Projects = ({ projects, categories, themes, phases, districts }) => {
   console.log(phases);
   const { user, loading } = useFetchUser();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [newProjects, setNewProjects] = useState(projects);
   const [phaseId, setPhaseId] = useState(0);
   const [categoryId, setCategoryId] = useState(0);
@@ -58,25 +58,25 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
   };
 
   const reset = () => {
-    const phases = document.querySelectorAll(".phase");
+    const phases = document.querySelectorAll('.phase');
     phases.forEach((phase) => {
       if (phase.checked) {
         phase.checked = false;
       }
     });
-    const themes = document.querySelectorAll(".theme");
+    const themes = document.querySelectorAll('.theme');
     themes.forEach((theme) => {
       if (theme.selected) {
         theme.selected = false;
       }
     });
-    const categories = document.querySelectorAll(".category");
+    const categories = document.querySelectorAll('.category');
     categories.forEach((category) => {
       if (category.selected) {
         category.selected = false;
       }
     });
-    const districts = document.querySelectorAll(".district");
+    const districts = document.querySelectorAll('.district');
     districts.forEach((district) => {
       if (district.selected) {
         district.selected = false;
@@ -86,7 +86,7 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
     setCategoryId(0);
     setThemeId(0);
     setDistrictId(0);
-    setSearch("");
+    setSearch('');
   };
 
   const filter = () => {
@@ -95,12 +95,12 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
       categoryId == 0 &&
       themeId == 0 &&
       districtId == 0 &&
-      search == ""
+      search == ''
     ) {
       setNewProjects(projects);
     } else {
       let filter = projects;
-      if (search != "") {
+      if (search != '') {
         const keyword = search.toLowerCase();
         filter = filter.filter(function (x) {
           x = x.title.toLowerCase();
@@ -251,8 +251,8 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
           {newProjects.length < 1 && (
             <div className={style.empty_state}>
               <p className={style.empty_state__text}>
-                Er zijn{" "}
-                <span className={style.empty_state__text__outline}>geen</span>{" "}
+                Er zijn{' '}
+                <span className={style.empty_state__text__outline}>geen</span>{' '}
                 projecten gevonden
               </p>
               <div className={style.empty_state__buttons}>
@@ -280,8 +280,8 @@ const Projects = ({ projects, categories, themes, phases, districts }) => {
 };
 
 export async function getServerSideProps() {
-  const apollo = require("../lib/apolloClient"); // import client
-  var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+  const apollo = require('../lib/apolloClient'); // import client
+  var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
   var xhr = new XMLHttpRequest();
   const GET_PROJECTS = gql`
     query getProjects {
@@ -300,6 +300,8 @@ export async function getServerSideProps() {
         user {
           first_name
           last_name
+          company
+          company_name
         }
         phase {
           phase

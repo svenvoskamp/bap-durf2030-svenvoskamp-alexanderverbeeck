@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import style from "../../../../css/project.module.css";
-import styles from "./myproject.module.css";
+import React, { useState } from 'react';
+import style from '../../../../css/project.module.css';
+import styles from './myproject.module.css';
 
 const MyProject = ({ props, project, setSelectedProject, needs }) => {
   console.log(project);
@@ -29,9 +29,14 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
           ></img>
           <div className={style.card_titles}>
             <p className={style.card_user}> {project.title}</p>
-            <p className={style.card_title}>
-              {props.first_name} {props.last_name}
-            </p>
+            {props.company && (
+              <p className={style.card_title}>{props.company_name}</p>
+            )}
+            {!props.company && (
+              <p className={style.card_title}>
+                {props.first_name} {props.last_name}
+              </p>
+            )}
           </div>
         </div>
         <div className={style.project_end}>
@@ -41,28 +46,28 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
           </div>
           <div className={style.card_info}>
             <div className={`${style.info_fase} ${style.info_item}`}>
-              {project.phase.phase == "Conceptvoorstel" && (
+              {project.phase.phase == 'Conceptvoorstel' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_concept}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Co-creatie" && (
+              {project.phase.phase == 'Co-creatie' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_creatie}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Crowdfunding" && (
+              {project.phase.phase == 'Crowdfunding' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_crowdfunding}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == "Realisatie" && (
+              {project.phase.phase == 'Realisatie' && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_realisatie}`}
@@ -124,7 +129,7 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
                 )}
               </div>
             )}
-            {project.phase.phase == "Crowdfunding" && (
+            {project.phase.phase == 'Crowdfunding' && (
               <div className={`${style.info_crowdfunding} ${style.info_item}`}>
                 <img src="./assets/card/card_crowdfunding.svg" />
                 <p className={`${style.info_text} ${style.info_bold}`}>

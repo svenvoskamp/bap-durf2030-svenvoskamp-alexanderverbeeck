@@ -17,9 +17,14 @@ const Project = ({ project, key }) => {
             ></img>
             <div className={style.card_titles}>
               <p className={style.card_user}>{project.title}</p>
-              <p className={style.card_title}>
-                {project.user.first_name} {project.user.last_name}
-              </p>
+              {project.user.company && (
+                <p className={style.card_title}>{project.user.company_name}</p>
+              )}
+              {!project.user.company && (
+                <p className={style.card_title}>
+                  {project.user.first_name} {project.user.last_name}
+                </p>
+              )}
             </div>
           </div>
           <div className={style.project_end}>

@@ -3,6 +3,7 @@ import style from '../../../../css/project.module.css';
 
 const UserProject = ({ props, project, needs }) => {
   console.log(project);
+  console.log(props);
   let projectNeeds = [];
   needs.map((need) => {
     if (need.project_id == project.id) {
@@ -21,10 +22,14 @@ const UserProject = ({ props, project, needs }) => {
           ></img>
           <div className={style.card_titles}>
             <p className={style.card_user}>{project.title}</p>
-            <p className={style.card_title}>
-              {' '}
-              {props.first_name} {props.last_name}
-            </p>
+            {props.company && (
+              <p className={style.card_title}>{props.company_name}</p>
+            )}
+            {!props.company && (
+              <p className={style.card_title}>
+                {props.first_name} {props.last_name}
+              </p>
+            )}
           </div>
         </div>
         <div className={style.project_end}>
