@@ -370,7 +370,7 @@ const Detail = ({ props, user, navUser }) => {
       <Nav user={navUser}></Nav>
       <div className={style.progress}>
         <div className={style.lines}>
-          <div className="line_value">
+          <div className="line_value progress_active_concept">
             <div className="line_color"></div>
           </div>
           <div className={`${style.line}`}></div>/

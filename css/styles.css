@@ -366,7 +366,6 @@ a {
 .progress_active_crowdfund,
 .progress_active_concept {
   opacity: 1 !important;
-  transition: 1s ease-in-out;
 }
 
 .line_value {
@@ -387,7 +386,7 @@ a {
 } */
 
 .line_color {
-  width: auto;
+  width: 5vw;
   transition: 1s ease-in-out;
 }
 
