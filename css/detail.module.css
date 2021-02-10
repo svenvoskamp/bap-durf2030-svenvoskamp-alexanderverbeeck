@@ -162,23 +162,36 @@
 }
 
 .progress {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  margin-top: 5rem;
   width: 100vw;
+  padding-top: 2rem;
+  position: fixed;
 }
 
 .progressbar {
   border-top: 0.3rem solid blueColor;
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
   width: 50vw;
 }
 
 .progressbar_item {
   padding: 0.5rem 0;
   margin: 0 1rem;
+  composes: smallCaps from "../css/typo.module.css";
+  font-size: 1.2rem;
+  color: var(--colorBlue);
+  opacity: 0.2;
+  display: flex;
+  align-items: center;
+}
+
+.progressbar_item svg path {
+  fill: var(--colorBlue);
+}
+
+.progressbar_item svg {
+  margin-right: 0.5rem;
 }
 
 @media screen and (max-width: 850px) {
