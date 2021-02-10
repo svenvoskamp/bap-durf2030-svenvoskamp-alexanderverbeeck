@@ -11,7 +11,11 @@ const Realisation = ({ props, user }) => {
   }
   return (
     <>
-      <div className={`${style.realisatie} `}>
+      <div
+        className={`${style.realisatie} realisation `}
+        data-scroll
+        data-scroll-repeat
+      >
         {/* <div className="donations" data-scroll data-scroll-repeat> */}
         <div className={`${style.header}`}>
           <div className={style.part_title}>

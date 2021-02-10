@@ -1,16 +1,16 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useFetchUser } from "../lib/user";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import { withApollo } from "../lib/withApollo";
-import Step1 from "../components/Form/Step1/Step1";
-import Step2 from "../components/Form/Step2/Step2";
-import { useStores } from "../hooks/index";
-import { useRouter } from "next/router";
-import { useMutation } from "@apollo/react-hooks";
-import Nav from "../components/Nav";
-import Loading from "../components/Loading/Loading";
-import style from "../css/steps.module.css";
+import React, { useRef, useEffect, useState } from 'react';
+import { useFetchUser } from '../lib/user';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { withApollo } from '../lib/withApollo';
+import Step1 from '../components/Form/Step1/Step1';
+import Step2 from '../components/Form/Step2/Step2';
+
+import { useRouter } from 'next/router';
+import { useMutation } from '@apollo/react-hooks';
+import Nav from '../components/Nav';
+import Loading from '../components/Loading/Loading';
+import style from '../css/steps.module.css';
 
 const GET_CURRENT_USER = gql`
   query getCurrentUser($id: String!) {
@@ -65,18 +65,18 @@ const UPDATE_USER = gql`
 const Register = ({ props, user }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [company, setCompany] = useState("not");
-  const [companyName, setCompanyName] = useState("");
-  const [department, setDepartment] = useState("");
-  const [sector, setSector] = useState("");
-  const [streetName, setStreetName] = useState("");
-  const [houseNumber, setHouseNumber] = useState("");
-  const [addition, setAddition] = useState("");
-  const [city, setCity] = useState("");
-  const [zip, setZip] = useState("");
-  const [telephone, setTelephone] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [company, setCompany] = useState('not');
+  const [companyName, setCompanyName] = useState('');
+  const [department, setDepartment] = useState('');
+  const [sector, setSector] = useState('');
+  const [streetName, setStreetName] = useState('');
+  const [houseNumber, setHouseNumber] = useState('');
+  const [addition, setAddition] = useState('');
+  const [city, setCity] = useState('');
+  const [zip, setZip] = useState('');
+  const [telephone, setTelephone] = useState('');
   const streetRef = useRef();
 
   const [updateUser] = useMutation(UPDATE_USER);
@@ -86,14 +86,14 @@ const Register = ({ props, user }) => {
     e.preventDefault();
     if (company == false) {
       if (
-        firstName !== "" &&
-        lastName !== "" &&
-        company !== "" &&
-        sector !== "" &&
-        streetName !== "" &&
-        houseNumber !== "" &&
-        city !== "" &&
-        zip !== ""
+        firstName !== '' &&
+        lastName !== '' &&
+        company !== '' &&
+        sector !== '' &&
+        streetName !== '' &&
+        houseNumber !== '' &&
+        city !== '' &&
+        zip !== ''
       ) {
         updateUser({
           variables: {
@@ -113,20 +113,20 @@ const Register = ({ props, user }) => {
           optimisticResponse: true,
         });
 
-        router.push("/");
+        router.push('/');
       }
     } else {
       if (
-        firstName !== "" &&
-        lastName !== "" &&
-        company !== "" &&
-        sector !== "" &&
-        streetName !== "" &&
-        houseNumber !== "" &&
-        city !== "" &&
-        zip !== "" &&
-        companyName !== "" &&
-        department !== ""
+        firstName !== '' &&
+        lastName !== '' &&
+        company !== '' &&
+        sector !== '' &&
+        streetName !== '' &&
+        houseNumber !== '' &&
+        city !== '' &&
+        zip !== '' &&
+        companyName !== '' &&
+        department !== ''
       ) {
         updateUser({
           variables: {
@@ -146,7 +146,7 @@ const Register = ({ props, user }) => {
           },
           optimisticResponse: true,
         });
-        router.push("/");
+        router.push('/');
       }
     }
   };
@@ -243,13 +243,13 @@ const GetCurrentUser = ({ props }) => {
     variables: { id: props.sub },
   });
   if (loading) {
-    return <Loading props={"gebruiker"} />;
+    return <Loading props={'gebruiker'} />;
   }
   if (error) {
     console.log(error);
   }
   if (data.users[0].first_name) {
-    router.push("/");
+    router.push('/');
     return <></>;
   }
   return <Register user={props} props={data.users[0]} />;
@@ -259,13 +259,13 @@ const getUser = () => {
   const { user, loading } = useFetchUser();
   const router = useRouter();
   if (loading) {
-    return <Loading props={"gebruiker"} />;
+    return <Loading props={'gebruiker'} />;
   }
   if (!loading && user) {
     return <GetCurrentUser props={user} />;
   }
   if (!user && !loading) {
-    router.push("/");
+    router.push('/');
     return <></>;
   }
 };

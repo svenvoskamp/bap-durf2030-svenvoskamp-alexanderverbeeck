@@ -270,7 +270,11 @@ const Crowdfunding = ({ props, user }) => {
   };
 
   return (
-    <div className={`${style.timeline} `}>
+    <div
+      className={`${style.timeline} crowdfund`}
+      data-scroll
+      data-scroll-repeat
+    >
       {props.projects[0].phase.phase == 'Crowdfunding' && (
         <>
           <div className={`${style.header}`} id="donations">

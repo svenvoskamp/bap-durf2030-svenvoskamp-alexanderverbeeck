@@ -100,7 +100,11 @@ const Creatie = ({ props, user }) => {
   return (
     <>
       <p className={style.timeline_title}>Projectevolutie</p>
-      <div className={style.timeline}>
+      <div
+        className={`${style.timeline} feedback`}
+        data-scroll
+        data-scroll-repeat
+      >
         {props.projects[0].phase.phase == 'Co-creatie' && (
           <form className={style.form_feedback} onSubmit={handleSubmit}>
             <div className={style.feedback}>
