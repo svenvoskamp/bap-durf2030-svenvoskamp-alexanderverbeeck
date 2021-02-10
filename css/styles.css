@@ -347,11 +347,11 @@ a {
   right: -0.7rem;
 }
 
-.card-realisatie {
+.card-conceptvoorstel {
   opacity: 0.2;
 }
 
-.card-realisatie::after {
+.card-conceptvoorstel::after {
   opacity: 0.99;
 }
 

@@ -10,6 +10,7 @@
 
 .button {
   composes: smallButton from "../../../../css/buttons.module.css";
+  cursor: pointer;
 }
 
 .circle_button {
@@ -17,6 +18,11 @@
   transition: none;
   padding: 1.2rem;
   background-color: beigeColor;
+}
+
+.circle_button:hover,
+.button_image:hover {
+  transition: none;
 }
 
 .circle_button_provided {
@@ -31,4 +37,12 @@
   composes: smallButtonImage from "../../../../css/buttons.module.css";
   width: 100%;
   height: 100%;
+  transition: none;
+  animation-play-state: paused;
+  webkit-animation-play-state: paused;
+}
+
+.button:hover .button_image {
+  animation-play-state: paused;
+  webkit-animation-play-state: paused;
 }

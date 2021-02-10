@@ -78,6 +78,7 @@
 
 .faq__text__bold {
   composes: bold from "../css/typo.module.css";
+  cursor: pointer;
 }
 
 .faq__ul li {
@@ -108,5 +109,64 @@
 @media screen and (max-width: 850px) {
   .faq__div {
     width: 100%;
+  }
+
+  .grid__about {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .img__about {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+    -webkit-text-stroke: 0.2rem var(--colorBlue);
+    text-stroke: 0.2rem var(--colorBlue);
+  }
+
+  .title_outline {
+    -webkit-text-stroke: 0.2rem var(--colorBlue);
+    text-stroke: 0.2rem var(--colorBlue);
+  }
+
+  .title__outline__faq {
+    -webkit-text-stroke: 0.2rem var(--colorBlue);
+    text-stroke: 0.2rem var(--colorBlue);
+  }
+
+  .title__faq {
+    -webkit-text-stroke: 0.2rem var(--colorBlue);
+    text-stroke: 0.2rem var(--colorBlue);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .img__about {
+    width: 80%;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+    -webkit-text-stroke: 0.15rem var(--colorBlue);
+    text-stroke: 0.15rem var(--colorBlue);
+  }
+
+  .title_outline {
+    -webkit-text-stroke: 0.15rem var(--colorBlue);
+    text-stroke: 0.15rem var(--colorBlue);
+  }
+
+  .title__outline__faq {
+    -webkit-text-stroke: 0.15rem var(--colorBlue);
+    text-stroke: 0.15rem var(--colorBlue);
+  }
+
+  .title__faq {
+    -webkit-text-stroke: 0.15rem var(--colorBlue);
+    text-stroke: 0.15rem var(--colorBlue);
   }
 }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import style from '../../../../css/project.module.css';
-import styles from './myproject.module.css';
+import React, { useState } from "react";
+import style from "../../../../css/project.module.css";
+import styles from "./myproject.module.css";
 
 const MyProject = ({ props, project, setSelectedProject, needs }) => {
   let projectNeeds = [];
@@ -45,28 +45,28 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
           </div>
           <div className={style.card_info}>
             <div className={`${style.info_fase} ${style.info_item}`}>
-              {project.phase.phase == 'Conceptvoorstel' && (
+              {project.phase.phase == "Conceptvoorstel" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_concept}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Co-creatie' && (
+              {project.phase.phase == "Co-creatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_creatie}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Crowdfunding' && (
+              {project.phase.phase == "Crowdfunding" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_crowdfunding}`}
                   ></div>
                 </>
               )}
-              {project.phase.phase == 'Realisatie' && (
+              {project.phase.phase == "Realisatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_realisatie}`}
@@ -128,7 +128,7 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
                 )}
               </div>
             )}
-            {project.phase.phase == 'Crowdfunding' && (
+            {project.phase.phase == "Crowdfunding" && (
               <div className={`${style.info_crowdfunding} ${style.info_item}`}>
                 <img src="./assets/card/card_crowdfunding.svg" />
                 <p className={`${style.info_text} ${style.info_bold}`}>
@@ -143,9 +143,9 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
         </div>
       </a>
 
-      {project.phase.phase == 'Conceptvoorstel' && (
+      {project.phase.phase == "Conceptvoorstel" && (
         <>
-          <div className={styles.need_button}>
+          <div className={`${styles.need_button} scale`}>
             <a className={styles.button}>
               <div
                 className={`${styles.circle_button} ${styles.circle_button_provided}`}
