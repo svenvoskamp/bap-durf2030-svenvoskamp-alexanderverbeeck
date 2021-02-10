@@ -25,22 +25,26 @@
 }
 
 .title {
-  composes: largeTitleOutline from "../../../css/typo.module.css";
+  composes: titleOutline from "../../../css/typo.module.css";
   margin-bottom: 1rem;
   -webkit-text-stroke: 0.2rem var(--colorBlue);
   text-stroke: 0.2rem var(--colorBlue);
   -webkit-text-fill-color: var(--colorBlue);
   text-fill-color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+  font-size: 8rem;
+  line-height: 8rem;
 }
 
 .title_outline {
-  composes: largeTitle from "../../../css/typo.module.css";
-  -webkit-text-stroke: 0.3rem var(--colorBlue);
-  text-stroke: 0.3rem var(--colorBlue);
+  composes: title from "../../../css/typo.module.css";
+  -webkit-text-stroke: 0.35rem var(--colorBlue);
+  text-stroke: 0.35rem var(--colorBlue);
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+  font-size: 8rem;
+  line-height: 8rem;
 }
 
 .title_description {

@@ -277,12 +277,7 @@ const Crowdfunding = ({ props, user }) => {
     >
       {props.projects[0].phase.phase == "Crowdfunding" && (
         <>
-          <div
-            data-scroll
-            data-scroll-repeat
-            className={`${style.header} donations`}
-            id="donations"
-          >
+          <div className={`${style.header} `} id="donations">
             <div className={style.part_title}>
               <p className={style.title}>
                 durf.
@@ -543,15 +538,15 @@ const Crowdfunding = ({ props, user }) => {
                 Bedankt voor alle donaties!
               </p>
             </div>
-            <div
-              data-scroll
-              data-scroll-repeat
-              className={`${style.crowdfunding_scroll} donations`}
-            ></div>
+            <div className={`${style.crowdfunding_scroll}`}></div>
           </div>
         </>
       )}
-      <div className={style.crowdfunding_timeline}>
+      <div
+        data-scroll
+        data-scroll-repeat
+        className={`${style.crowdfunding_timeline} donations `}
+      >
         {props.projects[0].donations.map((donation) => (
           <Donation donation={donation}></Donation>
         ))}

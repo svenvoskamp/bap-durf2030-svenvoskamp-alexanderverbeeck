@@ -27,7 +27,7 @@
 
 .feedback_card {
   border: 0.3rem solid var(--colorBlue);
-  padding: 3rem;
+  padding: 2rem;
   position: relative;
   background-color: var(--colorBeige);
   transition: border-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1),

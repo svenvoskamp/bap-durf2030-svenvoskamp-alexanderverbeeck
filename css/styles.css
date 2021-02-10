@@ -418,6 +418,14 @@ a {
   width: 25vw;
 }
 
+.uitloggen-mobile {
+  font-family: Montserrat, sans-serif;
+  color: #091422;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -460,6 +468,7 @@ a {
   .navigation-header--mobile {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
   }
 
@@ -518,6 +527,30 @@ a {
 
   .item-nieuw {
     display: none;
+  }
+
+  .feedback-container {
+    flex-direction: column;
+  }
+
+  .notification-number {
+    background-color: #091422;
+    border: 0.2rem solid #fdecd2;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    font-family: Montserrat, sans-serif;
+    color: #fdecd2;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 800;
+    position: absolute;
+    top: 0.7rem;
+    right: 1.7rem;
   }
 }
 
