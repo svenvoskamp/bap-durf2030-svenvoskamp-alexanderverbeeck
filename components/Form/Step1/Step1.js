@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from 'react';
-import style from './step1.module.css';
-import Mouse from '../../../components/Mouse';
-import Empty from '../../Empty/Empty';
+import React, { useRef, useEffect } from "react";
+import style from "./step1.module.css";
+import Mouse from "../../../components/Mouse";
+import Empty from "../../Empty/Empty";
 
 const Step1 = ({
   company,
@@ -29,61 +29,60 @@ const Step1 = ({
   const handleIndividuClick = (e) => {
     console.log(sector);
     e.preventDefault();
-    if (company == 'not') {
+    if (company == "not") {
       refWho.current.innerHTML = `Gelieve een keus te maken`;
     } else {
       refWho.current.innerHTML = ``;
     }
-    if (firstName == '') {
+    if (firstName == "") {
       refFirstName.current.innerHTML = `Gelieve een voornaam in te vullen`;
     } else {
       refFirstName.current.innerHTML = ``;
     }
-    if (lastName == '') {
+    if (lastName == "") {
       refLastName.current.innerHTML = `Gelieve een achternaam in te vullen`;
     } else {
       refLastName.current.innerHTML = ``;
     }
-    if (sector == '') {
+    if (sector == "") {
       refSectorOne.current.innerHTML = `Gelieve een sector te selecteren`;
     } else {
       refSectorOne.current.innerHTML = ``;
     }
-    if (firstName !== '' && lastName !== '' && sector !== '') {
+    if (firstName !== "" && lastName !== "" && sector !== "") {
       setCurrentIndex(1);
     }
   };
 
   const handleCompanyClick = (e) => {
     e.preventDefault();
-    if (company == 'not') {
+    if (company == "not") {
       refWho.current.innerHTML = `Gelieve een keus te maken`;
     } else {
       refWho.current.innerHTML = ``;
     }
-    if (companyName == '') {
+    if (companyName == "") {
       refCompanyName.current.innerHTML = `Gelieve een bedrijfsnaam in te vullen`;
     } else {
       refCompanyName.current.innerHTML = ``;
     }
-    if (department == '') {
+    if (department == "") {
       refDepartment.current.innerHTML = `Gelieve een afdeling in te vullen`;
     } else {
       refDepartment.current.innerHTML = ``;
     }
-    if (sector == '') {
+    if (sector == "") {
       refSectorTwo.current.innerHTML = `Gelieve een sector te selecteren`;
     } else {
       refSectorTwo.current.innerHTML = ``;
     }
-    if (companyName !== '' && department !== '' && sector !== '') {
+    if (companyName !== "" && department !== "" && sector !== "") {
       setCurrentIndex(1);
     }
   };
   return (
     <>
       <Mouse></Mouse>
-
       <article className={style.part}>
         <div className={style.part_header}>
           <h1 className={style.title}>
@@ -154,10 +153,10 @@ const Step1 = ({
               <p className={style.checkbox_text}>Bedrijf/Organisatie</p>
             </label>
           </div>
-          {company == 'not' && (
+          {company == "not" && (
             <>
               <div className={style.empty}>
-                <Empty props={'emptyoption'} />
+                <Empty props={"emptyoption"} />
               </div>
             </>
           )}
@@ -206,7 +205,7 @@ const Step1 = ({
                 <div className={style.input_container}>
                   <div className={style.input_label}>
                     <label for="sectors" className={style.label}>
-                      U bent werkzaam in de sector:{' '}
+                      U bent werkzaam in de sector:{" "}
                     </label>
                     <p className={style.error} ref={refSectorOne}></p>
                   </div>
@@ -294,7 +293,7 @@ const Step1 = ({
                 <div className={style.input_container}>
                   <div className={style.input_label}>
                     <label for="sectors" className={style.label}>
-                      Bedrijfssector{' '}
+                      Bedrijfssector{" "}
                     </label>
                     <p className={style.error} ref={refSectorTwo}></p>
                   </div>
@@ -341,11 +340,8 @@ const Step1 = ({
           <>
             <div className={style.part_end}>
               <div className={style.button_next}>
-                <button
-                  onClick={handleCompanyClick}
-                  className={`${style.button} scale`}
-                >
-                  <div className={style.circle_button}>
+                <button onClick={handleCompanyClick} className={style.button}>
+                  <div className={`${style.circle_button} scale `}>
                     <img
                       className={style.button_image}
                       src="./assets/images/account_aanmaken.svg"
@@ -360,11 +356,8 @@ const Step1 = ({
           <>
             <div className={style.part_end}>
               <div className={style.button_next}>
-                <button
-                  onClick={handleIndividuClick}
-                  className={`${style.button} scale`}
-                >
-                  <div className={style.circle_button}>
+                <button onClick={handleIndividuClick} className={style.button}>
+                  <div className={`${style.circle_button} scale `}>
                     <img
                       className={style.button_image}
                       src="./assets/images/account_aanmaken.svg"
@@ -376,7 +369,7 @@ const Step1 = ({
           </>
         )}
 
-        {company == 'not' && (
+        {company == "not" && (
           <>
             <div className={style.part_end}>
               <div className={style.button_next}></div>

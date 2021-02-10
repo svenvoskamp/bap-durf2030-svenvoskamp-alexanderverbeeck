@@ -272,7 +272,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                   </div>
                 )}
                 <button
-                  className={style.button}
+                  className={`${style.button} scale`}
                   onClick={() => handleDelete(need)}
                 >
                   <img src="./assets/needs/needs_delete.svg" />

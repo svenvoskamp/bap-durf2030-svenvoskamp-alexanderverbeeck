@@ -31,9 +31,15 @@ const Feedback = ({ feedback }) => {
       </div>
       <li className={style.feedback_content}>
         <div className={style.feedback_card}>
-          <p className={style.feedback_name}>
-            {feedback.otheruser.first_name}:
-          </p>
+          <a
+            href={`../user/${feedback.otheruser.id}`}
+            className={`${style.feedback_card__profile} scale`}
+          >
+            <img src={`../../../../assets/creatie/feedback_profile.svg`} />
+            <p className={style.feedback_name}>
+              {feedback.otheruser.first_name}:
+            </p>
+          </a>
           <p className={style.feedback_text}>"{feedback.motivation}"</p>
         </div>
         <div className={style.feedback_info}>

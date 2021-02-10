@@ -30,7 +30,8 @@
   padding: 3rem;
   position: relative;
   background-color: var(--colorBeige);
-  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+  transition: border-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1),
+    background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   width: 35rem;
   height: 25vh;
   margin: 1.5rem 0;
@@ -50,11 +51,19 @@
   z-index: -1;
 }
 
+.feedback_card__profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 .feedback_name {
   composes: smallCaps from "../../../../css/typo.module.css";
   color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
-  margin-bottom: 2rem;
+  border-bottom: 0.2rem solid blueColor;
+  display: inline-block;
+  margin-left: 0.5rem;
 }
 
 .feedback_info {

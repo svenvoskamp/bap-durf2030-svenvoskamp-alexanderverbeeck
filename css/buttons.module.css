@@ -1,5 +1,5 @@
 @value tokens: "../css/tokens.module.css";
-@value blueColor,beigeColor yellowColor from tokens;
+@value blueColor,beigeColor, yellowColor from tokens;
 
 .button {
   border: none;
@@ -8,7 +8,7 @@
 }
 
 .circleButton {
-  background-color: beigeColor;
+  background-color: yellowColor;
   border: 0.2rem solid blueColor;
   position: relative;
   border-radius: 50%;

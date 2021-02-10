@@ -12,14 +12,17 @@ const Header = ({ props, scrollRef }) => {
           </div>
           <h1 className={style.title}>
             {props.title}
-            <span className={style.title_outline}>
+            <a
+              href={`../user/${props.user_id}`}
+              className={`${style.title_outline} scale`}
+            >
               {props.user.company && <>{props.user.company_name}</>}
               {!props.user.company && (
                 <>
                   {props.user.first_name} {props.user.last_name}
                 </>
               )}
-            </span>
+            </a>
           </h1>
           <div className={style.project_subtitles}>
             <div className={`${style.info_phase} ${style.info_item}`}>
@@ -64,9 +67,12 @@ const Header = ({ props, scrollRef }) => {
             {props.user.company && (
               <div className={`${style.info_location} ${style.info_item}`}>
                 <img src="../assets/images/small_person_icon.svg" />
-                <p className={`${style.info_text} ${style.info_light}`}>
+                <a
+                  href={`../user/${props.user_id}`}
+                  className={`${style.info_text} ${style.info_light} scale`}
+                >
                   {props.user.first_name} {props.user.last_name}
-                </p>
+                </a>
               </div>
             )}
           </div>

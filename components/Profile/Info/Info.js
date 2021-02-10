@@ -39,12 +39,22 @@ const Info = ({ props }) => {
           )}
           <div className={style.description_info}>
             <div className={style.description_div}></div>
-            <p className={style.description_text__outline}>{email}</p>
+            <a
+              href={`mailto:${email}`}
+              className={`${style.description_text__outline} scale `}
+            >
+              {email}
+            </a>
           </div>
           {props.phone_number && (
             <div className={style.description_info}>
               <div className={style.description_div}></div>
-              <p className={style.description_text}>{props.phone_number}</p>
+              <a
+                href={`tel:${props.phone_number}`}
+                className={`${style.description_text} scale `}
+              >
+                {props.phone_number}
+              </a>
             </div>
           )}
         </div>

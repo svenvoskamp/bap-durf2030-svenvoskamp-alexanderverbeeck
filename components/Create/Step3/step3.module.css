@@ -365,6 +365,7 @@
 .button {
   composes: button from "../../../css/buttons.module.css";
   padding: 0;
+  cursor: pointer;
 }
 
 .circle_button {

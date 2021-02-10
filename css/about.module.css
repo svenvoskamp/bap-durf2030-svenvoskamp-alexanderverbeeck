@@ -2,45 +2,55 @@
 @value blueColor, greenColor, yellowColor, beigeColor, redColor from tokens;
 
 .part {
-  composes: view from '../css/layout.module.css';
+  composes: view from "../css/layout.module.css";
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-column-gap: 12rem;
 }
 .title {
-  composes: largeTitleOutline from '../css/typo.module.css';
+  composes: largeTitleOutline from "../css/typo.module.css";
   margin-bottom: 1rem;
+  -webkit-text-stroke: 0.3rem var(--colorBlue);
+  text-stroke: 0.3rem var(--colorBlue);
 }
 
 .title_outline {
-  composes: largeTitle from '../css/typo.module.css';
+  composes: largeTitle from "../css/typo.module.css";
+  -webkit-text-stroke: 0.3rem var(--colorBlue);
+  text-stroke: 0.3rem var(--colorBlue);
+  -webkit-text-fill-color: var(--colorBlue);
+  text-fill-color: var(--colorBlue);
 }
+
 .title_description {
-  composes: semiBold from '../css/typo.module.css';
+  composes: semiBold from "../css/typo.module.css";
+  color: var(--colorBlue);
   margin-bottom: 5rem;
 }
 
 .text {
-  composes: text from '../css/typo.module.css';
+  composes: text from "../css/typo.module.css";
+  color: var(--colorBlue);
   margin-top: 1.5rem;
 }
-.faq__text__bold {
-  composes: bold from '../css/typo.module.css';
-}
+
 .text__bold {
-  composes: bold from '../css/typo.module.css';
+  composes: bold from "../css/typo.module.css";
+  color: var(--colorBlue);
   margin-bottom: 2rem;
 }
 
 .text__caps {
-  composes: smallCaps from '../css/typo.module.css';
+  composes: smallCaps from "../css/typo.module.css";
+  color: var(--colorBlue);
 }
 
 .text__semibold {
-  composes: semiBold from '../css/typo.module.css';
+  composes: semiBold from "../css/typo.module.css";
+  color: var(--colorBlue);
 }
 
 .grid__about {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-column-gap: 12rem;
 }
 
 .img__about {
@@ -50,7 +60,7 @@
 }
 
 .faq__div {
-  border: 0.3rem solid blueColor;
+  border: 0.3rem solid var(--colorBlue);
   padding: 2.5rem;
   margin-bottom: 2rem;
   width: 70%;
@@ -63,11 +73,38 @@
 .faq__content {
   display: flex;
   justify-content: space-between;
+  color: var(--colorBeige);
+}
+
+.faq__text__bold {
+  composes: bold from "../css/typo.module.css";
 }
 
 .faq__ul li {
   margin-bottom: 1rem;
+  color: var(--colorBlue);
 }
+
+.faq__text__bold {
+  color: var(--colorBlue);
+}
+
+.title__outline__faq {
+  -webkit-text-stroke: 0.3rem var(--colorBlue);
+  text-stroke: 0.3rem var(--colorBlue);
+}
+
+.title__faq {
+  -webkit-text-stroke: 0.3rem var(--colorBlue);
+  text-stroke: 0.3rem var(--colorBlue);
+  -webkit-text-fill-color: var(--colorBlue);
+  text-fill-color: var(--colorBlue);
+}
+
+.button__open path {
+  fill: var(--colorBlue);
+}
+
 @media screen and (max-width: 850px) {
   .faq__div {
     width: 100%;

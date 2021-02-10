@@ -74,11 +74,44 @@ const Realisation = ({ props, user }) => {
           </li>
         </div>
         {/* <div>
-          <p>{email}</p>
+</p>
           {props.projects[0].user.phone_number && (
             <p>{props.projects[0].user.phone_number}</p>
           )}
         </div> */}
+
+        <div className={style.contact}>
+          <div>
+            <p className={style.contact_title}>
+              Contactgegevens {props.projects[0].user.first_name}{" "}
+              {props.projects[0].user.last_name}{" "}
+            </p>
+          </div>
+          <div>
+            <div className={style.contact_info}>
+              {" "}
+              <div className={style.info_circle}></div>
+              <a
+                href={`mailto:${email}`}
+                className={`${style.info_subtitle} scale `}
+              >
+                {email}
+              </a>
+            </div>
+            {props.projects[0].user.phone_number && (
+              <div className={style.contact_info}>
+                {" "}
+                <div className={style.info_circle}></div>
+                <a
+                  href={`tel:${props.projects[0].user.phone_number}`}
+                  className={`${style.info_subtitle} scale `}
+                >
+                  {props.projects[0].user.phone_number}
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );
