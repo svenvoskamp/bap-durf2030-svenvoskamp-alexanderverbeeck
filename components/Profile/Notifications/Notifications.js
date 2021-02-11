@@ -217,7 +217,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
   });
   projects.map((project) => {
     if (project.phase_id == 3) {
-      if (project.donated > 1500 && project.crowdfunding_finished == false) {
+      if (project.donated >= 1500 && project.crowdfunding_finished == false) {
         projectReal.push(project);
       }
     }
