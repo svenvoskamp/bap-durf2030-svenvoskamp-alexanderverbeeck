@@ -680,7 +680,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
                     <span className={styles.grid_text}>
                       {' '}
                       <span className={style.crowdfunding_limit}>
-                        (max 35 karakters)
+                        (max 350 karakters)
                       </span>
                     </span>
                     <p className={style.error} ref={refSpeech}></p>
