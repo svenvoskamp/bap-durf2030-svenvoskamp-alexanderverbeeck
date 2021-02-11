@@ -425,7 +425,7 @@ const Requests = ({ props, user, feedbacks }) => {
                   <div className={styles.need_button}>
                     <button
                       className={styles.input_submit}
-                      onClick={(e) => handleClick(e, feedback)}
+                      onClick={(e) => handleFeedback(e, feedback)}
                     >
                       <p
                         className={`${styles.mobile_button} ${styles.mobile_button__decline} `}
