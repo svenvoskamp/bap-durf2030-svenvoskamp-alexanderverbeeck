@@ -113,19 +113,19 @@ const MyProject = ({ props, project, setSelectedProject, needs }) => {
                       className={`${style.info_text} ${style.info_bold} ${style.needs_number}`}
                     >
                       {projectNeeds[0].need.length < 15 &&
-                        projectNeeds[1].need.length > 15 && (
+                        projectNeeds[1].need.length >= 15 && (
                           <>+ {projectNeeds.length - 1}</>
                         )}
                       {projectNeeds[1].need.length < 15 &&
-                        projectNeeds[0].need.length > 15 && (
+                        projectNeeds[0].need.length >= 15 && (
                           <>+ {projectNeeds.length - 1}</>
                         )}
                       {projectNeeds[1].need.length < 15 &&
                         projectNeeds[0].need.length < 15 && (
                           <>+ {projectNeeds.length - 2}</>
                         )}
-                      {projectNeeds[0].need.length > 15 &&
-                        projectNeeds[1].need.length > 15 && (
+                      {projectNeeds[0].need.length >= 15 &&
+                        projectNeeds[1].need.length >= 15 && (
                           <>+ {projectNeeds.length}</>
                         )}
                     </p>

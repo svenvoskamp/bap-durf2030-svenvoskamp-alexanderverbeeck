@@ -102,19 +102,19 @@ const Project = ({ project, key }) => {
                         className={`${style.info_text} ${style.info_bold} ${style.needs_number}`}
                       >
                         {project.needs[0].need.length < 15 &&
-                          project.needs[1].need.length > 15 && (
+                          project.needs[1].need.length >= 15 && (
                             <>+ {project.needs.length - 1}</>
                           )}
-                        {project.needs[1].need.length < 15 &&
-                          project.needs[0].need.length > 15 && (
+                        {project.needs[0].need.length >= 15 &&
+                          project.needs[1].need.length < 15 && (
                             <>+ {project.needs.length - 1}</>
                           )}
                         {project.needs[1].need.length < 15 &&
                           project.needs[0].need.length < 15 && (
                             <>+ {project.needs.length - 2}</>
                           )}
-                        {project.needs[0].need.length > 15 &&
-                          project.needs[1].need.length > 15 && (
+                        {project.needs[0].need.length >= 15 &&
+                          project.needs[1].need.length >= 15 && (
                             <>+ {project.needs.length}</>
                           )}
                       </p>

@@ -105,19 +105,19 @@ const UserProject = ({ props, project, needs }) => {
                       className={`${style.info_text} ${style.info_bold} ${style.needs_number}`}
                     >
                       {projectNeeds[0].need.length < 15 &&
-                        projectNeeds[1].need.length > 15 && (
+                        projectNeeds[1].need.length >= 15 && (
                           <>+ {projectNeeds.length - 1}</>
                         )}
                       {projectNeeds[1].need.length < 15 &&
-                        projectNeeds[0].need.length > 15 && (
+                        projectNeeds[0].need.length >= 15 && (
                           <>+ {projectNeeds.length - 1}</>
                         )}
                       {projectNeeds[1].need.length < 15 &&
                         projectNeeds[0].need.length < 15 && (
                           <>+ {projectNeeds.length - 2}</>
                         )}
-                      {projectNeeds[0].need.length > 15 &&
-                        projectNeeds[1].need.length > 15 && (
+                      {projectNeeds[0].need.length >= 15 &&
+                        projectNeeds[1].need.length >= 15 && (
                           <>+ {projectNeeds.length}</>
                         )}
                     </p>
@@ -154,12 +154,17 @@ const UserProject = ({ props, project, needs }) => {
                 )}
               </div>
             )}
-            <div className={`${style.info_crowdfunding} ${style.info_item}`}>
-              <img src="../assets/images/project_crowdfunding_icon.svg" />
-              <p className={`${style.info_text} ${style.info_light}`}>
-                {project.district.district}
-              </p>
-            </div>
+            {project.phase.phase == 'Crowdfunding' && (
+              <div className={`${style.info_crowdfunding} ${style.info_item}`}>
+                <img src="./assets/card/card_crowdfunding.svg" />
+                <p className={`${style.info_text} ${style.info_bold}`}>
+                  €{project.donated},- /
+                  <span className={`${style.info_text} ${style.info_light}`}>
+                    1500,-
+                  </span>
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </a>
