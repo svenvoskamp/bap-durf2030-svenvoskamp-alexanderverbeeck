@@ -2,7 +2,7 @@
 @value blueColor, yellowColor, beigeColor, redColor, greenColor, lightColor from tokens;
 
 .part {
-  composes: viewLarge from "./layout.module.css";
+  composes: viewLarge from './layout.module.css';
 }
 
 /* Tabs */
@@ -13,7 +13,7 @@
 }
 
 .tabs_title {
-  composes: smallCaps from "./typo.module.css";
+  composes: smallCaps from './typo.module.css';
   border: none;
   background-color: transparent;
   padding: 1rem 0;
@@ -37,7 +37,7 @@
 }
 
 .subtitle {
-  composes: mediumTitleOutline from "./typo.module.css";
+  composes: mediumTitleOutline from './typo.module.css';
   margin-bottom: 3rem;
   margin-top: 1rem;
 }
@@ -110,7 +110,7 @@
 }
 
 .grid_title {
-  composes: mediumTitle from "./typo.module.css";
+  composes: mediumTitle from './typo.module.css';
 }
 
 .grid_title__benodigdheden {
@@ -122,13 +122,13 @@
 }
 
 .grid_item__title {
-  composes: smallCaps from "./typo.module.css";
+  composes: smallCaps from './typo.module.css';
   margin-top: 0.5rem;
   border-bottom: 0.2rem solid blueColor;
 }
 
 .grid_text {
-  composes: text from "./typo.module.css";
+  composes: text from './typo.module.css';
 }
 
 .grid_text__user {
@@ -136,7 +136,7 @@
 }
 
 .grid_bold {
-  composes: bold from "./typo.module.css";
+  composes: bold from './typo.module.css';
   cursor: pointer;
 }
 
@@ -160,7 +160,7 @@
 }
 
 .button {
-  composes: miniButton from "./buttons.module.css";
+  composes: miniButton from './buttons.module.css';
   margin: 0 0.2rem;
 }
 
@@ -175,16 +175,19 @@
 }
 
 .circle_button {
-  composes: miniCircleButton from "./buttons.module.css";
+  composes: miniCircleButton from './buttons.module.css';
   transition: none;
 }
 
 .button_image {
-  composes: miniButtonImage from "./buttons.module.css";
+  composes: miniButtonImage from './buttons.module.css';
 }
 
 .button_notification {
   cursor: pointer;
+}
+.grid_item__buttons__mobile {
+  display: none;
 }
 
 @media screen and (max-width: 1350px) {
@@ -211,7 +214,7 @@
 
   .grid_item__name__hidden {
     margin-bottom: 1rem;
-    composes: bold from "./typo.module.css";
+    composes: bold from './typo.module.css';
   }
 
   .grid_item__mobile,
@@ -242,10 +245,6 @@
     padding-right: 4rem;
     grid-column-gap: 3rem;
     grid-row-gap: 3rem;
-  }
-
-  .grid_item__buttons__mobile {
-    display: none;
   }
 }
 
@@ -419,7 +418,7 @@
   }
 
   .grid_item__title {
-    composes: mediumTitle from "./typo.module.css";
+    composes: mediumTitle from './typo.module.css';
     font-size: 2.8rem;
     font-weight: 800;
   }
@@ -444,7 +443,7 @@
   .mobile_button {
     padding: 1rem 2rem;
     border: 0.2rem solid blueColor;
-    composes: smallCaps from "./typo.module.css";
+    composes: smallCaps from './typo.module.css';
     position: relative;
   }
 
@@ -453,7 +452,7 @@
   }
 
   .mobile_button:after {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     background: inherit;
