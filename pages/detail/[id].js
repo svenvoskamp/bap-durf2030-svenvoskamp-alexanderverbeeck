@@ -182,7 +182,7 @@ const Detail = ({ props, user, navUser }) => {
       const lowerEl = document.querySelector(".crowdfund");
 
       if (el.classList.contains(`is-inview`)) {
-        console.log("voeg toe aan realisatie");
+
         if (lowerEl.classList.contains(`progress_active_crowdfund`)) {
           lowerEl.classList.remove(`progress_active_crowdfund`);
         }

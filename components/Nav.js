@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from "react";
-import Login from "./Auth/Login";
-import Logout from "./Auth/Logout";
-import { useRouter } from "next/router";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-import Notifications from "./Notifications";
+import React, { useRef, useEffect } from 'react';
+import Login from './Auth/Login';
+import Logout from './Auth/Logout';
+import { useRouter } from 'next/router';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import Notifications from './Notifications';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -118,13 +118,12 @@ const Nav = ({ user }) => {
   const navRef = useRef(null);
   const router = useRouter();
   const path = router.pathname;
-  console.log(path);
 
   return (
     <>
-      {path == "/" && (
+      {path == '/' && (
         <div className="navigation-header--mobile navigation-header--mobile--fixed">
-          <a href={"/"}>
+          <a href={'/'}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -179,7 +178,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={"/create-project"}>
+          <a href={'/create-project'}>
             <div>
               <svg
                 width="70"
@@ -211,9 +210,9 @@ const Nav = ({ user }) => {
           </a>
         </div>
       )}
-      {path == "/profile" && (
+      {path == '/profile' && (
         <div className="navigation-header--mobile">
-          <a href={"/"}>
+          <a href={'/'}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -268,10 +267,10 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={"/api/logout"}>
+          <a href={'/api/logout'}>
             <p className="uitloggen-mobile">Uitloggen</p>
           </a>
-          <a href={"/create-project"}>
+          <a href={'/create-project'}>
             <div>
               <svg
                 width="70"
@@ -303,9 +302,9 @@ const Nav = ({ user }) => {
           </a>
         </div>
       )}
-      {path != "/" && path != "/detail/[id]" && path != "/profile" && (
+      {path != '/' && path != '/detail/[id]' && path != '/profile' && (
         <div className="navigation-header--mobile">
-          <a href={"/"}>
+          <a href={'/'}>
             <svg
               className="navigation-header--mobile--logo"
               width="40"
@@ -360,7 +359,7 @@ const Nav = ({ user }) => {
               />
             </svg>
           </a>
-          <a href={"/create-project"}>
+          <a href={'/create-project'}>
             <div>
               <svg
                 width="70"
@@ -393,7 +392,7 @@ const Nav = ({ user }) => {
         </div>
       )}
       <nav className="navigation">
-        <a href={"/"} className="nav-logo">
+        <a href={'/'} className="nav-logo">
           <svg
             className="nav-logo--image scale"
             width="40"
@@ -449,7 +448,7 @@ const Nav = ({ user }) => {
           </svg>
         </a>
         <div className="nav-items">
-          <a href={"/"} className="scale item">
+          <a href={'/'} className="scale item">
             <div className=" nav-item">
               <svg
                 width="27"
@@ -494,7 +493,7 @@ const Nav = ({ user }) => {
               Ontdekken
             </p>
           </a>
-          <a href={"/projects"} className="scale item">
+          <a href={'/projects'} className="scale item">
             <div className=" nav-item">
               <svg
                 width="30"
@@ -550,7 +549,7 @@ const Nav = ({ user }) => {
             <p className=" nav-item--title">Projecten</p>
           </a>
 
-          <a href={"/create-project"} className="scale item item-nieuw">
+          <a href={'/create-project'} className="scale item item-nieuw">
             <div className=" nav-item">
               <svg
                 className="nav-item--image"
@@ -586,7 +585,7 @@ const Nav = ({ user }) => {
             </div>
             <p className="nav-item--title">Nieuw project</p>
           </a>
-          <a href={"/users"} className="scale item">
+          <a href={'/users'} className="scale item">
             <div className="nav-item">
               <svg
                 width="33"
@@ -641,7 +640,7 @@ const Nav = ({ user }) => {
 
           {!user && (
             <>
-              <a href={"/about"} className="scale item">
+              <a href={'/about'} className="scale item">
                 <div className="nav-item">
                   <svg
                     width="26"
@@ -680,8 +679,8 @@ const Nav = ({ user }) => {
 
           {user && (
             <>
-              {user.sub != "auth0|601eb3abfb308d0069b819cb" && (
-                <a href={"/about"} className="scale item">
+              {user.sub != 'auth0|601eb3abfb308d0069b819cb' && (
+                <a href={'/about'} className="scale item">
                   <div className="nav-item">
                     <svg
                       width="26"
@@ -720,8 +719,8 @@ const Nav = ({ user }) => {
           )}
           {user && (
             <>
-              {user.sub == "auth0|601eb3abfb308d0069b819cb" && (
-                <a href={"/admin"} className="scale item">
+              {user.sub == 'auth0|601eb3abfb308d0069b819cb' && (
+                <a href={'/admin'} className="scale item">
                   <div className="nav-item">
                     <svg
                       width="26"
@@ -752,7 +751,7 @@ const Nav = ({ user }) => {
           )}
           <div className="nav-profile--mobile">
             {user && (
-              <a href={"/profile"} className="scale profile">
+              <a href={'/profile'} className="scale profile">
                 {user.picture && (
                   <div className="nav-item nav-profile--image">
                     <img className="" src={user.picture} alt={user.name} />
@@ -762,7 +761,7 @@ const Nav = ({ user }) => {
               </a>
             )}
             {!user && (
-              <a href={"/api/login"} className="scale profile">
+              <a href={'/api/login'} className="scale profile">
                 <div className="nav-item nav-profile--image">
                   <svg
                     width="26"
@@ -791,7 +790,7 @@ const Nav = ({ user }) => {
         </div>
         <div className="nav-profile">
           {user && (
-            <a href={"/profile"} className="scale profile">
+            <a href={'/profile'} className="scale profile">
               <div className="nav-item nav-profile--image">
                 {user.picture && (
                   <div className="profile-image">

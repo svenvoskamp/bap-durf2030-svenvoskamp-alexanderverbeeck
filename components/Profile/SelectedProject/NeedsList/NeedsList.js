@@ -1,8 +1,8 @@
-import React from "react";
-import style from "../../../Create/Step3/step3.module.css";
-import styles from "../../../../css/profile.module.css";
-import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import React from 'react';
+import style from '../../../Create/Step3/step3.module.css';
+import styles from '../../../../css/profile.module.css';
+import gql from 'graphql-tag';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 
 const GET_USER_DATA = gql`
   query getUser($id: String!) {
@@ -140,7 +140,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
           query: GET_USER_DATA,
           variables: { id: user.id },
         });
-        console.log(cachedData);
+
         const newNeeds = cachedData.needs.map((n) => {
           if (n.id === need.id) {
             return { ...n, provided: !n.provided };
@@ -148,7 +148,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
             return n;
           }
         });
-        console.log(newNeeds);
+
         cache.writeQuery({
           query: GET_USER_DATA,
           variables: { id: user.id },
@@ -171,9 +171,9 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
           query: GET_USER_DATA,
           variables: { id: user.id },
         });
-        console.log(cachedData);
+
         const newNeeds = cachedData.needs.filter((n) => n.id !== need.id);
-        console.log(newNeeds);
+
         cache.writeQuery({
           query: GET_USER_DATA,
           variables: { id: user.id },
@@ -188,7 +188,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
   };
 
   const toNotifications = () => {
-    setSelectedProject("");
+    setSelectedProject('');
     setContent(2);
   };
   return (
@@ -214,7 +214,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                     {need.provided && (
                       <>
                         <p>
-                          Door: {need.otheruser.first_name}{" "}
+                          Door: {need.otheruser.first_name}{' '}
                           {need.otheruser.last_name}
                         </p>
                       </>
@@ -222,7 +222,7 @@ const NeedsList = ({ needs, user, setSelectedProject, setContent }) => {
                     {!need.provided && (
                       <>
                         <p>
-                          Door: {need.otheruser.first_name}{" "}
+                          Door: {need.otheruser.first_name}{' '}
                           {need.otheruser.last_name}
                         </p>
                       </>
