@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import style from './step2.module.css';
-import Mouse from '../../../components/Mouse';
+import React, { useRef, useEffect } from "react";
+import style from "./step2.module.css";
+import Mouse from "../../../components/Mouse";
 
 const Step2 = ({
   firstName,
@@ -37,54 +37,54 @@ const Step2 = ({
 
   const handleValidation = () => {
     if (company == true) {
-      if (firstName == '') {
+      if (firstName == "") {
         refFirstName.current.innerHTML = `Gelieve een voornaam in te vullen`;
       } else {
         refFirstName.current.innerHTML = ``;
       }
-      if (lastName == '') {
+      if (lastName == "") {
         refLastName.current.innerHTML = `Gelieve een achternaam in te vullen`;
       } else {
         refLastName.current.innerHTML = ``;
       }
-      if (streetName == '') {
+      if (streetName == "") {
         refStreetName.current.innerHTML = `Gelieve een straatnaam in te vullen`;
       } else {
         refStreetName.current.innerHTML = ``;
       }
-      if (houseNumber == '') {
+      if (houseNumber == "") {
         refHouseNumber.current.innerHTML = `Gelieve een huisnummer in te vullen`;
       } else {
         refHouseNumber.current.innerHTML = ``;
       }
-      if (city == '') {
+      if (city == "") {
         refCity.current.innerHTML = `Gelieve een woonplaats in te vullen`;
       } else {
         refCity.current.innerHTML = ``;
       }
-      if (zip == '') {
+      if (zip == "") {
         refZip.current.innerHTML = `Gelieve een postcode in te vullen`;
       } else {
         refZip.current.innerHTML = ``;
       }
     }
     if (company == false) {
-      if (streetName == '') {
+      if (streetName == "") {
         refStreetName.current.innerHTML = `Gelieve een straatnaam in te vullen`;
       } else {
         refStreetName.current.innerHTML = ``;
       }
-      if (houseNumber == '') {
+      if (houseNumber == "") {
         refHouseNumber.current.innerHTML = `Gelieve een huisnummer in te vullen`;
       } else {
         refHouseNumber.current.innerHTML = ``;
       }
-      if (city == '') {
+      if (city == "") {
         refCity.current.innerHTML = `Gelieve een woonplaats in te vullen`;
       } else {
         refCity.current.innerHTML = ``;
       }
-      if (zip == '') {
+      if (zip == "") {
         refZip.current.innerHTML = `Gelieve een postcode in te vullen`;
       } else {
         refZip.current.innerHTML = ``;
@@ -260,7 +260,7 @@ const Step2 = ({
                   className={`${style.input_container} ${style.input_telephone}`}
                 >
                   <label htmlFor="telephone" className={style.label}>
-                    Telefoonnnummer{' '}
+                    Telefoonnnummer{" "}
                     <span className={style.label_extra}>(Optioneel)</span>
                   </label>
                   <input
@@ -303,7 +303,7 @@ const Step2 = ({
               <div className={style.circle_button}>
                 <img
                   className={style.button_image}
-                  src="./assets/images/account_aanmaken.svg"
+                  src="./assets/buttons/naar_benodigdheden_button.svg"
                 />
               </div>
             </div>

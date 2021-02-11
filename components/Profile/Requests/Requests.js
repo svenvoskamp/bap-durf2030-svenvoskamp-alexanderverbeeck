@@ -418,21 +418,21 @@ const Requests = ({ props, user, feedbacks }) => {
                       </div>
                     </button>
                   </div>
-                  <div
-                    className={`${styles.buttons} ${styles.grid_item__buttons__mobile}`}
-                  >
-                    <div className={styles.need_button}>
-                      <button
-                        className={styles.input_submit}
-                        onClick={(e) => handleClick(e, feedback)}
+                </div>
+                <div
+                  className={`${styles.buttons} ${styles.grid_item__buttons__mobile}`}
+                >
+                  <div className={styles.need_button}>
+                    <button
+                      className={styles.input_submit}
+                      onClick={(e) => handleClick(e, feedback)}
+                    >
+                      <p
+                        className={`${styles.mobile_button} ${styles.mobile_button__decline} `}
                       >
-                        <p
-                          className={`${styles.mobile_button} ${styles.mobile_button__decline} `}
-                        >
-                          Annuleren
-                        </p>
-                      </button>
-                    </div>
+                        Annuleren
+                      </p>
+                    </button>
                   </div>
                 </div>
               </div>

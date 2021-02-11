@@ -309,6 +309,11 @@
   .part {
     margin-top: 2rem;
   }
+
+  .input_label {
+    flex-wrap: wrap;
+    white-space: wrap;
+  }
 }
 
 @media screen and (max-width: 750px) {
