@@ -151,7 +151,7 @@
   background-color: var(--colorBlue);
   transition: background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   margin-left: 40rem;
-  width: 78%;
+  width: 100%;
 }
 
 .timeline_line__realisatie {
@@ -166,7 +166,8 @@
 }
 
 .line {
-  width: 60vw;
+  width: 72rem;
+
   height: 0.3rem;
   background-color: var(--colorBlue);
   opacity: 0.2;
@@ -184,7 +185,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 60vw;
+  width: 72rem;
 }
 
 .progressbar_item {
@@ -225,22 +226,23 @@
   }
 
   .timeline_line__waiting {
+    margin-top: 15rem;
     transition: background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
     margin-left: 0;
-    height: 70%;
+    height: calc(100% - 45rem);
   }
 
   .timeline_line__cocreatie {
     margin-top: 30rem;
     padding-right: 0;
-    height: calc(100% - 70rem);
+    height: calc(100% - 60rem);
     display: flex;
   }
 
   .timeline_line__crowdfunding {
     margin-top: 15rem;
     margin-left: 0;
-    height: 100%;
+    height: calc(100% - 40rem);
     margin-left: 0;
   }
 
@@ -271,7 +273,7 @@
 
   .form_card {
     height: 25rem;
-    width: 50rem;
+    width: 100%;
     padding: 2rem;
     position: relative;
     margin: 0;
@@ -306,11 +308,25 @@
     margin-top: 15rem;
   }
 
+  .timeline_line__waiting {
+    margin-top: 15rem;
+    transition: background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+    margin-left: 0;
+    height: calc(100% - 35rem);
+  }
+
   .timeline_line__cocreatie {
     margin-top: 30rem;
     padding-right: 0;
     height: calc(100% - 50rem);
     display: flex;
+  }
+
+  .timeline_line__crowdfunding {
+    margin-top: 15rem;
+    margin-left: 0;
+    height: 100%;
+    margin-left: 0;
   }
 }
 
