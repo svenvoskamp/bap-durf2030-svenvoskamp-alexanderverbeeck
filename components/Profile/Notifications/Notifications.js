@@ -630,7 +630,7 @@ const Notifications = ({ props, user, feedbacks, projects }) => {
 
           {projectReal.map((project) => (
             <>
-              {project.donated > 1500 && (
+              {project.donated >= 1500 && (
                 <div className={`${styles.subdivision}`}>
                   <div className={`${styles.project_update}`}>
                     <p className={styles.grid_item__title}>{project.title}</p>
