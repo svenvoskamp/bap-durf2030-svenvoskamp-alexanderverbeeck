@@ -166,7 +166,7 @@
 }
 
 .line {
-  width: 50vw;
+  width: 60vw;
   height: 0.3rem;
   background-color: var(--colorBlue);
   opacity: 0.2;
@@ -184,7 +184,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 50vw;
+  width: 60vw;
 }
 
 .progressbar_item {

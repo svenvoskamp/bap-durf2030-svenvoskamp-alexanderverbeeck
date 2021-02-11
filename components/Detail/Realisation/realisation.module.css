@@ -212,12 +212,18 @@
     margin-bottom: 1rem;
     text-fill-color: var(--colorBlue);
     font-size: 4.2rem;
+    line-height: 4rem;
+    -webkit-text-stroke: 0.18rem var(--colorBlue);
+    text-stroke: 0.18rem var(--colorBlue);
   }
 
   .title_outline {
     font-size: 4.2rem;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
+    line-height: 4rem;
+    text-stroke: 0.18rem var(--colorBlue);
+    -webkit-text-stroke: 0.18rem var(--colorBlue);
   }
 
   .realisatie {
@@ -319,11 +325,17 @@
     margin-bottom: 1rem;
     text-fill-color: var(--colorBlue);
     font-size: 5rem;
+    line-height: 5rem;
+    -webkit-text-stroke: 0.18rem var(--colorBlue);
+    text-stroke: 0.18rem var(--colorBlue);
   }
   .title_outline {
     font-size: 5rem;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
+    line-height: 5rem;
+    -webkit-text-stroke: 0.18rem var(--colorBlue);
+    text-stroke: 0.18rem var(--colorBlue);
   }
 }
 

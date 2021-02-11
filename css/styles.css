@@ -369,7 +369,7 @@ a {
 }
 
 .line_value {
-  width: 50vw;
+  width: 60vw;
   height: 0.3rem;
   margin: 0 auto;
   position: absolute;
@@ -391,25 +391,25 @@ a {
 }
 
 .line_value.progress_active_realisation .line_color {
-  width: 50vw;
+  width: 60vw;
   height: 0.3rem;
   background-color: var(--colorBlue);
 }
 
 .line_value.progress_active_creation .line_color {
-  width: 20vw;
+  width: 26.5vw;
   height: 0.3rem;
   background-color: var(--colorBlue);
 }
 
 .line_value.progress_active_crowdfund .line_color {
-  width: 35vw;
+  width: 40vw;
   height: 0.3rem;
   background-color: var(--colorBlue);
 }
 
 .line_value.progress_active_concept .line_color {
-  width: 5vw;
+  width: 10vw;
   height: 0.3rem;
   background-color: var(--colorBlue);
 }
