@@ -1,27 +1,32 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useFetchUser } from "../lib/user";
-import { withApollo } from "../lib/withApollo";
-import Nav from "../components/Nav";
-import Mouse from "../components/Mouse";
-import style from "../css/about.module.css";
+import React, { useState, useRef, useEffect } from 'react';
+import { useFetchUser } from '../lib/user';
+import { withApollo } from '../lib/withApollo';
+import Nav from '../components/Nav';
+import Mouse from '../components/Mouse';
+import style from '../css/about.module.css';
 
 const About = () => {
   const { user, loading } = useFetchUser();
   const scrollRef = useRef();
-  const [currentIndex, setCurrentIndex] = useState("");
+  const [currentIndex, setCurrentIndex] = useState('');
 
   useEffect(() => {
-    import("locomotive-scroll").then((locomotiveModule) => {
+    import('locomotive-scroll').then((locomotiveModule) => {
       const lscroll = new locomotiveModule.default({
         el: scrollRef.current,
         smooth: true,
-        direction: "vertical",
+        direction: 'vertical',
+        smartphone: {
+          smooth: true,
+          gestureDirection: 'vertical',
+          direction: 'vertical',
+        },
       });
     });
   }, []);
 
   const onScroll = () => {
-    const div = document.getElementsByTagName("html");
+    const div = document.getElementsByTagName('html');
     const el = document.querySelector(`.faq`);
 
     if (el.classList.contains(`is-inview`)) {
@@ -38,7 +43,7 @@ const About = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("wheel", onScroll);
+    window.addEventListener('wheel', onScroll);
   }, []);
 
   return (
@@ -53,7 +58,7 @@ const About = () => {
               <span className={style.title_outline}>wat?</span>
             </h1>
             <p className={style.title_description}>
-              Lees hier alles over wat DURF2030 is en wat ons doel is.{" "}
+              Lees hier alles over wat DURF2030 is en wat ons doel is.{' '}
             </p>
           </div>
           <div className={style.grid__about}>
@@ -73,12 +78,12 @@ const About = () => {
                 ervaring te delen, bundelen we onze krachten. Door anderen
                 actief te betrekken bij onze plannen, scheppen we nieuwe
                 relaties. Ieder is uniek, maar samen vormen we een groter
-                geheel. Zo maken wij het verschil.{" "}
+                geheel. Zo maken wij het verschil.{' '}
               </p>
             </div>
             <img
               className={style.img__about}
-              src="./assets/about/about.svg"
+              src="./assets/about/about.png"
               alt="projects"
             />
           </div>
@@ -104,7 +109,7 @@ const About = () => {
                   className={style.faq__text__bold}
                   onClick={(e) => setCurrentIndex(1)}
                 >
-                  Wat is het doel van durf?{" "}
+                  Wat is het doel van durf?{' '}
                 </p>
                 {currentIndex == 1 && (
                   // <img
@@ -115,7 +120,7 @@ const About = () => {
                   // />
                   <svg
                     className={style.button__open}
-                    onClick={(e) => setCurrentIndex("")}
+                    onClick={(e) => setCurrentIndex('')}
                     width="26"
                     height="26"
                     viewBox="0 0 26 26"
@@ -160,12 +165,12 @@ const About = () => {
                   className={style.faq__text__bold}
                   onClick={(e) => setCurrentIndex(2)}
                 >
-                  Hoe kan ik bijdragen?{" "}
+                  Hoe kan ik bijdragen?{' '}
                 </p>
                 {currentIndex == 2 && (
                   <svg
                     className={style.button__open}
-                    onClick={(e) => setCurrentIndex("")}
+                    onClick={(e) => setCurrentIndex('')}
                     width="26"
                     height="26"
                     viewBox="0 0 26 26"
@@ -211,12 +216,12 @@ const About = () => {
                   className={style.faq__text__bold}
                   onClick={(e) => setCurrentIndex(3)}
                 >
-                  Aan welke criteria moet mijn project voldoen?{" "}
+                  Aan welke criteria moet mijn project voldoen?{' '}
                 </p>
                 {currentIndex == 3 && (
                   <svg
                     className={style.button__open}
-                    onClick={(e) => setCurrentIndex("")}
+                    onClick={(e) => setCurrentIndex('')}
                     width="26"
                     height="26"
                     viewBox="0 0 26 26"
@@ -249,7 +254,7 @@ const About = () => {
               {currentIndex == 3 && (
                 <ul className={style.faq__ul}>
                   <li className={style.text}>
-                    {" "}
+                    {' '}
                     1. Het project zorgt voor een positieve verandering op het
                     leven in een bepaalde buurt, in Stad Kortrijk of de regio.
                   </li>
@@ -275,7 +280,7 @@ const About = () => {
                 {currentIndex == 4 && (
                   <svg
                     className={style.button__open}
-                    onClick={(e) => setCurrentIndex("")}
+                    onClick={(e) => setCurrentIndex('')}
                     width="26"
                     height="26"
                     viewBox="0 0 26 26"
