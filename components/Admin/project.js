@@ -42,6 +42,13 @@ const GET_DATA = gql`
           id
           need
           type
+          pending
+          provided
+          other_user_id
+          otheruser {
+            first_name
+            last_name
+          }
         }
         tagline
         theme {
