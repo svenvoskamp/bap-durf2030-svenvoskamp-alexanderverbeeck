@@ -26,16 +26,6 @@
   padding: 0 20rem;
 }
 
-/* .timeline_line {
-  position: absolute;
-  top: 50%;
-  height: 0.3rem;
-  background-color: var(--colorBlue);
-  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
-  width: 100%;
-  left: 0;
-} */
-
 .form_feedback {
   display: flex;
   flex-direction: column;
@@ -54,11 +44,12 @@
   padding: 2rem;
   position: relative;
   margin: 2rem 0;
-  transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
+  transition: border-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1),
+    background-color 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .form_card:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -73,12 +64,12 @@
 }
 
 .form_title {
-  composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .form_number {
-  composes: number from '../../../css/typo.module.css';
+  composes: number from "../../../css/typo.module.css";
 }
 
 .form_card__one {
@@ -107,7 +98,7 @@
 .form_input {
   border: none;
   background-color: transparent;
-  composes: empty from '../../../css/typo.module.css';
+  composes: empty from "../../../css/typo.module.css";
   height: 15.5rem;
   width: 45rem;
   resize: none;
@@ -133,7 +124,7 @@
 }
 
 .button_voorzien:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -221,7 +212,7 @@
 }
 
 .locked_card:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: inherit;
@@ -240,13 +231,13 @@
 }
 
 .locked_text {
-  composes: mediumTitle from '../../../css/typo.module.css';
+  composes: mediumTitle from "../../../css/typo.module.css";
   color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .locked_date {
-  composes: smallText from '../../../css/typo.module.css';
+  composes: smallText from "../../../css/typo.module.css";
   color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
   text-align: center;
@@ -254,14 +245,14 @@
 }
 
 .locked_type {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
   text-align: center;
   color: var(--colorBlue);
   transition: 1.5s cubic-bezier(0.025, 0.9, 0.45, 1);
 }
 
 .timeline_title {
-  composes: mediumTitleOutline from '../../../css/typo.module.css';
+  composes: mediumTitleOutline from "../../../css/typo.module.css";
   display: none;
 }
 
@@ -317,7 +308,6 @@
     z-index: 2;
     margin-top: 10rem;
     padding-bottom: 20rem;
-    background-color: var(--colorBeige);
   }
 
   .locked_icon {
@@ -341,7 +331,7 @@
   }
 
   .timeline_title {
-    composes: mediumTitleOutline from '../../../css/typo.module.css';
+    composes: mediumTitleOutline from "../../../css/typo.module.css";
     display: flex;
     padding: 0 1rem;
     margin-top: 2rem;
@@ -364,6 +354,10 @@
 }
 
 @media screen and (max-width: 550px) {
+  .form_card {
+    /* border: none;
+    background-color: transparent; */
+  }
   .timeline {
     padding-right: 2rem;
     /* margin-bottom: 15rem; */
@@ -421,11 +415,20 @@
   .form_card {
     height: 25rem;
     width: 100%;
-    border: 0.3rem solid var(--colorBlue);
-    background-color: var(--colorBeige);
-    padding: 2rem;
     position: relative;
-    margin: 0;
+    margin: 5rem 1rem;
+    /* margin-left: 6rem; */
+    /* padding-right: 3rem; */
+  }
+
+  .form_card__one {
+    grid-column-gap: 2rem;
+  }
+
+  .form_title {
+    /* margin-left: 6rem; */
+    margin: 0 1rem;
+    margin-bottom: 2rem;
   }
 
   .form_feedback {

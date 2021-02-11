@@ -5,7 +5,7 @@
 
 .project_tags {
   display: flex;
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
   color: beigeColor;
   margin-bottom: 1rem;
 }
@@ -21,9 +21,10 @@
 }
 
 .button_back {
-  composes: buttonBack from '../../../css/buttons.module.css';
+  composes: buttonBack from "../../../css/buttons.module.css";
   cursor: pointer;
   margin-bottom: 2rem;
+  display: inline-block;
 }
 
 .back_image {
@@ -31,18 +32,18 @@
 }
 
 .back_text {
-  composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
 }
 
 /* Info Project */
 
 .title {
-  composes: title from '../../../css/typo.module.css';
+  composes: title from "../../../css/typo.module.css";
   margin-bottom: 1rem;
 }
 
 .title_outline {
-  composes: titleOutline from '../../../css/typo.module.css';
+  composes: titleOutline from "../../../css/typo.module.css";
 }
 
 /* Project Subtitles */
@@ -90,23 +91,23 @@
 }
 
 .info_light {
-  composes: smallCapsLight from '../../../css/typo.module.css';
+  composes: smallCapsLight from "../../../css/typo.module.css";
 }
 
 .info_bold {
-  composes: smallCaps from '../../../css/typo.module.css';
+  composes: smallCaps from "../../../css/typo.module.css";
 }
 
 /* Project Description */
 
 .description_bold {
-  composes: bold from '../../../css/typo.module.css';
+  composes: bold from "../../../css/typo.module.css";
   color: #3b4045;
   margin-bottom: 2rem;
 }
 
 .description_light {
-  composes: text from '../../../css/typo.module.css';
+  composes: text from "../../../css/typo.module.css";
   color: #3b4045;
 }
 
@@ -131,7 +132,7 @@
   }
 
   .tagline_text {
-    composes: mediumTitle from '../../../css/typo.module.css';
+    composes: mediumTitle from "../../../css/typo.module.css";
     margin-bottom: 3rem;
   }
 
@@ -152,7 +153,7 @@
   }
 
   .extra_image:after {
-    content: '';
+    content: "";
     position: absolute;
     display: block;
     background: beigeColor;

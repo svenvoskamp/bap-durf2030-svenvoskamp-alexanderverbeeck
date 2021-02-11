@@ -1,6 +1,6 @@
-import React from 'react';
-import style from './header.module.css';
-import { useRouter } from 'next/router';
+import React from "react";
+import style from "./header.module.css";
+import { useRouter } from "next/router";
 
 const Header = ({ props, scrollRef }) => {
   const router = useRouter();
@@ -44,28 +44,28 @@ const Header = ({ props, scrollRef }) => {
           </h1>
           <div className={style.project_subtitles}>
             <div className={`${style.info_phase} ${style.info_item}`}>
-              {props.phase.phase == 'Conceptvoorstel' && (
+              {props.phase.phase == "Conceptvoorstel" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_concept}`}
                   ></div>
                 </>
               )}
-              {props.phase.phase == 'Co-creatie' && (
+              {props.phase.phase == "Co-creatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_creatie}`}
                   ></div>
                 </>
               )}
-              {props.phase.phase == 'Crowdfunding' && (
+              {props.phase.phase == "Crowdfunding" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_crowdfunding}`}
                   ></div>
                 </>
               )}
-              {props.phase.phase == 'Realisatie' && (
+              {props.phase.phase == "Realisatie" && (
                 <>
                   <div
                     className={`${style.fase_color} ${style.fase_realisatie}`}

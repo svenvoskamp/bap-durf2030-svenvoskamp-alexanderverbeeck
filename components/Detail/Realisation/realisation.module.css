@@ -248,7 +248,7 @@
 
   .header {
     flex-direction: column;
-    margin-top: 10rem;
+    margin-top: 15rem;
   }
 
   .contact {
@@ -295,7 +295,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin: 0;
-    margin-left: 2rem;
+    margin-left: 1rem;
   }
 
   .donation_date {
@@ -324,18 +324,39 @@
   .title {
     margin-bottom: 1rem;
     text-fill-color: var(--colorBlue);
-    font-size: 5rem;
-    line-height: 5rem;
+    font-size: 4rem;
+    line-height: 4rem;
+    -webkit-text-stroke: 0.1rem var(--colorBlue);
+    text-stroke: 0.1rem var(--colorBlue);
+  }
+  .title_outline {
+    font-size: 4rem;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    line-height: 4rem;
     -webkit-text-stroke: 0.18rem var(--colorBlue);
     text-stroke: 0.18rem var(--colorBlue);
   }
-  .title_outline {
-    font-size: 5rem;
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
-    line-height: 5rem;
-    -webkit-text-stroke: 0.18rem var(--colorBlue);
-    text-stroke: 0.18rem var(--colorBlue);
+
+  .contact_title,
+  .contact_info {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .info_circle {
+    display: none;
+  }
+
+  .donation_card {
+    width: auto;
+    margin-right: 2rem;
+    height: auto;
+    /* margin: 1.5rem 0; */
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    padding: 3rem;
   }
 }
 

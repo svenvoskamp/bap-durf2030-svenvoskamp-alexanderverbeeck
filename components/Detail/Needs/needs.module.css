@@ -176,8 +176,8 @@
   background: inherit;
   border-radius: inherit;
   border: inherit;
-  top: 0.8rem;
-  left: 0.8rem;
+  top: 1rem;
+  left: 1rem;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -255,9 +255,10 @@
     width: 18rem;
     scroll-snap-align: start;
   }
-}
+  .motivation {
+    height: 15rem;
+  }
 
-@media screen and (max-width: 850px) {
   .need {
     width: 16rem;
   }
@@ -271,5 +272,10 @@
     align-items: center;
     justify-content: center;
     position: relative;
+  }
+}
+@media screen and (max-width: 550px) {
+  .motivation {
+    height: 18rem;
   }
 }

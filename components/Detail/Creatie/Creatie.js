@@ -234,26 +234,33 @@ const Creatie = ({ props, user }) => {
                   </>
                 )}
                 {currentIndex == 2 && (
-                  <div
-                    className={`${style.form_card} ${style.form_card__feedback}`}
-                  >
+                  <>
                     <p className={style.form_title}>
-                      Uw feedback is in behandeling bij de projecteigenaar!
+                      <span className={style.form_number}>3.</span> Uw feedback
+                      is in behandeling bij de projecteigenaar!
                     </p>
-                    <div className={style.voorzien_three__button}>
-                      <label className={styles.voorzien} htmlFor="verzend">
-                        <input
-                          id="verzend"
-                          className={`${styles.checkbox} scale`}
-                          type="submit"
-                          onClick={handleBack}
-                        />
-                        <div className={styles.button_voorzien}>
-                          <p>Meer toevoegen</p>
-                        </div>
-                      </label>
+                    <div
+                      className={`${style.form_card} ${style.form_card__feedback}`}
+                    >
+                      <p className={style.form_title}>
+                        Bedankt voor het ondersteunen van "
+                        {props.projects[0].title}"
+                      </p>
+                      <div className={style.voorzien_three__button}>
+                        <label className={styles.voorzien} htmlFor="verzend">
+                          <input
+                            id="verzend"
+                            className={`${styles.checkbox} scale`}
+                            type="submit"
+                            onClick={handleBack}
+                          />
+                          <div className={styles.button_voorzien}>
+                            <p>Meer toevoegen</p>
+                          </div>
+                        </label>
+                      </div>
                     </div>
-                  </div>
+                  </>
                 )}
               </div>
             </form>

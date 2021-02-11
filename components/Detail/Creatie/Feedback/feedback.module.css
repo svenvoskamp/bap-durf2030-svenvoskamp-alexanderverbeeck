@@ -211,7 +211,7 @@
 
   .feedback_card {
     padding: 2rem;
-    width: 100%;
+    width: calc(100vw - 10rem);
     height: auto;
     margin: 0;
   }
