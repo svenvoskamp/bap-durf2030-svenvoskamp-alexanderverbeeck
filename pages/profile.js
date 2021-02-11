@@ -161,7 +161,7 @@ const Profile = ({ props }) => {
       if (!project.reward_one) {
         incoming.push(project);
       }
-      if (project.donated > 1500 && project.crowdfunding_finished == false) {
+      if (project.donated >= 1500 && project.crowdfunding_finished == false) {
         incoming.push(project);
       }
     }
