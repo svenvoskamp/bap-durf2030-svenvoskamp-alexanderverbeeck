@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import * as firebase from 'firebase/app';
-import 'firebase/storage';
-import style from './step2.module.css';
-import Mouse from '../../../components/Mouse';
-import Loading from '../../Loading/Loading';
+import React, { useRef, useEffect } from "react";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import * as firebase from "firebase/app";
+import "firebase/storage";
+import style from "./step2.module.css";
+import Mouse from "../../../components/Mouse";
+import Loading from "../../Loading/Loading";
 
 const GET_DISTRICTS = gql`
   query getDistricts {
@@ -40,7 +40,7 @@ const Step2 = ({
   const refImpact = useRef();
   const refDescription = useRef();
   if (loading) {
-    return <Loading props={'loading'} />;
+    return <Loading props={"loading"} />;
   }
   if (error) {
     console.log(error);
@@ -53,32 +53,32 @@ const Step2 = ({
   };
 
   const handleValidation = (e) => {
-    if (title == '') {
+    if (title == "") {
       refTitle.current.innerHTML = `Vul een titel in`;
     } else {
       refTitle.current.innerHTML = ``;
     }
-    if (district == '') {
+    if (district == "") {
       refDistrict.current.innerHTML = `Vul een locatie in`;
     } else {
       refDistrict.current.innerHTML = ``;
     }
-    if (image == '') {
+    if (image == "") {
       refImg.current.innerHTML = `Upload een foto voor het project`;
     } else {
       refImg.current.innerHTML = ``;
     }
-    if (tagline == '') {
+    if (tagline == "") {
       refTagline.current.innerHTML = `Vul een tagline in voor het project`;
     } else {
       refTagline.current.innerHTML = ``;
     }
-    if (impact == '') {
+    if (impact == "") {
       refImpact.current.innerHTML = `Vul een doel in van het project`;
     } else {
       refImpact.current.innerHTML = ``;
     }
-    if (description == '') {
+    if (description == "") {
       refDescription.current.innerHTML = `Vul een beschrijving in van het project`;
     } else {
       refDescription.current.innerHTML = ``;
@@ -87,7 +87,7 @@ const Step2 = ({
 
   const handleChange = async (e) => {
     if (e.target.files[0]) {
-      const img = document.getElementById('id_img');
+      const img = document.getElementById("id_img");
       img.src = URL.createObjectURL(e.target.files[0]);
       img.onload = function () {
         URL.revokeObjectURL(img.src);
@@ -295,7 +295,7 @@ const Step2 = ({
               <div className={style.circle_button}>
                 <img
                   className={style.button_image}
-                  src="./assets/images/account_aanmaken.svg"
+                  src="./assets/buttons/naar_benodigdheden_button.svg"
                 />
               </div>
             </div>

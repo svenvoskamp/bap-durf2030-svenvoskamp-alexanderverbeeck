@@ -303,7 +303,7 @@ const Step2 = ({
               <div className={style.circle_button}>
                 <img
                   className={style.button_image}
-                  src="./assets/buttons/naar_benodigdheden_button.svg"
+                  src="./assets/buttons/maak_account_button.svg"
                 />
               </div>
             </div>

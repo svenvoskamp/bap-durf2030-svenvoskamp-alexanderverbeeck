@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
-import style from './needs.module.css';
-import { useFetchUser } from '../../../lib/user';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { useRouter } from 'next/router';
-import gql from 'graphql-tag';
-import Loading from '../../Loading/Loading';
-import Mouse from '../../Mouse';
+import React, { useRef, useState } from "react";
+import style from "./needs.module.css";
+import { useFetchUser } from "../../../lib/user";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useRouter } from "next/router";
+import gql from "graphql-tag";
+import Loading from "../../Loading/Loading";
+import Mouse from "../../Mouse";
 
 const UPDATE_NEED = gql`
   mutation update_need(
@@ -133,8 +133,8 @@ const GET_PROJECT_BY_ID = gql`
 const Needs = ({ needs, user, props }) => {
   const [updateNeed] = useMutation(UPDATE_NEED);
   const [needsForm, setNeedsForm] = useState(false);
-  const [selectedNeed, setSelectedNeed] = useState('');
-  const [motivation, setMotivation] = useState('');
+  const [selectedNeed, setSelectedNeed] = useState("");
+  const [motivation, setMotivation] = useState("");
   const refNeed = useRef();
   const router = useRouter();
 
@@ -143,7 +143,7 @@ const Needs = ({ needs, user, props }) => {
   };
 
   const handleValidation = () => {
-    if (motivation == '') {
+    if (motivation == "") {
       refNeed.current.innerHTML = `Gelieve een motivatie in te vullen`;
     } else {
       refNeed.current.innerHTML = ``;
@@ -152,7 +152,7 @@ const Needs = ({ needs, user, props }) => {
 
   const handleClick = (need) => {
     if (!user) {
-      router.push('/api/login');
+      router.push("/api/login");
     }
     if (user && !user.first_name) {
       router.push(`/register`);
@@ -165,7 +165,7 @@ const Needs = ({ needs, user, props }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (motivation != '') {
+    if (motivation != "") {
       updateNeed({
         variables: {
           id: selectedNeed.id,
@@ -209,7 +209,7 @@ const Needs = ({ needs, user, props }) => {
         },
       });
       setNeedsForm(false);
-      setMotivation('');
+      setMotivation("");
     }
   };
   const providedNeeds = needs.filter((need) => need.provided);
@@ -259,7 +259,7 @@ const Needs = ({ needs, user, props }) => {
                                 >
                                   <img
                                     className={style.button_image}
-                                    src="../../../../assets/needs/needs_help.svg"
+                                    src="../assets/buttons/durf_helpen_button.svg"
                                   />
                                 </div>
                               </a>
@@ -333,7 +333,7 @@ const Needs = ({ needs, user, props }) => {
                 <div className={style.motivation_text}>
                   <p className={style.need_item__text}>
                     Leg de projecteigenaar uit hoe je {selectedNeed.need} wilt
-                    voorzien{' '}
+                    voorzien{" "}
                   </p>
                   <p className={style.error} ref={refNeed}></p>
                   <div className={style.button_back}>

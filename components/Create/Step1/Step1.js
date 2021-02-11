@@ -121,7 +121,7 @@ const Step1 = ({ theme, category, setCategory, setTheme, setCurrentIndex }) => {
               <div className={style.circle_button}>
                 <img
                   className={`${style.button_image} scale`}
-                  src="./assets/images/account_aanmaken.svg"
+                  src="./assets/buttons/naar_beschrijving_button.svg"
                 />
               </div>
             </button>
