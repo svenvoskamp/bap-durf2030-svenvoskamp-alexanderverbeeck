@@ -209,6 +209,7 @@ const Needs = ({ needs, user, props }) => {
         },
       });
       setNeedsForm(false);
+      setMotivation('');
     }
   };
   const providedNeeds = needs.filter((need) => need.provided);
