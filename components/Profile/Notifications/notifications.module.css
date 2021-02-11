@@ -10,8 +10,12 @@
   color: redColor;
 }
 
+.crowdfunding_limit {
+  composes: smallText from '../../../css/typo.module.css';
+}
+
 .button {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
   border: 0.2rem solid blueColor;
   padding: 0.8rem 1rem;
   position: relative;
@@ -22,7 +26,7 @@
 }
 
 .button:after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   background: inherit;
@@ -57,7 +61,7 @@
 }
 
 .label {
-  composes: smallCaps from "../../../css/typo.module.css";
+  composes: smallCaps from '../../../css/typo.module.css';
   margin-right: 1rem;
 }
 
@@ -67,7 +71,7 @@
   border-top: none;
   border-right: none;
   border-left: none;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   padding: 0.2rem 0.5rem;
   margin-top: 1rem;
 }
@@ -94,14 +98,14 @@
 .input_text {
   border: 0.2rem solid blueColor;
   background-color: transparent;
-  composes: empty from "../../../css/typo.module.css";
+  composes: empty from '../../../css/typo.module.css';
   padding: 0.2rem 0.5rem;
   margin-top: 1rem;
 }
 
 .error {
   color: redColor;
-  composes: smallText from "../../../css/typo.module.css";
+  composes: smallText from '../../../css/typo.module.css';
   font-style: italic;
 }
 
