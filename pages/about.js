@@ -330,4 +330,4 @@ const About = () => {
   );
 };
 
-export default withApollo({ ssr: false })(About);
+export default withApollo({ ssr: true })(About);
